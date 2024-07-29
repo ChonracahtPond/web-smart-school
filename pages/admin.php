@@ -17,15 +17,12 @@
                 case 'ManageUsers':
                     include "../pages/Users/ManageUsers.php";
                     break;
-
                 case 'add_user':
                     include "../pages/Users/add_user.php";
                     break;
-
                 case 'edit_user':
                     include "../pages/Users/edit_user.php";
                     break;
-
                 case 'delete_user':
                     include "../pages/Users/delete_user.php";
                     break;
@@ -63,24 +60,60 @@
                     include "../pages/Activities/delete_participant.php";
                     break;
 
-
-
-
-                case 'products':
-                    include "../pages/products.php";
+                case 'Reports_and_statistics':
+                    include "../pages/Activities/Reports_and_statistics.php";
                     break;
 
-                case 'orders':
-                    include "../pages/orders.php";
+
+                case 'Manage_courses':
+                    include "../pages/courses/Manage_courses.php";
+                    break;
+                case 'add_course':
+                    include "../pages/courses/add_course.php";
+                    break;
+                case 'edit_course':
+                    include "../pages/courses/edit_course.php";
+                    break;
+                case 'delete_course':
+                    include "../pages/courses/delete_course.php";
                     break;
 
-                case 'recent-activities':
-                    include "../pages/recent-activities.php";
+                case 'Manage_enrollments':
+                    include "../pages/courses/Manage_enrollments.php";
+                    break;
+                case 'add_enrollment':
+                    include "../pages/courses/add_enrollment.php";
+                    break;
+                case 'edit_enrollment':
+                    include "../pages/courses/edit_enrollment.php";
+                    break;
+                case 'delete_enrollment':
+                    include "../pages/courses/delete_enrollment.php";
                     break;
 
-                default:
-                    include "../pages/dashboard.php";
+
+                case 'Manage_News':
+                    include "../pages/News/Manage_News.php";
                     break;
+                case 'add_news':
+                    include "../pages/News/add_news.php";
+                    break;
+                case 'edit_news':
+                    include "../pages/News/edit_news.php";
+                    break;
+                case 'delete_news':
+                    include "../pages/News/delete_news.php";
+                    break;
+
+
+
+                // case 'recent-activities':
+                //     include "../pages/recent-activities.php";
+                //     break;
+
+                // default:
+                //     include "../pages/dashboard.php";
+                //     break;
             }
             ?>
         </section>
