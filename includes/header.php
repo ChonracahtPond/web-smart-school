@@ -22,7 +22,7 @@
             <ul class="flex space-x-4">
                 <li><a href="admin.php" class="hover:underline">หน้าแรก</a></li>
                 <li><a href="admin.php" class="hover:underline">ผู้ดูแลระบบ</a></li>
-                <li><a href="pages/teacher.php" class="hover:underline">ครู</a></li>
+                <li><a href="teacher.php" class="hover:underline">ครู</a></li>
                 <li><a href="pages/student.php" class="hover:underline">นักเรียน</a></li>
             </ul>
         </nav>
