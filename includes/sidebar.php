@@ -260,8 +260,6 @@
                         <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.24 4.759a1.5 1.5 0 00-2.121 0l-1.414 1.415a1.5 1.5 0 000 2.121l1.414 1.415a1.5 1.5 0 002.121-2.121l-1.414-1.415a1.5 1.5 0 00-2.121 0l-1.414 1.415a1.5 1.5 0 00-2.121-2.121l1.414-1.415a1.5 1.5 0 00-2.121-2.121L5.757 4.758a1.5 1.5 0 00-2.121 2.121l1.414 1.415a1.5 1.5 0 002.121 2.121l1.414-1.415a1.5 1.5 0 002.121 2.121l1.414-1.415a1.5 1.5 0 002.121 2.121l1.414-1.415a1.5 1.5 0 000-2.121l-1.414-1.415a1.5 1.5 0 00-2.121-2.121zM6.343 5.65l-1.415 1.415a1.5 1.5 0 000 2.121l1.415 1.415a1.5 1.5 0 002.121-2.121l-1.415-1.415a1.5 1.5 0 00-2.121 0zM11.5 13.5a1 1 0 10-2 0v1.875a1 1 0 102 0V13.5zM17 13.5a1 1 0 10-2 0v1.875a1 1 0 102 0V13.5z" />
                         </svg>
-
-
                         <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>ดูแลและอัพเดตระบบ</span>
                         <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
