@@ -32,7 +32,7 @@ $result = $conn->query($sql);
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                     <?php while ($row = $result->fetch_assoc()) : ?>
-                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer" onclick="window.location.href='?page=student_details&id=<?php echo urlencode($row['student_id']); ?>'">
                             <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100"><?php echo htmlspecialchars($row['student_id']); ?></td>
                             <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100"><?php echo htmlspecialchars($row['grade_level']); ?></td>
                             <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100"><?php echo htmlspecialchars($row['section']); ?></td>
@@ -55,6 +55,7 @@ $result = $conn->query($sql);
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
+
             </table>
         </div>
     </div>

@@ -158,6 +158,15 @@
                 case 'Manage_evaluations':
                     include "../pages/evaluations/Manage_evaluations.php";
                     break;
+
+                case 'student_details':
+                    include "../pages/student/student_details.php";
+                    break;
+
+
+                case 'generate_pdf':
+                    include "../mpdf/generate_pdf.php";
+                    break;
                     // case 'borrow_item':
                     //     include "../pages/borrowing/borrow_item.php";
                     //     break;
