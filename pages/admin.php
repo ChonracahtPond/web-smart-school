@@ -105,15 +105,74 @@
                     include "../pages/News/delete_news.php";
                     break;
 
+                case 'equipment_management':
+                    include "../pages/borrowing/equipment_management.php";
+                    break;
+
+                case 'add_item':
+                    include "../pages/borrowing/add_item.php";
+                    break;
+                case 'edit_item':
+                    include "../pages/borrowing/edit_item.php";
+                    break;
+                case 'delete_item':
+                    include "../pages/borrowing/delete_item.php";
+                    break;
+
+                case 'System_for_borrowing':
+                    include "../pages/borrowing/System_for_borrowing.php";
+                    break;
+                case 'Borrow_equipment':
+                    include "../pages/borrowing/Borrow_equipment.php";
+                    break;
+                case 'Return_equipment':
+                    include "../pages/borrowing/Return_equipment.php";
+                    break;
+                case 'Remaining_quantity':
+                    include "../pages/borrowing/Remaining_quantity.php";
+                    break;
+
+                case 'Borrow_Office_Supplies':
+                    include "../pages/borrowing/Borrow_Office_Supplies.php";
+                    break;
+                case 'borrow_action':
+                    include "../pages/borrowing/borrow_action.php";
+                    break;
+                case 'edit_borrowing':
+                    include "../pages/borrowing/edit_borrowing.php";
+                    break;
+                case 'delete_borrowing':
+                    include "../pages/borrowing/delete_borrowing.php";
+                    break;
+                case 'add_borrowing':
+                    include "../pages/borrowing/add_borrowing.php";
+                    break;
+
+                case 'teacher':
+                    include "teacher.php";
+                    break;
+                case 'student':
+                    include "student.php";
+                    break;
+
+                case 'Manage_evaluations':
+                    include "../pages/evaluations/Manage_evaluations.php";
+                    break;
+                    // case 'borrow_item':
+                    //     include "../pages/borrowing/borrow_item.php";
+                    //     break;
+                    // case 'return_item':
+                    //     include "../pages/borrowing/return_item.php";
+                    //     break;
 
 
-                // case 'recent-activities':
-                //     include "../pages/recent-activities.php";
-                //     break;
+                    // case 'recent-activities':
+                    //     include "../pages/recent-activities.php";
+                    //     break;
 
-                // default:
-                //     include "../pages/dashboard.php";
-                //     break;
+                    // default:
+                    //     include "../pages/dashboard.php";
+                    //     break;
             }
             ?>
         </section>

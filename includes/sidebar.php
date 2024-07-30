@@ -89,7 +89,7 @@
                 </li>
                 <!----------------------------------- end จัดการหลักสูตรและเนื้อหา ----------------------------------->
                 <!----------------------------------- จัดการการลงทะเบียน ----------------------------------->
-                <li>
+                <!-- <li>
                     <button type="button" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-registration" data-collapse-toggle="dropdown-Manage-registration">
                         <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4 2a1 1 0 00-1 1v18a1 1 0 001 1h16a1 1 0 001-1V3a1 1 0 00-1-1H4zm0 2h16v16H4V4zm2 3h12v2H6V7zm0 4h12v2H6v-2zm0 4h12v2H6v-2z" />
@@ -109,10 +109,10 @@
                         </li>
 
                     </ul>
-                </li>
+                </li> -->
                 <!----------------------------------- end จัดการการลงทะเบียน ----------------------------------->
                 <!----------------------------------- จัดการการประเมินผล ----------------------------------->
-                <li>
+                <!-- <li>
                     <button type="button" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-evaluations" data-collapse-toggle="dropdown-Manage-evaluations">
                         <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
@@ -125,17 +125,42 @@
                     </button>
                     <ul id="dropdown-Manage-evaluations" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="#" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการการสอบและการประเมินผล</a>
+                            <a href="?page=Manage_evaluations" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการการสอบและการประเมินผล</a>
                         </li>
                         <li>
                             <a href="#" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">ดูผลการสอบ</a>
                         </li>
 
                     </ul>
-                </li>
+                </li> -->
                 <!----------------------------------- end จัดการการประเมินผล ----------------------------------->
-                <!----------------------------------- จัดการรายงานและสถิติ ----------------------------------->
+                <!----------------------------------- ครุภัณฑ์และวัสดุสำนักงาน ----------------------------------->
                 <li>
+                    <button type="button" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-System_for_borrowing" data-collapse-toggle="dropdown-System_for_borrowing">
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4H4v16h16V4zm-8 10H8v-2h4v2zm4-4H8V8h8v2z" />
+                        </svg>
+
+                        <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>ครุภัณฑ์และวัสดุสำนักงาน</span>
+                        <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <ul id="dropdown-System_for_borrowing" class="hidden py-2 space-y-2">
+                        <li>
+                            <a href="?page=equipment_management" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
+                        </li>
+                        <li>
+                            <a href="?page=System_for_borrowing" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">ระบบยืม-คืน ครุภัณฑ์และวัสดุสำนักงาน</a>
+                        </li>
+                        <li>
+                            <a href="?page=Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">ระบบเบิกวัสดุ ไม่ต้องคืน</a>
+                        </li>
+                    </ul>
+                </li>
+                <!----------------------------------- end ครุภัณฑ์และวัสดุสำนักงาน ----------------------------------->
+                <!----------------------------------- จัดการรายงานและสถิติ ----------------------------------->
+                <!-- <li>
                     <button type="button" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-reports" data-collapse-toggle="dropdown-Manage-reports">
                         <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h8v-2H6V4h8v2h4V4c0-1.1-.9-2-2-2zM12 14H8v-2h4v2zm0-4H8V8h4v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V8h4v2z" />
@@ -155,10 +180,10 @@
                         </li>
 
                     </ul>
-                </li>
+                </li> -->
                 <!----------------------------------- end จัดการรายงานและสถิติ ----------------------------------->
                 <!----------------------------------- จัดการระบบการสนทนาและการสื่อสาร ----------------------------------->
-                <li>
+                <!-- <li>
                     <button type="button" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-conversation" data-collapse-toggle="dropdown-Manage-conversation">
                         <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M3 3h18v14H3V3zm0-2c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2H3zm3 4h10v2H6V5zm0 4h10v2H6V9zm0 4h10v2H6v-2z" />
@@ -178,10 +203,10 @@
                         </li>
 
                     </ul>
-                </li>
+                </li> -->
                 <!----------------------------------- end จัดการระบบการสนทนาและการสื่อสาร ----------------------------------->
                 <!----------------------------------- สนับสนุนและแก้ไขปัญหา ----------------------------------->
-                <li>
+                <!-- <li>
                     <button type="button" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Support" data-collapse-toggle="dropdown-Support">
                         <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17h-2v-2h2v2zm0-4h-2V7h2v8z" />
@@ -201,7 +226,7 @@
                         </li>
 
                     </ul>
-                </li>
+                </li> -->
                 <!----------------------------------- end สนับสนุนและแก้ไขปัญหา ----------------------------------->
                 <!----------------------------------- เกี่ยวกับแอพพลิเคชั่น ----------------------------------->
                 <li>
@@ -219,22 +244,22 @@
                         <li>
                             <a href="?page=Manage_News" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">ข่าวสารและกิจกรรม</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">แบรนเนอร์</a>
-                        </li>
+                        </li> -->
 
                     </ul>
                 </li>
                 <!----------------------------------- end เกี่ยวกับแอพพลิเคชั่น ----------------------------------->
                 <!----------------------------------- ดูแลและอัพเดตระบบ ----------------------------------->
-                <li>
+                <!-- <li>
                     <button type="button" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Maintain" data-collapse-toggle="dropdown-Maintain">
                         <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
                         </svg>
-                        <!-- <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.24 4.759a1.5 1.5 0 00-2.121 0l-1.414 1.415a1.5 1.5 0 000 2.121l1.414 1.415a1.5 1.5 0 002.121-2.121l-1.414-1.415a1.5 1.5 0 00-2.121 0l-1.414 1.415a1.5 1.5 0 00-2.121-2.121l1.414-1.415a1.5 1.5 0 00-2.121-2.121L5.757 4.758a1.5 1.5 0 00-2.121 2.121l1.414 1.415a1.5 1.5 0 002.121 2.121l1.414-1.415a1.5 1.5 0 002.121 2.121l1.414-1.415a1.5 1.5 0 002.121 2.121l1.414-1.415a1.5 1.5 0 000-2.121l-1.414-1.415a1.5 1.5 0 00-2.121-2.121zM6.343 5.65l-1.415 1.415a1.5 1.5 0 000 2.121l1.415 1.415a1.5 1.5 0 002.121-2.121l-1.415-1.415a1.5 1.5 0 00-2.121 0zM11.5 13.5a1 1 0 10-2 0v1.875a1 1 0 102 0V13.5zM17 13.5a1 1 0 10-2 0v1.875a1 1 0 102 0V13.5z" />
-                        </svg> -->
+                        </svg>
 
 
                         <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>ดูแลและอัพเดตระบบ</span>
@@ -251,7 +276,7 @@
                         </li>
 
                     </ul>
-                </li>
+                </li> -->
                 <!----------------------------------- end ดูแลและอัพเดตระบบ ----------------------------------->
 
 

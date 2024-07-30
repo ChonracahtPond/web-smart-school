@@ -1,12 +1,9 @@
 <?php
-
-// คำสั่ง SQL สำหรับดึงข้อมูลจากตาราง access_rights
-$sql = "SELECT status, student_id, role FROM access_rights";
+// คำสั่ง SQL สำหรับดึงข้อมูลจากตาราง access_rights พร้อมชื่อเต็มของนักเรียน
+$sql = "SELECT ar.status, ar.student_id, ar.role, s.fullname 
+        FROM access_rights ar
+        JOIN students s ON ar.student_id = s.student_id";
 $result = $conn->query($sql);
-
-// คำสั่ง SQL สำหรับดึงข้อมูลผู้ใช้จากตาราง students
-$students_sql = "SELECT student_id, fullname FROM students";
-$students_result = $conn->query($students_sql);
 ?>
 
 <div class="container mx-auto p-4">
@@ -32,15 +29,7 @@ $students_result = $conn->query($students_sql);
                         <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
                             <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['status']); ?></td>
                             <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['student_id']); ?></td>
-                            <td class="px-4 py-2 border-b">
-                                <?php
-                                // หาชื่อเต็มของผู้ใช้
-                                $student_name_query = "SELECT fullname FROM students WHERE student_id = " . $row['student_id'];
-                                $student_name_result = $conn->query($student_name_query);
-                                $student_name = $student_name_result->fetch_assoc();
-                                echo htmlspecialchars($student_name['fullname']);
-                                ?>
-                            </td>
+                            <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['fullname']); ?></td>
                             <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['role']); ?></td>
                             <td class="px-4 py-2 border-b">
                                 <!-- ปุ่มแก้ไข -->
