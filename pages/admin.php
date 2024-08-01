@@ -187,11 +187,6 @@
                     include "test/manage_questions.php";
                     break;
 
-
-
-
-
-
                 case 'Questions':
                     include "test/Questions.php";
                     break;
