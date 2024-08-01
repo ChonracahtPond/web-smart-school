@@ -18,8 +18,8 @@
             <div class="mb-4">
                 <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                 <select name="status" id="status" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
-                    <option value="available">Available</option>
-                    <option value="unavailable">Unavailable</option>
+                    <option value="available">มีอยู่</option>
+                    <option value="unavailable">ไม่พร้อมใช้งาน</option>
                 </select>
             </div>
             <div class="flex justify-end">

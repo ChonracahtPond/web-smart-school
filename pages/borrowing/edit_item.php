@@ -64,8 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="mb-4">
             <label for="status" class="block text-gray-700">Status</label>
             <select id="status" name="status" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                <option value="Available" <?php echo $item['status'] === 'Available' ? 'selected' : ''; ?>>Available</option>
-                <option value="Unavailable" <?php echo $item['status'] === 'Unavailable' ? 'selected' : ''; ?>>Unavailable</option>
+                <option value="Available" <?php echo $item['status'] === 'มีอยู่' ? 'selected' : ''; ?>>มีอยู่</option>
+                <option value="Unavailable" <?php echo $item['status'] === 'ไม่พร้อมใช้งาน' ? 'selected' : ''; ?>>ไม่พร้อมใช้งาน</option>
             </select>
         </div>
 

@@ -52,7 +52,7 @@ $result = $conn->query($sql);
     </div>
 
     <!-- Modal for adding item -->
-    <div id="addItemModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 hidden">
+    <!-- <div id="addItemModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 hidden">
         <div class="flex items-center justify-center min-h-screen">
             <div class="bg-white rounded-lg shadow-lg p-6 w-96">
                 <h2 class="text-lg font-semibold mb-4">Add New Item</h2>
@@ -76,8 +76,10 @@ $result = $conn->query($sql);
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
+
+<?php include "modals.php"?>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
