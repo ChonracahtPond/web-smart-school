@@ -167,6 +167,50 @@
                 case 'generate_pdf':
                     include "../mpdf/generate_pdf.php";
                     break;
+
+
+
+
+                case 'Exercises':
+                    include "test/Exercises.php";
+                    break;
+                case 'add_exercise':
+                    include "test/add_exercise.php";
+                    break;
+                case 'edit_exercise':
+                    include "test/edit_exercise.php";
+                    break;
+                case 'add_questions':
+                    include "test/add_questions.php";
+                    break;
+                case 'manage_questions':
+                    include "test/manage_questions.php";
+                    break;
+
+
+
+
+
+
+                case 'Questions':
+                    include "test/Questions.php";
+                    break;
+                case 'add_question':
+                    include "test/add_question.php";
+                    break;
+                case 'edit_question':
+                    include "test/edit_question.php";
+                    break;
+                case 'delete_question':
+                    include "test/delete_question.php";
+                    break;
+
+                case 'manage_answers':
+                    include "test/manage_answers.php";
+                    break;
+                case 'add_answer':
+                    include "test/add_answer.php";
+                    break;
                     // case 'borrow_item':
                     //     include "../pages/borrowing/borrow_item.php";
                     //     break;
