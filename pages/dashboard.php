@@ -1,6 +1,4 @@
 <?php
-
-
 // Query to count the number of students
 $sql_students = "SELECT COUNT(*) AS students_count FROM students";
 $result_students = $conn->query($sql_students);
@@ -17,7 +15,6 @@ $sql_activities_upcoming = "SELECT COUNT(*) AS activities_upcoming FROM activiti
 // $sql_activities_upcoming = "SELECT COUNT(*) AS activities_upcoming FROM activities ";
 // $sql_activities_upcoming = "SELECT COUNT(*) AS activities_upcoming FROM activities WHERE date > NOW()";
 $result_activities_upcoming = $conn->query($sql_activities_upcoming);
-
 
 if ($result_students->num_rows > 0 && $result_teachers->num_rows > 0 && $result_classes_courses->num_rows > 0 && $result_activities_upcoming->num_rows > 0) {
     // Fetch the result
@@ -47,7 +44,7 @@ if ($result_students->num_rows > 0 && $result_teachers->num_rows > 0 && $result_
             <div class="rounded-full bg-lightPrimary p-3 dark:bg-navy-700">
                 <span class="flex items-center text-brand-500 dark:text-white">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="h-7 w-7" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                    <path xmlns="http://www.w3.org/2000/svg" d="M19 15C21.2091 15 23 16.7909 23 19V21H21M16 10.874C17.7252 10.4299 19 8.86383 19 6.99999C19 5.13615 17.7252 3.57005 16 3.12601M13 7C13 9.20914 11.2091 11 9 11C6.79086 11 5 9.20914 5 7C5 4.79086 6.79086 3 9 3C11.2091 3 13 4.79086 13 7ZM5 15H13C15.2091 15 17 16.7909 17 19V21H1V19C1 16.7909 2.79086 15 5 15Z" stroke="#DDD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path xmlns="http://www.w3.org/2000/svg" d="M19 15C21.2091 15 23 16.7909 23 19V21H21M16 10.874C17.7252 10.4299 19 8.86383 19 6.99999C19 5.13615 17.7252 3.57005 16 3.12601M13 7C13 9.20914 11.2091 11 9 11C6.79086 11 5 9.20914 5 7C5 4.79086 6.79086 3 9 3C11.2091 3 13 4.79086 13 7ZM5 15H13C15.2091 15 17 16.7909 17 19V21H1V19C1 16.7909 2.79086 15 5 15Z" stroke="#DDD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </span>
             </div>
@@ -74,7 +71,7 @@ if ($result_students->num_rows > 0 && $result_teachers->num_rows > 0 && $result_
             <h4 class="text-xl font-bold text-navy-700 dark:text-white"><?php echo $teachers_count; ?></h4>
         </div>
     </div>
-    <div class="relative flex flex-grow !flex-row flex-col items-center rounded-[10px] rounded-[10px] border-[1px] border-gray-200 bg-white bg-clip-border shadow-md shadow-[#F3F3F3] dark:border-[#ffffff33] dark:!bg-navy-800 dark:text-white dark:shadow-none">
+    <!-- <div class="relative flex flex-grow !flex-row flex-col items-center rounded-[10px] rounded-[10px] border-[1px] border-gray-200 bg-white bg-clip-border shadow-md shadow-[#F3F3F3] dark:border-[#ffffff33] dark:!bg-navy-800 dark:text-white dark:shadow-none">
         <div class="ml-[18px] flex h-[90px] w-auto flex-row items-center">
             <div class="rounded-full bg-lightPrimary p-3 dark:bg-navy-700">
                 <span class="flex items-center text-brand-500 dark:text-white">
@@ -88,6 +85,38 @@ if ($result_students->num_rows > 0 && $result_teachers->num_rows > 0 && $result_
         <div class="h-50 ml-4 flex w-auto flex-col justify-center">
             <p class="font-dm text-sm font-medium text-gray-600">จำนวนนักศึกษาที่สมัครเข้ามาใหม่</p>
             <h4 class="text-xl font-bold text-navy-700 dark:text-white">0000000</h4>
+        </div>
+    </div> -->
+    <div class="relative flex flex-grow !flex-row flex-col items-center rounded-[10px] border-[1px] border-gray-200 bg-white shadow-md">
+        <div class="ml-[18px] flex h-[90px] items-center">
+            <div class="rounded-full bg-lightPrimary p-3">
+                <span class="flex items-center text-brand-500">
+                    <!-- Icon for courses -->
+                    <svg stroke="currentColor" fill="currentColor" viewBox="0 0 24 24" class="h-7 w-7" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 3v6H3v9h2v-6h2v6h2v-9H5zM21 3h-6v6h-2V3H9v6H7V3H3v18h4v-6h4v6h4v-6h4v6h4V3z"></path>
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <div class="h-50 ml-4 flex flex-col justify-center">
+            <p class="font-dm text-sm font-medium text-gray-600">รายวิชา</p>
+            <h4 class="text-xl font-bold text-navy-700"><?php echo $classes_courses; ?></h4>
+        </div>
+    </div>
+    <div class="relative flex flex-grow !flex-row flex-col items-center rounded-[10px] border-[1px] border-gray-200 bg-white shadow-md">
+        <div class="ml-[18px] flex h-[90px] items-center">
+            <div class="rounded-full bg-lightPrimary p-3">
+                <span class="flex items-center text-brand-500">
+                    <!-- Icon for courses -->
+                    <svg stroke="currentColor" fill="currentColor" viewBox="0 0 24 24" class="h-7 w-7" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 3v6H3v9h2v-6h2v6h2v-9H5zM21 3h-6v6h-2V3H9v6H7V3H3v18h4v-6h4v6h4v-6h4v6h4V3z"></path>
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <div class="h-50 ml-4 flex flex-col justify-center">
+            <p class="font-dm text-sm font-medium text-gray-600">การเข้าเรียน</p>
+            <h4 class="text-xl font-bold text-navy-700"><?php echo $classes_courses; ?></h4>
         </div>
     </div>
     <div class="relative flex flex-grow !flex-row flex-col items-center rounded-[10px] border-[1px] border-gray-200 bg-white shadow-md">
@@ -104,28 +133,13 @@ if ($result_students->num_rows > 0 && $result_teachers->num_rows > 0 && $result_
         <div class="h-50 ml-4 flex flex-col justify-center">
             <p class="font-dm text-sm font-medium text-gray-600">จำนวนการเข้าชั้นเรียน</p>
             <h4 class="text-xl font-bold text-navy-700"><?php echo $classes_courses; ?></h4>
-        </div>
-    </div>
-    <div class="relative flex flex-grow !flex-row flex-col items-center rounded-[10px] border-[1px] border-gray-200 bg-white shadow-md">
-        <div class="ml-[18px] flex h-[90px] items-center">
-            <div class="rounded-full bg-lightPrimary p-3">
-                <span class="flex items-center text-brand-500">
-                    <!-- Icon for activities -->
-                    <svg stroke="currentColor" fill="currentColor" viewBox="0 0 24 24" class="h-7 w-7" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 3h-4V1h-2v2H9V1H7v2H3v18h4v-2h8v2h8V3zm-2 14H9v-4h8v4z"></path>
-                    </svg>
-                </span>
-            </div>
-        </div>
-        <div class="h-50 ml-4 flex flex-col justify-center">
-            <p class="font-dm text-sm font-medium text-gray-600">จำนวนกิจกรรมที่กำลังจะเกิดขึ้น</p>
-            <h4 class="text-xl font-bold text-navy-700"><?php echo $activities_upcoming; ?></h4>
+            <!-- <p class="font-dm text-sm font-medium text-gray-600">--ดูรายละเอียด--</p> -->
         </div>
     </div>
 
 </div>
 
-<div class="flex">
+<div class="">
     <?php require_once "dashboard/calendar.php" ?>
     <?php require_once "dashboard/News.php" ?>
 </div>

@@ -27,6 +27,18 @@
                     include "../pages/Users/delete_user.php";
                     break;
 
+                case 'StudentGrade':
+                    include "../pages/Users/Grade/StudentGrade.php";
+                    break;
+                case 'GradeList':
+                    include "../pages/Users/Grade/GradeList.php";
+                    break;
+
+
+
+
+
+
                 case 'manage_access_rights':
                     include "../pages/Users/manage_access_rights.php";
                     break;
