@@ -13,10 +13,10 @@
 
 </head>
 <!-- // รวมไฟล์การเชื่อมต่อฐานข้อมูล -->
-
-<?php include '../includes/db_connect.php'; ?>
+<?php require_once "../includes/db_connect.php"; ?>
 
 <body>
+
     <header class="bg-gray-800 text-white p-4">
         <nav>
             <ul class="flex space-x-4">

@@ -25,7 +25,7 @@ $students_result = $conn->query($students_sql);
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">Add New Access Right</h1>
     <form action="add_access_right.php" method="POST" class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
         <div class="mb-4">
-            <label class="block text-gray-700 dark:text-gray-300">Student:</label>
+            <label class="block text-gray-700 dark:text-gray-300">นักเรียน:</label>
             <select name="student_id" class="mt-1 p-2 w-full border border-gray-300 rounded" required>
                 <?php while ($student = $students_result->fetch_assoc()) : ?>
                     <option value="<?php echo htmlspecialchars($student['student_id']); ?>">
