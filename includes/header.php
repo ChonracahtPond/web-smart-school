@@ -13,7 +13,7 @@
 
 </head>
 <!-- // รวมไฟล์การเชื่อมต่อฐานข้อมูล -->
-<?php require_once "../includes/db_connect.php"; ?>
+<?php require_once "../includes/db_connect.php";  ?>
 
 <body>
 

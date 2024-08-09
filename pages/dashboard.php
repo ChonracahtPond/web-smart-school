@@ -39,7 +39,6 @@ if ($result_students->num_rows > 0 && $result_teachers->num_rows > 0 && $result_
     $activities_upcoming = 0;
 }
 
-$conn->close(); // ปิดการเชื่อมต่อฐานข้อมูล
 ?>
 
 <div class="min-w-[375px] md:min-w-[700px] xl:min-w-[800px] mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-6">
@@ -48,8 +47,7 @@ $conn->close(); // ปิดการเชื่อมต่อฐานข้�
             <div class="rounded-full bg-lightPrimary p-3 dark:bg-navy-700">
                 <span class="flex items-center text-brand-500 dark:text-white">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="h-7 w-7" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="none" d="M0 0h24v24H0z"></path>
-                        <path d="M4 9h4v11H4zM16 13h4v7h-4zM10 4h4v16h-4z"></path>
+                    <path xmlns="http://www.w3.org/2000/svg" d="M19 15C21.2091 15 23 16.7909 23 19V21H21M16 10.874C17.7252 10.4299 19 8.86383 19 6.99999C19 5.13615 17.7252 3.57005 16 3.12601M13 7C13 9.20914 11.2091 11 9 11C6.79086 11 5 9.20914 5 7C5 4.79086 6.79086 3 9 3C11.2091 3 13 4.79086 13 7ZM5 15H13C15.2091 15 17 16.7909 17 19V21H1V19C1 16.7909 2.79086 15 5 15Z" stroke="#DDD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </span>
             </div>
@@ -125,8 +123,9 @@ $conn->close(); // ปิดการเชื่อมต่อฐานข้�
         </div>
     </div>
 
+</div>
 
-
-
-
+<div class="flex">
+    <?php require_once "dashboard/calendar.php" ?>
+    <?php require_once "dashboard/News.php" ?>
 </div>
