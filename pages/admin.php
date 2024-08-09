@@ -14,6 +14,7 @@
                     include "../pages/dashboard.php";
                     break;
 
+                    // จัดการกับข้อมูลนักเรียน
                 case 'ManageUsers':
                     include "../pages/Users/ManageUsers.php";
                     break;
@@ -27,6 +28,7 @@
                     include "../pages/Users/delete_user.php";
                     break;
 
+                    // จัดการเกรด
                 case 'StudentGrade':
                     include "../pages/Users/Grade/StudentGrade.php";
                     break;
@@ -34,8 +36,14 @@
                     include "../pages/Users/Grade/GradeList.php";
                     break;
 
-
-
+                    // จัดการหน่วยกิจ
+                case 'Studentcredit':
+                    include "../pages/Users/credit/Studentcredit.php";
+                    break;
+                case 'creditList':
+                    include "../pages/Users/credit/creditList.php";
+                    break;
+              
 
 
 
@@ -67,6 +75,9 @@
                     break;
                 case 'update_credits':
                     include "../pages/Activities/update_credits.php";
+                    break;
+                case 'add_participant':
+                    include "../pages/Activities/add_participant.php";
                     break;
                 case 'delete_participant':
                     include "../pages/Activities/delete_participant.php";

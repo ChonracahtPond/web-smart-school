@@ -34,7 +34,7 @@
                             <a href="?page=StudentGrade" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">เกรดนักเรียน-นักศึกษา</a>
                         </li>
                         <li>
-                            <a href="?page=" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">หน่วยกิตนักเรียน-นักศึกษา</a>
+                            <a href="?page=Studentcredit" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">หน่วยกิตนักเรียน-นักศึกษา</a>
                         </li>
                         <li>
                             <a href="?page=manage_access_rights" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">นักศึกษาที่จบการศึกษา</a>
