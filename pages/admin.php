@@ -45,8 +45,6 @@
                     break;
 
 
-
-
                 case 'manage_access_rights':
                     include "../pages/Users/manage_access_rights.php";
                     break;
@@ -229,6 +227,14 @@
                 case 'add_answer':
                     include "test/add_answer.php";
                     break;
+
+
+                case 'ManageBook':
+                    include "../pages/Book/ManageBook.php";
+                    break;
+
+
+
                     // case 'borrow_item':
                     //     include "../pages/borrowing/borrow_item.php";
                     //     break;

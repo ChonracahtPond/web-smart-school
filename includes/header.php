@@ -28,5 +28,5 @@
         </nav>
     </header>
 
-    <div class="flex">
+    <div class="flex bg-gray-200">
         <?php include 'sidebar.php'; ?>
