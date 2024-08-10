@@ -18,32 +18,32 @@ $result = $stmt->get_result();
 ?>
 
 <div class="container mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">Manage Courses</h1>
+    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการหลักสูตร</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <a href="admin.php?page=add_course" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">Add New Course</a>
+        <a href="admin.php?page=add_course" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+เพิ่มหลักสูตรใหม่</a>
 
         <!-- ฟอร์มค้นหา -->
         <form method="GET" action="" class="mb-4">
             <div class="flex items-center">
-                <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" placeholder="Search by course name, description, or teacher">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 ml-2">Search</button>
+                <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" placeholder="ค้นหาตามชื่อหลักสูตร คำอธิบาย หรืออาจารย์">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 ml-2">ค้นหา</button>
             </div>
         </form>
 
         <table class="w-full mt-4 border-collapse">
             <thead>
                 <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
-                    <th class="px-4 py-2 border-b">Course ID</th>
-                    <th class="px-4 py-2 border-b">Course Name</th>
-                    <th class="px-4 py-2 border-b">Description</th>
-                    <th class="px-4 py-2 border-b">Teacher</th>
-                    <th class="px-4 py-2 border-b">Type</th>
-                    <th class="px-4 py-2 border-b">Course Code</th>
-                    <th class="px-4 py-2 border-b">Credits</th>
-                    <th class="px-4 py-2 border-b">Semester</th>
-                    <th class="px-4 py-2 border-b">Academic Year</th>
-                    <th class="px-4 py-2 border-b">Status</th>
-                    <th class="px-4 py-2 border-b">Actions</th>
+                    <th class="px-4 py-2 border-b">รหัสหลักสูตร</th>
+                    <th class="px-4 py-2 border-b">ชื่อหลักสูตร</th>
+                    <th class="px-4 py-2 border-b">คำอธิบาย</th>
+                    <th class="px-4 py-2 border-b">ชื่อครู</th>
+                    <th class="px-4 py-2 border-b">ประเภท</th>
+                    <th class="px-4 py-2 border-b">รหัสหลักสูตร</th>
+                    <th class="px-4 py-2 border-b">หน่วยกิจ</th>
+                    <th class="px-4 py-2 border-b">ภาคเรียน</th>
+                    <th class="px-4 py-2 border-b">ปีการศึกษา</th>
+                    <th class="px-4 py-2 border-b">สถานะ</th>
+                    <th class="px-4 py-2 border-b">การดำเนินการ</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,9 +69,9 @@ $result = $stmt->get_result();
                                 <?php echo htmlspecialchars($row['status']) == 1 ? 'Active' : 'Inactive'; ?>
                             </td>
                             <td class="px-4 py-2 border-b">
-                                <a href="admin.php?page=edit_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-blue-500 hover:text-blue-700">Edit</a>
+                                <a href="admin.php?page=edit_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-blue-500 hover:text-blue-700">แก้ไข</a>
                                 |
-                                <a href="admin.php?page=delete_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this course?')">Delete</a>
+                                <a href="admin.php?page=delete_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this course?')">ลบ</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
