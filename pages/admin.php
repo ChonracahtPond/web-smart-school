@@ -44,6 +44,16 @@
                     include "../pages/Users/credit/creditList.php";
                     break;
 
+                    // ขาดลามาสาย
+                case 'manage_attendance':
+                    include "../pages/Users/attendance/manage_attendance.php";
+                    break;
+                    // ขาดลามาสาย pdf
+                case 'attendance_pdf':
+                    include "../mpdf/attendance_pdf.php";
+                    break;
+                
+
 
                 case 'manage_access_rights':
                     include "../pages/Users/manage_access_rights.php";
