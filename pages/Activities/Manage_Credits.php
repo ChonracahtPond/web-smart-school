@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!$stmt->execute()) {
             die("Insert failed: " . $stmt->error);
         }
-        echo "<script>alert('Activity added successfully'); window.location.href='admin.php?page=Manage_Credits';</script>";
+        echo "<script>alert('Activity added successfully'); window.location.href='system.php?page=Manage_Credits';</script>";
         $stmt->close();
     } elseif (isset($_POST['update'])) {
         $participant_id = $_POST['participant_id'];
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             die("Update failed: " . $stmt->error);
         }
 
-        echo "<script>alert('Activity updated successfully'); window.location.href='admin.php?page=Manage_Credits';</script>";
+        echo "<script>alert('Activity updated successfully'); window.location.href='system.php?page=Manage_Credits';</script>";
 
         $stmt->close();
     } elseif (isset($_POST['delete'])) {
@@ -85,13 +85,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!$stmt->execute()) {
             die("Delete failed: " . $stmt->error);
         }
-        echo "<script>alert('Activity added successfully'); window.location.href='admin.php?page=Manage_Credits';</script>";
+        echo "<script>alert('Activity added successfully'); window.location.href='system.php?page=Manage_Credits';</script>";
         $stmt->close();
     }
 
 
     // if ($conn->query($sql) === TRUE) {
-    //     echo "<script>alert('Activity added successfully'); window.location.href='admin.php?page=Manage_Credits';</script>";
+    //     echo "<script>alert('Activity added successfully'); window.location.href='system.php?page=Manage_Credits';</script>";
     // } else {
     //     echo "Error: " . $sql . "<br>" . $conn->error;
     // }

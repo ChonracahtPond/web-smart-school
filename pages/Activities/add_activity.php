@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             VALUES ('$activity_name', '$description', '$activity_credits', '$activity_type', '$activity_hour', '$start_date', '$end_date', '$location')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Activity added successfully'); window.location.href='admin.php?page=Manage_Activity';</script>";
+        echo "<script>alert('Activity added successfully'); window.location.href='system.php?page=Manage_Activity';</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

@@ -52,8 +52,6 @@
                 case 'attendance_pdf':
                     include "../mpdf/attendance_pdf.php";
                     break;
-                
-
 
                 case 'manage_access_rights':
                     include "../pages/Users/manage_access_rights.php";
@@ -242,24 +240,6 @@
                 case 'ManageBook':
                     include "../pages/Book/ManageBook.php";
                     break;
-
-
-
-                    // case 'borrow_item':
-                    //     include "../pages/borrowing/borrow_item.php";
-                    //     break;
-                    // case 'return_item':
-                    //     include "../pages/borrowing/return_item.php";
-                    //     break;
-
-
-                    // case 'recent-activities':
-                    //     include "../pages/recent-activities.php";
-                    //     break;
-
-                    // default:
-                    //     include "../pages/dashboard.php";
-                    //     break;
             }
             ?>
         </section>

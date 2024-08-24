@@ -19,7 +19,7 @@ $result = $conn->query($sql);
 
     <!-- ตารางแสดงข้อมูลกิจกรรม -->
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <a href="admin.php?page=add_activity" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+เพิ่มกิจกรรมใหม่</a>
+        <a href="system.php?page=add_activity" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+เพิ่มกิจกรรมใหม่</a>
         <!-- ฟอร์มค้นหา -->
         <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
             <input type="text" id="search-input" placeholder="ค้นหากิจกรรม..." class="px-4 py-2 border rounded-lg w-full">
@@ -55,9 +55,9 @@ $result = $conn->query($sql);
                             <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['created_at']); ?></td>
                             <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['updated_at']); ?></td>
                             <td class="px-4 py-2 border-b">
-                                <a href="admin.php?page=edit_activity&id=<?php echo htmlspecialchars($row['activity_id']); ?>" class="text-blue-500 hover:text-blue-700">Edit</a>
+                                <a href="system.php?page=edit_activity&id=<?php echo htmlspecialchars($row['activity_id']); ?>" class="text-blue-500 hover:text-blue-700">Edit</a>
                                 |
-                                <a href="admin.php?page=delete_activity&id=<?php echo htmlspecialchars($row['activity_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this activity?')">Delete</a>
+                                <a href="system.php?page=delete_activity&id=<?php echo htmlspecialchars($row['activity_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this activity?')">Delete</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>

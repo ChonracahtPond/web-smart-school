@@ -21,7 +21,7 @@ if ($result->num_rows === 1) {
         // ผู้ใช้ล็อกอินสำเร็จ
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_role'] = $user['role']; // เช่น 'admin', 'teacher', 'student'
-        header("Location: pages/admin.php");
+        header("Location: pages/system.php");
         exit();
     } else {
         // ข้อมูลล็อกอินไม่ถูกต้อง

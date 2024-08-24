@@ -90,8 +90,8 @@ $result = $conn->query($sql);
                     <td class="px-6 py-4 text-sm text-gray-900"><?php echo htmlspecialchars($row['quantity']); ?></td>
                     <td class="px-6 py-4 text-sm text-gray-900"><?php echo htmlspecialchars($row['status']); ?></td>
                     <td class="px-6 py-4 text-sm font-medium">
-                        <a href="admin.php?page=equipment_management.php?edit_item=<?php echo $row['item_id']; ?>" class="text-blue-600 hover:text-blue-900">Edit</a>
-                        <a href="admin.php?page=equipment_management.php?delete_item=<?php echo $row['item_id']; ?>" class="text-red-600 hover:text-red-900 ml-4">Delete</a>
+                        <a href="system.php?page=equipment_management.php?edit_item=<?php echo $row['item_id']; ?>" class="text-blue-600 hover:text-blue-900">Edit</a>
+                        <a href="system.php?page=equipment_management.php?delete_item=<?php echo $row['item_id']; ?>" class="text-red-600 hover:text-red-900 ml-4">Delete</a>
                     </td>
                 </tr>
             <?php endwhile; ?>

@@ -11,5 +11,5 @@ if (isset($_POST['add_item'])) {
     $stmt->execute();
 
     // header('Location: equipment_list.php');
-    echo "<script>alert('equipment add successfully'); window.location.href='admin.php?page=equipment_management';</script>";
+    echo "<script>alert('equipment add successfully'); window.location.href='system.php?page=equipment_management';</script>";
 }

@@ -30,7 +30,7 @@ $result = $conn->query($sql);
             <tbody class="text-gray-700 dark:text-gray-200">
                 <?php if ($result->num_rows > 0) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
-                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors" onclick="window.location.href='admin.php?page=GradeList&student_id=<?php echo htmlspecialchars($row['student_id']); ?>'">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors" onclick="window.location.href='system.php?page=GradeList&student_id=<?php echo htmlspecialchars($row['student_id']); ?>'">
                             <td class="px-6 py-4 border-b"><?php echo htmlspecialchars($row['student_id']); ?></td>
                             <td class="px-6 py-4 border-b"><?php echo htmlspecialchars($row['fullname']); ?></td>
                             <td class="px-6 py-4 border-b"><?php echo htmlspecialchars($row['grade_level']); ?></td>

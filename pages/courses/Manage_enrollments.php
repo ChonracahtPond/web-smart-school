@@ -22,10 +22,10 @@ $result = $stmt->get_result();
 <div class="container mx-auto p-4">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการ การลงทะเบียน</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <a href="admin.php?page=add_enrollment" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+ เพิ่มการลงทะเบียนใหม่</a>
+        <a href="system.php?page=add_enrollment" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+ เพิ่มการลงทะเบียนใหม่</a>
 
         <!-- ฟอร์มค้นหา -->
-        <form method="GET" action="admin.php?page=manage_enrollments" class="mb-4">
+        <form method="GET" action="system.php?page=manage_enrollments" class="mb-4">
             <div class="flex items-center">
                 <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" placeholder="ค้นหาตามชื่อหลักสูตร ชื่อนักเรียน หรือชื่ออาจารย์">
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 ml-2">ค้นหา</button>
@@ -60,9 +60,9 @@ $result = $stmt->get_result();
                             <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['course_name']); ?></td>
                             <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['student_name']); ?></td>
                             <td class="px-4 py-2 border-b">
-                                <a href="admin.php?page=edit_enrollment&id=<?php echo htmlspecialchars($row['enrollment_id']); ?>" class="text-blue-500 hover:text-blue-700">แก้ไข</a>
+                                <a href="system.php?page=edit_enrollment&id=<?php echo htmlspecialchars($row['enrollment_id']); ?>" class="text-blue-500 hover:text-blue-700">แก้ไข</a>
                                 |
-                                <a href="admin.php?page=delete_enrollment&id=<?php echo htmlspecialchars($row['enrollment_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this enrollment?')">ลบ</a>
+                                <a href="system.php?page=delete_enrollment&id=<?php echo htmlspecialchars($row['enrollment_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this enrollment?')">ลบ</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>

@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "INSERT INTO access_rights (student_id, role) VALUES ('$student_id', '$role')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('New access right added successfully'); window.location.href='admin.php?page=manage_access_rights';</script>";
+        echo "<script>alert('New access right added successfully'); window.location.href='system.php?page=manage_access_rights';</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

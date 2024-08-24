@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
     $delete_sql = "DELETE FROM activity_participants WHERE participant_id='$participant_id'";
 
     if ($conn->query($delete_sql) === TRUE) {
-        echo "<script>alert('Activity deleted successfully'); window.location.href='admin.php?page=Manage_Credits';</script>";
+        echo "<script>alert('Activity deleted successfully'); window.location.href='system.php?page=Manage_Credits';</script>";
     } else {
         echo "Error: " . $delete_sql . "<br>" . $conn->error;
     }

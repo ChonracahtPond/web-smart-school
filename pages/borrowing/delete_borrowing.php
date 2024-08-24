@@ -39,13 +39,13 @@ if (isset($_GET['permanent_borrowing_id'])) {
 
             // คอมมิทธุรกรรม
             $conn->commit();
-            echo "<script>alert('Item deleted and quantity updated successfully'); window.location.href='admin.php?page=Borrow_Office_Supplies';</script>";
+            echo "<script>alert('Item deleted and quantity updated successfully'); window.location.href='system.php?page=Borrow_Office_Supplies';</script>";
         } else {
             throw new Exception("Error preparing select statement: " . $conn->error);
         }
     } catch (Exception $e) {
         // ยกเลิกธุรกรรมหากเกิดข้อผิดพลาด
         $conn->rollback();
-        echo "<script>alert('Error: " . $e->getMessage() . "'); window.location.href='admin.php?page=Borrow_Office_Supplies';</script>";
+        echo "<script>alert('Error: " . $e->getMessage() . "'); window.location.href='system.php?page=Borrow_Office_Supplies';</script>";
     }
 }

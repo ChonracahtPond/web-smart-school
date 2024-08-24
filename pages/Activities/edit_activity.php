@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "UPDATE activities SET activity_name='$activity_name', description='$description',activity_hour='$activity_hour', activity_Credits='$activity_credits',activity_hour='$activity_hour', start_date='$start_date', end_date='$end_date', location='$location' WHERE activity_id='$activity_id'";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Activity updated successfully'); window.location.href='admin.php?page=Manage_Activity';</script>";
+        echo "<script>alert('Activity updated successfully'); window.location.href='system.php?page=Manage_Activity';</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

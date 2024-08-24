@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "UPDATE students SET grade_level='$grade_level', section='$section', username='$username', fullname='$fullname', nicknames='$nicknames', email='$email', phone_number='$phone_number', date_of_birth='$date_of_birth', gender='$gender' WHERE student_id='$student_id'";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Record updated successfully'); window.location.href='admin.php?page=ManageUsers';</script>";
+        echo "<script>alert('Record updated successfully'); window.location.href='system.php?page=ManageUsers';</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

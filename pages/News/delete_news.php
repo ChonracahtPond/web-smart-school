@@ -19,10 +19,10 @@ if ($New_id > 0) {
         if (!empty($News_images) && file_exists("uploads/" . $News_images)) {
             unlink("uploads/" . $News_images);
         }
-        echo "<script>alert('News deleted successfully'); window.location.href='admin.php?page=Manage_News';</script>";
+        echo "<script>alert('News deleted successfully'); window.location.href='system.php?page=Manage_News';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }
 } else {
-    echo "<script>alert('Invalid news ID'); window.location.href='admin.php?page=manage_news';</script>";
+    echo "<script>alert('Invalid news ID'); window.location.href='system.php?page=manage_news';</script>";
 }

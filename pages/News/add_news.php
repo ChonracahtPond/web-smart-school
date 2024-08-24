@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param('sss', $News_name, $News_detail, $News_images_url);
 
     if ($stmt->execute()) {
-        echo "<script>alert('News added successfully'); window.location.href='admin.php?page=Manage_News';</script>";
+        echo "<script>alert('News added successfully'); window.location.href='system.php?page=Manage_News';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="container mx-auto p-4">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">Add New News</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <form method="POST" action="admin.php?page=add_news" enctype="multipart/form-data">
+        <form method="POST" action="system.php?page=add_news" enctype="multipart/form-data">
             <div class="mb-4">
                 <label for="News_name" class="block text-gray-700 dark:text-gray-400">News Name</label>
                 <input type="text" name="News_name" id="News_name" required class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">

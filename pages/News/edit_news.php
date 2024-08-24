@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param('sssi', $News_name, $News_detail, $News_images_url, $New_id);
 
     if ($stmt->execute()) {
-        echo "<script>alert('News updated successfully'); window.location.href='admin.php?page=Manage_News';</script>";
+        echo "<script>alert('News updated successfully'); window.location.href='system.php?page=Manage_News';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }
@@ -55,7 +55,7 @@ $news = $stmt->get_result()->fetch_assoc();
 <div class="container mx-auto p-4">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">Edit News</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <form method="POST" action="admin.php?page=edit_news&id=<?php echo htmlspecialchars($New_id); ?>" enctype="multipart/form-data">
+        <form method="POST" action="system.php?page=edit_news&id=<?php echo htmlspecialchars($New_id); ?>" enctype="multipart/form-data">
             <div class="mb-4">
                 <label for="News_name" class="block text-gray-700 dark:text-gray-400">News Name</label>
                 <input type="text" name="News_name" id="News_name" value="<?php echo htmlspecialchars($news['News_name']); ?>" required class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">

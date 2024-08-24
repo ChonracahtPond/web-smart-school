@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     VALUES ('$student_id', '$grade_level', '$section', '$username', '$password', '$fullname', '$nicknames', '$email', '$phone_number', '$date_of_birth', '$gender', '$file_image', '$status', '$student_name', '$national_id', '$religion', '$nationality', '$occupation', '$average_income', '$father_name', '$father_nationality', '$father_occupation', '$mother_name', '$mother_nationality', '$mother_occupation', '$previous_education_level', '$graduation_year', '$graduation_school', '$district', '$province', '$buddhist_qualification', '$buddhist_qualification_year', '$buddhist_qualification_school', '$buddhist_district', '$buddhist_province', '$address')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('New record created successfully'); window.location.href='admin.php?page=ManageUsers';</script>";
+        echo "<script>alert('New record created successfully'); window.location.href='system.php?page=ManageUsers';</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

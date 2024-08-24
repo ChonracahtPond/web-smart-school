@@ -10,7 +10,7 @@ $result = $conn->query($sql);
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">นักศึกษาที่จบการศึกษา</h1>
 
     <!-- ปุ่มเพิ่ม -->
-    <a href="admin.php?page=add_access_right" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">เพิ่ม นักศึกษาที่จบการศึกษา</a>
+    <a href="system.php?page=add_access_right" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">เพิ่ม นักศึกษาที่จบการศึกษา</a>
 
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
         <table class="w-full mt-4 border-collapse">

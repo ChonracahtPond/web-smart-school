@@ -43,14 +43,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // คอมมิทธุรกรรม
                 $conn->commit();
 
-                echo "<script>alert('Item borrowed successfully'); window.location.href='admin.php?page=Borrow_Office_Supplies';</script>";
+                echo "<script>alert('Item borrowed successfully'); window.location.href='system.php?page=Borrow_Office_Supplies';</script>";
             } catch (Exception $e) {
                 // ยกเลิกธุรกรรมหากเกิดข้อผิดพลาด
                 $conn->rollback();
-                echo "<script>alert('Error: " . $e->getMessage() . "'); window.location.href='admin.php?page=Borrow_Office_Supplies';</script>";
+                echo "<script>alert('Error: " . $e->getMessage() . "'); window.location.href='system.php?page=Borrow_Office_Supplies';</script>";
             }
         } else {
-            echo "<script>alert('Insufficient stock for this item.'); window.location.href='admin.php?page=Borrow_Office_Supplies';</script>";
+            echo "<script>alert('Insufficient stock for this item.'); window.location.href='system.php?page=Borrow_Office_Supplies';</script>";
         }
     } else {
         echo "Error preparing check quantity statement: " . $conn->error;

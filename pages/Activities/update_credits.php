@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
     $update_sql = "UPDATE activity_participants SET Credits='$new_credits' WHERE participant_id='$participant_id'";
 
     if ($conn->query($update_sql) === TRUE) {
-        echo "<script>alert('Credits updated successfully'); window.location.href='admin.php?page=Manage_Credits';</script>";
+        echo "<script>alert('Credits updated successfully'); window.location.href='system.php?page=Manage_Credits';</script>";
     } else {
         echo "Error: " . $update_sql . "<br>" . $conn->error;
     }

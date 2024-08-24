@@ -5,29 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>เว็บไซต์การเรียนออนไลน์</title>
-    <!-- <link rel="stylesheet" href="../assets/css/styles.css"> -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css" rel="stylesheet"> -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <link rel="stylesheet" href="https://horizon-tailwind-react-corporate-7s21b54hb-horizon-ui.vercel.app/static/css/main.d7f96858.css" />
 
 
 </head>
-<!-- // รวมไฟล์การเชื่อมต่อฐานข้อมูล -->
+
 <?php require_once "../includes/db_connect.php";  ?>
 
 <body class="bg-white">
-<!-- eae100  สีเหลือง-->
 
-    <header class="bg-[#6e4db0] text-white p-4">
-        <nav>
-            <ul class="flex space-x-4">
-                <li><a href="admin.php" class="hover:underline">หน้าแรก</a></li>
+    <header class="bg-[#6e4db0] text-white p-3 sticky top-0">
+        <nav class="flex items-center">
+            <img src="../assets/images/LOGO@3x.png" class="w-[50px] h-[50px]" alt="Logo">
+            <ul class="flex space-x-6 ml-6">
+                <li><a href="system.php" class="hover:underline">ระบบจัดการข้อมูล สกร.</a></li>
+                <li><a href="education.php" class="hover:underline">ระบบจัดข้อมูลการศึกษา</a></li>
                 <li><a href="admin.php" class="hover:underline">ผู้ดูแลระบบ</a></li>
-                <li><a href="?page=teacher" class="hover:underline">ครู</a></li>
-                <li><a href="?page=student" class="hover:underline">นักเรียน</a></li>
+                <li><a href="teacher.php" class="hover:underline">ครู</a></li>
+                <li><a href="student.php" class="hover:underline">นักเรียน</a></li>
             </ul>
         </nav>
     </header>
 
+
+
     <div class="flex bg-white">
-        <?php include 'sidebar.php'; ?>
+        <?php
+        $current_page = basename($_SERVER['SCRIPT_NAME']);
+
+        switch ($current_page) {
+            case 'system.php':
+                include 'sidebar.php';
+                break;
+            case 'education.php':
+                include 'educationsidebar.php';
+                break;
+            case 'admin.php':
+                include 'adminsidebar.php';
+                break;
+            case 'student.php':
+                include 'studentsidebar.php';
+                break;
+            case 'teacher.php':
+                include 'teachersidebar.php';
+                break;
+            default:
+
+                echo '<p>Default sidebar or no sidebar available.</p>';
+                break;
+        }
+        ?>

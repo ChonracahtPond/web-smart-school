@@ -25,9 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         // // เปลี่ยนเส้นทางหลังจากเพิ่มข้อมูลสำเร็จ
-        // header("Location: admin.php?page=manage_courses");
+        // header("Location: system.php?page=manage_courses");
         // exit();
-        echo "<script>alert('courses added successfully'); window.location.href='admin.php?page=Manage_courses';</script>";
+        echo "<script>alert('courses added successfully'); window.location.href='system.php?page=Manage_courses';</script>";
     } else {
         // แสดงข้อผิดพลาดหากเกิดปัญหา
         echo "Error: " . $stmt->error;

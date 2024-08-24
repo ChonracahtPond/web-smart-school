@@ -51,14 +51,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
 
             // คอมมิทธุรกรรม
             $conn->commit();
-            echo "<script>alert('Item update and quantity updated successfully'); window.location.href='admin.php?page=Borrow_Office_Supplies';</script>";
+            echo "<script>alert('Item update and quantity updated successfully'); window.location.href='system.php?page=Borrow_Office_Supplies';</script>";
         } else {
             throw new Exception("Error preparing select statement: " . $conn->error);
         }
     } catch (Exception $e) {
         // ยกเลิกธุรกรรมหากเกิดข้อผิดพลาด
         $conn->rollback();
-        echo "<script>alert('Error: " . $e->getMessage() . "'); window.location.href='admin.php?page=Borrow_Office_Supplies';</script>";
+        echo "<script>alert('Error: " . $e->getMessage() . "'); window.location.href='system.php?page=Borrow_Office_Supplies';</script>";
     }
 }
 

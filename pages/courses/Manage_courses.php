@@ -20,7 +20,7 @@ $result = $stmt->get_result();
 <div class="container mx-auto p-4">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการหลักสูตร</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <a href="admin.php?page=add_course" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+เพิ่มหลักสูตรใหม่</a>
+        <a href="system.php?page=add_course" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+เพิ่มหลักสูตรใหม่</a>
 
         <!-- ฟอร์มค้นหา -->
         <form method="GET" action="" class="mb-4">
@@ -69,9 +69,9 @@ $result = $stmt->get_result();
                                 <?php echo htmlspecialchars($row['status']) == 1 ? 'Active' : 'Inactive'; ?>
                             </td>
                             <td class="px-4 py-2 border-b">
-                                <a href="admin.php?page=edit_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-blue-500 hover:text-blue-700">แก้ไข</a>
+                                <a href="system.php?page=edit_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-blue-500 hover:text-blue-700">แก้ไข</a>
                                 |
-                                <a href="admin.php?page=delete_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this course?')">ลบ</a>
+                                <a href="system.php?page=delete_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this course?')">ลบ</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>

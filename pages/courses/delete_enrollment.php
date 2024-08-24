@@ -9,7 +9,7 @@ if ($id > 0) {
     $stmt->bind_param('i', $id);
 
     if ($stmt->execute()) {
-        echo "<script>alert('courses delete successfully'); window.location.href='admin.php?page=Manage_enrollments';</script>";
+        echo "<script>alert('courses delete successfully'); window.location.href='system.php?page=Manage_enrollments';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }

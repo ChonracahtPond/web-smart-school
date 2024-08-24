@@ -7,7 +7,7 @@ $activity_id = $_GET['id'];
 $sql = "DELETE FROM activities WHERE activity_id='$activity_id'";
 
 if ($conn->query($sql) === TRUE) {
-    echo "<script>alert('Activity deleted successfully'); window.location.href='admin.php?page=Manage_Activity';</script>";
+    echo "<script>alert('Activity deleted successfully'); window.location.href='system.php?page=Manage_Activity';</script>";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

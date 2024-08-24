@@ -12,7 +12,7 @@ if ($stmt = $conn->prepare($sql)) {
     $stmt->bind_param("isi", $item_id, $borrower_name, $quantity);
     $stmt->execute();
     $stmt->close();
-    echo "<script>alert('Item borrowed successfully'); window.location.href='admin.php?page=Borrow_Office_Supplies';</script>";
+    echo "<script>alert('Item borrowed successfully'); window.location.href='system.php?page=Borrow_Office_Supplies';</script>";
 } else {
     echo "Error preparing statement: " . $conn->error;
 }

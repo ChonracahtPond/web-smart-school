@@ -8,7 +8,7 @@ $result = $conn->query($sql);
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white mb-10">ข้อมูลนักเรียน</h1>
 
     <!-- ปุ่มเพิ่ม -->
-    <a href="admin.php?page=add_user" class="bg-blue-500  text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">เพิ่มข้อมูลนักเรียน</a>
+    <a href="system.php?page=add_user" class="bg-blue-500  text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">เพิ่มข้อมูลนักเรียน</a>
 
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 my-4 ">
         <table class="w-full mt-4 border-collapse ">
@@ -43,9 +43,9 @@ $result = $conn->query($sql);
                             <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['gender']); ?></td>
                             <td class="px-4 py-2 border-b">
                                 <!-- ปุ่มแก้ไข -->
-                                <a href="admin.php?page=edit_user&id=<?php echo htmlspecialchars($row['student_id']); ?>" class="text-blue-500 hover:underline">Edit</a> |
+                                <a href="system.php?page=edit_user&id=<?php echo htmlspecialchars($row['student_id']); ?>" class="text-blue-500 hover:underline">Edit</a> |
                                 <!-- ปุ่มลบ -->
-                                <a href="admin.php?page=delete_user&id=<?php echo htmlspecialchars($row['student_id']); ?>" class="text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                                <a href="system.php?page=delete_user&id=<?php echo htmlspecialchars($row['student_id']); ?>" class="text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>

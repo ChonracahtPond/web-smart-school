@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param('iissdii', $student_id, $course_id, $semester, $academic_year, $grade, $status, $teacher_id);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Enrollment added successfully'); window.location.href='admin.php?page=Manage_enrollments';</script>";
+        echo "<script>alert('Enrollment added successfully'); window.location.href='system.php?page=Manage_enrollments';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="container mx-auto p-4">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">Add New Enrollment</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <form method="POST" action="admin.php?page=add_enrollment">
+        <form method="POST" action="system.php?page=add_enrollment">
             <div class="mb-4">
                 <label for="student_id" class="block text-gray-700 dark:text-gray-400">Student</label>
                 <select name="student_id" id="student_id" required class="form-select mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">

@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="https://horizon-tailwind-react-corporate-7s21b54hb-horizon-ui.vercel.app/static/css/main.d7f96858.css" />
 </head>
 
-<body class="bg-gray-100 flex items-center justify-center h-screen">
+<body class="bg-[#6e4db0] flex items-center justify-center h-screen">
     <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-lg border border-gray-200">
         <div class="text-center mb-6">
-            <img src="https://www.example.com/school-logo.png" alt="School Logo" class="mx-auto mb-4 w-24 h-24">
+            <img src="assets/images/LOGO@3x.png" alt="School Logo" class="mx-auto mb-4 w-24 h-24">
             <h1 class="text-3xl font-bold mb-4 text-gray-800">เข้าสู่ระบบ</h1>
-            <p class="text-lg text-gray-600">ยินดีต้อนรับสู่ระบบของโรงเรียน</p>
+            <p class="text-lg text-gray-600">ยินดีต้อนรับสู่ระบบของ สกร. อำเภอพาน</p>
         </div>
 
         <!-- Display error message -->
@@ -35,7 +35,7 @@
                 <input type="password" id="password" name="password" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500">
             </div>
 
-            <button type="submit" class="w-full py-3 px-6 bg-green-600 text-white font-semibold rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-3 focus:ring-green-500">
+            <button type="submit" class="w-full py-3 px-6 bg-[#6e4db0] text-white font-semibold rounded-md shadow-sm hover:bg-[#6e4aA0] focus:outline-none focus:ring-3 focus:ring-green-500">
                 เข้าสู่ระบบ
             </button>
         </form>

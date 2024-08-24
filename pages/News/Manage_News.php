@@ -8,7 +8,7 @@ $result_news = $conn->query($sql_news);
 <div class="container mx-auto p-4">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">Manage News</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <a href="admin.php?page=add_news" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">Add New News</a>
+        <a href="system.php?page=add_news" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">Add New News</a>
 
         <!-- ฟอร์มค้นหา -->
         <form method="GET" action="" class="mb-4">
@@ -41,9 +41,9 @@ $result_news = $conn->query($sql_news);
                                 <?php endif; ?>
                             </td>
                             <td class="px-4 py-2 border-b">
-                                <a href="admin.php?page=edit_news&id=<?php echo htmlspecialchars($row['New_id']); ?>" class="text-blue-500 hover:text-blue-700">Edit</a>
+                                <a href="system.php?page=edit_news&id=<?php echo htmlspecialchars($row['New_id']); ?>" class="text-blue-500 hover:text-blue-700">Edit</a>
                                 |
-                                <a href="admin.php?page=delete_news&id=<?php echo htmlspecialchars($row['New_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this news?')">Delete</a>
+                                <a href="system.php?page=delete_news&id=<?php echo htmlspecialchars($row['New_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this news?')">Delete</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>

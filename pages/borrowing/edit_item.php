@@ -15,7 +15,7 @@ if (isset($_GET['item_id'])) {
     // ถ้าไม่มี item_id ส่งกลับไปยังหน้าหลักหรือแสดงข้อผิดพลาด
     // header('Location: manage_items.php');
     // exit;
-    echo "<script>alert('equipment update successfully'); window.location.href='admin.php?page=equipment_management';</script>";
+    echo "<script>alert('equipment update successfully'); window.location.href='system.php?page=equipment_management';</script>";
 }
 
 // ตรวจสอบว่ามีข้อมูล POST หรือไม่
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute();
 
     // ส่งกลับไปยังหน้าหลัก
-    echo "<script>alert('equipment update successfully'); window.location.href='admin.php?page=equipment_management';</script>";
+    echo "<script>alert('equipment update successfully'); window.location.href='system.php?page=equipment_management';</script>";
 }
 
 

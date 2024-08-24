@@ -35,6 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['return'])) {
         echo "Error preparing statement: " . $conn->error;
     }
 
-    echo "<script>alert('Item returned successfully'); window.location.href='admin.php?page=System_for_borrowing';</script>";
+    echo "<script>alert('Item returned successfully'); window.location.href='system.php?page=System_for_borrowing';</script>";
 }
 ?>

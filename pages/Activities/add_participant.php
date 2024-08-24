@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {
                    VALUES ('$activity_id', '$student_id', '$registration_date', '$status', '$credits')";
 
     if ($conn->query($insert_sql) === TRUE) {
-        echo "<script>alert('Activity added successfully'); window.location.href='admin.php?page=Manage_Credits';</script>";
+        echo "<script>alert('Activity added successfully'); window.location.href='system.php?page=Manage_Credits';</script>";
     } else {
         echo "Error: " . $insert_sql . "<br>" . $conn->error;
     }

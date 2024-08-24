@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                        VALUES ('$activity_id', '$student_id', '$registration_date', '$status', '$credits')";
 
         if ($conn->query($insert_sql) === TRUE) {
-            echo "<script>alert('Activity added successfully'); window.location.href='admin.php?page=Manage_Credits';</script>";
+            echo "<script>alert('Activity added successfully'); window.location.href='system.php?page=Manage_Credits';</script>";
         } else {
             echo "Error: " . $insert_sql . "<br>" . $conn->error;
         }
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $update_sql = "UPDATE activity_participants SET Credits='$new_credits' WHERE participant_id='$participant_id'";
 
         if ($conn->query($update_sql) === TRUE) {
-            echo "<script>alert('Credits updated successfully'); window.location.href='admin.php?page=Manage_Credits';</script>";
+            echo "<script>alert('Credits updated successfully'); window.location.href='system.php?page=Manage_Credits';</script>";
         } else {
             echo "Error: " . $update_sql . "<br>" . $conn->error;
         }
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $delete_sql = "DELETE FROM activity_participants WHERE participant_id='$participant_id'";
 
         if ($conn->query($delete_sql) === TRUE) {
-            echo "<script>alert('Activity deleted successfully'); window.location.href='admin.php?page=Manage_Credits';</script>";
+            echo "<script>alert('Activity deleted successfully'); window.location.href='system.php?page=Manage_Credits';</script>";
         } else {
             echo "Error: " . $delete_sql . "<br>" . $conn->error;
         }

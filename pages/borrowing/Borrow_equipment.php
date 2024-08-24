@@ -26,5 +26,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['borrow'])) {
         echo "Error preparing statement: " . $conn->error;
     }
 
-    echo "<script>alert('Item borrowed successfully'); window.location.href='admin.php?page=System_for_borrowing';</script>";
+    echo "<script>alert('Item borrowed successfully'); window.location.href='system.php?page=System_for_borrowing';</script>";
 }
