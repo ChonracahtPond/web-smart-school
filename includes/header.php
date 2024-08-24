@@ -15,9 +15,10 @@
 <!-- // รวมไฟล์การเชื่อมต่อฐานข้อมูล -->
 <?php require_once "../includes/db_connect.php";  ?>
 
-<body>
+<body class="bg-white">
+<!-- eae100  สีเหลือง-->
 
-    <header class="bg-gray-800 text-white p-4">
+    <header class="bg-[#6e4db0] text-white p-4">
         <nav>
             <ul class="flex space-x-4">
                 <li><a href="admin.php" class="hover:underline">หน้าแรก</a></li>
@@ -28,5 +29,5 @@
         </nav>
     </header>
 
-    <div class="flex bg-gray-200">
+    <div class="flex bg-white">
         <?php include 'sidebar.php'; ?>

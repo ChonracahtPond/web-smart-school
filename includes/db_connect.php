@@ -1,8 +1,15 @@
 <?php
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "u208423496_cs_gas_test";
+
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "u208423496_cs_gas_test";
+$username = "root"; // ใช้ชื่อผู้ใช้ฐานข้อมูลของคุณ
+$password = ""; // รหัสผ่านที่กำหนดใน Hostinger
+$dbname = "datatest";
+
+
 
 // สร้างการเชื่อมต่อ
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -17,4 +24,3 @@ if ($conn->connect_error) {
 
 // ปิดการเชื่อมต่อ
 // $conn->close();
-?>
