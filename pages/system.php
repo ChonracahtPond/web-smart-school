@@ -14,6 +14,20 @@
                     include "../pages/dashboard.php";
                     break;
 
+                    // ระบบสมัครเรียนใหม่
+                case 'New_student_registration_system':
+                    include "../pages/register/New_student_registration_system.php";
+                    break;
+                case 'view_register.php':
+                    include "../mpdf/pdf_register/view_register.php";
+                    break;
+
+
+
+
+
+
+
                     // จัดการกับข้อมูลนักเรียน
                 case 'ManageUsers':
                     include "../pages/Users/ManageUsers.php";
