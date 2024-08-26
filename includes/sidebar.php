@@ -4,7 +4,7 @@
         <div class="px-3 py-4 overflow-y-auto rounded bg-[#6e4db0] text-white dark:bg-gray-800">
             <ul class="space-y-4">
                 <li class="group">
-                    <a href="?page=dashboard" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 group-hover:text-gray-800 dark:hover:bg-gray-700">
+                    <a href="?page=dashboard" id="dashboard-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-white hover:text-gray-800 dark:hover:bg-gray-700">
                         <svg class="w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-gray-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                             <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
@@ -12,7 +12,6 @@
                         <span class="ml-3 group-hover:text-gray-800">ระบบจัดการข้อมูล สกร.</span>
                     </a>
                 </li>
-
                 <div class="bg-white w-full h-0.5">
                 </div>
 
@@ -29,11 +28,11 @@
                     </button>
                     <ul id="dropdown-register" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="?page=New_student_registration_system" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบลงทะเบียนนักเรียนใหม่</a>
+                            <a href="?page=New_student_registration_system" id="New_student_registration_system" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบลงทะเบียนนักเรียนใหม่</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="?page=" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">จัดการการลงทะเบียน</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="../pages/Newregister/register.php" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบสมัครเรียน</a>
                         </li>
@@ -54,13 +53,13 @@
                     </button>
                     <ul id="dropdown-System_for_borrowing" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="?page=equipment_management" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
+                            <a href="?page=equipment_management" id="equipment_management" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
                         </li>
                         <li>
-                            <a href="?page=System_for_borrowing" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบยืม-คืน ครุภัณฑ์และวัสดุสำนักงาน</a>
+                            <a href="?page=System_for_borrowing" id="System_for_borrowing" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบยืม-คืน ครุภัณฑ์และวัสดุสำนักงาน</a>
                         </li>
                         <li>
-                            <a href="?page=Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบเบิกวัสดุ ไม่ต้องคืน</a>
+                            <a href="?page=Borrow_Office_Supplies" id="Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบเบิกวัสดุ ไม่ต้องคืน</a>
                         </li>
                     </ul>
                 </li>
@@ -78,13 +77,13 @@
                     </button>
                     <ul id="dropdown-System_education" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="?page=equipment_management" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
+                            <a href="?page=equipment_management" id="equipment_management" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
                         </li>
                         <li>
-                            <a href="?page=System_for_borrowing" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบยืม-คืน ครุภัณฑ์และวัสดุสำนักงาน</a>
+                            <a href="?page=System_for_borrowing" id="System_for_borrowing" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบยืม-คืน ครุภัณฑ์และวัสดุสำนักงาน</a>
                         </li>
                         <li>
-                            <a href="?page=Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบเบิกวัสดุ ไม่ต้องคืน</a>
+                            <a href="?page=Borrow_Office_Supplies" id="Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบเบิกวัสดุ ไม่ต้องคืน</a>
                         </li>
                     </ul>
                 </li>
@@ -375,5 +374,7 @@
             </ul>
         </div>
     </aside>
-    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+
 </div>
+<script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+<script src="../scripts/select.js"></script>

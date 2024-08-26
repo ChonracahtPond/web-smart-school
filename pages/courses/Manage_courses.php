@@ -3,11 +3,12 @@
 // ตรวจสอบว่ามีการส่งคำค้นหามาหรือไม่
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
-// คำสั่ง SQL สำหรับดึงข้อมูลจากตาราง courses พร้อมการค้นหา
+// คำสั่ง SQL สำหรับดึงข้อมูลจากตาราง courses พร้อมการค้นหา และเรียงลำดับจากใหม่ไปเก่า
 $sql = "SELECT c.course_id, c.course_name, c.course_description, c.teacher_id, c.course_type, c.course_code, c.credits, c.semester, c.academic_year, c.status, t.teacher_name
         FROM courses c
         LEFT JOIN teachers t ON c.teacher_id = t.teacher_id
-        WHERE c.course_name LIKE ? OR c.course_description LIKE ? OR t.teacher_name LIKE ?";
+        WHERE c.course_name LIKE ? OR c.course_description LIKE ? OR t.teacher_name LIKE ?
+        ORDER BY c.course_id DESC"; // เปลี่ยนการจัดเรียงเป็นจากใหม่ไปเก่า
 
 // เตรียมการค้นหาข้อมูล
 $searchTerm = "%$search%";
@@ -20,7 +21,7 @@ $result = $stmt->get_result();
 <div class="container mx-auto p-4">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการหลักสูตร</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <a href="system.php?page=add_course" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+เพิ่มหลักสูตรใหม่</a>
+        <a href="system.php?page=add_course" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+ เพิ่มหลักสูตรใหม่</a>
 
         <!-- ฟอร์มค้นหา -->
         <form method="GET" action="" class="mb-4">
@@ -58,7 +59,7 @@ $result = $stmt->get_result();
                                 <?php
                                 // แสดงประเภทหลักสูตร
                                 $course_type = htmlspecialchars($row['course_type']);
-                                echo ($course_type === 'mandatory') ? 'Mandatory' : 'Elective';
+                                echo ($course_type === 'mandatory') ? 'บังคับ' : 'วิชาเลือก';
                                 ?>
                             </td>
                             <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['course_code']); ?></td>
@@ -66,7 +67,15 @@ $result = $stmt->get_result();
                             <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['semester']); ?></td>
                             <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['academic_year']); ?></td>
                             <td class="px-4 py-2 border-b">
-                                <?php echo htmlspecialchars($row['status']) == 1 ? 'Active' : 'Inactive'; ?>
+                                <?php
+                                // แสดงสถานะด้วยสี
+                                $status = htmlspecialchars($row['status']);
+                                if ($status == 1) {
+                                    echo '<span class="text-green-500">กำลังทำงาน</span>';
+                                } else {
+                                    echo '<span class="text-red-500">ไม่ได้ใช้งาน</span>';
+                                }
+                                ?>
                             </td>
                             <td class="px-4 py-2 border-b">
                                 <a href="system.php?page=edit_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-blue-500 hover:text-blue-700">แก้ไข</a>
@@ -77,7 +86,7 @@ $result = $stmt->get_result();
                     <?php endwhile; ?>
                 <?php else : ?>
                     <tr>
-                        <td colspan="11" class="px-4 py-2 text-center">No records found</td>
+                        <td colspan="11" class="px-4 py-2 text-center">ไม่มีข้อมูล</td>
                     </tr>
                 <?php endif; ?>
             </tbody>

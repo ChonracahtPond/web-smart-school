@@ -20,7 +20,7 @@
             <img src="../assets/images/LOGO@3x.png" class="w-[50px] h-[50px]" alt="Logo">
             <ul class="flex space-x-6 ml-6">
                 <li><a href="system.php" class="hover:underline">ระบบจัดการข้อมูล สกร.</a></li>
-                <li><a href="education.php" class="hover:underline">ระบบจัดข้อมูลการศึกษา</a></li>
+                <li><a href="education.php" class="hover:underline">การจัดการหลักสูตร</a></li>
                 <li><a href="admin.php" class="hover:underline">ผู้ดูแลระบบ</a></li>
                 <li><a href="teacher.php" class="hover:underline">ครู</a></li>
                 <li><a href="student.php" class="hover:underline">นักเรียน</a></li>
