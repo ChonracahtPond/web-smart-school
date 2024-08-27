@@ -1,7 +1,6 @@
 <?php
 require_once("../vendor/autoload.php");
 include('../../includes/db_connect.php');
-error_reporting(~E_NOTICE);
 
 // ปิดการแสดงข้อผิดพลาดชั่วคราว
 ini_set('display_errors', 0);
