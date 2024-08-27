@@ -6,17 +6,13 @@ error_reporting(~E_NOTICE);
 // ปิดการแสดงข้อผิดพลาดชั่วคราว
 ini_set('display_errors', 0);
 
-use Mpdf\Mpdf;
-use Mpdf\Config\ConfigVariables;
-use Mpdf\Config\FontVariables;
-
-$defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
+$defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
 $fontDirs = $defaultConfig['fontDir'];
-$defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
+$defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
 $fontData = $defaultFontConfig['fontdata'];
 ini_set("pcre.backtrack_limit", "5000000");
 
-$mpdf = new Mpdf([
+$mpdf = new \Mpdf\Mpdf([
     'fontDir' => array_merge($fontDirs, [
         __DIR__ . '/tmp',
     ]),
