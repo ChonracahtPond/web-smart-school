@@ -12,8 +12,9 @@ if (isset($_GET['delete_item'])) {
     $stmt->execute();
 
     // ส่งกลับไปยังหน้าหลัก
-    echo "<script>alert('equipment delete successfully'); window.location.href='system.php?page=equipment_management';</script>";
+    echo "<script>window.location.href='system.php?page=equipment_management&status=1';</script>";
+    // echo "<script>window.location.href='system.php?page=equipment_management&status=1';</script>";
 } else {
     // ถ้าไม่มี `delete_item` ส่งกลับไปยังหน้าหลักหรือแสดงข้อผิดพลาด
-    echo "<script>alert('equipment delete successfully'); window.location.href='system.php?page=equipment_management';</script>";
+    echo "<script>window.location.href='system.php?page=equipment_management&status=0';</script>";
 }

@@ -1,12 +1,7 @@
 <!-- Add Item Modal -->
 <div id="addItemModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
     <div class="bg-white p-4 md:p-6 rounded-md w-full md:w-3/4 lg:w-2/3 xl:w-1/2 max-h-[90vh] overflow-y-auto">
-        <div class="flex justify-between">
-            <h2 class="text-xl font-semibold mb-6">เพิ่มรายการใหม่</h2>
-            <button id="closeAddItemModal" class=" text-xl font-semibold mb-6 text-red-500"> <span class="sr-only w-[50px] h-[50px]">Close modal</span>
-                &times;</button>
-
-        </div>
+        <h2 class="text-xl font-semibold mb-6">เพิ่มรายการใหม่</h2>
         <form action="?page=add_item" method="POST" enctype="multipart/form-data">
             <!-- ข้อมูลพื้นฐาน -->
             <div class="flex flex-wrap -mx-2 mb-6">
@@ -122,13 +117,12 @@
                 <button type="submit" name="add_item" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">เพิ่มรายการ</button>
             </div>
         </form>
-
     </div>
 </div>
 
 
 <!-- Filter Modal -->
-<div id="filterModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+<div id="filterBtn" class="fixed z-10 inset-0 overflow-y-auto hidden">
     <div class="flex items-center justify-center min-h-screen px-4">
         <div class="relative bg-white rounded-lg shadow-xl dark:bg-gray-800 w-full max-w-md">
             <div class="flex justify-between items-center p-5 border-b border-gray-200 dark:border-gray-700">
@@ -157,6 +151,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 <!-- Select PDF Modal -->

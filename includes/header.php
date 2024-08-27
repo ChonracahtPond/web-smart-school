@@ -11,7 +11,10 @@
 
 </head>
 
-<?php require_once "../includes/db_connect.php";  ?>
+<?php
+require_once "../includes/db_connect.php";
+include '../includes/modal/modal.php';
+?>
 
 <body class="bg-white">
 

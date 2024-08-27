@@ -1,4 +1,9 @@
-<?php include '../includes/header.php'; ?>
+<?php
+include '../includes/header.php';
+
+
+?>
+
 
 <div class="container w-full ml-10">
     <!-- Main Content -->
@@ -24,6 +29,36 @@
                 case 'equipment_pdf.php':
                     include "../mpdf/equipment/equipment_pdf.php";
                     break;
+
+                case 'Budget_for_borrowing':
+                    include "../pages/borrowing/Budget/Budget_for_borrowing.php";
+                    break;
+
+
+
+                case 'add_item':
+                    include "../pages/borrowing/Equipment/add_item.php";
+                    break;
+                case 'edit_item':
+                    include "../pages/borrowing/Equipment/edit_item.php";
+                    break;
+                case 'update_item':
+                    include "../pages/borrowing/Equipment/sql/update_item.php";
+                    break;
+                case 'delete_item':
+                    include "../pages/borrowing/Equipment/delete_item.php";
+                    break;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -111,33 +146,6 @@
                     break;
 
 
-                case 'Manage_courses':
-                    include "../pages/courses/Manage_courses.php";
-                    break;
-                case 'add_course':
-                    include "../pages/courses/add_course.php";
-                    break;
-                case 'edit_course':
-                    include "../pages/courses/edit_course.php";
-                    break;
-                case 'delete_course':
-                    include "../pages/courses/delete_course.php";
-                    break;
-
-                case 'Manage_enrollments':
-                    include "../pages/courses/Manage_enrollments.php";
-                    break;
-                case 'add_enrollment':
-                    include "../pages/courses/add_enrollment.php";
-                    break;
-                case 'edit_enrollment':
-                    include "../pages/courses/edit_enrollment.php";
-                    break;
-                case 'delete_enrollment':
-                    include "../pages/courses/delete_enrollment.php";
-                    break;
-
-
                 case 'Manage_News':
                     include "../pages/News/Manage_News.php";
                     break;
@@ -155,15 +163,8 @@
                     include "../pages/borrowing/equipment_management.php";
                     break;
 
-                case 'add_item':
-                    include "../pages/borrowing/add_item.php";
-                    break;
-                case 'edit_item':
-                    include "../pages/borrowing/edit_item.php";
-                    break;
-                case 'delete_item':
-                    include "../pages/borrowing/delete_item.php";
-                    break;
+
+
 
                 case 'System_for_borrowing':
                     include "../pages/borrowing/System_for_borrowing.php";
@@ -194,69 +195,49 @@
                     include "../pages/borrowing/add_borrowing.php";
                     break;
 
-                case 'teacher':
-                    include "teacher.php";
-                    break;
-                case 'student':
-                    include "student.php";
-                    break;
-
-                case 'Manage_evaluations':
-                    include "../pages/evaluations/Manage_evaluations.php";
-                    break;
-
-                case 'student_details':
-                    include "../pages/student/student_details.php";
-                    break;
-
-
-                case 'generate_pdf':
-                    include "../mpdf/generate_pdf.php";
-                    break;
 
 
 
+                    // case 'Exercises':
+                    //     include "test/Exercises.php";
+                    //     break;
+                    // case 'add_exercise':
+                    //     include "test/add_exercise.php";
+                    //     break;
+                    // case 'edit_exercise':
+                    //     include "test/edit_exercise.php";
+                    //     break;
+                    // case 'add_questions':
+                    //     include "test/add_questions.php";
+                    //     break;
+                    // case 'manage_questions':
+                    //     include "test/manage_questions.php";
+                    //     break;
 
-                case 'Exercises':
-                    include "test/Exercises.php";
-                    break;
-                case 'add_exercise':
-                    include "test/add_exercise.php";
-                    break;
-                case 'edit_exercise':
-                    include "test/edit_exercise.php";
-                    break;
-                case 'add_questions':
-                    include "test/add_questions.php";
-                    break;
-                case 'manage_questions':
-                    include "test/manage_questions.php";
-                    break;
+                    // case 'Questions':
+                    //     include "test/Questions.php";
+                    //     break;
+                    // case 'add_question':
+                    //     include "test/add_question.php";
+                    //     break;
+                    // case 'edit_question':
+                    //     include "test/edit_question.php";
+                    //     break;
+                    // case 'delete_question':
+                    //     include "test/delete_question.php";
+                    //     break;
 
-                case 'Questions':
-                    include "test/Questions.php";
-                    break;
-                case 'add_question':
-                    include "test/add_question.php";
-                    break;
-                case 'edit_question':
-                    include "test/edit_question.php";
-                    break;
-                case 'delete_question':
-                    include "test/delete_question.php";
-                    break;
-
-                case 'manage_answers':
-                    include "test/manage_answers.php";
-                    break;
-                case 'add_answer':
-                    include "test/add_answer.php";
-                    break;
+                    // case 'manage_answers':
+                    //     include "test/manage_answers.php";
+                    //     break;
+                    // case 'add_answer':
+                    //     include "test/add_answer.php";
+                    //     break;
 
 
-                case 'ManageBook':
-                    include "../pages/Book/ManageBook.php";
-                    break;
+                    // case 'ManageBook':
+                    //     include "../pages/Book/ManageBook.php";
+                    //     break;
 
 
 

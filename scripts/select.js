@@ -9,6 +9,7 @@ const pageLinkMap = {
   New_student_registration_system: "New_student_registration_system",
   equipment_management: "equipment_management",
   System_for_borrowing: "System_for_borrowing",
+  Budget_for_borrowing: "Budget_for_borrowing",
   Borrow_Office_Supplies: "Borrow_Office_Supplies",
   Manage_News: "Manage_News",
 
@@ -27,6 +28,7 @@ const dropdownMap = {
   New_student_registration_system: "dropdown-register",
   equipment_management: "dropdown-System_for_borrowing",
   System_for_borrowing: "dropdown-System_for_borrowing",
+  Budget_for_borrowing: "dropdown-System_for_borrowing",
   Borrow_Office_Supplies: "dropdown-System_for_borrowing",
   Manage_News: "dropdown-application",
   //   educationsidebar
