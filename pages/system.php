@@ -21,6 +21,9 @@
                 case 'view_register.php':
                     include "../mpdf/pdf_register/view_register.php";
                     break;
+                case 'equipment_pdf.php':
+                    include "../mpdf/equipment/equipment_pdf.php";
+                    break;
 
 
 

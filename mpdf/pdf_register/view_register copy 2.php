@@ -38,7 +38,7 @@ if ($student_id > 0) {
     $stmt->bind_param("i", $student_id);
     $stmt->execute();
     $result = $stmt->get_result();
-    
+
     if ($result->num_rows > 0) {
         $student = $result->fetch_assoc();
     } else {

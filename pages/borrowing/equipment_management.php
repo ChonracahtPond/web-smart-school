@@ -1,9 +1,9 @@
 <?php
-// กำหนดค่า default สำหรับการเรียงลำดับ
+// Default sorting order
 $orderBy = isset($_GET['order_by']) ? $_GET['order_by'] : 'item_name';
 $orderDirection = isset($_GET['order_dir']) && $_GET['order_dir'] === 'desc' ? 'desc' : 'asc';
 
-// ดึงข้อมูลครุภัณฑ์ทั้งหมดพร้อมเรียงลำดับ
+// Fetch all items with sorting
 $sql = "SELECT * FROM items ORDER BY $orderBy $orderDirection";
 $result = $conn->query($sql);
 
@@ -12,19 +12,15 @@ while ($row = $result->fetch_assoc()) {
     $items[] = $row;
 }
 ?>
-
-
 <div class="container mx-auto p-6">
     <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">จัดการ ครุภัณฑ์-วัสดุอุปกรณ์</h1>
 
-    <!-- Button to open Add Item Modal -->
+    <!-- Buttons to open modals -->
     <button id="addItemBtn" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500">+ เพิ่มรายการใหม่</button>
-    <!-- Button to open Filter Modal -->
     <button id="filterBtn" class="px-6 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500">กรองรายการ</button>
-    <!-- Button to open Select PDF Modal -->
     <button id="openselectpdf" class="px-6 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500">เลือกรายการเพื่อออกรายงาน</button>
 
-    <!-- Table of equipment -->
+    <!-- Table of items -->
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg mt-6">
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 px-6 py-4 border-b border-gray-200 dark:border-gray-700">อุปกรณ์ที่มีอยู่</h2>
         <div class="overflow-x-auto">
@@ -32,16 +28,16 @@ while ($row = $result->fetch_assoc()) {
                 <thead>
                     <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
                         <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                            <a href="?order_by=item_name&order_dir=<?php echo $orderDirection === 'asc' ? 'desc' : 'asc'; ?>" class="hover:underline">ชื่อรายการ</a>
+                            <a href="?order_by=item_name&order_dir=<?php echo $orderDirection === 'asc' ? 'desc' : 'asc'; ?>" class="hover:underline <?php echo $orderBy === 'item_name' ? 'text-blue-600' : ''; ?>">ชื่อรายการ</a>
                         </th>
                         <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                            <a href="?order_by=item_description&order_dir=<?php echo $orderDirection === 'asc' ? 'desc' : 'asc'; ?>" class="hover:underline">คำอธิบาย</a>
+                            <a href="?order_by=item_description&order_dir=<?php echo $orderDirection === 'asc' ? 'desc' : 'asc'; ?>" class="hover:underline <?php echo $orderBy === 'item_description' ? 'text-blue-600' : ''; ?>">คำอธิบาย</a>
                         </th>
                         <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                            <a href="?order_by=quantity&order_dir=<?php echo $orderDirection === 'asc' ? 'desc' : 'asc'; ?>" class="hover:underline">ปริมาณ</a>
+                            <a href="?order_by=quantity&order_dir=<?php echo $orderDirection === 'asc' ? 'desc' : 'asc'; ?>" class="hover:underline <?php echo $orderBy === 'quantity' ? 'text-blue-600' : ''; ?>">ปริมาณ</a>
                         </th>
                         <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                            <a href="?order_by=status&order_dir=<?php echo $orderDirection === 'asc' ? 'desc' : 'asc'; ?>" class="hover:underline">สถานะ</a>
+                            <a href="?order_by=status&order_dir=<?php echo $orderDirection === 'asc' ? 'desc' : 'asc'; ?>" class="hover:underline <?php echo $orderBy === 'status' ? 'text-blue-600' : ''; ?>">สถานะ</a>
                         </th>
                         <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">การดำเนินการ</th>
                     </tr>
@@ -49,14 +45,8 @@ while ($row = $result->fetch_assoc()) {
                 <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                     <?php foreach ($items as $item): ?>
                         <?php
-                        // กำหนดคลาสตามค่า quantity
                         $quantity = (int)$item['quantity'];
-                        $quantityClass = 'text-green-600';
-                        if ($quantity < 10) {
-                            $quantityClass = 'text-red-600';
-                        } elseif ($quantity >= 10 && $quantity < 20) {
-                            $quantityClass = 'text-yellow-600';
-                        }
+                        $quantityClass = $quantity < 10 ? 'text-red-600' : ($quantity < 20 ? 'text-yellow-600' : 'text-green-600');
                         ?>
                         <tr class="hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150 ease-in-out">
                             <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100"><?php echo htmlspecialchars($item['item_name']); ?></td>
@@ -75,9 +65,41 @@ while ($row = $result->fetch_assoc()) {
     </div>
 </div>
 
-<?php include "modal/modals.php" ?>
+<!-- Filter Modal -->
+<div id="filterModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+    <div class="flex items-center justify-center min-h-screen px-4">
+        <div class="relative bg-white rounded-lg shadow-xl dark:bg-gray-800 w-full max-w-md">
+            <div class="flex justify-between items-center p-5 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white">กรองรายการ</h3>
+                <button id="closeFilterModal" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                    <span class="sr-only">Close modal</span>
+                    &times;
+                </button>
+            </div>
+            <div class="p-6">
+                <form action="?page=equipment_management">
+                    <div class="mb-4">
+                        <label for="filterSelect" class="block text-sm font-medium text-gray-700 dark:text-gray-200">เลือกตัวกรอง</label>
+                        <select id="filterSelect" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md dark:bg-gray-700 dark:text-gray-300">
+                            <option value="all">ทั้งหมด</option>
+                            <option value="low_quantity">ปริมาณน้อยกว่า 10</option>
+                            <option value="medium_quantity">ปริมาณระหว่าง 10-20</option>
+                            <option value="high_quantity">ปริมาณมากกว่า 20</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500">กรอง</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-<script>
+<?php include "modal/modals.php" ?>
+<?php include "modal/script.php" ?>
+
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function() {
         const items = <?php echo json_encode($items); ?>;
 
@@ -101,11 +123,6 @@ while ($row = $result->fetch_assoc()) {
             document.getElementById('filterModal').classList.add('hidden');
         });
 
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const items = <?php echo json_encode($items); ?>;
-
         // เปิด modal สำหรับการเลือกรายการเพื่อออกรายงาน
         document.getElementById('openselectpdf').addEventListener('click', function() {
             document.getElementById('selectPdfModal').classList.remove('hidden');
@@ -121,61 +138,34 @@ while ($row = $result->fetch_assoc()) {
         document.getElementById('confirmSelection').addEventListener('click', function() {
             const selectedItems = Array.from(document.querySelectorAll('#itemList input[type="checkbox"]:checked'))
                 .map(checkbox => checkbox.nextElementSibling.textContent);
-
             if (selectedItems.length > 0) {
-                // ส่งข้อมูลที่เลือกไปยังเซิร์ฟเวอร์เพื่อสร้าง PDF
-                fetch('../../mpdf/equipment/equipment_pdf.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            items: selectedItems
-                        })
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.blob();
-                    })
-                    .then(blob => {
-                        const url = URL.createObjectURL(blob);
-                        window.open(url, '_blank');
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('เกิดข้อผิดพลาดในการสร้าง PDF');
-                    });
+                // สร้าง query string สำหรับข้อมูลที่เลือก
+                const queryString = new URLSearchParams({
+                    items: JSON.stringify(selectedItems)
+                }).toString();
 
+                // เปลี่ยนเส้นทางไปยัง URL ที่สร้าง PDF
+                window.location.href = `../mpdf/equipment/equipment_pdf.php?${queryString}`;
+                document.getElementById('selectPdfModal').classList.add('hidden');
             } else {
                 alert('กรุณาเลือกอย่างน้อยหนึ่งรายการ');
             }
         });
 
-        // ฟังก์ชันค้นหา
-        document.getElementById('searchItem').addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            document.querySelectorAll('#itemList .item').forEach(item => {
-                const itemName = item.querySelector('.item-name').textContent.toLowerCase();
-                item.style.display = itemName.includes(searchTerm) ? 'block' : 'none';
-            });
-        });
-
         // ฟังก์ชันในการโหลดรายการ
         function loadItems() {
-            const itemList = document.getElementById('itemList');
+            let itemList = document.getElementById('itemList');
             itemList.innerHTML = ''; // Clear previous items
 
             items.forEach(item => {
-                const itemDiv = document.createElement('label');
+                let itemDiv = document.createElement('label');
                 itemDiv.className = 'inline-flex items-center mb-2 item';
                 itemDiv.innerHTML = `
-                <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
-                <span class="ml-2 text-gray-700 item-name">${item.item_name}</span>
-            `;
+            <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
+            <span class="ml-2 text-gray-700 item-name">${item.item_name}</span>
+        `;
                 itemList.appendChild(itemDiv);
             });
         }
     });
-</script>
+</script> -->
