@@ -31,7 +31,7 @@ while ($row = $result->fetch_assoc()) {
 ?>
 
 <div class="container mx-auto p-6">
-    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">งบประมาณสำหรับการยืม</h1>
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">งบประมาณครุภัณฑ์ และ วัสดุสำนักงาน</h1>
     <!-- Table of annual budgets -->
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg mt-6">
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 px-6 py-4 border-b border-gray-200 dark:border-gray-700">งบประมาณตามปี</h2>
@@ -45,6 +45,9 @@ while ($row = $result->fetch_assoc()) {
                         <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                             จำนวนงบประมาณ
                         </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                            รายงาน PDF
+                        </th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
@@ -52,69 +55,48 @@ while ($row = $result->fetch_assoc()) {
                         <tr class="hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150 ease-in-out">
                             <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100"><?php echo htmlspecialchars($budget['purchase_year']); ?></td>
                             <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100"><?php echo number_format($budget['total_price'], 2); ?> บาท</td>
+                            <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100">
+                                <button data-year="<?php echo htmlspecialchars($budget['purchase_year']); ?>" class="generate-pdf-btn px-4 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500">สร้างรายงาน PDF</button>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
-    <!-- Modals -->
-    <!-- Add Item Modal -->
-    <div id="addItemModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden" aria-labelledby="addItemModalLabel" aria-hidden="true">
+
+    <!-- Confirmation Modal for PDF Report -->
+    <div id="pdfModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden" aria-labelledby="pdfModalLabel" aria-hidden="true">
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg w-full max-w-md p-6">
-            <h2 id="addItemModalLabel" class="text-2xl font-bold text-gray-900 dark:text-white mb-4">เพิ่มรายการใหม่</h2>
-            <!-- Add Item Form -->
-            <form method="POST" action="add_item.php">
-                <div class="mb-4">
-                    <label for="item_name" class="block text-sm font-medium text-gray-900 dark:text-gray-100">ชื่อรายการ</label>
-                    <input type="text" id="item_name" name="item_name" required class="mt-1 block w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-                <!-- Other form fields -->
-                <div class="flex justify-end mt-4">
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500">บันทึก</button>
-                    <button type="button" id="closeAddItemModal" class="ml-4 px-4 py-2 bg-gray-600 text-white rounded-lg shadow-lg hover:bg-gray-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-500">ปิด</button>
-                </div>
-            </form>
+            <h2 id="pdfModalLabel" class="text-2xl font-bold text-gray-900 dark:text-white mb-4">สร้างรายงาน PDF</h2>
+            <p id="pdfModalMessage" class="mb-4">คุณแน่ใจหรือไม่ว่าต้องการสร้างรายงาน PDF สำหรับปี <span id="selectedYear"></span>?</p>
+            <div class="flex justify-end mt-4">
+                <button id="confirmGeneratePdfBtn" class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500">ใช่, สร้างรายงาน PDF</button>
+                <button id="cancelGeneratePdfBtn" class="ml-4 px-4 py-2 bg-gray-600 text-white rounded-lg shadow-lg hover:bg-gray-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-500">ยกเลิก</button>
+            </div>
         </div>
     </div>
 
-    <!-- Filter Modal -->
-    <div id="filterModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden" aria-labelledby="filterModalLabel" aria-hidden="true">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg w-full max-w-md p-6">
-            <h2 id="filterModalLabel" class="text-2xl font-bold text-gray-900 dark:text-white mb-4">กรองรายการ</h2>
-            <!-- Filter Form -->
-            <form method="GET" action="?page=Budget_for_borrowing">
-                <!-- Filter fields -->
-                <div class="mb-4">
-                    <label for="category" class="block text-sm font-medium text-gray-900 dark:text-gray-100">หมวดหมู่</label>
-                    <input type="text" id="category" name="category" class="mt-1 block w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-                <!-- Other filter fields -->
-                <div class="flex justify-end mt-4">
-                    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500">กรอง</button>
-                    <button type="button" id="closeFilterModal" class="ml-4 px-4 py-2 bg-gray-600 text-white rounded-lg shadow-lg hover:bg-gray-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-500">ปิด</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- JavaScript to handle modals -->
+    <!-- JavaScript to handle modals and PDF generation -->
     <script>
-        document.getElementById('addItemBtn').addEventListener('click', () => {
-            document.getElementById('addItemModal').classList.remove('hidden');
-        });
-        document.getElementById('filterBtn').addEventListener('click', () => {
-            document.getElementById('filterModal').classList.remove('hidden');
-        });
-        document.getElementById('generateReportBtn').addEventListener('click', () => {
-            // Handle report generation
+        let selectedYear = '';
+
+        document.querySelectorAll('.generate-pdf-btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+                selectedYear = event.target.getAttribute('data-year');
+                document.getElementById('selectedYear').textContent = selectedYear;
+                document.getElementById('pdfModal').classList.remove('hidden');
+            });
         });
 
-        document.getElementById('closeAddItemModal').addEventListener('click', () => {
-            document.getElementById('addItemModal').classList.add('hidden');
+        document.getElementById('confirmGeneratePdfBtn').addEventListener('click', () => {
+            // Redirect to the PDF generation script with the selected year
+            window.location.href = `../mpdf/equipment/Budget_for_pdf.php?year=${selectedYear}`;
         });
-        document.getElementById('closeFilterModal').addEventListener('click', () => {
-            document.getElementById('filterModal').classList.add('hidden');
+        // ../mpdf/equipment/equipment_pdf.php
+        document.getElementById('cancelGeneratePdfBtn').addEventListener('click', () => {
+            document.getElementById('pdfModal').classList.add('hidden');
         });
     </script>
 </div>
+<!-- ../mpdf/equipment/equipment_pdf.php -->

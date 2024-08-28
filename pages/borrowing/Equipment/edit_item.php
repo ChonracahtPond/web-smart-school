@@ -1,25 +1,97 @@
 <?php
-// Retrieve item for editing if item_id is present
+// ตรวจสอบว่ามี item_id มาหรือไม่
 if (isset($_GET['item_id'])) {
     $item_id = intval($_GET['item_id']);
+
+    // SQL สำหรับดึงข้อมูลของ item ที่ต้องการแก้ไข
     $sql = "SELECT * FROM items WHERE item_id = ?";
     $stmt = $conn->prepare($sql);
+
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($conn->error)); // แสดงข้อผิดพลาด
+    }
+
     $stmt->bind_param('i', $item_id);
     $stmt->execute();
     $result = $stmt->get_result();
     $item = $result->fetch_assoc();
+    $stmt->close();
 } else {
-    // Redirect to main page if no item_id is provided
     echo "<script>alert('Invalid item ID'); window.location.href='system.php?page=equipment_management';</script>";
     exit;
 }
 
+// ตรวจสอบว่ามีการส่งข้อมูลจากฟอร์มหรือไม่
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $item_id = intval($_POST['item_id']);
+
+    // SQL สำหรับการอัปเดตข้อมูล item
+    $sql = "UPDATE items SET 
+                item_name = ?, 
+                item_description = ?, 
+                category = ?, 
+                quantity = ?, 
+                unit = ?, 
+                location = ?, 
+                purchase_date = ?, 
+                supplier = ?, 
+                purchase_price = ?, 
+                status = ?, 
+                warranty_expiry = ?, 
+                last_maintenance_date = ?, 
+                maintenance_due_date = ?, 
+                barcode = ?, 
+                `condition` = ?, 
+                remarks = ?, 
+                department = ?, 
+                acquisition_type = ? 
+            WHERE item_id = ?";
+
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($conn->error)); // แสดงข้อผิดพลาด
+    }
+
+    // ผูกค่ากับ parameter ใน SQL statement
+    $stmt->bind_param(
+        'sssisissdsssssssssi',
+        $_POST['item_name'],
+        $_POST['item_description'],
+        $_POST['category'],
+        $_POST['quantity'],
+        $_POST['unit'],
+        $_POST['location'],
+        $_POST['purchase_date'],
+        $_POST['supplier'],
+        $_POST['purchase_price'],
+        $_POST['status'],
+        $_POST['warranty_expiry'],
+        $_POST['last_maintenance_date'],
+        $_POST['maintenance_due_date'],
+        $_POST['barcode'],
+        $_POST['condition'],
+        $_POST['remarks'],
+        $_POST['department'],
+        $_POST['acquisition_type'],
+        $item_id
+    );
+
+    // ตรวจสอบผลการอัปเดต
+    if ($stmt->execute()) {
+        echo "<script>window.location.href='system.php?page=equipment_management&status=1';</script>";
+    } else {
+        echo "<script> window.location.href='system.php?page=equipment_management&status=0';</script>";
+    }
+
+    $stmt->close();
+}
 ?>
 
 <div class="container mx-auto p-4">
     <h1 class="text-2xl font-bold mb-4">Edit Item</h1>
 
-    <form action="?page=update_item" method="POST">
+    <form action="" method="POST">
         <input type="hidden" name="item_id" value="<?php echo htmlspecialchars($item['item_id']); ?>">
 
         <div class="grid grid-cols-2 gap-4">

@@ -2,6 +2,7 @@
 include '../includes/header.php';
 
 
+
 ?>
 
 
@@ -13,10 +14,17 @@ include '../includes/header.php';
             // รับค่าพารามิเตอร์ URL
             $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 
+
+
+
             // ใช้ switch-case ในการแสดงเนื้อหาต่างๆ
             switch ($page) {
+
                 case 'dashboard':
                     include "../pages/dashboard.php";
+                    break;
+                case 'modals.php':
+                    include "../pages/borrowing/modal/modals.php";
                     break;
 
                     // ระบบสมัครเรียนใหม่
@@ -32,6 +40,9 @@ include '../includes/header.php';
 
                 case 'Budget_for_borrowing':
                     include "../pages/borrowing/Budget/Budget_for_borrowing.php";
+                    break;
+                case 'Budget_for_pdf.php':
+                    include "../mpdf/equipment/Budget_for_pdf.php";
                     break;
 
 
@@ -50,127 +61,14 @@ include '../includes/header.php';
                     break;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    // จัดการกับข้อมูลนักเรียน
-                case 'ManageUsers':
-                    include "../pages/Users/ManageUsers.php";
-                    break;
-                case 'add_user':
-                    include "../pages/Users/add_user.php";
-                    break;
-                case 'edit_user':
-                    include "../pages/Users/edit_user.php";
-                    break;
-                case 'delete_user':
-                    include "../pages/Users/delete_user.php";
-                    break;
-
-                    // จัดการเกรด
-                case 'StudentGrade':
-                    include "../pages/Users/Grade/StudentGrade.php";
-                    break;
-                case 'GradeList':
-                    include "../pages/Users/Grade/GradeList.php";
-                    break;
-
-                    // จัดการหน่วยกิจ
-                case 'Studentcredit':
-                    include "../pages/Users/credit/Studentcredit.php";
-                    break;
-                case 'creditList':
-                    include "../pages/Users/credit/creditList.php";
-                    break;
-
-                    // ขาดลามาสาย
-                case 'manage_attendance':
-                    include "../pages/Users/attendance/manage_attendance.php";
-                    break;
-                    // ขาดลามาสาย pdf
-                case 'attendance_pdf':
-                    include "../mpdf/attendance_pdf.php";
-                    break;
-
-                case 'manage_access_rights':
-                    include "../pages/Users/manage_access_rights.php";
-                    break;
-                case 'add_access_right':
-                    include "../pages/Users/add_access_right.php";
-                    break;
-                case 'reset_password':
-                    include "../pages/Users/reset_password.php";
-                    break;
-
-                case 'Manage_Activity':
-                    include "../pages/Activities/Manage_Activity.php";
-                    break;
-                case 'add_activity':
-                    include "../pages/Activities/add_activity.php";
-                    break;
-                case 'edit_activity':
-                    include "../pages/Activities/edit_activity.php";
-                    break;
-                case 'delete_activity':
-                    include "../pages/Activities/delete_activity.php";
-                    break;
-
-                case 'Manage_Credits':
-                    include "../pages/Activities/Manage_Credits.php";
-                    break;
-                case 'update_credits':
-                    include "../pages/Activities/update_credits.php";
-                    break;
-                case 'add_participant':
-                    include "../pages/Activities/add_participant.php";
-                    break;
-                case 'delete_participant':
-                    include "../pages/Activities/delete_participant.php";
-                    break;
-
-                case 'Reports_and_statistics':
-                    include "../pages/Activities/Reports_and_statistics.php";
-                    break;
-
-
-                case 'Manage_News':
-                    include "../pages/News/Manage_News.php";
-                    break;
-                case 'add_news':
-                    include "../pages/News/add_news.php";
-                    break;
-                case 'edit_news':
-                    include "../pages/News/edit_news.php";
-                    break;
-                case 'delete_news':
-                    include "../pages/News/delete_news.php";
-                    break;
-
-                case 'equipment_management':
-                    include "../pages/borrowing/equipment_management.php";
-                    break;
-
-
-
-
                 case 'System_for_borrowing':
-                    include "../pages/borrowing/System_for_borrowing.php";
+                    include "../pages/borrowing/system/System_for_borrowing.php";
+                    break;
+                case 'BorrowingDetails':
+                    include "../pages/borrowing/system/BorrowingDetails.php";
                     break;
                 case 'Borrow_equipment':
-                    include "../pages/borrowing/Borrow_equipment.php";
+                    include "../pages/borrowing/system/Borrow_equipment.php";
                     break;
                 case 'Return_equipment':
                     include "../pages/borrowing/Return_equipment.php";
@@ -194,6 +92,119 @@ include '../includes/header.php';
                 case 'add_borrowing':
                     include "../pages/borrowing/add_borrowing.php";
                     break;
+
+                case 'equipment_management':
+                    include "../pages/borrowing/equipment_management.php";
+                    break;
+
+
+
+
+
+
+
+
+
+
+
+
+                    //     // จัดการกับข้อมูลนักเรียน
+                    // case 'ManageUsers':
+                    //     include "../pages/Users/ManageUsers.php";
+                    //     break;
+                    // case 'add_user':
+                    //     include "../pages/Users/add_user.php";
+                    //     break;
+                    // case 'edit_user':
+                    //     include "../pages/Users/edit_user.php";
+                    //     break;
+                    // case 'delete_user':
+                    //     include "../pages/Users/delete_user.php";
+                    //     break;
+
+                    //     // จัดการเกรด
+                    // case 'StudentGrade':
+                    //     include "../pages/Users/Grade/StudentGrade.php";
+                    //     break;
+                    // case 'GradeList':
+                    //     include "../pages/Users/Grade/GradeList.php";
+                    //     break;
+
+                    //     // จัดการหน่วยกิจ
+                    // case 'Studentcredit':
+                    //     include "../pages/Users/credit/Studentcredit.php";
+                    //     break;
+                    // case 'creditList':
+                    //     include "../pages/Users/credit/creditList.php";
+                    //     break;
+
+                    //     // ขาดลามาสาย
+                    // case 'manage_attendance':
+                    //     include "../pages/Users/attendance/manage_attendance.php";
+                    //     break;
+                    //     // ขาดลามาสาย pdf
+                    // case 'attendance_pdf':
+                    //     include "../mpdf/attendance_pdf.php";
+                    //     break;
+
+                    // case 'manage_access_rights':
+                    //     include "../pages/Users/manage_access_rights.php";
+                    //     break;
+                    // case 'add_access_right':
+                    //     include "../pages/Users/add_access_right.php";
+                    //     break;
+                    // case 'reset_password':
+                    //     include "../pages/Users/reset_password.php";
+                    //     break;
+
+                    // case 'Manage_Activity':
+                    //     include "../pages/Activities/Manage_Activity.php";
+                    //     break;
+                    // case 'add_activity':
+                    //     include "../pages/Activities/add_activity.php";
+                    //     break;
+                    // case 'edit_activity':
+                    //     include "../pages/Activities/edit_activity.php";
+                    //     break;
+                    // case 'delete_activity':
+                    //     include "../pages/Activities/delete_activity.php";
+                    //     break;
+
+                    // case 'Manage_Credits':
+                    //     include "../pages/Activities/Manage_Credits.php";
+                    //     break;
+                    // case 'update_credits':
+                    //     include "../pages/Activities/update_credits.php";
+                    //     break;
+                    // case 'add_participant':
+                    //     include "../pages/Activities/add_participant.php";
+                    //     break;
+                    // case 'delete_participant':
+                    //     include "../pages/Activities/delete_participant.php";
+                    //     break;
+
+                    // case 'Reports_and_statistics':
+                    //     include "../pages/Activities/Reports_and_statistics.php";
+                    //     break;
+
+
+                    // case 'Manage_News':
+                    //     include "../pages/News/Manage_News.php";
+                    //     break;
+                    // case 'add_news':
+                    //     include "../pages/News/add_news.php";
+                    //     break;
+                    // case 'edit_news':
+                    //     include "../pages/News/edit_news.php";
+                    //     break;
+                    // case 'delete_news':
+                    //     include "../pages/News/delete_news.php";
+                    //     break;
+
+
+
+
+
 
 
 

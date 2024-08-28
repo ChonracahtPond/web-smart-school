@@ -55,15 +55,18 @@
                         <li>
                             <a href="?page=equipment_management" id="equipment_management" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
                         </li>
+
+                        <li>
+                            <a href="?page=System_for_borrowing" id="System_for_borrowing" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบยืม-คืน ครุภัณฑ์และวัสดุสำนักงาน</a>
+                        </li>
+                        <li>
+                            <a href="?page=Borrow_Office_Supplies" id="Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบเบิกวัสดุ ไม่ต้องคืน</a>
+                        </li>
                         <li>
                             <a href="?page=Budget_for_borrowing" id="Budget_for_borrowing" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">งบประมาณที่ใช้ (แยกตามปี)</a>
                         </li>
                         <li>
-                            <a href="?page=System_for_borrowing" id="System_for_borrowing" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบยืม-คืน ครุภัณฑ์และวัสดุสำนักงาน</a>
-                        </li>
-
-                        <li>
-                            <a href="?page=Borrow_Office_Supplies" id="Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบเบิกวัสดุ ไม่ต้องคืน</a>
+                            <a href="?page=" id="Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ประวัติ</a>
                         </li>
                     </ul>
                 </li>

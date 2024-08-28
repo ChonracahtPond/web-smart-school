@@ -1,6 +1,5 @@
 <?php
 
-
 // Fetch borrowings for returning
 $sql = "SELECT b.borrowing_id, i.item_name, b.quantity, r.condition
         FROM borrowings b
