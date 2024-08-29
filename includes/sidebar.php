@@ -72,7 +72,7 @@
                 </li>
                 <!----------------------------------- end ครุภัณฑ์และวัสดุสำนักงาน ----------------------------------->
                 <!----------------------------------- ครุภัณฑ์และวัสดุสำนักงาน ----------------------------------->
-                <li>
+                <!-- <li>
                     <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-white hover:text-gray-800 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-System_education" data-collapse-toggle="dropdown-System_education">
                         <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-gray-800" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 4H4v16h16V4zm-8 10H8v-2h4v2zm4-4H8V8h8v2z" />
@@ -93,10 +93,10 @@
                             <a href="?page=Borrow_Office_Supplies" id="Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบเบิกวัสดุ ไม่ต้องคืน</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <!----------------------------------- end ครุภัณฑ์และวัสดุสำนักงาน ----------------------------------->
                 <!----------------------------------- ครุภัณฑ์และวัสดุสำนักงาน ----------------------------------->
-                <li>
+                <!-- <li>
                     <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-white hover:text-gray-800 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-System_buyandhire" data-collapse-toggle="dropdown-System_buyandhire">
                         <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-gray-800" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 4H4v16h16V4zm-8 10H8v-2h4v2zm4-4H8V8h8v2z" />
@@ -108,19 +108,19 @@
                     </button>
                     <ul id="dropdown-System_buyandhire" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="?page=equipment_management" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
+                            <a href="?page=" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">การวางแผนจัดซื้อ</a>
                         </li>
                         <li>
-                            <a href="?page=System_for_borrowing" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบยืม-คืน ครุภัณฑ์และวัสดุสำนักงาน</a>
+                            <a href="?page=" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">การสร้างคำขอซื้อ</a>
                         </li>
                         <li>
-                            <a href="?page=Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบเบิกวัสดุ ไม่ต้องคืน</a>
+                            <a href="?page=" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">การประเมินและคัดเลือกผู้ขาย</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <!----------------------------------- end ครุภัณฑ์และวัสดุสำนักงาน ----------------------------------->
                 <!----------------------------------- ครุภัณฑ์และวัสดุสำนักงาน ----------------------------------->
-                <li>
+                <!-- <li>
                     <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-white hover:text-gray-800 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-System_payments" data-collapse-toggle="dropdown-System_payments">
                         <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-gray-800" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 4H4v16h16V4zm-8 10H8v-2h4v2zm4-4H8V8h8v2z" />
@@ -141,31 +141,31 @@
                             <a href="?page=Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบเบิกวัสดุ ไม่ต้องคืน</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <!----------------------------------- end ครุภัณฑ์และวัสดุสำนักงาน ----------------------------------->
-                <!----------------------------------- ครุภัณฑ์และวัสดุสำนักงาน ----------------------------------->
-                <li>
+                <!----------------------------------- Meetingandevent ----------------------------------->
+                <!-- <li>
                     <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-white hover:text-gray-800 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-System_Meetingandevent" data-collapse-toggle="dropdown-System_Meetingandevent">
                         <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-gray-800" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 4H4v16h16V4zm-8 10H8v-2h4v2zm4-4H8V8h8v2z" />
                         </svg>
-                        <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>การจัดการข้อมูลการประชุมและกิจกรรม:</span>
+                        <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>การจัดการข้อมูลการประชุม</span>
                         <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                         </svg>
                     </button>
                     <ul id="dropdown-System_Meetingandevent " class="hidden py-2 space-y-2">
                         <li>
-                            <a href="?page=equipment_management" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
+                            <a href="?page=System_Meetingandevent" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">การจัดการการประชุมและกิจกรรม</a>
                         </li>
                         <li>
-                            <a href="?page=System_for_borrowing" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบยืม-คืน ครุภัณฑ์และวัสดุสำนักงาน</a>
+                            <a href="?page=" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบยืม-คืน ครุภัณฑ์และวัสดุสำนักงาน</a>
                         </li>
                         <li>
-                            <a href="?page=Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบเบิกวัสดุ ไม่ต้องคืน</a>
+                            <a href="?page=" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ระบบเบิกวัสดุ ไม่ต้องคืน</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <!----------------------------------- end ครุภัณฑ์และวัสดุสำนักงาน ----------------------------------->
                 <!----------------------------------- จัดการรายงานและสถิติ ----------------------------------->
                 <li>
