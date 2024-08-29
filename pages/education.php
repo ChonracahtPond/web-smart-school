@@ -14,67 +14,46 @@
                     include "../pages/dashboard.php";
                     break;
 
-                    // จัดการกับข้อมูลนักเรียน
-                case 'ManageUsers':
-                    include "../pages/Users/ManageUsers.php";
-                    break;
-                case 'add_user':
-                    include "../pages/Users/add_user.php";
-                    break;
-                case 'edit_user':
-                    include "../pages/Users/edit_user.php";
-                    break;
-                case 'delete_user':
-                    include "../pages/Users/delete_user.php";
-                    break;
 
-                    // จัดการเกรด
-                case 'StudentGrade':
-                    include "../pages/Users/Grade/StudentGrade.php";
-                    break;
-                case 'GradeList':
-                    include "../pages/Users/Grade/GradeList.php";
-                    break;
+                    //     // จัดการเกรด
+                    // case 'StudentGrade':
+                    //     include "../pages/Users/Grade/StudentGrade.php";
+                    //     break;
+                    // case 'GradeList':
+                    //     include "../pages/Users/Grade/GradeList.php";
+                    //     break;
 
-                    // จัดการหน่วยกิจ
-                case 'Studentcredit':
-                    include "../pages/Users/credit/Studentcredit.php";
-                    break;
-                case 'creditList':
-                    include "../pages/Users/credit/creditList.php";
-                    break;
+                    //     // จัดการหน่วยกิจ
+                    // case 'Studentcredit':
+                    //     include "../pages/Users/credit/Studentcredit.php";
+                    //     break;
+                    // case 'creditList':
+                    //     include "../pages/Users/credit/creditList.php";
+                    //     break;
 
-                    // ขาดลามาสาย
-                case 'manage_attendance':
-                    include "../pages/Users/attendance/manage_attendance.php";
-                    break;
-                    // ขาดลามาสาย pdf
-                case 'attendance_pdf':
-                    include "../mpdf/attendance_pdf.php";
-                    break;
+                    //     // ขาดลามาสาย
+                    // case 'manage_attendance':
+                    //     include "../pages/Users/attendance/manage_attendance.php";
+                    //     break;
+                    //     // ขาดลามาสาย pdf
+                    // case 'attendance_pdf':
+                    //     include "../mpdf/attendance_pdf.php";
+                    //     break;
 
-                case 'manage_access_rights':
-                    include "../pages/Users/manage_access_rights.php";
-                    break;
-                case 'add_access_right':
-                    include "../pages/Users/add_access_right.php";
-                    break;
-                case 'reset_password':
-                    include "../pages/Users/reset_password.php";
-                    break;
 
-                case 'Manage_Activity':
-                    include "../pages/Activities/Manage_Activity.php";
-                    break;
-                case 'add_activity':
-                    include "../pages/Activities/add_activity.php";
-                    break;
-                case 'edit_activity':
-                    include "../pages/Activities/edit_activity.php";
-                    break;
-                case 'delete_activity':
-                    include "../pages/Activities/delete_activity.php";
-                    break;
+
+                    // case 'Manage_Activity':
+                    //     include "../pages/Activities/Manage_Activity.php";
+                    //     break;
+                    // case 'add_activity':
+                    //     include "../pages/Activities/add_activity.php";
+                    //     break;
+                    // case 'edit_activity':
+                    //     include "../pages/Activities/edit_activity.php";
+                    //     break;
+                    // case 'delete_activity':
+                    //     include "../pages/Activities/delete_activity.php";
+                    //     break;
 
                 case 'Manage_Credits':
                     include "../pages/Activities/Manage_Credits.php";
@@ -95,16 +74,16 @@
 
 
                 case 'Manage_courses':
-                    include "../pages/courses/Manage_courses.php";
+                    include "../pages/courses/Manage_courses/Manage_courses.php";
                     break;
                 case 'add_course':
-                    include "../pages/courses/add_course.php";
+                    include "../pages/courses/Manage_courses/add_course.php";
                     break;
                 case 'edit_course':
-                    include "../pages/courses/edit_course.php";
+                    include "../pages/courses/Manage_courses/edit_course.php";
                     break;
                 case 'delete_course':
-                    include "../pages/courses/delete_course.php";
+                    include "../pages/courses/Manage_courses/delete_course.php";
                     break;
 
                 case 'Manage_enrollments':

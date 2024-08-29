@@ -27,19 +27,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // // เปลี่ยนเส้นทางหลังจากเพิ่มข้อมูลสำเร็จ
         // header("Location: system.php?page=manage_courses");
         // exit();
-        echo "<script>alert('courses added successfully'); window.location.href='system.php?page=Manage_courses';</script>";
+        // echo "<script>window.location.href='system.php?page=equipment_management&status=1';</script>";
+        echo "<script>window.location.href='education.php?page=Manage_courses&status=1';</script>";
     } else {
         // แสดงข้อผิดพลาดหากเกิดปัญหา
         echo "Error: " . $stmt->error;
     }
 }
 ?>
-
-<div class="container mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">เพิ่มหลักสูตรใหม่</h1>
-    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <form action="" method="POST" class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-            <!-- <form method="POST" action=""> -->
+<!-- Modal -->
+<div id="courseModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white p-4 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-xl font-semibold mb-4">เพิ่มหลักสูตรใหม่</h2>
+        <form action="" method="POST">
             <div class="mb-4">
                 <label for="course_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">ชื่อหลักสูตร</label>
                 <input type="text" id="course_name" name="course_name" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" required>
@@ -81,6 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="text" id="academic_year" name="academic_year" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" required>
             </div>
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">เพิ่มหลักสูตร</button>
+            <button type="button" id="closeModal" class="ml-2 bg-gray-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-gray-600">ปิด</button>
         </form>
     </div>
 </div>

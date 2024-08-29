@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
     $stmt->bind_param("i", $course_id);
 
     if ($stmt->execute()) {
-        echo "<script>alert('courses delete successfully'); window.location.href='system.php?page=Manage_courses';</script>";
+        echo "<script>alert('courses delete successfully'); window.location.href='?page=Manage_courses';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }

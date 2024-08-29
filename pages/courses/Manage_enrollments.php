@@ -20,7 +20,7 @@ $result = $stmt->get_result();
 ?>
 
 <div class="container mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการ การลงทะเบียน</h1>
+    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">การลงทะเบียนเรียน</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
         <a href="system.php?page=add_enrollment" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+ เพิ่มการลงทะเบียนใหม่</a>
 

@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         // เปลี่ยนเส้นทางหลังจากอัพเดตข้อมูลสำเร็จ
-        echo "<script>alert('courses update successfully'); window.location.href='system.php?page=Manage_courses';</script>";
+        echo "<script>alert('courses update successfully'); window.location.href='?page=Manage_courses';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }
