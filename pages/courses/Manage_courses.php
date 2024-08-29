@@ -1,5 +1,4 @@
 <?php
-
 // ตรวจสอบว่ามีการส่งคำค้นหามาหรือไม่
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
@@ -18,78 +17,121 @@ $stmt->execute();
 $result = $stmt->get_result();
 ?>
 
-<div class="container mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการหลักสูตร</h1>
-    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <a href="system.php?page=add_course" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+ เพิ่มหลักสูตรใหม่</a>
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- ฟอร์มค้นหา -->
-        <form method="GET" action="" class="mb-4">
-            <div class="flex items-center">
-                <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" placeholder="ค้นหาตามชื่อหลักสูตร คำอธิบาย หรืออาจารย์">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 ml-2">ค้นหา</button>
-            </div>
-        </form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Courses DataTable</title>
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <style>
+        /* Overrides for Tailwind CSS */
+        .dataTables_wrapper .dataTables_filter input {
+            border-color: #edf2f7;
+            background-color: #edf2f7;
+        }
 
-        <table class="w-full mt-4 border-collapse">
-            <thead>
-                <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
-                    <th class="px-4 py-2 border-b">รหัสหลักสูตร</th>
-                    <th class="px-4 py-2 border-b">ชื่อหลักสูตร</th>
-                    <th class="px-4 py-2 border-b">คำอธิบาย</th>
-                    <th class="px-4 py-2 border-b">ชื่อครู</th>
-                    <th class="px-4 py-2 border-b">ประเภท</th>
-                    <th class="px-4 py-2 border-b">รหัสหลักสูตร</th>
-                    <th class="px-4 py-2 border-b">หน่วยกิจ</th>
-                    <th class="px-4 py-2 border-b">ภาคเรียน</th>
-                    <th class="px-4 py-2 border-b">ปีการศึกษา</th>
-                    <th class="px-4 py-2 border-b">สถานะ</th>
-                    <th class="px-4 py-2 border-b">การดำเนินการ</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if ($result->num_rows > 0) : ?>
-                    <?php while ($row = $result->fetch_assoc()) : ?>
-                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['course_id']); ?></td>
-                            <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['course_name']); ?></td>
-                            <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['course_description']); ?></td>
-                            <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['teacher_name']); ?></td>
-                            <td class="px-4 py-2 border-b">
-                                <?php
-                                // แสดงประเภทหลักสูตร
-                                $course_type = htmlspecialchars($row['course_type']);
-                                echo ($course_type === 'mandatory') ? 'บังคับ' : 'วิชาเลือก';
-                                ?>
-                            </td>
-                            <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['course_code']); ?></td>
-                            <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['credits']); ?></td>
-                            <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['semester']); ?></td>
-                            <td class="px-4 py-2 border-b"><?php echo htmlspecialchars($row['academic_year']); ?></td>
-                            <td class="px-4 py-2 border-b">
-                                <?php
-                                // แสดงสถานะด้วยสี
-                                $status = htmlspecialchars($row['status']);
-                                if ($status == 1) {
-                                    echo '<span class="text-green-500">กำลังทำงาน</span>';
-                                } else {
-                                    echo '<span class="text-red-500">ไม่ได้ใช้งาน</span>';
-                                }
-                                ?>
-                            </td>
-                            <td class="px-4 py-2 border-b">
-                                <a href="system.php?page=edit_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-blue-500 hover:text-blue-700">แก้ไข</a>
-                                |
-                                <a href="system.php?page=delete_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this course?')">ลบ</a>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
-                <?php else : ?>
+        table.dataTable.no-footer {
+            border-bottom: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการหลักสูตร</h1>
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
+            <a href="system.php?page=add_course" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+ เพิ่มหลักสูตรใหม่</a>
+
+            <!-- ฟอร์มค้นหา -->
+            <form method="GET" action="" class="mb-4">
+                <div class="flex items-center">
+                    <input id="search-input" type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" placeholder="ค้นหาตามชื่อหลักสูตร คำอธิบาย หรืออาจารย์">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 ml-2">ค้นหา</button>
+                </div>
+            </form>
+
+            <table id="courses-table" class="display stripe hover w-full" style="width:100%;">
+                <thead>
                     <tr>
-                        <td colspan="11" class="px-4 py-2 text-center">ไม่มีข้อมูล</td>
+                        <th>รหัสหลักสูตร</th>
+                        <th>ชื่อหลักสูตร</th>
+                        <th>คำอธิบาย</th>
+                        <th>ชื่อครู</th>
+                        <th>ประเภท</th>
+                        <th>รหัสหลักสูตร</th>
+                        <th>หน่วยกิจ</th>
+                        <th>ภาคเรียน</th>
+                        <th>ปีการศึกษา</th>
+                        <th>สถานะ</th>
+                        <th>การดำเนินการ</th>
                     </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php if ($result->num_rows > 0) : ?>
+                        <?php while ($row = $result->fetch_assoc()) : ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($row['course_id']); ?></td>
+                                <td><?php echo htmlspecialchars($row['course_name']); ?></td>
+                                <td><?php echo htmlspecialchars($row['course_description']); ?></td>
+                                <td><?php echo htmlspecialchars($row['teacher_name']); ?></td>
+                                <td><?php echo ($row['course_type'] === 'mandatory') ? 'บังคับ' : 'วิชาเลือก'; ?></td>
+                                <td><?php echo htmlspecialchars($row['course_code']); ?></td>
+                                <td><?php echo htmlspecialchars($row['credits']); ?></td>
+                                <td><?php echo htmlspecialchars($row['semester']); ?></td>
+                                <td><?php echo htmlspecialchars($row['academic_year']); ?></td>
+                                <td>
+                                    <?php
+                                    $status = htmlspecialchars($row['status']);
+                                    echo ($status == 1) ? '<span class="text-green-500">กำลังทำงาน</span>' : '<span class="text-red-500">ไม่ได้ใช้งาน</span>';
+                                    ?>
+                                </td>
+                                <td>
+                                    <a href="system.php?page=edit_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-blue-500 hover:text-blue-700">แก้ไข</a> |
+                                    <a href="system.php?page=delete_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this course?')">ลบ</a>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    <?php else : ?>
+                        <tr>
+                            <td colspan="11" class="px-4 py-2 text-center">ไม่มีข้อมูล</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Datatables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#courses-table').DataTable({
+                responsive: true
+            });
+        });
+    </script>
+    <script>
+        // JavaScript สำหรับการค้นหาแบบเรียลไทม์
+        document.getElementById('search-input').addEventListener('input', function() {
+            const searchQuery = this.value.toLowerCase();
+            const table = document.getElementById('courses-table');
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const cells = row.getElementsByTagName('td');
+                const matches = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(searchQuery));
+                row.style.display = matches ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

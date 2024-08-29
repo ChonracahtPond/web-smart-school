@@ -16,7 +16,7 @@ const pageLinkMap = {
 
   //   educationsidebar
   Manage_courses: "Manage-courses-link",
-  Manage_enrollments: "Manage-enrollments-link",
+  Manage_enrollments: "Manage-enrollments-link",  
   Manage_Activity: "manage-activity-link",
   Manage_Credits: "manage-credits-link",
   Reports_and_statistics: "reports-statistics-link",
