@@ -3,7 +3,7 @@
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $item_id = $_POST['item_id'];
-    $borrower_name = $_POST['borrower_name'];
+    $user_id = $_POST['user_id'];
     $quantity = $_POST['quantity'];
 
     // ตรวจสอบจำนวนวัสดุที่มีอยู่
@@ -21,9 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             try {
                 // Insert borrowing record
-                $insert_sql = "INSERT INTO permanent_borrowings (item_id, borrower_name, quantity) VALUES (?, ?, ?)";
+                $insert_sql = "INSERT INTO permanent_borrowings (item_id, user_id, quantity) VALUES (?, ?, ?)";
                 if ($stmt = $conn->prepare($insert_sql)) {
-                    $stmt->bind_param("isi", $item_id, $borrower_name, $quantity);
+                    $stmt->bind_param("isi", $item_id, $user_id, $quantity);
                     $stmt->execute();
                     $stmt->close();
                 } else {
@@ -43,14 +43,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // คอมมิทธุรกรรม
                 $conn->commit();
 
-                echo "<script>alert('Item borrowed successfully'); window.location.href='system.php?page=Borrow_Office_Supplies';</script>";
+                echo "<script>window.location.href='system.php?page=Borrow_Office_Supplies&status=1';</script>";
             } catch (Exception $e) {
                 // ยกเลิกธุรกรรมหากเกิดข้อผิดพลาด
                 $conn->rollback();
-                echo "<script>alert('Error: " . $e->getMessage() . "'); window.location.href='system.php?page=Borrow_Office_Supplies';</script>";
+                echo "<script>alert('Error: " . $e->getMessage() . "'); window.location.href='system.php?page=Borrow_Office_Supplies&status=0';</script>";
             }
         } else {
-            echo "<script>alert('Insufficient stock for this item.'); window.location.href='system.php?page=Borrow_Office_Supplies';</script>";
+            echo "<script>alert('สต็อกไม่เพียงพอสำหรับรายการนี้.'); window.location.href='system.php?page=Borrow_Office_Supplies&status=0';</script>";
         }
     } else {
         echo "Error preparing check quantity statement: " . $conn->error;

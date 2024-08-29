@@ -5,7 +5,6 @@ include '../includes/header.php';
 
 ?>
 
-
 <div class="container w-full ml-10">
     <!-- Main Content -->
     <main class="flex-1 p-4">
@@ -13,9 +12,6 @@ include '../includes/header.php';
             <?php
             // รับค่าพารามิเตอร์ URL
             $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
-
-
-
 
             // ใช้ switch-case ในการแสดงเนื้อหาต่างๆ
             switch ($page) {
@@ -60,7 +56,7 @@ include '../includes/header.php';
                     break;
 
 
-                    
+
                 case 'System_for_borrowing':
                     include "../pages/borrowing/system/System_for_borrowing.php";
                     break;
@@ -78,20 +74,31 @@ include '../includes/header.php';
                     break;
 
                 case 'Borrow_Office_Supplies':
-                    include "../pages/borrowing/Borrow_Office_Supplies.php";
+                    include "../pages/borrowing/OfficeSupplies/Borrow_Office_Supplies.php";
                     break;
                 case 'borrow_action':
-                    include "../pages/borrowing/borrow_action.php";
+                    include "../pages/borrowing/OfficeSupplies/borrow_action.php";
                     break;
                 case 'edit_borrowing':
-                    include "../pages/borrowing/edit_borrowing.php";
+                    include "../pages/borrowing/OfficeSupplies/edit_borrowing.php";
                     break;
                 case 'delete_borrowing':
-                    include "../pages/borrowing/delete_borrowing.php";
+                    include "../pages/borrowing/OfficeSupplies/delete_borrowing.php";
                     break;
                 case 'add_borrowing':
-                    include "../pages/borrowing/add_borrowing.php";
+                    include "../pages/borrowing/OfficeSupplies/add_borrowing.php";
                     break;
+
+
+                case 'borrowing_Borrow_history':
+                    include "../pages/borrowing/History/borrowing_Borrow_history.php";
+                    break;
+                case 'History_Report.php':
+                    include "../mpdf/History/History_Report.php";
+                    break;
+
+
+
 
                 case 'equipment_management':
                     include "../pages/borrowing/equipment_management.php";

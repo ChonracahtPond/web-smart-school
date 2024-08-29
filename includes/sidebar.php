@@ -66,7 +66,7 @@
                             <a href="?page=Budget_for_borrowing" id="Budget_for_borrowing" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">งบประมาณที่ใช้ (แยกตามปี)</a>
                         </li>
                         <li>
-                            <a href="?page=" id="Borrow_Office_Supplies" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ประวัติ</a>
+                            <a href="?page=borrowing_Borrow_history" id="borrowing_Borrow_history" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ประวัติ</a>
                         </li>
                     </ul>
                 </li>
