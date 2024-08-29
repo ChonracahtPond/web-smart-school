@@ -8,11 +8,11 @@
                             <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                             <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                         </svg>
-                        <span class="ml-3">การจัดการหลักสูตร</span>
+                        <span class="ml-3">การจัดการรายวิชา</span>
                     </a>
                 </li>
                 <div class="bg-white w-full h-0.5"></div>
-                <!----------------------------------- จัดการหลักสูตรและเนื้อหา ----------------------------------->
+                <!----------------------------------- จัดการรายวิชาและเนื้อหา ----------------------------------->
                 <li>
                     <button type="button" id="manage-activity-button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg hover:bg-white hover:text-gray-800 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-courses" data-collapse-toggle="dropdown-Manage-courses">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#FFF" height="20px" width="20px" version="1.1" id="Capa_1" viewBox="0 0 490.1 490.1" xml:space="preserve">
@@ -31,22 +31,25 @@
                             </g>
                         </svg>
 
-                        <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>จัดการหลักสูตรและเนื้อหา</span>
+                        <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>จัดการรายวิชาและเนื้อหา</span>
                         <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                         </svg>
                     </button>
                     <ul id="dropdown-Manage-courses" class="hidden py-2 space-y-2">
-                        <li>
+                        <!-- <li>
                             <a href="?page=Manage_courses" id="Manage-courses-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
+                        </li> -->
+                        <li>
+                            <a href="?page=Manage_courses" id="Manage-courses-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ระบบจัดการรายวิชา</a>
                         </li>
                         <!-- <li>
                             <a href="?page=" id="Manage-enrollments-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">การจัดการการลงทะเบียนเรียน</a>
                         </li> -->
                     </ul>
                 </li>
-                <!----------------------------------- end จัดการหลักสูตรและเนื้อหา ----------------------------------->
-                <!----------------------------------- จัดการหลักสูตรและเนื้อหา ----------------------------------->
+                <!----------------------------------- end จัดการรายวิชาและเนื้อหา ----------------------------------->
+                <!----------------------------------- จัดการรายวิชาและเนื้อหา ----------------------------------->
                 <li>
                     <a href="?page=Manage_enrollments" id="Manage-enrollments-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 14 14">
@@ -56,7 +59,29 @@
                         <span class="ml-3 flex-1 whitespace-nowrap">การจัดการการลงทะเบียนเรียน</span>
                     </a>
                 </li>
-                <!----------------------------------- end จัดการหลักสูตรและเนื้อหา ----------------------------------->
+                <!----------------------------------- end จัดการรายวิชาและเนื้อหา ----------------------------------->
+                <!----------------------------------- จัดการรายวิชาและเนื้อหา ----------------------------------->
+                <li>
+                    <a href="?page=Manage_enrollments" id="Manage-enrollments-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 14 14">
+                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
+                        </svg>
+                        <span class="ml-3 flex-1 whitespace-nowrap">การจัดการการประเมินผล</span>
+                    </a>
+                </li>
+                <!----------------------------------- end จัดการรายวิชาและเนื้อหา ----------------------------------->
+                <!----------------------------------- จัดการรายวิชาและเนื้อหา ----------------------------------->
+                <li>
+                    <a href="?page=Manage_enrollments" id="Manage-enrollments-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 14 14">
+                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
+                        </svg>
+                        <span class="ml-3 flex-1 whitespace-nowrap">ระบบจบการศึกษา</span>
+                    </a>
+                </li>
+                <!----------------------------------- end จัดการรายวิชาและเนื้อหา ----------------------------------->
                 <!----------------------------------- กพช ----------------------------------->
                 <li>
                     <button type="button" id="manage-activity-button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg hover:bg-white hover:text-gray-800 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-activity" data-collapse-toggle="dropdown-Manage-activity">

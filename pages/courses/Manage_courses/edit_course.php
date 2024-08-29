@@ -4,12 +4,12 @@
 $sql_teachers = "SELECT teacher_id, teacher_name FROM teachers";
 $teachers_result = $conn->query($sql_teachers);
 
-// ดึงข้อมูลหลักสูตรที่ต้องการแก้ไข
+// ดึงข้อมูลรายวิชาที่ต้องการแก้ไข
 $course_result = [];
 if (isset($_GET['id'])) {
     $course_id = $_GET['id'];
 
-    // ดึงข้อมูลหลักสูตรที่ต้องการแก้ไข
+    // ดึงข้อมูลรายวิชาที่ต้องการแก้ไข
     $sql = "SELECT * FROM courses WHERE course_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $course_id);

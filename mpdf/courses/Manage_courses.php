@@ -43,16 +43,16 @@ $mpdf = new \Mpdf\Mpdf([
     'default_font' => 'sarabun' // เลือกฟอนต์ที่ต้องการใช้
 ]);
 
-$html = '<h1>รายงานหลักสูตร</h1>';
+$html = '<h1>รายงานรายวิชา</h1>';
 $html .= '<table border="1" cellpadding="10" cellspacing="0" style="width:100%; border-collapse: collapse;">
             <thead>
                 <tr>
-                    <th>รหัสหลักสูตร</th>
-                    <th>ชื่อหลักสูตร</th>
+                    <th>รหัสรายวิชา</th>
+                    <th>ชื่อรายวิชา</th>
                     <th>คำอธิบาย</th>
                     <th>ชื่อครู</th>
                     <th>ประเภท</th>
-                    <th>รหัสหลักสูตร</th>
+                    <th>รหัสรายวิชา</th>
                     <th>หน่วยกิจ</th>
                     <th>ภาคเรียน</th>
                     <th>ปีการศึกษา</th>

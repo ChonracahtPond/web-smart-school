@@ -29,34 +29,37 @@ $result = $stmt->get_result();
     table.dataTable.no-footer {
         border-bottom: 1px solid #e2e8f0;
     }
+
+    .clickable-row {
+        cursor: pointer;
+    }
 </style>
 
-
 <div class="container mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการหลักสูตร</h1>
+    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการรายวิชา</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
         <!-- ปุ่มเปิด Modal -->
-        <button id="openModal" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4">+ เพิ่มหลักสูตรใหม่</button>
+        <button id="openModal" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4">+ เพิ่มรายวิชาใหม่</button>
 
         <button id="exportReport" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-600 mb-4">ออกรายงาน PDF</button>
 
         <!-- ฟอร์มค้นหา -->
         <form method="GET" action="" class="mb-4">
             <div class="flex items-center">
-                <input id="search-input" type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" placeholder="ค้นหาตามชื่อหลักสูตร คำอธิบาย หรืออาจารย์">
+                <input id="search-input" type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" placeholder="ค้นหาตามชื่อรายวิชา คำอธิบาย หรืออาจารย์">
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 ml-2">ค้นหา</button>
             </div>
         </form>
-
+        <p class="text-red-400">**คลิกที่รายวิชาเพื่อดูรายละเอียดรายวิชา**</p>
         <table id="courses-table" class="display stripe hover w-full" style="width:100%;">
             <thead>
                 <tr>
-                    <th>รหัสหลักสูตร</th>
-                    <th>ชื่อหลักสูตร</th>
+                    <th>รหัสรายวิชา</th>
+                    <th>ชื่อรายวิชา</th>
                     <th>คำอธิบาย</th>
                     <th>ชื่อครู</th>
                     <th>ประเภท</th>
-                    <th>รหัสหลักสูตร</th>
+                    <th>รหัสรายวิชา</th>
                     <th>หน่วยกิจ</th>
                     <th>ภาคเรียน</th>
                     <th>ปีการศึกษา</th>
@@ -67,7 +70,7 @@ $result = $stmt->get_result();
             <tbody>
                 <?php if ($result->num_rows > 0) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
-                        <tr>
+                        <tr class="clickable-row" data-href="?page=course_details&course_id=<?php echo htmlspecialchars($row['course_id']); ?>">
                             <td><?php echo htmlspecialchars($row['course_id']); ?></td>
                             <td><?php echo htmlspecialchars($row['course_name']); ?></td>
                             <td><?php echo htmlspecialchars($row['course_description']); ?></td>
@@ -121,6 +124,10 @@ $result = $stmt->get_result();
             $('#courseModal').addClass('hidden');
         });
 
+        // JavaScript สำหรับทำให้แถวของตารางคลิกได้
+        $('.clickable-row').click(function() {
+            window.location = $(this).data('href');
+        });
     });
 </script>
 <script>

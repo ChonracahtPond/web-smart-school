@@ -76,6 +76,9 @@
                 case 'Manage_courses':
                     include "../pages/courses/Manage_courses/Manage_courses.php";
                     break;
+                case 'course_details':
+                    include "../pages/courses/Manage_courses/course_details.php";
+                    break;
                 case 'add_course':
                     include "../pages/courses/Manage_courses/add_course.php";
                     break;
@@ -87,16 +90,16 @@
                     break;
 
                 case 'Manage_enrollments':
-                    include "../pages/courses/Manage_enrollments.php";
+                    include "../pages/courses/register/Manage_enrollments.php";
                     break;
                 case 'add_enrollment':
-                    include "../pages/courses/add_enrollment.php";
+                    include "../pages/courses/register/add_enrollment.php";
                     break;
                 case 'edit_enrollment':
-                    include "../pages/courses/edit_enrollment.php";
+                    include "../pages/courses/register/edit_enrollment.php";
                     break;
                 case 'delete_enrollment':
-                    include "../pages/courses/delete_enrollment.php";
+                    include "../pages/courses/register/delete_enrollment.php";
                     break;
 
 
