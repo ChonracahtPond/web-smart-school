@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['borrow'])) {
-    $borrower_name = $_POST['borrower_name'];
+    $user_id = $_POST['user_id'];
     $return_due_date = $_POST['return_due_date'];
     $borrowed_items_data = isset($_POST['borrowed_items_data']) ? json_decode($_POST['borrowed_items_data'], true) : [];
 
@@ -20,9 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['borrow'])) {
             $quantity = $item['quantity'];
 
             // Insert borrowing record
-            $sql = "INSERT INTO borrowings (item_id, borrower_name, quantity, return_due_date) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO borrowings (item_id, user_id, quantity, return_due_date) VALUES (?, ?, ?, ?)";
             if ($stmt = $conn->prepare($sql)) {
-                $stmt->bind_param("isis", $item_id, $borrower_name, $quantity, $return_due_date);
+                $stmt->bind_param("isis", $item_id, $user_id, $quantity, $return_due_date);
                 $stmt->execute();
                 $stmt->close();
             } else {

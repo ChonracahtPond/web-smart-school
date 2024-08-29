@@ -46,7 +46,6 @@ include '../includes/header.php';
                     break;
 
 
-
                 case 'add_item':
                     include "../pages/borrowing/Equipment/add_item.php";
                     break;
@@ -61,6 +60,7 @@ include '../includes/header.php';
                     break;
 
 
+                    
                 case 'System_for_borrowing':
                     include "../pages/borrowing/system/System_for_borrowing.php";
                     break;
