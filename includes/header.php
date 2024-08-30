@@ -42,7 +42,8 @@ include '../includes/modal/modal.php';
 ?>
 
 <body class="bg-white">
-    <header class="bg-[#6e4db0] text-white p-3 sticky top-0">
+    <!-- <header class="bg-[#6e4db0] text-white p-3 sticky top-0"> -->
+    <header class="bg-[#6e4db0] text-white p-3  top-0">
         <nav class="flex items-center">
             <img src="../assets/images/LOGO@3x.png" class="w-[50px] h-[50px] ml-10" alt="Logo">
             <ul class="flex space-x-6 ml-6">
@@ -51,11 +52,6 @@ include '../includes/modal/modal.php';
                 <li><a href="admin.php" class="hover:underline">ผู้ดูแลระบบ</a></li>
                 <li><a href="teacher.php" class="hover:underline">ครู</a></li>
                 <li><a href="student.php" class="hover:underline">นักเรียน</a></li>
-                <!-- <div class="marquee-container ">
-                    <div class="marquee text-2xl font-semibold text-white">
-                        ข้อความที่วิ่งจากทางขวาไปซ้าย - สร้างเอฟเฟกต์การเคลื่อนไหวที่น่าสนใจ!
-                    </div>
-                </div> -->
                 <?php include "fontslide.php" ?>
             </ul>
         </nav>

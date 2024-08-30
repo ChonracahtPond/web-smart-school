@@ -72,6 +72,30 @@
                     include "../pages/Activities/Reports_and_statistics.php";
                     break;
 
+                case 'Evaluation_management':
+                    include "../pages/Evaluation/Evaluation_management.php";
+                    break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 case 'Manage_courses':
                     include "../pages/courses/Manage_courses/Manage_courses.php";
@@ -92,8 +116,8 @@
                 case 'Manage_enrollments':
                     include "../pages/courses/register/Manage_enrollments.php";
                     break;
-                case 'add_enrollment':
-                    include "../pages/courses/register/add_enrollment.php";
+                case 'Add_enrollment':
+                    include "../pages/courses/register/Add_enrollment.php";
                     break;
                 case 'edit_enrollment':
                     include "../pages/courses/register/edit_enrollment.php";

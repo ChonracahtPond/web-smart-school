@@ -4,106 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modal Example</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.1/dist/tailwind.min.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Toast Notifications Example</title>
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
     <style>
-        /* Modal Animation Styles */
-        .modal-enter {
+        /* Toast animations */
+        .toast-enter {
+            -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
             opacity: 0;
-            transform: scale(0.9);
         }
 
-        .modal-enter-active {
+        .toast-enter-active {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
             opacity: 1;
-            transform: scale(1);
             transition: opacity 300ms ease-out, transform 300ms ease-out;
         }
 
-        .modal-exit {
+        .toast-exit {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
             opacity: 1;
-            transform: scale(1);
         }
 
-        .modal-exit-active {
+        .toast-exit-active {
+            -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
             opacity: 0;
-            transform: scale(0.9);
             transition: opacity 300ms ease-in, transform 300ms ease-in;
         }
 
-        /* Horizontal Loader Animation Styles */
+        /* Loader Styles */
         .horizontal-loader {
-            width: 200px;
-            height: 6px;
+            width: 100%;
+            height: 4px;
             background-color: rgba(0, 0, 0, 0.1);
-            position: relative;
+            position: absolute;
+            bottom: 0;
+            left: 0;
             overflow: hidden;
-            border-radius: 3px;
-            margin: 16px 0;
-            /* Space between content and loader */
+            border-radius: 2px;
         }
 
-        .horizontal-loader::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100px;
-            width: 100px;
+        .horizontal-loader span {
+            display: block;
             height: 100%;
-            background-color: #3498db;
-            animation: load 1.5s infinite;
+            background-color: #FFF;
+            position: absolute;
+            left: -100%;
+            width: 100%;
+            animation: load 3s linear forwards;
         }
 
         @keyframes load {
-            0% {
-                left: -100px;
-            }
-
-            50% {
-                left: calc(100% - 100px);
-            }
-
-            100% {
-                left: -100px;
+            to {
+                left: 100%;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden modal-enter modal-enter-active">
-        <div class="bg-white p-6 rounded-lg w-11/12 max-w-md mx-auto relative flex flex-col">
-            <div class="relative z-20 flex flex-col flex-grow">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-2xl font-bold text-green-600">สำเร็จ</h2>
-                    <button id="closeSuccessModal" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
-                </div>
-                <p class="mb-4">บันทึกข้อมูลสำเร็จ</p>
-                <div class="flex justify-end">
-                    <button id="closeSuccessModalBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">ปิด</button>
-                </div>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 flex items-center justify-center pb-4">
-                <div class="horizontal-loader"></div>
+    <!-- Success Toast -->
+    <div id="successToast" class="fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm hidden toast-enter toast-enter-active">
+        <div class="bg-green-500 text-white p-4 rounded-lg shadow-lg flex items-center justify-between relative">
+            <span>บันทึกข้อมูลสำเร็จ</span>
+            <button id="closeSuccessToast" class="text-white ml-4">
+                <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                </svg>
+            </button>
+            <div class="horizontal-loader">
+                <span></span>
             </div>
         </div>
     </div>
 
-    <!-- Error Modal -->
-    <div id="errorModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden modal-enter modal-enter-active">
-        <div class="bg-white p-6 rounded-lg w-11/12 max-w-md mx-auto relative flex flex-col">
-            <div class="relative z-20 flex flex-col flex-grow">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-2xl font-bold text-red-600">เกิดข้อผิดพลาด</h2>
-                    <button id="closeErrorModal" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
-                </div>
-                <p class="mb-4">เกิดปัญหาบางอย่างเกี่ยวกับระบบ</p>
-                <div class="flex justify-end">
-                    <button id="closeErrorModalBtn" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ปิด</button>
-                </div>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 flex items-center justify-center pb-4">
-                <div class="horizontal-loader"></div>
+    <!-- Error Toast -->
+    <div id="errorToast" class="fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm hidden toast-enter toast-enter-active">
+        <div class="bg-red-500 text-white p-4 rounded-lg shadow-lg flex items-center justify-between relative">
+            <span>เกิดข้อผิดพลาด</span>
+            <button id="closeErrorToast" class="text-white ml-4">
+                <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                </svg>
+            </button>
+            <div class="horizontal-loader">
+                <span></span>
             </div>
         </div>
     </div>
@@ -117,71 +106,65 @@
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
 
-        // Show the appropriate modal based on the URL parameter
-        function showModal() {
+        // Show the appropriate toast based on the URL parameter
+        function showToast() {
             const status = getUrlParameter('status');
-            const successModal = document.getElementById('successModal');
-            const errorModal = document.getElementById('errorModal');
+            const successToast = document.getElementById('successToast');
+            const errorToast = document.getElementById('errorToast');
 
             if (status === '1') {
-                successModal.classList.remove('hidden');
+                successToast.classList.remove('hidden');
                 setTimeout(() => {
-                    successModal.classList.add('modal-exit');
-                    successModal.classList.remove('modal-enter-active');
-                    successModal.classList.add('modal-exit-active');
+                    successToast.classList.add('toast-exit');
+                    successToast.classList.remove('toast-enter-active');
+                    successToast.classList.add('toast-exit-active');
                     setTimeout(() => {
-                        successModal.classList.add('hidden');
-                        successModal.classList.remove('modal-exit');
-                        successModal.classList.remove('modal-exit-active');
-                        successModal.classList.add('modal-enter');
+                        successToast.classList.add('hidden');
+                        successToast.classList.remove('toast-exit');
+                        successToast.classList.remove('toast-exit-active');
+                        successToast.classList.add('toast-enter');
                     }, 300);
-                }, 1000);
+                }, 3000); // Toast visible for 3 seconds
             } else if (status === '0') {
-                errorModal.classList.remove('hidden');
+                errorToast.classList.remove('hidden');
                 setTimeout(() => {
-                    errorModal.classList.add('modal-exit');
-                    errorModal.classList.remove('modal-enter-active');
-                    errorModal.classList.add('modal-exit-active');
+                    errorToast.classList.add('toast-exit');
+                    errorToast.classList.remove('toast-enter-active');
+                    errorToast.classList.add('toast-exit-active');
                     setTimeout(() => {
-                        errorModal.classList.add('hidden');
-                        errorModal.classList.remove('modal-exit');
-                        errorModal.classList.remove('modal-exit-active');
-                        errorModal.classList.add('modal-enter');
+                        errorToast.classList.add('hidden');
+                        errorToast.classList.remove('toast-exit');
+                        errorToast.classList.remove('toast-exit-active');
+                        errorToast.classList.add('toast-enter');
                     }, 300);
-                }, 1000);
+                }, 3000); // Toast visible for 3 seconds
             }
         }
 
-        // Close modal functions
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.add('modal-exit');
-            modal.classList.remove('modal-enter-active');
-            modal.classList.add('modal-exit-active');
+        // Close toast functions
+        function closeToast(toastId) {
+            const toast = document.getElementById(toastId);
+            toast.classList.add('toast-exit');
+            toast.classList.remove('toast-enter-active');
+            toast.classList.add('toast-exit-active');
             setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('modal-exit');
-                modal.classList.remove('modal-exit-active');
-                modal.classList.add('modal-enter');
+                toast.classList.add('hidden');
+                toast.classList.remove('toast-exit');
+                toast.classList.remove('toast-exit-active');
+                toast.classList.add('toast-enter');
             }, 300);
         }
 
-        document.getElementById('closeSuccessModal').onclick = function() {
-            closeModal('successModal');
+        document.getElementById('closeSuccessToast').onclick = function() {
+            closeToast('successToast');
         };
-        document.getElementById('closeSuccessModalBtn').onclick = function() {
-            closeModal('successModal');
-        };
-        document.getElementById('closeErrorModal').onclick = function() {
-            closeModal('errorModal');
-        };
-        document.getElementById('closeErrorModalBtn').onclick = function() {
-            closeModal('errorModal');
+        document.getElementById('closeErrorToast').onclick = function() {
+            closeToast('errorToast');
         };
 
-        // Show the modal when the page loads
+        // Show the toast when the page loads
         window.onload = function() {
-            showModal();
+            showToast();
         };
     </script>
 </body>

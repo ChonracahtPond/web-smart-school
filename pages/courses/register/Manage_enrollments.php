@@ -138,7 +138,7 @@ $result = $stmt->get_result();
     </div>
 </div>
 
-<?php include "add_enrollment.php" ?>
+<?php include "modaladd_enrollment.php" ?>
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- DataTables -->

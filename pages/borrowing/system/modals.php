@@ -18,7 +18,7 @@ $borrowings_result = $conn->query($sql_borrowings);
 ?>
 
 <!-- Borrowing Modal -->
-<div id="borrowingModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center hidden">
+<div id="borrowingModal" class="fixed inset-0 bg-gray   -500 bg-opacity-50 flex items-center justify-center hidden">
     <div class="bg-white p-8 rounded-lg shadow-lg w-full md:w-3/4 lg:w-2/3 flex flex-col md:flex-row">
         <!-- Left Section: Items List -->
         <div class="md:w-1/3 p-4 border-r border-gray-300 flex flex-col">
@@ -169,91 +169,6 @@ $borrowings_result = $conn->query($sql_borrowings);
 
             document.getElementById('borrowedItemsData').value = JSON.stringify(itemsData);
         }
-
-
-
-
     });
 </script>
 
-
-
-
-
-
-
-
-
-
-
-<?php
-// $sql = "SELECT b.borrowing_id, i.item_name, b.quantity, b.user_id
-//         FROM borrowings b
-//         JOIN items i ON b.item_id = i.item_id
-//         WHERE b.returned_at IS NULL";
-// $borrowings_result = $conn->query($sql);
-?>
-
-<!-- <div id="returningModal" class="fixed inset-0 bg-gray-800 bg-opacity-60 flex items-center justify-center hidden">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
-        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">คืนอุปกรณ์</h2>
-
-        <form action="?page=Return_equipment" method="post" class="space-y-6">
-
-          
-            <div>
-                <label for="search_borrower" class="block text-sm font-medium text-gray-700">ค้นหาผู้ยืม:</label>
-                <input type="text" id="search_borrower" name="search_borrower" class="form-input mt-1 block w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="ค้นหาชื่อผู้ยืม...">
-            </div>
-
-            <div>
-                <label for="borrowing_id" class="block text-sm font-medium text-gray-700">เลือกข้อมูลการยืม:</label>
-                <select id="borrowing_id" name="borrowing_id" class="form-select mt-1 block w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <?php while ($row = $borrowings_result->fetch_assoc()) { ?>
-                        <option value="<?php echo $row['borrowing_id']; ?>">
-                            <?php echo $row['user_id'] . " - " . $row['item_name'] . " - " . $row['quantity'] . " pcs"; ?>
-                        </option>
-                    <?php } ?>
-                </select>
-            </div>
-
-           
-            <div>
-                <label for="return_quantity" class="block text-sm font-medium text-gray-700">จำนวนที่คืน:</label>
-                <input type="number" id="quantity" name="quantity" class="form-input mt-1 block w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" min="1" required>
-            </div>
-
-           
-            <div>
-                <label for="condition" class="block text-sm font-medium text-gray-700">สภาพของอุปกรณ์:</label>
-                <select id="condition" name="condition" class="form-select mt-1 block w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
-                    <option value="good">ดี</option>
-                    <option value="damaged">เสียหาย</option>
-                </select>
-            </div>
-
-            
-            <div class="flex justify-end space-x-4">
-                <button type="submit" name="return" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">ยืนยันการคืน</button>
-                <button type="button" id="closeReturningModal" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">ปิด</button>
-            </div>
-        </form>
-    </div>
-</div> -->
-
-<!-- <script>
-    // ฟังก์ชันค้นหาผู้ยืม
-    document.getElementById('search_borrower').addEventListener('input', function() {
-        var searchValue = this.value.toLowerCase();
-        var options = document.getElementById('borrowing_id').options;
-
-        for (var i = 0; i < options.length; i++) {
-            var optionText = options[i].text.toLowerCase();
-            if (optionText.includes(searchValue)) {
-                options[i].style.display = '';
-            } else {
-                options[i].style.display = 'none';
-            }
-        }
-    });
-</script> -->

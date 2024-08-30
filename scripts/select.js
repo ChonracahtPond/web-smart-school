@@ -16,11 +16,12 @@ const pageLinkMap = {
 
   //   educationsidebar
   Manage_courses: "Manage-courses-link",
-  Manage_enrollments: "Manage-enrollments-link",  
+  Manage_enrollments: "Manage-enrollments-link",
   Manage_Activity: "manage-activity-link",
   Manage_Credits: "manage-credits-link",
   Reports_and_statistics: "reports-statistics-link",
   Questions: "questions-link",
+  Evaluation_management: "Evaluation-management-link",
 };
 
 // Map of page names to their corresponding dropdown IDs
@@ -36,7 +37,6 @@ const dropdownMap = {
   Manage_News: "dropdown-application",
   //   educationsidebar
   Manage_courses: "dropdown-Manage-courses",
-  Manage_enrollments: "dropdown-Manage-courses",
   Manage_Activity: "dropdown-Manage-activity",
   Manage_Credits: "dropdown-Manage-activity",
   Reports_and_statistics: "dropdown-Manage-activity",
