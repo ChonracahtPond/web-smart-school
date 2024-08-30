@@ -23,6 +23,14 @@ const pageLinkMap = {
   Questions: "questions-link",
   Evaluation_management: "Evaluation-management-link",
   Graduation_system: "Graduation-system-link",
+
+
+
+  //   Teachersidebar
+  Teacher_Manage: "Teacher-Manage-link",
+
+
+
 };
 
 // Map of page names to their corresponding dropdown IDs
@@ -41,7 +49,12 @@ const dropdownMap = {
   Manage_Activity: "dropdown-Manage-activity",
   Manage_Credits: "dropdown-Manage-activity",
   Reports_and_statistics: "dropdown-Manage-activity",
-  // Add more mappings if you have more dropdowns
+
+
+  //   Teachersidebar
+  Teacher_Manage: "dropdown-Manage-Teacher",
+
+
 };
 
 // Add the bg-red-500 class to the corresponding link
