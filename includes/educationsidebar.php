@@ -1,5 +1,5 @@
 <div class="flex h-screen">
-    <aside class="w-64 h-full bg-[#6e4db0] text-white p-4 overflow-y-auto" aria-label="Sidebar">
+    <aside class="w-64 h-full bg-[#6e4db0] text-white p-4 overflow-y-auto sticky top-0" aria-label="Sidebar">
         <div class="space-y-4">
             <ul class="space-y-4">
                 <li class="group">
@@ -82,39 +82,6 @@
                     </a>
                 </li>
                 <!----------------------------------- end จัดการรายวิชาและเนื้อหา ----------------------------------->
-                <!----------------------------------- กพช ----------------------------------->
-                <li>
-                    <button type="button" id="manage-activity-button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg hover:bg-white hover:text-gray-800 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-activity" data-collapse-toggle="dropdown-Manage-activity">
-                        <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-gray-800 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 2a1 1 0 011-1h1V0h8v1h1a1 1 0 011 1v1h1a2 2 0 012 2v14a2 2 0 01-2 2H3a2 2 0 01-2-2V5a2 2 0 012-2h1V1a1 1 0 011-1zM4 3v1h12V3H4zm12 2H4v14h12V5zm-5 8v-2h-2v2H7v-4h6v4h-2z" />
-                        </svg>
-
-                        <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>รายวิชา</span>
-                        <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <ul id="dropdown-Manage-activity" class="hidden py-2 space-y-2">
-                        <li>
-                            <a href="?page=Manage_Activity" id="manage-activity-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
-                        </li>
-                        <li>
-                            <a href="?page=Manage_Credits" id="manage-credits-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการข้อมูลรายวิชา</a>
-                        </li>
-                        <li>
-                            <a href="?page=Reports_and_statistics" id="reports-statistics-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">รายงานและสถิติ</a>
-                        </li>
-                    </ul>
-                </li>
-                <!----------------------------------- end กพช ----------------------------------->
-                <li>
-                    <a href="?page=Questions" id="questions-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <svg class="w-6 h-6 text-white transition duration-75 group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="ml-3 flex-1 whitespace-nowrap">test2</span>
-                    </a>
-                </li>
                 <li>
                     <a href="../logout.php" id="logout-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                         <svg class="w-6 h-6 text-white transition duration-75 group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
