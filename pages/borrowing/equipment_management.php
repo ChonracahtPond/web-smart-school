@@ -24,7 +24,13 @@ while ($row = $result->fetch_assoc()) {
         <button id="addItemBtn" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500">+ เพิ่มรายการใหม่</button>
         <button id="filterBtn" class="px-6 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500">กรองรายการ</button>
         <button id="openselectpdf" class="px-6 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500">เลือกรายการเพื่อออกรายงาน</button>
+        <button id="exportExcelBtn" class="px-6 py-3 bg-red-600 text-white rounded-lg shadow-lg hover:bg-red-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-500">ส่งออกเป็น Excel</button>
     </div>
+    <script>
+        document.getElementById('exportExcelBtn').addEventListener('click', function() {
+            window.location.href = '../exports/export_items.php'; // เปลี่ยนเป็นเส้นทางของไฟล์ PHP ที่คุณเก็บไว้
+        });
+    </script>
 
     <!-- Search Form -->
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg mb-6 p-4">

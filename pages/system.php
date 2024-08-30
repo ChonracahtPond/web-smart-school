@@ -103,6 +103,9 @@ include '../includes/header.php';
                 case 'equipment_management':
                     include "../pages/borrowing/equipment_management.php";
                     break;
+                case 'export_items.php':
+                    include "../exports/export_items.php";
+                    break;
 
 
 
