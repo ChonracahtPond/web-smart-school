@@ -22,6 +22,7 @@ const pageLinkMap = {
   Reports_and_statistics: "reports-statistics-link",
   Questions: "questions-link",
   Evaluation_management: "Evaluation-management-link",
+  Graduation_system: "Graduation-system-link",
 };
 
 // Map of page names to their corresponding dropdown IDs

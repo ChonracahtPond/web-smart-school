@@ -75,6 +75,9 @@
                 case 'Evaluation_management':
                     include "../pages/Evaluation/Evaluation_management.php";
                     break;
+                case 'Graduation_system':
+                    include "../pages/Graduation/Graduation_system.php";
+                    break;
 
 
 
