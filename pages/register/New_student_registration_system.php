@@ -35,7 +35,7 @@ $conn->close();
                     <td class="py-3 px-6 text-sm text-gray-700"><?php echo htmlspecialchars($student['email']); ?></td>
                     <td class="py-3 px-6 text-sm text-gray-700"><?php echo htmlspecialchars($student['phone_number']); ?></td>
                     <td class="py-3 px-6 text-sm text-gray-700">
-                        <a href="view_register.php?id=<?php echo $student['id']; ?>" class="text-blue-500 hover:underline">View</a> |
+                        <a href="?page=view_detail&id=<?php echo $student['id']; ?>" class="text-blue-500 hover:underline">View</a> |
                         <a href="edit.php?id=<?php echo $student['id']; ?>" class="text-blue-500 hover:underline">Edit</a> |
                         <a href="delete.php?id=<?php echo $student['id']; ?>" class="text-red-500 hover:underline">Delete</a>
                     </td>

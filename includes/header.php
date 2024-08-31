@@ -33,6 +33,10 @@
                 /* เคลื่อนที่ไปที่นอกหน้าจอทางซ้าย */
             }
         }
+
+        .group:hover .group-hover\:block {
+            display: block !important;
+        }
     </style>
 </head>
 
@@ -42,19 +46,65 @@ include '../includes/modal/modal.php';
 ?>
 
 <body class="bg-white">
-    <!-- <header class="bg-[#6e4db0] text-white p-3 sticky top-0"> -->
-    <header class="bg-[#6e4db0] text-white p-3  top-0">
-        <nav class="flex items-center">
+    <header class="bg-[#6e4db0] text-white p-2 sticky top-0 flex items-center justify-between">
+        <div class="flex items-center">
             <img src="../assets/images/LOGO@3x.png" class="w-[50px] h-[50px] ml-10" alt="Logo">
             <ul class="flex space-x-6 ml-6">
                 <li><a href="system.php" class="hover:underline">ระบบจัดการข้อมูล สกร.</a></li>
                 <li><a href="education.php" class="hover:underline">การจัดการรายวิชา</a></li>
                 <li><a href="teacher.php" class="hover:underline">ครู</a></li>
                 <li><a href="student.php" class="hover:underline">นักเรียน</a></li>
-                <?php include "fontslide.php" ?>
             </ul>
-        </nav>
+        </div>
+        <div class="flex items-center mr-5">
+            <?php include "fontslide.php" ?>
+            <a href="setting.php" class="hover:underline flex items-center ml-4">
+                <svg class="h-6 w-6 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <circle cx="12" cy="12" r="3" />
+                </svg>
+                <p class="hover:underline">ตั้งค่าระบบ</p>
+                <!-- ---------------- -->
 
+
+                <script>
+                    // JavaScript to toggle the dropdown
+                    const dropdownButton = document.getElementById('dropdown-button');
+                    const dropdownMenu = document.getElementById('dropdown-menu');
+                    const searchInput = document.getElementById('search-input');
+                    let isOpen = false; // Set to true to open the dropdown by default
+
+                    // Function to toggle the dropdown state
+                    function toggleDropdown() {
+                        isOpen = !isOpen;
+                        dropdownMenu.classList.toggle('hidden', !isOpen);
+                    }
+
+                    // Set initial state
+                    toggleDropdown();
+
+                    dropdownButton.addEventListener('click', () => {
+                        toggleDropdown();
+                    });
+
+                    // Add event listener to filter items based on input
+                    searchInput.addEventListener('input', () => {
+                        const searchTerm = searchInput.value.toLowerCase();
+                        const items = dropdownMenu.querySelectorAll('a');
+
+                        items.forEach((item) => {
+                            const text = item.textContent.toLowerCase();
+                            if (text.includes(searchTerm)) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    });
+                </script>
+            </a>
+        </div>
     </header>
 
 
@@ -79,8 +129,10 @@ include '../includes/modal/modal.php';
             case 'teacher.php':
                 include 'teachersidebar.php';
                 break;
+            case 'setting.php':
+                include 'settingbar.php';
+                break;
             default:
-
                 echo '<p>Default sidebar or no sidebar available.</p>';
                 break;
         }

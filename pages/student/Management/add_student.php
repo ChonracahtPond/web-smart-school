@@ -81,8 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-
-
 <div class="container mx-auto p-4">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">เพิ่มข้อมูลนักเรียน</h1>
     <form action="" method="POST" class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4" enctype="multipart/form-data" onsubmit="return confirmUpload();">

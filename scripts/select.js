@@ -26,6 +26,7 @@ const pageLinkMap = {
 
   //   Teachersidebar
   Teacher_Manage: "Teacher-Manage-link",
+  reset_password: "reset-password-link",
 };
 
 // Map of page names to their corresponding dropdown IDs
@@ -47,6 +48,7 @@ const dropdownMap = {
 
   //   Teachersidebar
   Teacher_Manage: "dropdown-Manage-Teacher",
+  reset_password: "dropdown-Manage-Teacher",
 };
 
 // Add the bg-red-500 class to the corresponding link
