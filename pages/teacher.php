@@ -14,16 +14,23 @@
                     include "../pages/dashboard.php";
                     break;
                 case 'Teacher_Manage':
-                    include "../pages/teacher/Teacher_Manage.php";
+                    include "../pages/teacher/Management/Teacher_Manage.php";
                     break;
                 case 'process_teacher':
-                    include "../pages/teacher/process_teacher.php";
+                    include "../pages/teacher/Management/process_teacher.php";
                     break;
                 case 'update_teacher':
-                    include "../pages/teacher/update_teacher.php";
+                    include "../pages/teacher/Management/update_teacher.php";
                     break;
                 case 'delete_teacher':
-                    include "../pages/teacher/delete_teacher.php";
+                    include "../pages/teacher/Management/delete_teacher.php";
+                    break;
+
+                case 'reset_password':
+                    include "../pages/teacher/resetpassword/reset_password.php";
+                    break;
+                case 'update_password':
+                    include "../pages/teacher/resetpassword/update_password.php";
                     break;
 
 
