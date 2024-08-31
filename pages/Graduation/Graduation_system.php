@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_status'])) {
     $student_id = $_POST['student_id'];
     $new_status = $_POST['new_status'];
     $sql = "UPDATE students SET grade_level = ? WHERE student_id = ?";
-    $stmt = $conn->prepare($sql);
     $stmt->bind_param('si', $new_status, $student_id);
     if ($stmt->execute()) {
         echo "<script>alert('Student status updated successfully'); window.location.href='Graduation_system.php';</script>";
@@ -50,8 +49,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['congraduation_file']
     }
 }
 
-// Retrieve students for displaying
-$sql = "SELECT student_id, fullname, grade_level, status FROM students";
+// Retrieve students and their enrollments for displaying
+$sql = "SELECT students.student_id, students.fullname, students.grade_level, students.status, 
+               GROUP_CONCAT(enrollments.course_id ORDER BY enrollments.course_id ASC SEPARATOR ', ') AS courses,
+               GROUP_CONCAT(enrollments.semester ORDER BY enrollments.course_id ASC SEPARATOR ', ') AS semesters,
+               GROUP_CONCAT(enrollments.academic_year ORDER BY enrollments.course_id ASC SEPARATOR ', ') AS academic_years,
+               GROUP_CONCAT(enrollments.grade ORDER BY enrollments.course_id ASC SEPARATOR ', ') AS grades,
+               GROUP_CONCAT(enrollments.status ORDER BY enrollments.course_id ASC SEPARATOR ', ') AS enrollment_statuses
+        FROM students 
+        LEFT JOIN enrollments ON students.student_id = enrollments.student_id
+        GROUP BY students.student_id, students.fullname, students.grade_level, students.status";
 $result = $conn->query($sql);
 
 if ($result === false) {
@@ -59,85 +66,88 @@ if ($result === false) {
 }
 ?>
 
-<body>
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">ระบบการสำเร็จการศึกษา</h1>
 
-        <!-- Graduation Approval Section -->
-        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8">อนุมัติการสำเร็จการศึกษา</h2>
-        <form method="post">
-            <div class="mb-4">
-                <label for="student_id" class="block text-gray-700 dark:text-gray-400">รหัสประจำตัวนักศึกษา</label>
-                <input type="text" name="student_id" id="student_id" required class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-            </div>
-            <button type="submit" name="approve_graduation" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-600">อนุมัติการสำเร็จการศึกษา</button>
-        </form>
+<div class="container mx-auto p-4">
+    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">ระบบการสำเร็จการศึกษา</h1>
 
-        <!-- Change Student Status Section -->
-        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8">เปลี่ยนสถานะนักศึกษา</h2>
-        <form method="post">
-            <div class="mb-4">
-                <label for="student_id" class="block text-gray-700 dark:text-gray-400">รหัสประจำตัวนักศึกษา</label>
-                <input type="text" name="student_id" id="student_id" required class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-            </div>
-            <div class="mb-4">
-                <label for="new_status" class="block text-gray-700 dark:text-gray-400">สถานะใหม่</label>
-                <input type="text" name="new_status" id="new_status" required class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-            </div>
-            <button type="submit" name="change_status" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">เปลี่ยนสถานะ</button>
-        </form>
-
-        <!-- ConGraduation File Upload Section -->
-        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8">การสำเร็จการศึกษา</h2>
-        <form method="post" enctype="multipart/form-data">
-            <div class="mb-4">
-                <label for="congraduation_file" class="block text-gray-700 dark:text-gray-400">อัปโหลด GIF หรือวิดีโอ</label>
-                <input type="file" name="congraduation_file" id="congraduation_file" required class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-            </div>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">อัพโหลดไฟล์</button>
-        </form>
-
-        <!-- Students Table -->
-        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8">รายชื่อนักเรียน</h2>
-        <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead>
-                    <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">รหัสประจำตัวนักศึกษา</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อ-นามสกุล นักเรียน</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ระดับชั้นเรียน</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">สถานะการสำเร็จการศึกษา</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">การจัดการ</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    <?php while ($row = $result->fetch_assoc()) : ?>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['student_id']); ?></td>
-                            <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['fullname']); ?></td>
-                            <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['grade_level']); ?></td>
-                            <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['status']); ?></td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <?php if ($row['status'] !== 'Approved') : ?>
-                                    <form method="post" style="display:inline;">
-                                        <input type="hidden" name="student_id" value="<?php echo $row['student_id']; ?>">
-                                        <button type="submit" name="approve_graduation" class="text-green-500 hover:text-green-700">อนุมัติ</button>
-                                    </form>
-                                <?php else: ?>
-                                    Approved
-                                <?php endif; ?>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
+    <!-- Graduation Approval Section -->
+    <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8">อนุมัติการสำเร็จการศึกษา</h2>
+    <form method="post">
+        <div class="mb-4">
+            <label for="student_id" class="block text-gray-700 dark:text-gray-400">รหัสประจำตัวนักศึกษา</label>
+            <input type="text" name="student_id" id="student_id" required class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
         </div>
-    </div>
-</body>
+        <button type="submit" name="approve_graduation" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-600">อนุมัติการสำเร็จการศึกษา</button>
+    </form>
 
-</html>
-
-
-
-
+    <!-- Display Students and Their Enrollment Details -->
+    <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8">รายชื่อนักศึกษาและการลงทะเบียน</h2>
+    <table class="min-w-full divide-y divide-gray-200">
+        <thead>
+            <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">รหัสนักศึกษา</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อ-นามสกุล</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ระดับชั้น</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">สถานะ</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">รหัสวิชา</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ภาคการศึกษา</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ปีการศึกษา</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">เกรด</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">สถานะการลงทะเบียน</th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            <?php while($row = $result->fetch_assoc()): 
+                // Convert the comma-separated strings into arrays
+                $courses = explode(', ', $row['courses']);
+                $semesters = explode(', ', $row['semesters']);
+                $academic_years = explode(', ', $row['academic_years']);
+                $grades = explode(', ', $row['grades']);
+                $enrollment_statuses = explode(', ', $row['enrollment_statuses']);
+            ?>
+            <tr>
+                <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['student_id']); ?></td>
+                <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['fullname']); ?></td>
+                <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['grade_level']); ?></td>
+                <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['status']); ?></td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <ul class="list-disc list-inside">
+                        <?php foreach($courses as $course): ?>
+                        <li><?php echo htmlspecialchars($course); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <ul class="list-disc list-inside">
+                        <?php foreach($semesters as $semester): ?>
+                        <li><?php echo htmlspecialchars($semester); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <ul class="list-disc list-inside">
+                        <?php foreach($academic_years as $academic_year): ?>
+                        <li><?php echo htmlspecialchars($academic_year); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <ul class="list-disc list-inside">
+                        <?php foreach($grades as $grade): ?>
+                        <li><?php echo htmlspecialchars($grade); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <ul class="list-disc list-inside">
+                        <?php foreach($enrollment_statuses as $enrollment_status): ?>
+                        <li><?php echo htmlspecialchars($enrollment_status); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</div>
 

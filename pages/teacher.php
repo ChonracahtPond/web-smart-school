@@ -16,6 +16,15 @@
                 case 'Teacher_Manage':
                     include "../pages/teacher/Teacher_Manage.php";
                     break;
+                case 'process_teacher':
+                    include "../pages/teacher/process_teacher.php";
+                    break;
+                case 'update_teacher':
+                    include "../pages/teacher/update_teacher.php";
+                    break;
+                case 'delete_teacher':
+                    include "../pages/teacher/delete_teacher.php";
+                    break;
 
 
 

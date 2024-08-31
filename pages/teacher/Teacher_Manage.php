@@ -1,105 +1,175 @@
-<div class="flex h-screen">
-    <!-- Sidebar code here -->
+<?php
+// คำสั่ง SQL เพื่อดึงข้อมูลบุคลากร
+$sql = "SELECT teacher_id, Fname, Lname, Rank, position, address, email, username, password, images, phone, gender, teacher_name FROM teachers";
+$result = $conn->query($sql);
+?>
 
-    <main class="flex-1 p-6">
-        <h1 class="text-2xl font-semibold mb-4">Teacher Management</h1>
+<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<!-- DataTables CSS -->
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+<style>
+    /*Overrides for Tailwind CSS */
+    /*Form fields*/
+    .dataTables_wrapper select,
+    .dataTables_wrapper .dataTables_filter input {
+        color: #4a5568;
+        /*text-gray-700*/
+        padding-left: 1rem;
+        /*pl-4*/
+        padding-right: 1rem;
+        /*pl-4*/
+        padding-top: .5rem;
+        /*pl-2*/
+        padding-bottom: .5rem;
+        /*pl-2*/
+        line-height: 1.25;
+        /*leading-tight*/
+        border-width: 2px;
+        /*border-2*/
+        border-radius: .25rem;
+        /*rounded*/
+        border-color: #edf2f7;
+        /*border-gray-200*/
+        background-color: #edf2f7;
+        /*bg-gray-200*/
+    }
 
-        <!-- Add New Teacher Form -->
-        <section class="mb-6">
-            <h2 class="text-xl font-semibold mb-2">Add New Teacher</h2>
-            <form id="add-teacher-form" method="POST" action="process_teacher.php">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label for="fname" class="block mb-2 text-sm font-medium text-gray-700">First Name</label>
-                        <input type="text" id="fname" name="fname" class="form-input" required>
-                    </div>
-                    <div>
-                        <label for="lname" class="block mb-2 text-sm font-medium text-gray-700">Last Name</label>
-                        <input type="text" id="lname" name="lname" class="form-input" required>
-                    </div>
-                    <div>
-                        <label for="rank" class="block mb-2 text-sm font-medium text-gray-700">Rank</label>
-                        <input type="text" id="rank" name="rank" class="form-input">
-                    </div>
-                    <div>
-                        <label for="position" class="block mb-2 text-sm font-medium text-gray-700">Position</label>
-                        <input type="text" id="position" name="position" class="form-input">
-                    </div>
-                    <div>
-                        <label for="address" class="block mb-2 text-sm font-medium text-gray-700">Address</label>
-                        <input type="text" id="address" name="address" class="form-input">
-                    </div>
-                    <div>
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" id="email" name="email" class="form-input">
-                    </div>
-                    <div>
-                        <label for="username" class="block mb-2 text-sm font-medium text-gray-700">Username</label>
-                        <input type="text" id="username" name="username" class="form-input">
-                    </div>
-                    <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-700">Password</label>
-                        <input type="password" id="password" name="password" class="form-input">
-                    </div>
-                    <div>
-                        <label for="phone" class="block mb-2 text-sm font-medium text-gray-700">Phone</label>
-                        <input type="text" id="phone" name="phone" class="form-input">
-                    </div>
-                    <div>
-                        <label for="gender" class="block mb-2 text-sm font-medium text-gray-700">Gender</label>
-                        <select id="gender" name="gender" class="form-select">
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="teacher_name" class="block mb-2 text-sm font-medium text-gray-700">Teacher Name</label>
-                        <input type="text" id="teacher_name" name="teacher_name" class="form-input">
-                    </div>
-                    <div>
-                        <label for="images" class="block mb-2 text-sm font-medium text-gray-700">Images URL</label>
-                        <input type="text" id="images" name="images" class="form-input">
-                    </div>
-                </div>
-                <button type="submit" class="mt-4 bg-blue-500 text-white py-2 px-4 rounded">Add Teacher</button>
-            </form>
-        </section>
-        <!-- Search Form -->
-        <form method="GET" action="Teacher_Manage.php" class="mb-4">
-            <div class="flex items-center">
-                <input type="text" name="search" class="form-input" placeholder="Search by name...">
-                <button type="submit" class="ml-2 bg-blue-500 text-white py-2 px-4 rounded">Search</button>
-            </div>
-        </form>
+    /*Row Hover*/
+    table.dataTable.hover tbody tr:hover,
+    table.dataTable.display tbody tr:hover {
+        background-color: #ebf4ff;
+        /*bg-indigo-100*/
+    }
 
-        <!-- Teacher List -->
-        <section>
-            <h2 class="text-xl font-semibold mb-2">Teacher List</h2>
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead>
+    /*Pagination Buttons*/
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        font-weight: 700;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
+
+    /*Pagination Buttons - Current selected */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        color: #fff !important;
+        /*text-white*/
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 700;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #667eea !important;
+        /*bg-indigo-500*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
+
+    /*Pagination Buttons - Hover */
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: #fff !important;
+        /*text-white*/
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        /*shadow*/
+        font-weight: 700;
+        /*font-bold*/
+        border-radius: .25rem;
+        /*rounded*/
+        background: #667eea !important;
+        /*bg-indigo-500*/
+        border: 1px solid transparent;
+        /*border border-transparent*/
+    }
+
+    /*Add padding to bottom border */
+    table.dataTable.no-footer {
+        border-bottom: 1px solid #e2e8f0;
+        /*border-b-1 border-gray-300*/
+        margin-top: 0.75em;
+        margin-bottom: 0.75em;
+    }
+
+    /*Change colour of responsive icon*/
+    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+        background-color: #667eea !important;
+        /*bg-indigo-500*/
+    }
+</style>
+
+<div class="container mx-auto px-2">
+    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white mb-10">จัดการข้อมูลบุคลากร</h1>
+    <button id="open-modal" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">+ เพิ่มข้อมูลบุคลากร</button>
+    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 my-4">
+        <table id="teacher-table" class="stripe hover" style="width:100%; padding-top: 1em; padding-bottom: 1em;">
+            <thead>
+                <tr>
+                    <th>ชื่อ</th>
+                    <th>นามสกุล</th>
+                    <th>ตำแหน่ง</th>
+                    <th>ตำแหน่งงาน</th>
+                    <th>ที่อยู่</th>
+                    <th>อีเมล</th>
+                    <th>โทรศัพท์</th>
+                    <th>เพศ</th>
+                    <th>ชื่อบุคลากร</th>
+                    <th>การดำเนินการ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if ($result->num_rows > 0) : ?>
+                    <?php while ($row = $result->fetch_assoc()) : ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['Fname']); ?></td>
+                            <td><?php echo htmlspecialchars($row['Lname']); ?></td>
+                            <td><?php echo htmlspecialchars($row['Rank']); ?></td>
+                            <td><?php echo htmlspecialchars($row['position']); ?></td>
+                            <td><?php echo htmlspecialchars($row['address']); ?></td>
+                            <td><?php echo htmlspecialchars($row['email']); ?></td>
+                            <td><?php echo htmlspecialchars($row['phone']); ?></td>
+                            <td><?php echo htmlspecialchars($row['gender']); ?></td>
+                            <td><?php echo htmlspecialchars($row['teacher_name']); ?></td>
+                            <td>
+                                <button onclick='openEditModal(<?php echo json_encode($row); ?>)' class='text-blue-500 hover:underline'>แก้ไข</button> |
+                                <a href="?page=delete_teacher&id=<?php echo htmlspecialchars($row['teacher_id']); ?>" class='text-red-500 hover:underline' onclick="return confirm('คุณแน่ใจว่าต้องการลบบุคลากรนี้?')">ลบ</a>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else : ?>
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First Name</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Name</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        <td colspan="10" class="px-4 py-2 text-center">ไม่พบข้อมูล</td>
                     </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    <!-- This part should be generated by PHP dynamically -->
-                    <!-- Example of a single row -->
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">John</td>
-                        <td class="px-6 py-4 whitespace-nowrap">Doe</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="edit_teacher.php?id=1" class="text-blue-600 hover:text-blue-900">Edit</a>
-                            <a href="delete_teacher.php?id=1" class="text-red-600 hover:text-red-900 ml-4">Delete</a>
-                        </td>
-                    </tr>
-                    <!-- End of single row example -->
-                </tbody>
-            </table>
-        </section>
-    </main>
+                <?php endif; ?>
+            </tbody>
+
+        </table>
+    </div>
 </div>
+<?php
+include "teachermodal.php";
+// include "update_teacher.php"; 
 
-<script src="https://unpkg.com/alpinejs@3.10.5" defer></script>
+?>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#teacher-table').DataTable({
+            responsive: true
+        });
+    });
+
+    document.getElementById('open-modal').addEventListener('click', function() {
+        document.getElementById('teacher-modal').classList.remove('hidden');
+    });
+
+    document.getElementById('close-modal').addEventListener('click', function() {
+        document.getElementById('teacher-modal').classList.add('hidden');
+    });
+</script>
