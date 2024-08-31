@@ -13,7 +13,6 @@ const pageLinkMap = {
   Borrow_Office_Supplies: "Borrow_Office_Supplies",
   borrowing_Borrow_history: "borrowing_Borrow_history",
   Manage_News: "Manage_News",
-
   //   educationsidebar
   Manage_courses: "Manage-courses-link",
   Manage_enrollments: "Manage-enrollments-link",
@@ -23,40 +22,46 @@ const pageLinkMap = {
   Questions: "questions-link",
   Evaluation_management: "Evaluation-management-link",
   Graduation_system: "Graduation-system-link",
-
   //   Teachersidebar
   Teacher_Manage: "Teacher-Manage-link",
   reset_password: "reset-password-link",
+  //   Studensidebar
+  Manage_student: "Manage-student-link",
+  reset_password: "reset_password-link",
+  StudentGrade: "StudentGrade-link",
+  Studentcredit: "Studentcredit-link",
+  manage_attendance: "manage_attendance",
 };
 
-// Map of page names to their corresponding dropdown IDs
 const dropdownMap = {
-  //   sidebar
+  //   sidebars
   New_student_registration_system: "dropdown-register",
   equipment_management: "dropdown-System_for_borrowing",
   System_for_borrowing: "dropdown-System_for_borrowing",
   Budget_for_borrowing: "dropdown-System_for_borrowing",
   Borrow_Office_Supplies: "dropdown-System_for_borrowing",
   borrowing_Borrow_history: "dropdown-System_for_borrowing",
-
   Manage_News: "dropdown-application",
   //   educationsidebar
   Manage_courses: "dropdown-Manage-courses",
   Manage_Activity: "dropdown-Manage-activity",
   Manage_Credits: "dropdown-Manage-activity",
   Reports_and_statistics: "dropdown-Manage-activity",
-
   //   Teachersidebar
   Teacher_Manage: "dropdown-Manage-Teacher",
   reset_password: "dropdown-Manage-Teacher",
+  //   Studensidebar
+  Manage_student: "dropdown-Manage-users",
+  reset_password: "dropdown-Manage-users",
+  StudentGrade: "dropdown-Manage-users",
+  Studentcredit: "dropdown-Manage-users",
+  manage_attendance: "dropdown-Manage-users",
 };
 
-// Add the bg-red-500 class to the corresponding link
 if (currentPage && pageLinkMap[currentPage]) {
   document.getElementById(pageLinkMap[currentPage]).classList.add("bg-red-500");
 }
 
-// Expand the dropdown if the current page belongs to it
 if (currentPage && dropdownMap[currentPage]) {
   const dropdownId = dropdownMap[currentPage];
   const dropdown = document.getElementById(dropdownId);

@@ -1,5 +1,4 @@
-<!-- This is an example component -->
-<div class="max-w-2xl ">
+
     <aside class="w-64 h-full" aria-label="Sidebar">
         <div class="px-3 py-4 overflow-y-auto rounded bg-[#6e4db0] text-white dark:bg-gray-800">
             <ul class="space-y-4">
@@ -28,22 +27,22 @@
                     </button>
                     <ul id="dropdown-Manage-users" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="?page=Manage_student" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
+                            <a href="?page=Manage_student" id="Manage-student-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
                         </li>
                         <li>
-                            <a href="?page=reset_password" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">รีเซ็ตรหัสผ่าน</a>
+                            <a href="?page=reset_password" id="reset_password-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">รีเซ็ตรหัสผ่าน</a>
                         </li>
                         <li>
-                            <a href="?page=StudentGrade" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">เกรดนักเรียน-นักศึกษา</a>
+                            <a href="?page=StudentGrade" id="StudentGrade-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">เกรดนักเรียน-นักศึกษา</a>
                         </li>
                         <li>
-                            <a href="?page=Studentcredit" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">หน่วยกิตนักเรียน-นักศึกษา</a>
+                            <a href="?page=Studentcredit" id="Studentcredit-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">หน่วยกิตนักเรียน-นักศึกษา</a>
                         </li>
                         <li>
                             <a href="?page=manage_access_rights" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">นักศึกษาที่จบการศึกษา</a>
                         </li>
                         <li>
-                            <a href="?page=manage_attendance" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">ขาด/ลา/มาสาย</a>
+                            <a href="?page=manage_attendance" id="manage_attendance" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">ขาด/ลา/มาสาย</a>
                         </li>
                     </ul>
                 </li>
@@ -122,4 +121,4 @@
         </div>
     </aside>
     <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
-</div>
+    <script src="../scripts/select.js"></script>

@@ -39,7 +39,10 @@
                 เข้าสู่ระบบ
             </button>
         </form>
+
+        <?php include "includes/modal/logoutmodal.php"; ?>
     </div>
+
 </body>
 
 </html>
