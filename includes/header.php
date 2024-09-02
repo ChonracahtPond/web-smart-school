@@ -53,7 +53,7 @@ include '../includes/modal/modal.php';
                 <li><a href="system.php" class="hover:underline">ระบบจัดการข้อมูล สกร.</a></li>
                 <li><a href="education.php" class="hover:underline">ระบบจัดการรายวิชา</a></li>
                 <li><a href="teacher.php" class="hover:underline">ระบบจัดการข้อมูลครู</a></li>
-                <li><a href="student.php" class="hover:underline">ระบบจัดการข้อมูลผู้เรียน</a></li>
+                <li><a href="student.php" class="hover:underline">ระบบจัดการข้อมูล</a></li>
             </ul>
         </div>
         <div class="flex items-center mr-5">
