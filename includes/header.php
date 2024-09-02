@@ -46,14 +46,14 @@ include '../includes/modal/modal.php';
 ?>
 
 <body class="bg-white">
-    <header class="bg-[#6e4db0] text-white p-2 sticky top-0 flex items-center justify-between">
+    <header class="bg-[#6e4db0] text-white p-2  flex items-center justify-between">
         <div class="flex items-center">
             <img src="../assets/images/LOGO@3x.png" class="w-[50px] h-[50px] ml-10" alt="Logo">
             <ul class="flex space-x-6 ml-6">
                 <li><a href="system.php" class="hover:underline">ระบบจัดการข้อมูล สกร.</a></li>
-                <li><a href="education.php" class="hover:underline">การจัดการรายวิชา</a></li>
-                <li><a href="teacher.php" class="hover:underline">ครู</a></li>
-                <li><a href="student.php" class="hover:underline">นักเรียน</a></li>
+                <li><a href="education.php" class="hover:underline">ระบบจัดการรายวิชา</a></li>
+                <li><a href="teacher.php" class="hover:underline">ระบบจัดการข้อมูลครู</a></li>
+                <li><a href="student.php" class="hover:underline">ระบบจัดการข้อมูลผู้เรียน</a></li>
             </ul>
         </div>
         <div class="flex items-center mr-5">

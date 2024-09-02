@@ -1,188 +1,142 @@
 <?php
-// เชื่อมต่อฐานข้อมูล
+include 'upload.php'; // นำเข้าไฟล์อัปโหลด
 
-// ฟังก์ชันสำหรับการเพิ่มหนังสือ
-if (isset($_POST['add'])) {
-    $title = $_POST['title'];
-    $author = $_POST['author'];
-    $published_date = $_POST['published_date'];
-
-    $sql = "INSERT INTO books (title, author, published_date) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $title, $author, $published_date);
-    if ($stmt->execute()) {
-        echo "<script>alert('Book added successfully');</script>";
-    } else {
-        echo "<script>alert('Error adding book: " . $stmt->error . "');</script>";
-    }
-    $stmt->close();
-}
-
-// ฟังก์ชันสำหรับการลบหนังสือ
+// ตรวจสอบว่ามีการร้องขอให้ลบ eBook หรือไม่
 if (isset($_GET['delete'])) {
-    $book_id = $_GET['delete'];
-
-    $sql = "DELETE FROM books WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $book_id);
-    if ($stmt->execute()) {
-        echo "<script>alert('Book deleted successfully');</script>";
-    } else {
-        echo "<script>alert('Error deleting book: " . $stmt->error . "');</script>";
-    }
-    $stmt->close();
+    $ebook_id = intval($_GET['delete']); // ตรวจสอบและทำให้เป็นจำนวนเต็ม
+    include 'delete.php'; // นำเข้าไฟล์ลบ
 }
 
-// ฟังก์ชันสำหรับการแก้ไขหนังสือ
-if (isset($_POST['update'])) {
-    $book_id = $_POST['book_id'];
-    $title = $_POST['title'];
-    $author = $_POST['author'];
-    $published_date = $_POST['published_date'];
-
-    $sql = "UPDATE books SET title = ?, author = ?, published_date = ? WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssi", $title, $author, $published_date, $book_id);
-    if ($stmt->execute()) {
-        echo "<script>alert('Book updated successfully');</script>";
-    } else {
-        echo "<script>alert('Error updating book: " . $stmt->error . "');</script>";
-    }
-    $stmt->close();
-}
-
-// ค้นหาหนังสือ
-$search = isset($_POST['search']) ? $_POST['search'] : '';
-$date_from = isset($_POST['date_from']) ? $_POST['date_from'] : '';
-$date_to = isset($_POST['date_to']) ? $_POST['date_to'] : '';
-
-$sql = "SELECT * FROM books WHERE title LIKE ? AND (published_date BETWEEN ? AND ?)";
-$stmt = $conn->prepare($sql);
-$search_term = "%$search%";
-$stmt->bind_param("sss", $search_term, $date_from, $date_to);
-$stmt->execute();
-$result = $stmt->get_result();
-
+// ดึงข้อมูล eBook ทั้งหมดจากฐานข้อมูล
+$sql = "SELECT * FROM ebooks ORDER BY upload_date DESC";
+$result = $conn->query($sql);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Books</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-</head>
-<body class="bg-gray-100">
-    <div class="container mx-auto p-4">
-        <h1 class="text-2xl font-bold mb-4">Manage Books</h1>
 
-        <!-- Form for Adding Books -->
+<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+<style>
+    /* Overrides for Tailwind CSS */
+    .dataTables_wrapper select,
+    .dataTables_wrapper .dataTables_filter input {
+        color: #4a5568;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        line-height: 1.25;
+        border-width: 2px;
+        border-radius: .25rem;
+        border-color: #edf2f7;
+        background-color: #edf2f7;
+    }
+
+    table.dataTable.hover tbody tr:hover,
+    table.dataTable.display tbody tr:hover {
+        background-color: #ebf4ff;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        font-weight: 700;
+        border-radius: .25rem;
+        border: 1px solid transparent;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        color: #fff !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        font-weight: 700;
+        border-radius: .25rem;
+        background: #667eea !important;
+        border: 1px solid transparent;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: #fff !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        font-weight: 700;
+        border-radius: .25rem;
+        background: #667eea !important;
+        border: 1px solid transparent;
+    }
+
+    table.dataTable.no-footer {
+        border-bottom: 1px solid #e2e8f0;
+        margin-top: 0.75em;
+        margin-bottom: 0.75em;
+    }
+
+    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+        background-color: #667eea !important;
+    }
+</style>
+
+<!-- Container -->
+<div class="container w-ful mx-auto px-2">
+
+    <!-- Title -->
+    <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
+        จัดการ eBook
+    </h1>
+
+    <!-- Card -->
+    <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+        <!-- Form for uploading eBook -->
         <div class="bg-white p-4 rounded shadow-md mb-4">
-            <h2 class="text-xl font-semibold mb-2">Add New Book</h2>
-            <form action="ManageBook.php" method="POST">
+            <h2 class="text-xl font-semibold mb-2">อัปโหลด eBook ใหม่</h2>
+            <form action="" method="POST" enctype="multipart/form-data">
                 <div class="mb-4">
-                    <label class="block text-gray-700">Title:</label>
+                    <label class="block text-gray-700">ชื่อเรื่อง:</label>
                     <input type="text" name="title" class="mt-1 p-2 border border-gray-300 rounded w-full" required>
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700">Author:</label>
-                    <input type="text" name="author" class="mt-1 p-2 border border-gray-300 rounded w-full" required>
+                    <label class="block text-gray-700">ไฟล์ eBook (PDF):</label>
+                    <input type="file" name="ebook_file" class="mt-1 p-2 border border-gray-300 rounded w-full" accept="application/pdf" required>
                 </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700">Published Date:</label>
-                    <input type="date" name="published_date" class="mt-1 p-2 border border-gray-300 rounded w-full" required>
-                </div>
-                <button type="submit" name="add" class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">Add Book</button>
+                <button type="submit" name="upload" class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">อัปโหลด eBook</button>
             </form>
         </div>
 
-        <!-- Form for Searching and Filtering -->
-        <div class="bg-white p-4 rounded shadow-md mb-4">
-            <h2 class="text-xl font-semibold mb-2">Search and Filter Books</h2>
-            <form action="ManageBook.php" method="POST">
-                <div class="mb-4">
-                    <label class="block text-gray-700">Search Title:</label>
-                    <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" class="mt-1 p-2 border border-gray-300 rounded w-full">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700">Published Date From:</label>
-                    <input type="date" name="date_from" value="<?php echo htmlspecialchars($date_from); ?>" class="mt-1 p-2 border border-gray-300 rounded w-full">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700">Published Date To:</label>
-                    <input type="date" name="date_to" value="<?php echo htmlspecialchars($date_to); ?>" class="mt-1 p-2 border border-gray-300 rounded w-full">
-                </div>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">Search</button>
-            </form>
-        </div>
-
-        <!-- Display Books -->
-        <div class="bg-white p-4 rounded shadow-md">
-            <h2 class="text-xl font-semibold mb-2">Book List</h2>
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead>
+        <!-- Display eBook list -->
+        <table id="ebookTable" class="stripe hover" style="width:100%; padding-top: 1em; padding-bottom: 1em;">
+            <thead>
+                <tr>
+                    <th>ชื่อเรื่อง</th>
+                    <th>วันที่อัปโหลด</th>
+                    <th>การดำเนินการ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Author</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Published Date</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        <td><?php echo htmlspecialchars($row['title']); ?></td>
+                        <td><?php echo htmlspecialchars($row['upload_date']); ?></td>
+                        <td>
+                            <a href="../uploads/ebooks/<?php echo $row['file_name']; ?>" target="_blank" class="text-blue-500 hover:text-blue-700">ดู</a>
+                            <a href="?page=ManageBook&delete=<?php echo $row['id']; ?>" class="text-red-500 hover:text-red-700 ml-2">ลบ</a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    <?php while ($row = $result->fetch_assoc()): ?>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['title']); ?></td>
-                            <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['author']); ?></td>
-                            <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['published_date']); ?></td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <a href="javascript:void(0)" onclick="editBook(<?php echo $row['id']; ?>, '<?php echo addslashes($row['title']); ?>', '<?php echo addslashes($row['author']); ?>', '<?php echo $row['published_date']; ?>')" class="text-blue-500 hover:text-blue-700">Edit</a>
-                                <a href="?delete=<?php echo $row['id']; ?>" class="text-red-500 hover:text-red-700 ml-2">Delete</a>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Edit Modal -->
-        <div id="edit-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
-            <div class="bg-white p-4 rounded shadow-lg">
-                <h2 class="text-xl font-semibold mb-2">Edit Book</h2>
-                <form id="edit-form" action="ManageBook.php" method="POST">
-                    <input type="hidden" name="book_id" id="edit-book-id">
-                    <div class="mb-4">
-                        <label class="block text-gray-700">Title:</label>
-                        <input type="text" name="title" id="edit-title" class="mt-1 p-2 border border-gray-300 rounded w-full" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700">Author:</label>
-                        <input type="text" name="author" id="edit-author" class="mt-1 p-2 border border-gray-300 rounded w-full" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700">Published Date:</label>
-                        <input type="date" name="published_date" id="edit-published_date" class="mt-1 p-2 border border-gray-300 rounded w-full" required>
-                    </div>
-                    <button type="submit" name="update" class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">Update Book</button>
-                    <button type="button" onclick="closeEditModal()" class="bg-gray-500 text-white px-4 py-2 rounded shadow hover:bg-gray-600 ml-2">Cancel</button>
-                </form>
-            </div>
-        </div>
-
+                <?php endwhile; ?>
+            </tbody>
+        </table>
     </div>
+    <!-- /Card -->
 
-    <script>
-        function editBook(id, title, author, published_date) {
-            document.getElementById('edit-book-id').value = id;
-            document.getElementById('edit-title').value = title;
-            document.getElementById('edit-author').value = author;
-            document.getElementById('edit-published_date').value = published_date;
-            document.getElementById('edit-modal').classList.remove('hidden');
-        }
+</div>
+<!-- /Container -->
 
-        function closeEditModal() {
-            document.getElementById('edit-modal').classList.add('hidden');
-        }
-    </script>
-</body>
-</html>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<!-- DataTables -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#ebookTable').DataTable({
+            responsive: true
+        }).columns.adjust().responsive.recalc();
+    });
+</script>

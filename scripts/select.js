@@ -12,7 +12,10 @@ const pageLinkMap = {
   Budget_for_borrowing: "Budget_for_borrowing",
   Borrow_Office_Supplies: "Borrow_Office_Supplies",
   borrowing_Borrow_history: "borrowing_Borrow_history",
-  Manage_News: "Manage_News",
+  Manage_News: "Manage-News-link",
+  ManageBook: "ManageBook-link",
+  ShowBook: "ShowBook-link",
+
   //   educationsidebar
   Manage_courses: "Manage-courses-link",
   Manage_enrollments: "Manage-enrollments-link",
@@ -42,6 +45,8 @@ const dropdownMap = {
   Borrow_Office_Supplies: "dropdown-System_for_borrowing",
   borrowing_Borrow_history: "dropdown-System_for_borrowing",
   Manage_News: "dropdown-application",
+  ManageBook: "dropdown-ManageBook",
+  ShowBook: "dropdown-ManageBook",
   //   educationsidebar
   Manage_courses: "dropdown-Manage-courses",
   Manage_Activity: "dropdown-Manage-activity",

@@ -46,25 +46,21 @@ $result = $conn->query($sql);
     }
 </style>
 
-
-
 <div class="container mx-auto px-4 py-6">
     <h1 class="text-3xl font-semibold text-gray-900 mb-6">ข้อมูลนักเรียน</h1>
-    <!-- <a id="openModal" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">+ เพิ่มข้อมูลนักเรียน</a> -->
     <a href="?page=add_student" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">+ เพิ่มข้อมูลนักเรียน</a>
-    <div class="bg-white shadow-lg rounded-lg p-4 my-4">
+    <div class="bg-white shadow-lg rounded-lg p-4 my-4 overflow-x-auto">
         <table id="studentTable" class="display w-full" style="width:100%">
             <thead>
                 <tr>
                     <th>รหัสนักเรียน</th>
                     <th>ระดับชั้น</th>
-                    <th>หมู่เรียน</th>
+                    <th>ห้องเรียน</th>
                     <th>ชื่อผู้ใช้</th>
                     <th>ชื่อเต็ม</th>
                     <th>ชื่อเล่น</th>
                     <th>อีเมล</th>
                     <th>หมายเลขโทรศัพท์</th>
-                    <th>วันเกิด</th>
                     <th>เพศ</th>
                     <th>การดำเนินการ</th>
                 </tr>
@@ -81,11 +77,12 @@ $result = $conn->query($sql);
                             <td><?php echo htmlspecialchars($row['nicknames']); ?></td>
                             <td><?php echo htmlspecialchars($row['email']); ?></td>
                             <td><?php echo htmlspecialchars($row['phone_number']); ?></td>
-                            <td><?php echo htmlspecialchars($row['date_of_birth']); ?></td>
                             <td><?php echo htmlspecialchars($row['gender']); ?></td>
                             <td>
-                                <a href="system.php?page=edit_user&id=<?php echo urlencode($row['student_id']); ?>" class="text-blue-500 hover:underline">แก้ไข</a> |
-                                <a href="system.php?page=delete_user&id=<?php echo urlencode($row['student_id']); ?>" class="text-red-500 hover:underline" onclick="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบข้อมูลนี้?')">ลบ</a>
+                                <a href="../mpdf/pdf_register/view_register.php?id=<?php echo urlencode($row['student_id']); ?>" class="text-green-500 hover:underline">ดูรายละเอียด</a> |
+
+                                <a href="?page=edit_user&id=<?php echo urlencode($row['student_id']); ?>" class="text-blue-500 hover:underline">แก้ไข</a> |
+                                <a href="?page=delete_user&id=<?php echo urlencode($row['student_id']); ?>" class="text-red-500 hover:underline" onclick="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบข้อมูลนี้?')">ลบ</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
@@ -98,7 +95,6 @@ $result = $conn->query($sql);
         </table>
     </div>
 </div>
-
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

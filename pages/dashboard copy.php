@@ -99,7 +99,7 @@ if ($result_students->num_rows > 0 && $result_teachers->num_rows > 0 && $result_
             </div>
         </div>
         <div class="h-50 ml-4 flex flex-col justify-center">
-            <p class="font-dm text-sm font-medium text-gray-600">รายวิชา</p>
+            <p class="font-dm text-sm font-medium text-gray-600">รายวิชาทั้งหมด</p>
             <h4 class="text-xl font-bold text-navy-700"><?php echo $classes_courses; ?></h4>
         </div>
     </div>

@@ -13,7 +13,7 @@ $result = $conn->query($sql);
             <label for="search-input" class="block text-gray-700 dark:text-gray-300 text-lg font-medium mb-2">ค้นหา:</label>
             <input type="text" id="search-input" class="p-3 w-full border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-blue-500" placeholder="ค้นหาด้วย รหัสนักศึกษา, ชื่อ, หรือ เบอร์โทร">
         </div>
-
+        <p class="text-red-500 text-1xl">**คลิกที่ชื่อเพื่อดูเกรดของนักศึกษา**</p>
         <table id="students-table" class="w-full border-collapse bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
             <thead class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
                 <tr class="text-left">
@@ -30,7 +30,7 @@ $result = $conn->query($sql);
             <tbody class="text-gray-700 dark:text-gray-200">
                 <?php if ($result->num_rows > 0) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
-                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors" onclick="window.location.href='system.php?page=GradeList&student_id=<?php echo htmlspecialchars($row['student_id']); ?>'">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors" onclick="window.location.href='?page=GradeList&student_id=<?php echo htmlspecialchars($row['student_id']); ?>'">
                             <td class="px-6 py-4 border-b"><?php echo htmlspecialchars($row['student_id']); ?></td>
                             <td class="px-6 py-4 border-b"><?php echo htmlspecialchars($row['fullname']); ?></td>
                             <td class="px-6 py-4 border-b"><?php echo htmlspecialchars($row['grade_level']); ?></td>

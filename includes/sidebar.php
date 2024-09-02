@@ -213,29 +213,6 @@
                     </ul>
                 </li> -->
                 <!----------------------------------- end จัดการระบบการสนทนาและการสื่อสาร ----------------------------------->
-                <!----------------------------------- สนับสนุนและแก้ไขปัญหา ----------------------------------->
-                <li>
-                    <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Support" data-collapse-toggle="dropdown-Support">
-                        <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-white dark:group-hover:text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17h-2v-2h2v2zm0-4h-2V7h2v8z" />
-                        </svg>
-
-                        <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>สนับสนุนและแก้ไขปัญหา</span>
-                        <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <ul id="dropdown-Support" class="hidden py-2 space-y-2">
-                        <li>
-                            <a href="#" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">ช่วยเหลือผู้ใช้</a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการข้อผิดพลาดและปัญหา</a>
-                        </li>
-
-                    </ul>
-                </li>
-                <!----------------------------------- end สนับสนุนและแก้ไขปัญหา ----------------------------------->
                 <!----------------------------------- เกี่ยวกับแอพพลิเคชั่น ----------------------------------->
                 <li>
                     <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-white hover:text-gray-800 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-application" data-collapse-toggle="dropdown-application">
@@ -250,7 +227,7 @@
                     </button>
                     <ul id="dropdown-application" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="?page=Manage_News" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-white hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ข่าวสารและกิจกรรม</a>
+                            <a href="?page=Manage_News" id="Manage-News-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-white hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ข่าวสารและกิจกรรม</a>
                         </li>
                         <!-- <li>
                             <a href="#" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">แบรนเนอร์</a>
@@ -281,7 +258,7 @@
 
                     <ul id="dropdown-ManageBook" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="?page=ManageBook" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-white hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/แก้ไข</a>
+                            <a href="?page=ManageBook" id="ManageBook-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-white hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/แก้ไข</a>
                         </li>
                         <!-- <li>
                             <a href="?page=" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">ข่าวสารและกิจกรรม</a>
@@ -290,12 +267,35 @@
                             <a href="?page=" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">ข่าวสารและกิจกรรม</a>
                         </li> -->
                         <li>
-                            <a href="#" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-white hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ข้อมูลหนังสือทั้งหมด</a>
+                            <a href="?page=ShowBook" id="ShowBook-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-white hover:text-gray-800 dark:hover:bg-gray-700 pl-11">ข้อมูลหนังสือทั้งหมด</a>
                         </li>
 
                     </ul>
                 </li>
                 <!----------------------------------- end เกี่ยวกับแอพพลิเคชั่น ----------------------------------->
+                <!----------------------------------- สนับสนุนและแก้ไขปัญหา ----------------------------------->
+                <li>
+                    <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Support" data-collapse-toggle="dropdown-Support">
+                        <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-white dark:group-hover:text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17h-2v-2h2v2zm0-4h-2V7h2v8z" />
+                        </svg>
+
+                        <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>สนับสนุนและแก้ไขปัญหา</span>
+                        <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <ul id="dropdown-Support" class="hidden py-2 space-y-2">
+                        <li>
+                            <a href="#" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">ช่วยเหลือผู้ใช้</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการข้อผิดพลาดและปัญหา</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <!----------------------------------- end สนับสนุนและแก้ไขปัญหา ----------------------------------->
                 <!----------------------------------- ดูแลและอัพเดตระบบ ----------------------------------->
                 <!-- <li>
                     <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Maintain" data-collapse-toggle="dropdown-Maintain">
@@ -354,7 +354,7 @@
                         <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
                     </a>
                 </li> -->
-                <li>
+                <!-- <li>
                     <a href="?page=Exercises" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                         <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-white dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
@@ -369,7 +369,7 @@
                         </svg>
                         <span class="flex-1 ml-3 whitespace-nowrap">test2</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="../logout.php" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                         <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-white dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

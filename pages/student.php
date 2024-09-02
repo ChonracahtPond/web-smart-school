@@ -11,13 +11,16 @@
             // ใช้ switch-case ในการแสดงเนื้อหาต่างๆ
             switch ($page) {
                 case 'dashboard':
-                    include "../pages/dashboard.php";
+                    include "../pages/dashboard/dashboard.php";
                     break;
 
 
                     // จัดการกับข้อมูลนักเรียน
                 case 'Manage_student':
                     include "../pages/student/Management/Manage_student.php";
+                    break;
+                case 'view_student':
+                    include "../pages/student/Management/view_student.php";
                     break;
                 case 'add_student':
                     include "../pages/student/Management/add_student.php";
@@ -27,6 +30,9 @@
                     break;
                 case 'delete_user':
                     include "../pages/student/Management/delete_student.php";
+                    break;
+                case 'view_register.php':
+                    include "../mpdf/pdf_register/view_register.php";
                     break;
 
                     // จัดการเกรด
@@ -122,18 +128,7 @@
                     break;
 
 
-                case 'Manage_News':
-                    include "../pages/News/Manage_News.php";
-                    break;
-                case 'add_news':
-                    include "../pages/News/add_news.php";
-                    break;
-                case 'edit_news':
-                    include "../pages/News/edit_news.php";
-                    break;
-                case 'delete_news':
-                    include "../pages/News/delete_news.php";
-                    break;
+
 
                 case 'equipment_management':
                     include "../pages/borrowing/equipment_management.php";

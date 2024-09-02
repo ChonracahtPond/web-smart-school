@@ -11,8 +11,8 @@
             // ใช้ switch-case ในการแสดงเนื้อหาต่างๆ
             switch ($page) {
                 case 'dashboard':
-                    include "../pages/dashboard.php";
-                    break;
+                include "../pages/dashboard/dashboard.php";
+                break;
                 case 'Teacher_Manage':
                     include "../pages/teacher/Management/Teacher_Manage.php";
                     break;

@@ -23,13 +23,15 @@ $sql = "
         s.student_name,
         c.course_name,
         t.teacher_name,
-        e.class
+        e.class,
+        e.credits 
     FROM enrollments e
     JOIN students s ON e.student_id = s.student_id
     JOIN courses c ON e.course_id = c.course_id
     JOIN teachers t ON e.teacher_id = t.teacher_id
     WHERE e.student_id = ?
 ";
+
 
 // เตรียมและดำเนินการคำสั่ง SQL
 $stmt = $conn->prepare($sql);
@@ -81,9 +83,11 @@ function render_table($grades, $class_filter, $title)
                     <th class="py-3 px-4 border-b">เทอม</th>
                     <th class="py-3 px-4 border-b">ปี</th>
                     <th class="py-3 px-4 border-b">เกรดเฉลี่ย</th>
-                    <th class="py-3 px-4 border-b">สถานะ</th>
+                    <th class="py-3 px-4 border-b">หน่วยกิจ</th>
                     <th class="py-3 px-4 border-b">ครูประจำวิชา</th>
                     <th class="py-3 px-4 border-b">ชั้น</th>
+
+                    <th class="py-3 px-4 border-b">สถานะ</th>
                 </tr>
             </thead>
             <tbody>
@@ -92,25 +96,30 @@ function render_table($grades, $class_filter, $title)
                 foreach ($grades as $grade) {
                     if ($grade['class'] == $class_filter) {
                         $found = true;
+
+                        // Determine the color based on the grade
+                        $grade_color = $grade['grade'] < 1.5 ? 'text-red-500' : 'text-green-500';
                 ?>
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['student_name']); ?></td>
-                        <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['course_name']); ?></td>
-                        <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['semester']); ?></td>
-                        <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['academic_year']); ?></td>
-                        <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['grade']); ?></td>
-                        <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['status']); ?></td>
-                        <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['teacher_name']); ?></td>
-                        <td class="py-2 px-4 border-b"><?php echo get_class_name($grade['class']); ?></td>
-                    </tr>
-                <?php
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['student_name']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['course_name']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['semester']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['academic_year']); ?></td>
+                            <td class="py-2 px-4 border-b <?php echo $grade_color; ?>"><?php echo htmlspecialchars($grade['grade']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['credits']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['teacher_name']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo get_class_name($grade['class']); ?></td>
+
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['status']); ?></td>
+                        </tr>
+                    <?php
                     }
                 }
                 if (!$found) {
-                ?>
-                <tr>
-                    <td colspan="8" class="py-2 px-4 border-b text-center text-gray-500">ไม่พบข้อมูล</td>
-                </tr>
+                    ?>
+                    <tr>
+                        <td colspan="9" class="py-2 px-4 border-b text-center text-gray-500">ไม่พบข้อมูล</td>
+                    </tr>
                 <?php
                 }
                 ?>
@@ -119,10 +128,18 @@ function render_table($grades, $class_filter, $title)
     </section>
 <?php
 }
+
 ?>
 
 <div class="container mx-auto p-6 bg-gray-50 min-h-screen">
     <h1 class="text-3xl font-extrabold mb-8 text-center text-gray-900">เกรดเฉลี่ยแต่ละรายวิชา</h1>
+
+    <!-- ปุ่มปริ้น PDF -->
+    <div class="mb-6 text-center">
+        <button id="print-pdf" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            ออกรายงาน PDF
+        </button>
+    </div>
 
     <?php
     render_table($grades, 1, "ชั้นประถม");
@@ -130,3 +147,54 @@ function render_table($grades, $class_filter, $title)
     render_table($grades, 3, "ชั้นมัธยมปลาย");
     ?>
 </div>
+
+
+
+<!-- Include jsPDF Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.6.0/jspdf.umd.min.js"></script>
+
+<script>
+    document.getElementById('print-pdf').addEventListener('click', function() {
+        const {
+            jsPDF
+        } = window.jspdf;
+        const doc = new jsPDF();
+
+        let y = 20; // Starting position for content
+
+        doc.text("Student Grades Information", 10, y);
+        y += 10;
+
+        const tables = document.querySelectorAll('.container section');
+
+        tables.forEach((table, index) => {
+            if (index > 0) {
+                doc.addPage();
+                y = 10;
+            }
+
+            const title = table.querySelector('h2').textContent;
+            doc.text(title, 10, y);
+            y += 10;
+
+            const rows = table.querySelectorAll('tbody tr');
+            rows.forEach((row, rowIndex) => {
+                const cells = row.querySelectorAll('td');
+                const data = Array.from(cells).map(cell => cell.textContent);
+
+                data.forEach((item, cellIndex) => {
+                    doc.text(item, 10 + (cellIndex * 40), y + (rowIndex * 10));
+                });
+
+                if ((rowIndex + 1) % 20 === 0) { // Page break after 20 rows
+                    doc.addPage();
+                    y = 10;
+                }
+            });
+
+            y += (rows.length * 10) + 10; // Adjust position for next table
+        });
+
+        doc.save('student-grades-info.pdf');
+    });
+</script>

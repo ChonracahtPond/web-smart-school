@@ -17,8 +17,17 @@ include '../includes/header.php';
             switch ($page) {
 
                 case 'dashboard':
-                    include "../pages/dashboard.php";
+                    include "../pages/dashboard/dashboard.php";
                     break;
+
+                case 'add_event':
+                    include "../pages/dashboard/calendar/add_event.php";
+                    break;
+                case 'get_event':
+                    include "../pages/dashboard/calendar/get_event.php";
+                    break;
+
+
                 case 'modals.php':
                     include "../pages/borrowing/modal/modals.php";
                     break;
@@ -108,6 +117,33 @@ include '../includes/header.php';
                     break;
                 case 'export_items.php':
                     include "../exports/export_items.php";
+                    break;
+
+
+                case 'Manage_News':
+                    include "../pages/News/Manage_News.php";
+                    break;
+                case 'add_news':
+                    include "../pages/News/add_news.php";
+                    break;
+                case 'edit_news':
+                    include "../pages/News/edit_news.php";
+                    break;
+                case 'delete_news':
+                    include "../pages/News/delete_news.php";
+                    break;
+
+
+                case 'ManageBook':
+                    include "../pages/Book/ManageBook.php";
+                    break;
+                case 'delete':
+                    include "../pages/Book/delete.php";
+                    break;
+
+
+                case 'ShowBook':
+                    include "../pages/Book/ShowBook.php";
                     break;
             }
             ?>
