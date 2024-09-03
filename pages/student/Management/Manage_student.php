@@ -104,10 +104,11 @@ $result = $conn->query($sql);
             <h2 class="text-xl font-semibold mb-4">นำเข้าข้อมูลจาก Excel</h2>
             <!-- Import Form -->
             <form action="../exports/student_report/import_student_excel.php" method="post" enctype="multipart/form-data" class="flex flex-col space-y-4">
-                <input type="file" name="excel_file" accept=".xlsx" class="px-4 py-2 border border-gray-300 rounded-lg">
+                <input type="file" name="import_file" accept=".xlsx" class="px-4 py-2 border border-gray-300 rounded-lg">
                 <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-purple-600">นำเข้าข้อมูลจาก Excel</button>
                 <button type="button" id="closeModal" class="bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-red-600">ปิด</button>
             </form>
+
         </div>
     </div>
 
