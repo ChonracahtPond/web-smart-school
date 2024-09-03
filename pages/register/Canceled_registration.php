@@ -1,7 +1,7 @@
 <?php
 
 // Fetch student data from the database with status_register = 0 or 1
-$sql = "SELECT * FROM register WHERE status_register IN (0)";
+$sql = "SELECT * FROM register WHERE status_register IN (1)";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

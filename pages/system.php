@@ -42,6 +42,15 @@ include '../includes/header.php';
                 case 'view_detail':
                     include "../pages/register/view_detail.php";
                     break;
+                case 'insert_student':
+                    include "../pages/register/insert_student.php";
+                    break;
+                case 'Canceled_registration':
+                    include "../pages/register/Canceled_registration.php";
+                    break;
+                case 'cancel_registration':
+                    include "../pages/register/cancel_registration.php";
+                    break;
                 case 'equipment_pdf.php':
                     include "../mpdf/equipment/equipment_pdf.php";
                     break;

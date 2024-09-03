@@ -5,7 +5,7 @@
     <p>&copy; <?php echo date("Y"); ?> เว็บไซต์การเรียนออนไลน์. สงวนลิขสิทธิ์. Email : Pondpong2299@gmail.com</p>
 </footer> -->
 <!-- This is an example component -->
-<footer class="bg-gray-800 text-white text-center p-4 mt-6">
+<footer class="bg-gray-800 text-white text-center p-4 ">
     <div class="max-w-2xl mx-auto text-white py-10">
         <div class="text-center">
             <!-- <h3 class="text-3xl mb-3"> เว็บไซต์ระบบการจัดการออนไลน์. </h3> -->

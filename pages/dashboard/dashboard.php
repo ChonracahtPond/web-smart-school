@@ -45,7 +45,7 @@ $total_news = $total_news_result->fetch_assoc()['total'];
                     echo "<h1 class='text-4xl font-bold text-blue-800'>ยินดีต้อนรับเข้าสู่หน้าคุณครู</h1>";
                     break;
                 default:
-                    echo "<h1 class='text-4xl font-bold text-blue-800'>ยินดีต้อนรับสู่ระบบ กศน</h1>";
+                    echo "<h1 class='text-4xl font-bold text-blue-800'>ยินดีต้อนรับสู่ระบบ สกร.</h1>";
                     break;
             }
             ?>

@@ -6,7 +6,7 @@ const currentPage = params.get("page");
 const pageLinkMap = {
   dashboard: "dashboard-link",
   //   sidebar
-  New_student_registration_system: "New_student_registration_system",
+  New_student_registration_system: "New-student-registration-system-link",
   equipment_management: "equipment_management",
   System_for_borrowing: "System_for_borrowing",
   Budget_for_borrowing: "Budget_for_borrowing",
@@ -15,6 +15,7 @@ const pageLinkMap = {
   Manage_News: "Manage-News-link",
   ManageBook: "ManageBook-link",
   ShowBook: "ShowBook-link",
+  Canceled_registration: "Canceled_registration-link",
 
   //   educationsidebar
   Manage_courses: "Manage-courses-link",
@@ -33,12 +34,18 @@ const pageLinkMap = {
   reset_password: "reset_password-link",
   StudentGrade: "StudentGrade-link",
   Studentcredit: "Studentcredit-link",
-  manage_attendance: "manage_attendance",
+  manage_attendance: "manage_attendance-link",
+  StudentGrade: "StudentGrade-link",
+  manage_access_rights: "manage_access_rights-link",
+
+  // setting
+  edit_profile: "edit-profile-link",
 };
 
 const dropdownMap = {
   //   sidebars
   New_student_registration_system: "dropdown-register",
+  Canceled_registration: "dropdown-register",
   equipment_management: "dropdown-System_for_borrowing",
   System_for_borrowing: "dropdown-System_for_borrowing",
   Budget_for_borrowing: "dropdown-System_for_borrowing",
@@ -59,8 +66,7 @@ const dropdownMap = {
   Manage_student: "dropdown-Manage-users",
   reset_password: "dropdown-Manage-users",
   StudentGrade: "dropdown-Manage-users",
-  Studentcredit: "dropdown-Manage-users",
-  manage_attendance: "dropdown-Manage-users",
+  // manage_attendance: "dropdown-Manage-users",
 };
 
 if (currentPage && pageLinkMap[currentPage]) {

@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+    // Set status to 'success' if the user is logged in
+    $status = 'success';
+    echo "<script>localStorage.setItem('status', 'success');</script>";
+} else {
+    // Set status to 'error' if the user is not logged in
+    $status = 'error';
+    echo "<script>localStorage.setItem('status', 'error');</script>";
+}
+
+// Include the modal file
+require 'modal/modallogin.php';
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,11 +62,13 @@
 <?php
 require_once "../includes/db_connect.php";
 include '../includes/modal/modal.php';
+
+// include "modal/modallogin.php";
 ?>
 
 
 <body class="">
-    <script src="../scripts/highlight-nav.js"></script>
+    <!-- <script src="../scripts/highlight-nav.js"></script> -->
     <header class="bg-[#6e4db0] text-white p-4 flex items-center justify-between shadow-md h-[70px]">
         <!-- Logo and Menu Items -->
         <div class="flex items-center">
@@ -66,7 +87,7 @@ include '../includes/modal/modal.php';
                 <!-- <li class="flex items-center"><a href="teacher.php" class="flex items-center justify-center hover:underline hover:text-gray-300 transition duration-200 py-2 px-4 rounded-lg">ระบบจัดการข้อมูลครู</a></li> -->
                 <li class="flex items-center">
                     <a href="student.php" class="flex items-center justify-center hover:underline hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
-                        ระบบจัดการข้อมูล
+                        ระบบจัดการข้อมูลนักศึกษา
                     </a>
                 </li>
             </ul>

@@ -9,7 +9,9 @@ const pageLinkMap = {
   student: "student-link",
 };
 
-const dropdownMap = {};
+const dropdownMap = {
+  
+};
 
 // Highlight the current page link
 if (currentPage && pageLinkMap[currentPage]) {

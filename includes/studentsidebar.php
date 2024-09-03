@@ -1,8 +1,8 @@
-<aside class="w-64 h-full" aria-label="Sidebar">
-    <div class="px-3 py-4 overflow-y-auto rounded bg-[#6e4db0] text-white dark:bg-gray-800">
+<div class="flex h-screen">
+    <aside class="w-64 h-full bg-[#6e4db0] text-white p-4 overflow-y-auto " aria-label="Sidebar">
         <ul class="space-y-4">
-            <li>
-                <a href="?page=dashboard" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <li class="group">
+                <a href="?page=dashboard" id="dashboard-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-white hover:text-gray-800 dark:hover:bg-gray-700">
                     <svg class="w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-white dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                         <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
@@ -15,9 +15,12 @@
             </div>
             <!----------------------------------- user ----------------------------------->
             <li>
-                <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-users" data-collapse-toggle="dropdown-Manage-users">
-                    <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-white dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-users" data-collapse-toggle="dropdown-Manage-users">
+                    <svg class="h-6 w-6" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                        <path d="M16 11l2 2l4 -4" />
                     </svg>
                     <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>จัดการข้อมูลนักเรียน</span>
                     <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -26,24 +29,66 @@
                 </button>
                 <ul id="dropdown-Manage-users" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="?page=Manage_student" id="Manage-student-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">ข้อมูลผู้เรียน</a>
+                        <a href="?page=Manage_student" id="Manage-student-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800  dark:text-white dark:hover:bg-gray-700 pl-11">จัดการข้อมูลนักเรียน</a>
                     </li>
                     <li>
-                        <a href="?page=reset_password" id="reset_password-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">รีเซ็ตรหัสผ่าน</a>
-                    </li>
-                    <li>
-                        <a href="?page=StudentGrade" id="StudentGrade-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">เกรดนักเรียน-นักศึกษา</a>
-                    </li>
-                    <li>
-                        <a href="?page=Studentcredit" id="Studentcredit-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">หน่วยกิตนักเรียน-นักศึกษา</a>
-                    </li>
-                    <li>
-                        <a href="?page=manage_access_rights" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">นักศึกษาที่จบการศึกษา</a>
-                    </li>
-                    <li>
-                        <a href="?page=manage_attendance" id="manage_attendance" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">ขาด/ลา/มาสาย</a>
+                        <a href="?page=reset_password" id="reset_password-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">รีเซ็ตรหัสผ่าน</a>
                     </li>
                 </ul>
+            </li>
+            <!----------------------------------- end user ----------------------------------->
+            <!----------------------------------- user ----------------------------------->
+            <li>
+                <a href="?page=StudentGrade" id="StudentGrade-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
+                    <svg class="h-6 w-6 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <line x1="9" y1="14" x2="15" y2="8" />
+                        <circle cx="9.5" cy="8.5" r=".5" fill="currentColor" />
+                        <circle cx="14.5" cy="13.5" r=".5" fill="currentColor" />
+                        <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2" />
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">เกรดนักเรียน-นักศึกษา</span>
+                </a>
+            </li>
+            <!----------------------------------- end user ----------------------------------->
+            <!----------------------------------- user ----------------------------------->
+            <li>
+                <a href="?page=Studentcredit" id="Studentcredit-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
+                    <svg class="h-6 w-6 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <line x1="9" y1="15" x2="15" y2="9" />
+                        <circle cx="9.5" cy="9.5" r=".5" fill="currentColor" />
+                        <circle cx="14.5" cy="14.5" r=".5" fill="currentColor" />
+                        <path d="M5 7.2a2.2 2.2 0 0 1 2.2 -2.2h1a2.2 2.2 0 0 0 1.55 -.64l.7 -.7a2.2 2.2 0 0 1 3.12 0l.7 .7a2.2 2.2 0 0 0 1.55 .64h1a2.2 2.2 0 0 1 2.2 2.2v1a2.2 2.2 0 0 0 .64 1.55l.7 .7a2.2 2.2 0 0 1 0 3.12l-.7 .7a2.2 2.2 0 0 0 -.64 1.55 v1a2.2 2.2 0 0 1 -2.2 2.2h-1a2.2 2.2 0 0 0 -1.55 .64l-.7 .7a2.2 2.2 0 0 1 -3.12 0l-.7 -.7a2.2 2.2 0 0 0 -1.55 -.64h-1a2.2 2.2 0 0 1 -2.2 -2.2v-1a2.2 2.2 0 0 0 -.64 -1.55l-.7 -.7a2.2 2.2 0 0 1 0 -3.12l.7 -.7a2.2 2.2 0 0 0 .64 -1.55 v-1" />
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">หน่วยกิตนักเรียน-นักศึกษา</span>
+                </a>
+            </li>
+            <!----------------------------------- end user ----------------------------------->
+            <!----------------------------------- user ----------------------------------->
+            <li>
+                <a href="?page=manage_access_rights" id="manage_access_rights-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
+                    <svg class="h-6 w-6 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                        <path d="M9 12l2 2l4 -4" />
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">นักศึกษาที่จบการศึกษา</span>
+                </a>
+            </li>
+            <!----------------------------------- end user ----------------------------------->
+            <!----------------------------------- user ----------------------------------->
+            <li>
+                <a href="?page=manage_attendance" id="manage_attendance-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
+                    <svg class="h-6 w-6 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <line x1="5" y1="9" x2="19" y2="9" />
+                        <line x1="5" y1="15" x2="19" y2="15" />
+                        <line x1="11" y1="4" x2="7" y2="20" />
+                        <line x1="17" y1="4" x2="13" y2="20" />
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">ขาด/ลา/มาสาย</span>
+                </a>
             </li>
             <!----------------------------------- end user ----------------------------------->
             <!----------------------------------- กพช ----------------------------------->
@@ -108,16 +153,17 @@
             <!----------------------------------- end เกี่ยวกับแอพพลิเคชั่น ----------------------------------->
 
 
-            <li>
+            <!-- <li>
                 <a href="../logout.php" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                     <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-white dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path>
                     </svg>
                     <span class="flex-1 ml-3 whitespace-nowrap">Logout</span>
                 </a>
-            </li>
+            </li> -->
         </ul>
-    </div>
-</aside>
+
+    </aside>
+</div>
 <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
 <script src="../scripts/select.js"></script>
