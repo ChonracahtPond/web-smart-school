@@ -14,7 +14,6 @@
                     include "../pages/dashboard/dashboard.php";
                     break;
 
-
                     // จัดการกับข้อมูลนักเรียน
                 case 'Manage_student':
                     include "../pages/student/Management/Manage_student.php";

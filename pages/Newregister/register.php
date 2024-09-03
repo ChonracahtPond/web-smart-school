@@ -99,8 +99,8 @@
             <div>
                 <label class="block text-gray-700">เพศ :</label>
                 <select name="gender" class="w-full px-4 py-2 border rounded-lg" required>
-                    <option value="Male" <?= isset($edit_data['gender']) && $edit_data['gender'] == 'Male' ? 'selected' : '' ?>>ชาย</option>
-                    <option value="Female" <?= isset($edit_data['gender']) && $edit_data['gender'] == 'Female' ? 'selected' : '' ?>>หญิง</option>
+                    <option value="ชาย" <?= isset($edit_data['gender']) && $edit_data['gender'] == 'Male' ? 'selected' : '' ?>>ชาย</option>
+                    <option value="หญิง" <?= isset($edit_data['gender']) && $edit_data['gender'] == 'Female' ? 'selected' : '' ?>>หญิง</option>
                 </select>
             </div>
             <div>

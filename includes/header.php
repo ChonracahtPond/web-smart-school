@@ -45,78 +45,77 @@ require_once "../includes/db_connect.php";
 include '../includes/modal/modal.php';
 ?>
 
-<body class="bg-white">
-    <header class="bg-[#6e4db0] text-white p-2  flex items-center justify-between">
+
+<body class="">
+    <script src="../scripts/highlight-nav.js"></script>
+    <header class="bg-[#6e4db0] text-white p-4 flex items-center justify-between shadow-md h-[70px]">
+        <!-- Logo and Menu Items -->
         <div class="flex items-center">
-            <img src="../assets/images/LOGO@3x.png" class="w-[50px] h-[50px] ml-10" alt="Logo">
-            <ul class="flex space-x-6 ml-6">
-                <li><a href="system.php" class="hover:underline">ระบบจัดการข้อมูล สกร.</a></li>
-                <li><a href="education.php" class="hover:underline">ระบบจัดการรายวิชา</a></li>
-                <li><a href="teacher.php" class="hover:underline">ระบบจัดการข้อมูลครู</a></li>
-                <li><a href="student.php" class="hover:underline">ระบบจัดการข้อมูล</a></li>
+            <img src="../assets/images/LOGO@3x.png" class="w-12 h-12 ml-10" alt="Logo">
+            <ul class="flex space-x-8 ml-6 text-lg font-medium">
+                <li class="flex items-center">
+                    <a href="system.php" class="flex items-center justify-center hover:underline hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
+                        ระบบจัดการข้อมูล สกร.
+                    </a>
+                </li>
+                <li class="flex items-center">
+                    <a href="education.php" class="flex items-center justify-center hover:underline hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
+                        ระบบจัดการรายวิชา
+                    </a>
+                </li>
+                <!-- <li class="flex items-center"><a href="teacher.php" class="flex items-center justify-center hover:underline hover:text-gray-300 transition duration-200 py-2 px-4 rounded-lg">ระบบจัดการข้อมูลครู</a></li> -->
+                <li class="flex items-center">
+                    <a href="student.php" class="flex items-center justify-center hover:underline hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
+                        ระบบจัดการข้อมูล
+                    </a>
+                </li>
             </ul>
         </div>
-        <div class="flex items-center mr-5">
-            <?php include "fontslide.php" ?>
-            <a href="setting.php" class="hover:underline flex items-center ml-4">
-                <svg class="h-6 w-6 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" />
+
+        <!-- Settings and Logout -->
+        <div class="flex items-center mr-5 space-x-6">
+            <?php
+            include "fontslide.php";
+            include "sql/sql_register.php";
+            ?>
+
+            <!-- Settings Button -->
+            <a href="system.php?page=New_student_registration_system" class="relative flex items-center hover:text-gray-300 transition duration-200">
+                <!-- Notification Badge -->
+                <?php if ($new_registrations > 0): ?>
+                    <div class="absolute top-0 right-0 -mt-3 -mr-3 w-5 h-5 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                        <?php echo htmlspecialchars($new_registrations); ?>
+                    </div>
+                <?php endif; ?>
+                <!-- Bell Icon -->
+                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+                <span class="hover:underline ml-2">แจ้งเตือน</span>
+            </a>
+
+            <!-- Settings Button -->
+            <a href="setting.php" class="flex items-center hover:text-gray-300 transition duration-200">
+                <svg class="h-6 w-6 mr-2" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <circle cx="12" cy="12" r="3" />
                 </svg>
-                <p class="hover:underline">ตั้งค่าระบบ</p>
-                <!-- ---------------- -->
-
-
-                <script>
-                    // JavaScript to toggle the dropdown
-                    const dropdownButton = document.getElementById('dropdown-button');
-                    const dropdownMenu = document.getElementById('dropdown-menu');
-                    const searchInput = document.getElementById('search-input');
-                    let isOpen = false; // Set to true to open the dropdown by default
-
-                    // Function to toggle the dropdown state
-                    function toggleDropdown() {
-                        isOpen = !isOpen;
-                        dropdownMenu.classList.toggle('hidden', !isOpen);
-                    }
-
-                    // Set initial state
-                    toggleDropdown();
-
-                    dropdownButton.addEventListener('click', () => {
-                        toggleDropdown();
-                    });
-
-                    // Add event listener to filter items based on input
-                    searchInput.addEventListener('input', () => {
-                        const searchTerm = searchInput.value.toLowerCase();
-                        const items = dropdownMenu.querySelectorAll('a');
-
-                        items.forEach((item) => {
-                            const text = item.textContent.toLowerCase();
-                            if (text.includes(searchTerm)) {
-                                item.style.display = 'block';
-                            } else {
-                                item.style.display = 'none';
-                            }
-                        });
-                    });
-                </script>
+                <span class="hover:underline">ตั้งค่าระบบ</span>
             </a>
-            <a href="../logout.php" class="hover:underline flex items-center ml-4">
-                <svg class="h-6 w-6 text-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" />
+
+            <!-- Logout Button -->
+            <a href="../logout.php" class="flex items-center hover:text-gray-300 transition duration-200">
+                <svg class="h-6 w-6 mr-2" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M13 16l4-4-4-4M17 12H7m7-7H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z" />
                 </svg>
-                <p class="hover:underline">ออกจากระบบ</p>
+                <span class="hover:underline">ออกจากระบบ</span>
             </a>
         </div>
     </header>
 
 
 
-    <div class="flex bg-white">
+    <div class="flex ">
         <?php
         $current_page = basename($_SERVER['SCRIPT_NAME']);
 

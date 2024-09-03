@@ -55,31 +55,52 @@ $total_news = $total_news_result->fetch_assoc()['total'];
             <!-- Summary Information -->
             <div class="bg-white shadow-lg rounded-lg p-6 flex-1">
                 <h2 class="text-3xl font-semibold mb-6 text-gray-800">ข้อมูลสรุป</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <!-- Number of Students -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold text-gray-700">จำนวนผู้เรียน</h3>
-                        <p class="text-2xl font-bold text-blue-600"><?php echo htmlspecialchars($students_count); ?></p>
+                    <div class="bg-blue-700 p-6 rounded-lg shadow-md">
+                        <p class="text-lg font-semibold text-white">นักศึกษาทั้งหมด จำนวน <span class="text-1xl font-bold text-blue-300"><?php echo htmlspecialchars($students_count); ?></span> คน</p>
+                        <p class="text-lg font-semibold text-white">ชาย <span class="text-1xl font-bold text-blue-300"><?php echo htmlspecialchars($male_count); ?></span> คน</p>
+                        <p class="text-lg font-semibold text-white">หญิง <span class="text-1xl font-bold text-blue-300"><?php echo htmlspecialchars($female_count); ?></span> คน</p>
+                    </div>
+
+                    <!-- Primary Level Students -->
+                    <div class="bg-green-700 p-6 rounded-lg shadow-md">
+                        <p class="text-lg font-semibold text-white">ระดับ ประถม ทั้งหมด <span class="text-1xl font-bold text-green-300"><?php echo htmlspecialchars($primary_count); ?></span> คน</p>
+                        <p class="text-lg font-semibold text-white">ชาย <span class="text-1xl font-bold text-green-300"><?php echo htmlspecialchars($primary_male_count); ?></span> คน</p>
+                        <p class="text-lg font-semibold text-white">หญิง <span class="text-1xl font-bold text-green-300"><?php echo htmlspecialchars($primary_female_count); ?></span> คน</p>
+                    </div>
+
+                    <!-- Lower Secondary Students -->
+                    <div class="bg-yellow-700 p-6 rounded-lg shadow-md">
+                        <p class="text-lg font-semibold text-white">ระดับ มัธยมต้น ทั้งหมด <span class="text-1xl font-bold text-yellow-300"><?php echo htmlspecialchars($lower_secondary_count); ?></span> คน</p>
+                        <p class="text-lg font-semibold text-white">ชาย <span class="text-1xl font-bold text-yellow-300"><?php echo htmlspecialchars($lower_secondary_male_count); ?></span> คน</p>
+                        <p class="text-lg font-semibold text-white">หญิง <span class="text-1xl font-bold text-yellow-300"><?php echo htmlspecialchars($lower_secondary_female_count); ?></span> คน</p>
+                    </div>
+
+                    <!-- Upper Secondary Students -->
+                    <div class="bg-red-700 p-6 rounded-lg shadow-md">
+                        <p class="text-lg font-semibold text-white">ระดับ มัธยมปลาย ทั้งหมด <span class="text-1xl font-bold text-red-300"><?php echo htmlspecialchars($upper_secondary_count); ?></span> คน</p>
+                        <p class="text-lg font-semibold text-white">ชาย <span class="text-1xl font-bold text-red-300"><?php echo htmlspecialchars($upper_secondary_male_count); ?></span> คน</p>
+                        <p class="text-lg font-semibold text-white">หญิง <span class="text-1xl font-bold text-red-300"><?php echo htmlspecialchars($upper_secondary_female_count); ?></span> คน</p>
                     </div>
 
                     <!-- Number of Courses -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold text-gray-700">จำนวนรายวิชาที่เปิดสอนทั้งหมด</h3>
-                        <p class="text-2xl font-bold text-blue-600"><?php echo htmlspecialchars($classes_courses); ?></p>
-                    </div>
-
-                    <!-- Active Courses -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold text-gray-700">จำนวนรายวิชาที่เปิดสอนตอนนี้</h3>
-                        <p class="text-2xl font-bold text-blue-600"><?php echo htmlspecialchars($active_courses); ?></p>
+                    <div class="bg-gray-700 p-6 rounded-lg shadow-md">
+                        <p class="text-lg font-semibold text-white">รายวิชาทั้งหมด <span class="text-1xl font-bold text-gray-300"><?php echo htmlspecialchars($classes_courses); ?></span> รายวิชา</p>
+                        <p class="text-lg font-semibold text-white">รายวิชาที่เปิดสอนตอนนี้ <span class="text-1xl font-bold text-gray-300"><?php echo htmlspecialchars($active_courses); ?></span> รายวิชา</p>
                     </div>
 
                     <!-- Number of Teachers -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-semibold text-gray-700">จำนวนครู</h3>
-                        <p class="text-2xl font-bold text-blue-600"><?php echo htmlspecialchars($teachers_count); ?></p>
+                    <div class="bg-purple-700 p-6 rounded-lg shadow-md">
+                        <p class="text-lg font-semibold text-white">ครูทั้งหมด <span class="text-1xl font-bold text-purple-300"><?php echo htmlspecialchars($teachers_count); ?></span> คน</p>
+                        <p class="text-lg font-semibold text-white">ครู <span class="text-1xl font-bold text-purple-300"><?php echo htmlspecialchars($kru_count); ?></span> คน</p>
+                        <p class="text-lg font-semibold text-white">ครูบรรจุ <span class="text-1xl font-bold text-purple-300"><?php echo htmlspecialchars($krubanju_count); ?></span> คน</p>
                     </div>
                 </div>
+
+
+
+
 
 
 

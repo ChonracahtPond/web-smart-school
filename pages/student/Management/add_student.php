@@ -127,8 +127,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="mb-4">
             <label class="block text-gray-700 dark:text-gray-300">เพศ:</label>
             <select name="gender" class="mt-1 p-2 w-full border border-gray-300 rounded">
-                <option value="Male">ชาย</option>
-                <option value="Female">หญิง</option>
+                <option value="ชาย">ชาย</option>
+                <option value="หญิง">หญิง</option>
             </select>
         </div>
         <!-- Add new fields here -->
