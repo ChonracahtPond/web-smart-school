@@ -1,7 +1,8 @@
 <?php
 require_once '../vendor/autoload.php';
 include('../../includes/db_connect.php');
-error_reporting(~E_NOTICE);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
@@ -18,7 +19,7 @@ if (isset($_FILES['excel_file'])) {
     for ($i = 1; $i < count($data); $i++) {
         $row = $data[$i];
 
-        // ดึงข้อมูลนักเรียนจากแถว
+        // ดึงข้อมูลนักเรียนจากแถว (เริ่มจาก 0)
         $student_id = isset($row[0]) ? $row[0] : null;
         $grade_level = isset($row[1]) ? $row[1] : null;
         $section = isset($row[2]) ? $row[2] : null;
@@ -101,6 +102,8 @@ if (isset($_FILES['excel_file'])) {
         $stmt = $conn->prepare($sql);
 
         if ($stmt === false) {
+            // บันทึกข้อผิดพลาดลงในไฟล์ log
+            error_log('Prepare failed: ' . $conn->error . "\nSQL: " . $sql . "\n", 3, 'error_log.txt');
             die('Prepare failed: ' . $conn->error);
         }
 
@@ -146,6 +149,8 @@ if (isset($_FILES['excel_file'])) {
         );
 
         if (!$stmt->execute()) {
+            // บันทึกข้อผิดพลาดลงในไฟล์ log
+            error_log('Execute failed: ' . $stmt->error . "\nSQL: " . $sql . "\n", 3, 'error_log.txt');
             die('Execute failed: ' . $stmt->error);
         }
     }
@@ -156,3 +161,4 @@ if (isset($_FILES['excel_file'])) {
 }
 
 $conn->close();
+?>
