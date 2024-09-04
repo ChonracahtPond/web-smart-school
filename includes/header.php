@@ -1,20 +1,20 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user_id'])) {
-    // Set status to 'success' if the user is logged in
-    $status = 'success';
-    echo "<script>localStorage.setItem('status', 'success');</script>";
-} else {
-    // Set status to 'error' if the user is not logged in
-    $status = 'error';
-    echo "<script>localStorage.setItem('status', 'error');</script>";
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to login page if not logged in
+    header('Location: login.php');
+    exit(); // Ensure no further code is executed
 }
+
+// Set status to 'success' if the user is logged in
+$status = 'success';
+echo "<script>localStorage.setItem('status', 'success');</script>";
 
 // Include the modal file
 require 'modal/modallogin.php';
 ?>
-
 
 
 <!DOCTYPE html>

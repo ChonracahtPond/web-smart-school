@@ -29,10 +29,16 @@ $grades_result = $conn->query($grades_query);
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css">
 
 <div class="container mx-auto px-6 py-8">
-    <h1 class="text-4xl font-bold text-gray-900 mb-8">ข้อมูลนักเรียน</h1>
+    <h1 class="text-4xl font-bold text-blue-800 mb-8">ข้อมูลนักเรียน</h1>
 
     <!-- Grade Level Filter Dropdown -->
     <form method="GET" class="mb-8 flex flex-col md:flex-row md:items-center md:space-x-4">
+        <!-- Search Input -->
+        <div class="flex-1">
+            <label for="search" class="block text-lg font-medium text-gray-700 mb-2">ค้นหาชื่อนักเรียน</label>
+            <input id="search" name="search" type="text" value="<?php echo htmlspecialchars($search_query); ?>" placeholder="ค้นหาชื่อ..." class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div>
+
         <div class="flex-1 mb-4 md:mb-0">
             <label for="grade_level" class="block text-lg font-medium text-gray-700 mb-2">กรองตามระดับชั้น</label>
             <select id="grade_level" name="grade_level" class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" onchange="this.form.submit()">
@@ -45,11 +51,7 @@ $grades_result = $conn->query($grades_query);
             </select>
         </div>
 
-        <!-- Search Input -->
-        <div class="flex-1">
-            <label for="search" class="block text-lg font-medium text-gray-700 mb-2">ค้นหาชื่อนักเรียน</label>
-            <input id="search" name="search" type="text" value="<?php echo htmlspecialchars($search_query); ?>" placeholder="ค้นหาชื่อ..." class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-        </div>
+
     </form>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">

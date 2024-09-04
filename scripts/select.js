@@ -6,6 +6,7 @@ const currentPage = params.get("page");
 const pageLinkMap = {
   dashboard: "dashboard-link",
   student_dashboard: "student_dashboard-link",
+  courses_dashboard: "courses_dashboard-link",
   //   sidebar
   New_student_registration_system: "New-student-registration-system-link",
   equipment_management: "equipment_management",
