@@ -5,6 +5,7 @@ const currentPage = params.get("page");
 // Map of page names to their corresponding link IDs
 const pageLinkMap = {
   dashboard: "dashboard-link",
+  student_dashboard: "student_dashboard-link",
   //   sidebar
   New_student_registration_system: "New-student-registration-system-link",
   equipment_management: "equipment_management",

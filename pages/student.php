@@ -6,12 +6,12 @@
         <section class="content">
             <?php
             // รับค่าพารามิเตอร์ URL
-            $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+            $page = isset($_GET['page']) ? $_GET['page'] : 'student_dashboard';
 
             // ใช้ switch-case ในการแสดงเนื้อหาต่างๆ
             switch ($page) {
-                case 'dashboard':
-                    include "../pages/dashboard/dashboard.php";
+                case 'student_dashboard':
+                    include "../pages/student/dashboard/student_dashboard.php";
                     break;
                     // จัดการกับข้อมูลนักเรียน
                 case 'Manage_student':
