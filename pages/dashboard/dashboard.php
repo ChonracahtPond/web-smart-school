@@ -148,7 +148,7 @@ $total_news = $total_news_result->fetch_assoc()['total'];
         </div>
 
         <!-- Latest News -->
-        <div class="bg-white shadow-lg rounded-lg p-6 mt-6">
+        <div class="bg-white shadow-lg rounded-lg p-6 mt-6 ">
             <h2 class="text-3xl font-semibold mb-6 text-gray-800">อีเว้นท์</h2>
             <?php include "calendar/calendar.php"; ?>
         </div>

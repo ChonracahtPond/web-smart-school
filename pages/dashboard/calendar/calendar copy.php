@@ -18,25 +18,22 @@
         height: 100%;
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.4);
-        padding: 20px;
-        box-sizing: border-box;
     }
 
     .modal-content {
         background-color: #fefefe;
-        margin: 5% auto;
-        padding: 10px;
+        margin: 10% auto;
+        padding: 20px;
         border: 1px solid #888;
         width: 90%;
-        max-width: 288px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        border-radius: 6px;
+        max-width: 600px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
     .close {
         color: #aaa;
         float: right;
-        font-size: 16px;
+        font-size: 28px;
         font-weight: bold;
     }
 
@@ -49,117 +46,48 @@
 
     /* Custom styles for calendar */
     #calendar {
-        max-width: 100%;
+        max-width: 1200px;
         margin: 0 auto;
-    }
-
-    /* Responsive design for mobile */
-    @media (max-width: 600px) {
-        .modal-content {
-            width: 100%;
-            margin: 0;
-            padding: 6px;
-        }
-
-        .close {
-            font-size: 14px;
-        }
-    }
-
-    /* Button styling */
-    .bg-blue-500 {
-        background-color: #3b82f6;
-    }
-
-    .text-white {
-        color: #fff;
-    }
-
-    .px-4 {
-        padding-left: 0.7rem;
-        padding-right: 0.7rem;
-    }
-
-    .py-2 {
-        padding-top: 0.36rem;
-        padding-bottom: 0.36rem;
-    }
-
-    .rounded-lg {
-        border-radius: 0.36rem;
-    }
-
-    .shadow-lg {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .hover\:bg-blue-600:hover {
-        background-color: #2563eb;
-    }
-
-    .transition {
-        transition: background-color 0.2s ease;
-    }
-
-    .duration-200 {
-        transition-duration: 200ms;
     }
 </style>
 
 <!-- Button to Add Event -->
-<button id="addEventBtn" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition duration-200 mb-6">+ เพิ่มข้อมูล</button>
+<button id="addEventBtn" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition duration-200 mb-10">+ เพิ่มข้อมูล</button>
 
-<div class="w-full h-[30%]" id='calendar'></div>
+<div class="w-full" id='calendar'></div>
 
 <!-- Modal for event details -->
-<div id="eventModal" class="modal ">
-    <div class="modal-content ">
+<div id="eventModal" class="modal">
+    <div class="modal-content">
         <span class="close">&times;</span>
-        <h2 id="eventTitle" class="text-lg font-bold mb-2"></h2>
-        <p id="eventDescription" class="text-gray-700 mb-2"></p>
-        <p id="eventDate" class="text-gray-600"></p>
+        <h2 id="eventTitle"></h2>
+        <p id="eventDescription"></p>
+        <p id="eventDate"></p>
     </div>
 </div>
-
-<!-- Modal for event details -->
-<!-- <div id="eventModal" class="fixed inset-0 flex items-center justify-center z-50 hidden bg-black bg-opacity-50">
-    <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
-        <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-900 text-2xl" onclick="closeModal()">&times;</button>
-        <h2 id="eventTitle" class="text-xl font-semibold mb-3 text-gray-800"></h2>
-        <p id="eventDescription" class="text-gray-700 mb-3"></p>
-        <p id="eventDate" class="text-gray-600"></p>
-    </div>
-</div> -->
-
-
 
 <!-- Modal for adding new event -->
 <div id="addEventModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <h2 class="text-lg font-bold mb-4">เพิ่มเหตุการณ์ใหม่</h2>
+        <h2>เพิ่มเหตุการณ์ใหม่</h2>
         <form id="addEventForm">
             <div class="mb-4">
-                <label for="eventTitleInput" class="block text-gray-700 mb-2">หัวข้อเหตุการณ์</label>
+                <label for="eventTitleInput" class="block text-gray-700">หัวข้อเหตุการณ์</label>
                 <input type="text" id="eventTitleInput" class="w-full p-2 border rounded" required>
             </div>
             <div class="mb-4">
-                <label for="eventDescriptionInput" class="block text-gray-700 mb-2">รายละเอียดเหตุการณ์</label>
+                <label for="eventDescriptionInput" class="block text-gray-700">รายละเอียดเหตุการณ์</label>
                 <textarea id="eventDescriptionInput" class="w-full p-2 border rounded"></textarea>
             </div>
             <div class="mb-4">
-                <label for="eventStartDateInput" class="block text-gray-700 mb-2">วันที่เริ่มต้น</label>
-                <input type="date" id="eventStartDateInput" class="w-full p-2 border rounded" required>
-            </div>
-            <div class="mb-4">
-                <label for="eventEndDateInput" class="block text-gray-700 mb-2">วันที่สิ้นสุด</label>
-                <input type="date" id="eventEndDateInput" class="w-full p-2 border rounded">
+                <label for="eventDateInput" class="block text-gray-700">วันที่เหตุการณ์</label>
+                <input type="date" id="eventDateInput" class="w-full p-2 border rounded" required>
             </div>
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition duration-200">บันทึกเหตุการณ์</button>
         </form>
     </div>
 </div>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -177,16 +105,27 @@
                 right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
             },
             events: function(fetchInfo, successCallback, failureCallback) {
-                fetch('../pages/dashboard/calendar/fetch_data.php')
-                    .then(response => response.json())
-                    .then(data => {
-                        // console.log('Fetched events:', data); // Debugging line
-                        successCallback(data);
-                    })
-                    .catch(error => {
-                        // console.error('Error fetching events:', error);
-                        failureCallback(error);
-                    });
+                // สร้างข้อมูลจำลอง (datatest) สำหรับแสดงใน FullCalendar
+                var datatest = [{
+                        title: 'Meeting',
+                        start: '2024-09-05',
+                        description: 'This is a test meeting.'
+                    },
+                    {
+                        title: 'Conference',
+                        start: '2024-09-12',
+                        end: '2024-09-14',
+                        description: 'This is a test conference.'
+                    },
+                    {
+                        title: 'Birthday Party',
+                        start: '2024-09-19',
+                        description: 'This is a test birthday party.'
+                    }
+                ];
+
+                // ส่งข้อมูลไปที่ FullCalendar
+                successCallback(datatest);
             },
 
             eventClick: function(info) {
@@ -219,15 +158,15 @@
             }
         }
 
+        // Handle form submission
         document.getElementById('addEventForm').addEventListener('submit', function(e) {
             e.preventDefault();
             var title = document.getElementById('eventTitleInput').value;
             var description = document.getElementById('eventDescriptionInput').value;
-            var startDate = document.getElementById('eventStartDateInput').value;
-            var endDate = document.getElementById('eventEndDateInput').value;
+            var date = document.getElementById('eventDateInput').value;
 
-            if (title && startDate) {
-                fetch('../pages/dashboard/calendar/add_event.php', {
+            if (title && date) {
+                fetch('add_event.php', { // URL to your PHP file
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
@@ -235,17 +174,15 @@
                         body: new URLSearchParams({
                             'eventTitle': title,
                             'eventDescription': description,
-                            'eventStartDate': startDate,
-                            'eventEndDate': endDate
+                            'eventDate': date
                         })
                     }).then(response => response.text())
                     .then(data => {
-                        console.log('Server response:', data);
+                        console.log('Server response:', data); // Log server response
                         if (data.includes('successfully')) {
                             calendar.addEvent({
                                 title: title,
-                                start: startDate,
-                                end: endDate,
+                                start: date,
                                 description: description
                             });
                             addEventModal.style.display = "none";
@@ -253,13 +190,12 @@
                             alert('Error saving event: ' + data);
                         }
                     }).catch(error => {
-                        console.error('Fetch error:', error);
+                        console.error('Fetch error:', error); // Log fetch error
                         alert('Fetch error: ' + error.message);
                     });
             } else {
                 alert('Please fill in all required fields.');
             }
         });
-
     });
 </script>

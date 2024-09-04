@@ -8,6 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 // ตรวจสอบบทบาทของผู้ใช้
 if ($_SESSION['user_role'] !== 'admin') {
     echo "คุณไม่มีสิทธิ์เข้าถึงหน้านี้";
+    header("Location: login.php");
     exit();
 }
 ?>

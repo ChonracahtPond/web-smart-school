@@ -14,7 +14,7 @@ $conn->close();
 ?>
 
 
-<h1 class="text-2xl font-bold mb-4 text-gray-800">ผู้ลงทะเบียนสมัครเรียน</h1>
+<h1 class="text-2xl font-bold mb-4 text-gray-800">ผู้ลงทะเบียนถูกยกเลิก</h1>
 
 <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
     <thead>
