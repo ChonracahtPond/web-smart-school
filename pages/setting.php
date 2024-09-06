@@ -21,6 +21,10 @@
                     include "../pages/setting/Manage_screen_setting/Manage_screen_setting.php";
                     break;
 
+                case 'edit_Notification':
+                    include "../pages/setting/Notification/edit_Notification.php";
+                    break;
+
                     // case 'borrow_item':
                     //     include "../pages/borrowing/borrow_item.php";
                     //     break;

@@ -29,6 +29,7 @@ $screen_color = isset($_SESSION['screen_color']) ? $_SESSION['screen_color'] : '
     <title>เว็บไซต์การเรียนออนไลน์</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <link rel="stylesheet" href="https://horizon-tailwind-react-corporate-7s21b54hb-horizon-ui.vercel.app/static/css/main.d7f96858.css" />
+    
 
     <style>
         .marquee-container {
@@ -69,7 +70,6 @@ include '../includes/modal/modal.php';
 // include "modal/modallogin.php";
 ?>
 
-
 <body class="">
     <!-- <script src="../scripts/highlight-nav.js"></script> -->
     <!-- <header class="bg-[#6e4db0] text-white p-4 flex items-center justify-between shadow-md h-[70px]"> -->
@@ -79,18 +79,18 @@ include '../includes/modal/modal.php';
             <img src="../assets/images/LOGO@3x.png" class="w-12 h-12 ml-10" alt="Logo">
             <ul class="flex space-x-8 ml-6 text-lg font-medium">
                 <li class="flex items-center">
-                    <a href="system.php" class="flex items-center justify-center hover:underline hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
+                    <a href="system.php" id="system-head" class="flex items-center justify-center hover:underline hover:bg-gray-100 hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
                         ระบบจัดการข้อมูล สกร.
                     </a>
                 </li>
                 <li class="flex items-center">
-                    <a href="education.php" class="flex items-center justify-center hover:underline hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
+                    <a href="education.php" class="flex items-center justify-center hover:underline hover:bg-gray-100 hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
                         ระบบจัดการรายวิชา
                     </a>
                 </li>
                 <!-- <li class="flex items-center"><a href="teacher.php" class="flex items-center justify-center hover:underline hover:text-gray-300 transition duration-200 py-2 px-4 rounded-lg">ระบบจัดการข้อมูลครู</a></li> -->
                 <li class="flex items-center">
-                    <a href="student.php" class="flex items-center justify-center hover:underline hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
+                    <a href="student.php" class="flex items-center justify-center hover:underline hover:bg-gray-100 hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
                         ระบบจัดการข้อมูลนักศึกษา
                     </a>
                 </li>

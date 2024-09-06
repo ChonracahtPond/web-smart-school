@@ -4,6 +4,11 @@ const currentPage = params.get("page");
 
 // Map of page names to their corresponding link IDs
 const pageLinkMap = {
+  // header
+  system: "system-head",
+  education: "education-link",
+  student: "student-link",
+
   dashboard: "dashboard-link",
   student_dashboard: "student_dashboard-link",
   courses_dashboard: "courses_dashboard-link",

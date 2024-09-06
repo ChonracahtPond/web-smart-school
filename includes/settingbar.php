@@ -1,6 +1,23 @@
+<style>
+    #sidebar.w-16 {
+        width: 4rem;
+        /* Adjust this value as needed */
+    }
+
+    #sidebar.w-64 {
+        width: 16rem;
+        /* Adjust this value as needed */
+    }
+</style>
+
+<!-- <button id="sidebar-toggle" class="text-white bg-blue-500 p-2 rounded-md" aria-expanded="true">
+    Toggle Sidebar
+</button> -->
+
 <div class="flex h-screen">
+
     <!-- <aside class="w-64 h-full bg-[#6e4db0] text-white p-4 overflow-y-auto"  aria-label="Sidebar"> -->
-    <aside class="w-64 h-full text-white p-4 overflow-y-auto" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;" aria-label="Sidebar">
+    <aside id="sidebar" class="w-64 h-full text-white p-4 overflow-y-auto transition-all duration-300" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;" aria-label="Sidebar">
         <ul class="space-y-4">
             <li>
                 <a href="?page=edit_profile" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
@@ -62,30 +79,42 @@
                 </ul>
             </li>
             <!----------------------------------- end user ----------------------------------->
-            <!----------------------------------- กพช ----------------------------------->
-            <!-- <li>
-                <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-activity" data-collapse-toggle="dropdown-Manage-activity">
-                    <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-white dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 2a1 1 0 011-1h1V0h8v1h1a1 1 0 011 1v1h1a2 2 0 012 2v14a2 2 0 01-2 2H3a2 2 0 01-2-2V5a2 2 0 012-2h1V1a1 1 0 011-1zM4 3v1h12V3H4zm12 2H4v14h12V5zm-5 8v-2h-2v2H7v-4h6v4h-2z" />
+            <!----------------------------------- user ----------------------------------->
+            <li>
+                <a href="?page=edit_Notification" id="edit-profile-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
+                    <svg class="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                     </svg>
 
-                    <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>กิจกรรม กพช</span>
+
+                    <span class="flex-1 ml-3 whitespace-nowrap">ตั้งค่าการแจ้งเตือน</span>
+                </a>
+            </li>
+            <!----------------------------------- end user ----------------------------------->
+            <!----------------------------------- กพช ----------------------------------->
+            <li>
+                <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-activity" data-collapse-toggle="dropdown-Manage-activity">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>การตั้งค่าการบูรณาการ</span>
                     <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                     </svg>
                 </button>
                 <ul id="dropdown-Manage-activity" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="?page=Manage_Activity" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
+                        <a href="?page=" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">การเชื่อมต่อ API</a>
                     </li>
                     <li>
-                        <a href="?page=Manage_Credits" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการข้อมูลหน่วยกิจ</a>
+                        <a href="?page=Manage_Credits" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">การเชื่อมต่อกับบริการภายนอก</a>
                     </li>
                     <li>
-                        <a href="?page=Reports_and_statistics" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">รายงานและสถิติ</a>
-                    </li>ห
+                        <a href="?page=Reports_and_statistics" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">รายงานและสถิติ</a>
+                    </li>
                 </ul>
-            </li> -->
+            </li>
             <!----------------------------------- end กพช ----------------------------------->
             <!----------------------------------- เกี่ยวกับแอพพลิเคชั่น ----------------------------------->
             <!-- <li>
@@ -138,3 +167,20 @@
 </div>
 <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
 <script src="../scripts/select.js"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebar = document.getElementById('sidebar');
+        const toggleButton = document.getElementById('sidebar-toggle');
+
+        toggleButton.addEventListener('click', function() {
+            // Toggle the 'collapsed' class on the sidebar
+            const isExpanded = sidebar.classList.toggle('w-64'); // Expanded width
+            sidebar.classList.toggle('w-16'); // Collapsed width
+
+            // Update aria-expanded attribute
+            toggleButton.setAttribute('aria-expanded', isExpanded);
+        });
+    });
+</script>

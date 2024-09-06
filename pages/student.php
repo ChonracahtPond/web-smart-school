@@ -13,6 +13,13 @@
                 case 'student_dashboard':
                     include "../pages/student/dashboard/student_dashboard.php";
                     break;
+
+                case 'students_courses':
+                    include "../pages/student/students_courses/students_courses.php";
+                    break;
+
+
+
                     // จัดการกับข้อมูลนักเรียน
                 case 'Manage_student':
                     include "../pages/student/Management/Manage_student.php";
