@@ -18,6 +18,7 @@ const pageLinkMap = {
   ManageBook: "ManageBook-link",
   ShowBook: "ShowBook-link",
   Canceled_registration: "Canceled_registration-link",
+  Statistics_and_reports: "Statistics_and_reports",
 
   //   educationsidebar
   Manage_courses: "Manage-courses-link",
@@ -42,6 +43,8 @@ const pageLinkMap = {
 
   // setting
   edit_profile: "edit-profile-link",
+  Manage_Toolbar_setting: "Manage_Toolbar_setting-link",
+  Manage_screen_setting: "Manage_screen_setting-link",
 };
 
 const dropdownMap = {
@@ -56,6 +59,7 @@ const dropdownMap = {
   Manage_News: "dropdown-application",
   ManageBook: "dropdown-ManageBook",
   ShowBook: "dropdown-ManageBook",
+  Statistics_and_reports: "dropdown-Manage-reports",
   //   educationsidebar
   Manage_courses: "dropdown-Manage-courses",
   Manage_Activity: "dropdown-Manage-activity",
@@ -69,6 +73,10 @@ const dropdownMap = {
   reset_password: "dropdown-Manage-users",
   StudentGrade: "dropdown-Manage-users",
   // manage_attendance: "dropdown-Manage-users",
+
+  // setting
+  Manage_Toolbar_setting: "dropdown-Manage-setting",
+  Manage_screen_setting: "dropdown-Manage-setting",
 };
 
 if (currentPage && pageLinkMap[currentPage]) {

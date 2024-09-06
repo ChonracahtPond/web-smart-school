@@ -14,6 +14,13 @@
                     include "../pages/profile/edit/edit_profile.php";
                     break;
 
+                case 'Manage_Toolbar_setting':
+                    include "../pages/setting/Manage_screen_setting/Manage_Toolbar_setting.php";
+                    break;
+                case 'Manage_screen_setting':
+                    include "../pages/setting/Manage_screen_setting/Manage_screen_setting.php";
+                    break;
+
                     // case 'borrow_item':
                     //     include "../pages/borrowing/borrow_item.php";
                     //     break;

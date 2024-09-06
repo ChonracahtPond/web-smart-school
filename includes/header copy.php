@@ -14,11 +14,8 @@ echo "<script>localStorage.setItem('status', 'success');</script>";
 
 // Include the modal file
 require 'modal/modallogin.php';
-
-// Set the background color from session or use a default color
-$tool_color = isset($_SESSION['tool_color']) ? $_SESSION['tool_color'] : '#6e4db0'; // Default header color
-$screen_color = isset($_SESSION['screen_color']) ? $_SESSION['screen_color'] : '#6e4db0'; // Default header color
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,8 +69,7 @@ include '../includes/modal/modal.php';
 
 <body class="">
     <!-- <script src="../scripts/highlight-nav.js"></script> -->
-    <!-- <header class="bg-[#6e4db0] text-white p-4 flex items-center justify-between shadow-md h-[70px]"> -->
-    <header class="text-white p-4 flex items-center justify-between shadow-md h-[70px]" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;">
+    <header class="bg-[#6e4db0] text-white p-4 flex items-center justify-between shadow-md h-[70px]">
         <!-- Logo and Menu Items -->
         <div class="flex items-center">
             <img src="../assets/images/LOGO@3x.png" class="w-12 h-12 ml-10" alt="Logo">
@@ -105,22 +101,19 @@ include '../includes/modal/modal.php';
             ?>
 
             <!-- Settings Button -->
-            <!-- <a href="system.php?page=New_student_registration_system" class="relative flex items-center hover:text-gray-300 transition duration-200">
-    
+            <a href="system.php?page=New_student_registration_system" class="relative flex items-center hover:text-gray-300 transition duration-200">
+                <!-- Notification Badge -->
                 <?php if ($new_registrations > 0): ?>
                     <div class="absolute top-0 right-0 -mt-3 -mr-3 w-5 h-5 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
                         <?php echo htmlspecialchars($new_registrations); ?>
                     </div>
                 <?php endif; ?>
-            
+                <!-- Bell Icon -->
                 <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                 </svg>
                 <span class="hover:underline ml-2">แจ้งเตือน</span>
-            </a> -->
-
-            <?php include "notify.php"; ?>
-
+            </a>
 
             <!-- Settings Button -->
             <a href="setting.php" class="flex items-center hover:text-gray-300 transition duration-200">
@@ -143,7 +136,7 @@ include '../includes/modal/modal.php';
 
 
 
-    <div class="flex " style="background-color: <?php echo htmlspecialchars($screen_color); ?>;">
+    <div class="flex ">
         <?php
         $current_page = basename($_SERVER['SCRIPT_NAME']);
 

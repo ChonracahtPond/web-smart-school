@@ -136,6 +136,14 @@ include '../includes/header.php';
                     break;
 
 
+
+                case 'Statistics_and_reports':
+                    include "../pages/Statistics/Statistics_and_reports.php";
+                    break;
+
+
+
+
                 case 'Manage_News':
                     include "../pages/News/Manage_News.php";
                     break;

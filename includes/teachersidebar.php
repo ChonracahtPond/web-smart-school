@@ -1,5 +1,6 @@
 <div class="flex h-screen">
-    <aside class="w-64 h-full bg-[#6e4db0] text-white p-4 overflow-y-auto sticky top-0" aria-label="Sidebar">
+    <!-- <aside class="w-64 h-full bg-[#6e4db0] text-white p-4 overflow-y-auto sticky top-0" aria-label="Sidebar"> -->
+    <aside class="w-64 h-full text-white p-4 overflow-y-auto" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;" aria-label="Sidebar">
         <ul class="space-y-4">
             <li>
                 <a href="?page=dashboard" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
