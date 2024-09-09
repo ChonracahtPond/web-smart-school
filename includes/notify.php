@@ -1,9 +1,8 @@
 <?php
-// include "db_connect.php";
 
-// Set notifications (fetch from database)
 $notifications = [];
-$query = "SELECT COUNT(*) as new_registrations, DATE_FORMAT(NOW(), '%Y-%m-%d') as today_date FROM register WHERE status_register = 0 AND DATE(registration_date) = CURDATE()  ";
+// Updated query to get all new registrations (not limited to today)
+$query = "SELECT COUNT(*) as new_registrations FROM register WHERE status_register = 0";
 $result = $conn->query($query);
 
 if ($result) {
@@ -12,7 +11,7 @@ if ($result) {
         $notifications[] = [
             'title' => 'การลงทะเบียนใหม่',
             'description' => 'มีนักเรียนลงทะเบียนใหม่ ' . $row['new_registrations'] . ' คน',
-            // 'date' => $row['today_date']
+            // 'date' => date('Y-m-d') // Uncomment if you want to include the date
         ];
     }
     $result->free();
@@ -20,7 +19,7 @@ if ($result) {
     die("Query failed: " . $conn->error);
 }
 
-// If no notifications are found, set a default message
+// Default message when no notifications are found
 $no_notifications_message = "ไม่มีการแจ้งเตือนใหม่";
 ?>
 
@@ -43,6 +42,11 @@ $no_notifications_message = "ไม่มีการแจ้งเตือน
     .notification-item:hover {
         background-color: #f9fafb;
     }
+
+    /* Add cursor pointer to notification button */
+    #notification-button {
+        cursor: pointer;
+    }
 </style>
 
 <div class="mx-auto py-10 px-4">
@@ -64,8 +68,8 @@ $no_notifications_message = "ไม่มีการแจ้งเตือน
         <!-- Notification Dropdown -->
         <div id="notification-dropdown" class="notification-dropdown w-64 mt-2 rounded-md shadow-lg">
 
-            <div class="bg-white p-3 rounded-md">
-                <h1 class="text-1xl font-semibold text-gray-600  text-right mb-1 p-2">รายการแจ้งเตือน</h1>
+            <div class="bg-white p-5 rounded-md">
+                <h1 class="text-1xl font-semibold text-gray-600 text-right mb-1 p-2">รายการแจ้งเตือน</h1>
                 <?php if (!empty($notifications)): ?>
                     <ul class="space-y-4">
                         <?php foreach ($notifications as $notification): ?>
@@ -97,7 +101,7 @@ $no_notifications_message = "ไม่มีการแจ้งเตือน
 
     // Close the dropdown if clicked outside
     document.addEventListener('click', (event) => {
-        if (!notificationButton.contains(event.target)) {
+        if (!notificationButton.contains(event.target) && !notificationDropdown.contains(event.target)) {
             notificationDropdown.classList.remove('active');
         }
     });

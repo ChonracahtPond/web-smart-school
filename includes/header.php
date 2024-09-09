@@ -17,7 +17,7 @@ require 'modal/modallogin.php';
 
 // Set the background color from session or use a default color
 $tool_color = isset($_SESSION['tool_color']) ? $_SESSION['tool_color'] : '#6e4db0'; // Default header color
-$screen_color = isset($_SESSION['screen_color']) ? $_SESSION['screen_color'] : '#6e4db0'; // Default header color
+$screen_color = isset($_SESSION['screen_color']) ? $_SESSION['screen_color'] : '#ffffff'; // Default header color
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ $screen_color = isset($_SESSION['screen_color']) ? $_SESSION['screen_color'] : '
     <title>เว็บไซต์การเรียนออนไลน์</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <link rel="stylesheet" href="https://horizon-tailwind-react-corporate-7s21b54hb-horizon-ui.vercel.app/static/css/main.d7f96858.css" />
-    
+
 
     <style>
         .marquee-container {

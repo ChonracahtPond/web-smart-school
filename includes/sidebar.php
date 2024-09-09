@@ -184,7 +184,7 @@
                         <a href="?page=Statistics_and_reports" id="Statistics_and_reports" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">รายงานและสถิติการสมัครเรียน</a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">วิเคราะห์สถิติ</a>
+                        <a href="#" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">วิเคราะห์สถิติด้วย AI</a>
                     </li>
 
                 </ul>
