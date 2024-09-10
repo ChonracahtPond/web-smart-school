@@ -74,7 +74,7 @@ $no_notifications_message = "ไม่มีการแจ้งเตือน
                     <ul class="space-y-4">
                         <?php foreach ($notifications as $notification): ?>
                             <li class="notification-item border-b border-gray-300 pb-2">
-                                <a href="?page=New_student_registration_system" class="block">
+                                <a href="system.php?page=New_student_registration_system" class="block">
                                     <h2 class="text-md font-semibold text-gray-800"><?php echo htmlspecialchars($notification['title']); ?></h2>
                                     <p class="text-sm text-gray-600"><?php echo htmlspecialchars($notification['description']); ?></p>
                                     <!-- <span class="text-xs text-gray-500"><?php echo htmlspecialchars($notification['date']); ?></span> -->

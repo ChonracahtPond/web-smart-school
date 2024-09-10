@@ -12,15 +12,6 @@
             document.getElementById('addItemModal').classList.add('hidden');
         });
 
-        // เปิด modal สำหรับการกรองรายการ
-        document.getElementById('filterBtn').addEventListener('click', function() {
-            document.getElementById('filterModal').classList.remove('hidden');
-        });
-
-        // ปิด modal สำหรับการกรองรายการ
-        document.getElementById('closeFilterModal').addEventListener('click', function() {
-            document.getElementById('filterModal').classList.add('hidden');
-        });
 
         // เปิด modal สำหรับการเลือกรายการเพื่อออกรายงาน
         document.getElementById('openselectpdf').addEventListener('click', function() {

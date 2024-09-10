@@ -1,7 +1,7 @@
 <?php
 
 // Fetch student data from the database with status_register = 0 or 1
-$sql = "SELECT * FROM register WHERE status_register IN (1)";
+$sql = "SELECT * FROM register WHERE status_register IN (3)";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -14,7 +14,7 @@ $conn->close();
 ?>
 
 
-<h1 class="text-2xl font-bold mb-4 text-gray-800">ผู้ลงทะเบียนถูกยกเลิก</h1>
+<h1 class="text-2xl font-bold mb-4 text-gray-800">ผู้ลงทะเบียนสมัครเรียน</h1>
 
 <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
     <thead>

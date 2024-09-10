@@ -7,13 +7,13 @@ include "fetch_student.php"; // Include to fetch student data
     <h1 class="text-3xl font-bold mb-6 text-gray-800">รายละเอียดนักเรียน</h1>
     <div class="mt-6 flex space-x-4">
         <!-- Confirm Registration Form -->
-        <form action="?page=insert_student" method="POST" class="flex-1">
+        <form action="?page=insert_student&id=<?php echo htmlspecialchars($student['id']); ?>" method="POST" class="flex-1">
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($student['id']); ?>">
             <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">ยืนยันการสมัคร</button>
         </form>
 
         <!-- Cancel Registration Form -->
-        <form action="?page=cancel_registration" method="POST" class="flex-1">
+        <form action="?page=cancel_registration&id=<?php echo htmlspecialchars($student['id']); ?>" method="POST" class="flex-1">
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($student['id']); ?>">
             <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">ยกเลิกการสมัคร</button>
         </form>

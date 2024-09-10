@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -65,9 +65,9 @@
     </style>
 </head>
 
-<body>
-    <!-- Success Toast -->
-    <div id="successToast" class="fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm hidden toast-enter toast-enter-active">
+<body> -->
+<!-- Success Toast -->
+<!-- <div id="successToast" class="fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm hidden toast-enter toast-enter-active">
         <div class="bg-green-500 text-white p-4 rounded-lg shadow-lg flex items-center justify-between relative">
             <span>เข้าสู่ระบบสำเร็จ</span>
             <button id="closeSuccessToast" class="text-white ml-4">
@@ -79,10 +79,10 @@
                 <span></span>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <!-- Error Toast -->
-    <div id="errorToast" class="fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm hidden toast-enter toast-enter-active">
+<!-- Error Toast -->
+<!-- <div id="errorToast" class="fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm hidden toast-enter toast-enter-active">
         <div class="bg-red-500 text-white p-4 rounded-lg shadow-lg flex items-center justify-between relative">
             <span>กรุณาเข้าสู่ระบบ</span>
             <button id="closeErrorToast" class="text-white ml-4">
@@ -94,9 +94,9 @@
                 <span></span>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <script>
+<!-- <script>
         // Function to show the appropriate toast
         function showToast(status) {
             const successToast = document.getElementById('successToast');
@@ -163,7 +163,7 @@
                 localStorage.removeItem('status');
             }
         };
-    </script>
+    </script> -->
 </body>
 
 </html>
