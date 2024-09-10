@@ -68,6 +68,18 @@
             <!----------------------------------- end user ----------------------------------->
             <!----------------------------------- user ----------------------------------->
             <li>
+                <a href="?page=students_eligible_for_exam" id="students_eligible_for_exam-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
+                    <svg class="h-6 w-6 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                        <path d="M9 12l2 2l4 -4" />
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">นักศึกษาที่มีสิทธิสอบ</span>
+                </a>
+            </li>
+            <!----------------------------------- end user ----------------------------------->
+            <!----------------------------------- user ----------------------------------->
+            <li>
                 <a href="?page=manage_access_rights" id="manage_access_rights-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" />

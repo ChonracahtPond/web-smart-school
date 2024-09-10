@@ -1,10 +1,7 @@
 <?php
-
-
 // Fetch items for borrowing, including quantity
 $sql = "SELECT item_id, item_name, quantity FROM items WHERE quantity > 0";
 $items_result = $conn->query($sql);
-
 
 // Fetch borrowings for returning
 $sql = "SELECT b.borrowing_id, i.item_name, b.quantity
@@ -12,35 +9,26 @@ $sql = "SELECT b.borrowing_id, i.item_name, b.quantity
         JOIN items i ON b.item_id = i.item_id
         WHERE b.returned_at IS NULL";
 $borrowings_result = $conn->query($sql);
-
-
-
 ?>
 
 <div class="container mx-auto p-6">
-    <h1 class="text-2xl font-bold mb-4">ระบบยืม-คืนครุภัณฑ์ และ ระบบเบิกจ่ายวัสดุสำนักงาน</h1>
-    <div>
-        <!-- Button to open Borrowing Modal -->
-        <button id="openBorrowingModal" class="bg-blue-500 text-white px-4 py-2 rounded mb-4">ยืมอุปกรณ์</button>
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">ระบบยืม-คืนครุภัณฑ์ และ ระบบเบิกจ่ายวัสดุสำนักงาน</h1>
 
+    <!-- Action Buttons -->
+    <div class="flex gap-4 mb-6">
+        <!-- Button to open Borrowing Modal -->
+        <button id="openBorrowingModal" class="bg-blue-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300">ยืมอุปกรณ์</button>
 
         <!-- Button to open Returning Modal -->
-        <!-- <button id="openReturningModal" class="bg-green-500 text-white px-4 py-2 rounded">คืนอุปกรณ์</button> -->
-
-
-        <?php
-        include "modals.php";
-        // include "Remaining_quantity.php"
-        ?>
+        <!-- Uncomment the following line if you have a returning modal -->
+        <!-- <button id="openReturningModal" class="bg-green-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition duration-300">คืนอุปกรณ์</button> -->
     </div>
+
     <?php
-    include "Remaining_quantity.php"
+    include "modals.php";
+    include "Remaining_quantity.php";
     ?>
 </div>
-
-
-
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

@@ -18,7 +18,7 @@ $borrowings_result = $conn->query($sql_borrowings);
 ?>
 
 <!-- Borrowing Modal -->
-<div id="borrowingModal" class="fixed inset-0 bg-gray   -500 bg-opacity-50 flex items-center justify-center hidden">
+<div id="borrowingModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center hidden">
     <div class="bg-white p-8 rounded-lg shadow-lg w-full md:w-3/4 lg:w-2/3 flex flex-col md:flex-row">
         <!-- Left Section: Items List -->
         <div class="md:w-1/3 p-4 border-r border-gray-300 flex flex-col">

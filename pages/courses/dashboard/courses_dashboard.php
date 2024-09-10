@@ -3,26 +3,32 @@
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $selected_course = isset($_GET['course_name']) ? trim($_GET['course_name']) : '';
 
+// Get the current year
+$current_year = date('Y') + 543;
+
 // คำสั่ง SQL สำหรับดึงข้อมูลจากตาราง courses พร้อมการค้นหา และเรียงลำดับจากใหม่ไปเก่า
 $sql = "SELECT c.course_id, c.course_name, c.course_description, c.teacher_id, c.course_type, c.course_code, c.credits, c.semester, c.academic_year, c.status, t.teacher_name
         FROM courses c
         LEFT JOIN teachers t ON c.teacher_id = t.teacher_id
         WHERE (c.course_name LIKE ? OR c.course_description LIKE ? OR t.teacher_name LIKE ?)
         AND (c.course_name = ? OR ? = '')
+        AND c.academic_year = ?
         ORDER BY c.course_id DESC";
 
 // เตรียมการค้นหาข้อมูล
 $searchTerm = "%$search%";
 $courseFilter = $selected_course;
 $stmt = $conn->prepare($sql);
-$stmt->bind_param('sssss', $searchTerm, $searchTerm, $searchTerm, $courseFilter, $courseFilter);
+$stmt->bind_param('ssssss', $searchTerm, $searchTerm, $searchTerm, $courseFilter, $courseFilter, $current_year);
 $stmt->execute();
 $result = $stmt->get_result();
 
 // ดึงชื่อคอร์สทั้งหมดเพื่อใช้ใน dropdown
 $courses_query = "SELECT DISTINCT course_name FROM courses ORDER BY course_name";
 $courses_result = $conn->query($courses_query);
+
 ?>
+
 
 <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <style>
@@ -54,6 +60,7 @@ $courses_result = $conn->query($courses_query);
                         <?php endwhile; ?>
                     </select>
                 </div>
+
 
 
 

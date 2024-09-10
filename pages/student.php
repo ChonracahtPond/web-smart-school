@@ -193,6 +193,27 @@
                     include "../pages/student/student_details.php";
                     break;
 
+                case 'students_eligible_for_exam':
+                    include "../pages/student/students_eligible/students_eligible_for_exam.php";
+                    break;
+                case 'add_students_eligible_for_exam':
+                    include "../pages/student/students_eligible/add_students_eligible_for_exam.php";
+                    break;
+                case 'edit_students_eligible_for_exam':
+                    include "../pages/student/students_eligible/edit_students_eligible_for_exam.php";
+                    break;
+                case 'update_students_eligible_for_exam':
+                    include "../pages/student/students_eligible/update_students_eligible_for_exam.php";
+                    break;
+                case 'delete_students_eligible_for_exam':
+                    include "../pages/student/students_eligible/delete_students_eligible_for_exam.php";
+                    break;
+
+
+
+
+
+
 
                 case 'generate_pdf':
                     include "../mpdf/generate_pdf.php";
@@ -241,24 +262,6 @@
                 case 'ManageBook':
                     include "../pages/Book/ManageBook.php";
                     break;
-
-
-
-                    // case 'borrow_item':
-                    //     include "../pages/borrowing/borrow_item.php";
-                    //     break;
-                    // case 'return_item':
-                    //     include "../pages/borrowing/return_item.php";
-                    //     break;
-
-
-                    // case 'recent-activities':
-                    //     include "../pages/recent-activities.php";
-                    //     break;
-
-                    // default:
-                    //     include "../pages/dashboard.php";
-                    //     break;
             }
             ?>
         </section>

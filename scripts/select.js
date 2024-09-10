@@ -40,7 +40,6 @@ const pageLinkMap = {
   //   Studensidebar
   Manage_student: "Manage-student-link",
   reset_password: "reset_password-link",
-  StudentGrade: "StudentGrade-link",
   Studentcredit: "Studentcredit-link",
   manage_attendance: "manage_attendance-link",
   StudentGrade: "StudentGrade-link",
@@ -76,7 +75,7 @@ const dropdownMap = {
   //   Studensidebar
   Manage_student: "dropdown-Manage-users",
   reset_password: "dropdown-Manage-users",
-  StudentGrade: "dropdown-Manage-users",
+  // StudentGrade: "dropdown-Manage-users",
   // manage_attendance: "dropdown-Manage-users",
 
   // setting
