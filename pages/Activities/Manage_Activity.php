@@ -39,9 +39,9 @@ $type_result = $conn->query($type_sql);
             <?php endwhile; ?>
         </select>
 
-    
+
     </form>
-    
+
     <!-- ตารางแสดงข้อมูลกิจกรรม -->
     <div class="overflow-x-auto bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
         <table class="w-full border-collapse">
@@ -91,29 +91,6 @@ $type_result = $conn->query($type_sql);
         </table>
     </div>
 </div>
-
-
-<!-- <script>
-    // ฟังก์ชั่นกรองการแสดงผลตารางตามคำค้นหา
-    document.getElementById('search-input').addEventListener('input', function() {
-        const searchQuery = this.value.toLowerCase();
-        const rows = document.querySelectorAll('tbody tr');
-
-        rows.forEach(row => {
-            const cells = row.querySelectorAll('td');
-            let isMatch = false;
-
-            cells.forEach(cell => {
-                if (cell.textContent.toLowerCase().includes(searchQuery)) {
-                    isMatch = true;
-                }
-            });
-
-            row.style.display = isMatch ? '' : 'none';
-        });
-    });
-</script> -->
-
 <script>
     document.getElementById('search-input').addEventListener('input', function() {
         const searchQuery = this.value.toLowerCase();
