@@ -7,9 +7,10 @@ $activity_id = $_GET['id'];
 $sql = "DELETE FROM activities WHERE activity_id='$activity_id'";
 
 if ($conn->query($sql) === TRUE) {
-    echo "<script>alert('Activity deleted successfully'); window.location.href='system.php?page=Manage_Activity';</script>";
+    echo "<script> window.location.href='?page=Manage_Activity&status=1';</script>";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    // echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "<script> window.location.href='?page=Manage_Activity&status=0';</script>";
 }
 
 // ปิดการเชื่อมต่อฐานข้อมูล

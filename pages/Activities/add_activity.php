@@ -16,9 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             VALUES ('$activity_name', '$description', '$activity_credits', '$activity_type', '$activity_hour', '$start_date', '$end_date', '$location')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Activity added successfully'); window.location.href='system.php?page=Manage_Activity';</script>";
+        echo "<script>window.location.href='?page=Manage_Activity&status=1';</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "<script>window.location.href='?page=Manage_Activity&status=0';</script>";
     }
 }
 ?>
@@ -46,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label class="block text-gray-700 dark:text-gray-300">ประเภทกิจกรรม:</label>
             <select name="activity_type" class="mt-1 p-2 w-full border border-gray-300 rounded" required>
                 <option>--กรุณาเลือกประเภท--</option>
-                <option value="1">ประเภทที่ 1 กิจกรรมการเรียนรู้ที่มุ่งเน้นการพัฒนาทักษะชีวิตของตนเอง</option>
-                <option value="2">ประเภทที่ 2 กิจกรรมการเรียนรู้ที่มุ่งเน้นการพัฒนาชุมชนและสังคม</option>
+                <option value="พัฒนาทักษะชีวิตของตนเอง">ประเภทที่ 1 กิจกรรมการเรียนรู้ที่มุ่งเน้นการพัฒนาทักษะชีวิตของตนเอง</option>
+                <option value="พัฒนาชุมชนและสังคม">ประเภทที่ 2 กิจกรรมการเรียนรู้ที่มุ่งเน้นการพัฒนาชุมชนและสังคม</option>
             </select>
         </div>
         <div class="mb-4">

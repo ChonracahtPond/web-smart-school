@@ -12,7 +12,6 @@
                 </a>
             </li>
             <div class="bg-white w-full h-0.5">
-
             </div>
             <!----------------------------------- user ----------------------------------->
             <li>
@@ -39,8 +38,56 @@
             </li>
             <!----------------------------------- end user ----------------------------------->
             <!----------------------------------- user ----------------------------------->
+            <!-- <li>
+                <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-academic-results" data-collapse-toggle="dropdown-academic-results">
+                    <svg class="h-6 w-6" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                        <path d="M16 11l2 2l4 -4" />
+                    </svg>
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>ระบบสืบค้นผลการเรียน</span>
+                    <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <ul id="dropdown-academic-results" class="hidden py-2 space-y-2">
+                    <li>
+                        <a href="?page=" id="-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800  dark:text-white dark:hover:bg-gray-700 pl-11">จัดการคะแนน N-NET</a>
+                    </li>
+                    <li>
+                        <a href="?page=" id="-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการคะแนน กพช.</a>
+                    </li>
+                    <li>
+                        <a href="?page=" id="-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการตารางสอบ</a>
+                    </li>
+                    <li>
+                        <a href="?page=" id="-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการรายชื่อผู้มีสิทธิ์สอบ</a>
+                    </li>
+                    <li>
+                        <a href="?page=" id="-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการรายชื่อ นศ. ที่คาดว่าจะจบ</a>
+                    </li>
+                    <li>
+                        <a href="?page=" id="-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการรายชื่อ นศ. ที่จบการศึกษา</a>
+                    </li>
+                    <li>
+                        <a href="?page=" id="-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการผลการเรียน</a>
+                    </li>
+                    <li>
+                        <a href="?page=" id="-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการรายวิชา</a>
+                    </li>
+                    <li>
+                        <a href="?page=" id="-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">กิจกรรมนักศึกษา</a>
+                    </li>
+                    <li>
+                        <a href="?page=" id="-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการรายชื่อผู้บริหาร</a>
+                    </li>
+                </ul>
+            </li> -->
+            <!----------------------------------- end user ----------------------------------->
+            <!----------------------------------- user ----------------------------------->
             <li>
-                <a href="?page=" id="-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
+                <a href="?page=scores_management" id="scores_management-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
                     <svg class="h-6 w-6 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <line x1="9" y1="14" x2="15" y2="8" />
@@ -48,10 +95,35 @@
                         <circle cx="14.5" cy="13.5" r=".5" fill="currentColor" />
                         <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2" />
                     </svg>
-                    <span class="flex-1 ml-3 whitespace-nowrap">คะแนน N-Net</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">จัดการคะแนน N-NET</span>
                 </a>
             </li>
             <!----------------------------------- end user ----------------------------------->
+            <!----------------------------------- กพช ----------------------------------->
+            <li>
+                <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-activity" data-collapse-toggle="dropdown-Manage-activity">
+                    <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-white dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 2a1 1 0 011-1h1V0h8v1h1a1 1 0 011 1v1h1a2 2 0 012 2v14a2 2 0 01-2 2H3a2 2 0 01-2-2V5a2 2 0 012-2h1V1a1 1 0 011-1zM4 3v1h12V3H4zm12 2H4v14h12V5zm-5 8v-2h-2v2H7v-4h6v4h-2z" />
+                    </svg>
+
+                    <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>กิจกรรม กพช</span>
+                    <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <ul id="dropdown-Manage-activity" class="hidden py-2 space-y-2">
+                    <li>
+                        <a href="?page=Manage_Activity" id="Manage-Activity-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">กิจกรรม กพช.</a>
+                    </li>
+                    <li>
+                        <a href="?page=Manage_Credits" id="Manage-Credits-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการข้อมูลหน่วยกิจ</a>
+                    </li>
+                    <li>
+                        <a href="?page=Reports_and_statistics" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">รายงานและสถิติ</a>
+                    </li>
+                </ul>
+            </li>
+            <!----------------------------------- end กพช ----------------------------------->
             <!----------------------------------- user ----------------------------------->
             <li>
                 <a href="?page=StudentGrade" id="StudentGrade-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
@@ -118,31 +190,7 @@
                 </a>
             </li>
             <!----------------------------------- end user ----------------------------------->
-            <!----------------------------------- กพช ----------------------------------->
-            <li>
-                <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-activity" data-collapse-toggle="dropdown-Manage-activity">
-                    <svg class="flex-shrink-0 w-6 h-6 text-white transition duration-75 dark:text-white group-hover:text-white dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 2a1 1 0 011-1h1V0h8v1h1a1 1 0 011 1v1h1a2 2 0 012 2v14a2 2 0 01-2 2H3a2 2 0 01-2-2V5a2 2 0 012-2h1V1a1 1 0 011-1zM4 3v1h12V3H4zm12 2H4v14h12V5zm-5 8v-2h-2v2H7v-4h6v4h-2z" />
-                    </svg>
 
-                    <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>กิจกรรม กพช</span>
-                    <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-                <ul id="dropdown-Manage-activity" class="hidden py-2 space-y-2">
-                    <li>
-                        <a href="?page=Manage_Activity" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">เพิ่ม/ลบ/อัพเดต</a>
-                    </li>
-                    <li>
-                        <a href="?page=Manage_Credits" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการข้อมูลหน่วยกิจ</a>
-                    </li>
-                    <li>
-                        <a href="?page=Reports_and_statistics" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">รายงานและสถิติ</a>
-                    </li>
-                </ul>
-            </li>
-            <!----------------------------------- end กพช ----------------------------------->
             <!----------------------------------- เกี่ยวกับแอพพลิเคชั่น ----------------------------------->
             <li>
                 <button type="button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-ManageBook" data-collapse-toggle="dropdown-ManageBook">

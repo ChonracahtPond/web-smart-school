@@ -89,10 +89,10 @@
                     break;
 
                 case 'Manage_Credits':
-                    include "../pages/Activities/Manage_Credits.php";
+                    include "../pages/Activities/Credits/Manage_Credits.php";
                     break;
                 case 'update_credits':
-                    include "../pages/Activities/update_credits.php";
+                    include "../pages/Activities/Credits/update_credits.php";
                     break;
                 case 'add_participant':
                     include "../pages/Activities/add_participant.php";
@@ -100,6 +100,14 @@
                 case 'delete_participant':
                     include "../pages/Activities/delete_participant.php";
                     break;
+
+
+                case 'scores_management':
+                    include "../pages/n-net/management/scores_management.php";
+                    break;
+
+
+
 
                 case 'Reports_and_statistics':
                     include "../pages/Activities/Reports_and_statistics.php";

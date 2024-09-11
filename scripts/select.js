@@ -28,8 +28,8 @@ const pageLinkMap = {
   //   educationsidebar
   Manage_courses: "Manage-courses-link",
   Manage_enrollments: "Manage-enrollments-link",
-  Manage_Activity: "manage-activity-link",
-  Manage_Credits: "manage-credits-link",
+  Manage_Activity: "Manage-Activity-link",
+  Manage_Credits: "Manage-Credits-link",
   Reports_and_statistics: "reports-statistics-link",
   Questions: "questions-link",
   Evaluation_management: "Evaluation-management-link",
@@ -44,6 +44,7 @@ const pageLinkMap = {
   manage_attendance: "manage_attendance-link",
   StudentGrade: "StudentGrade-link",
   manage_access_rights: "manage_access_rights-link",
+  scores_management: "scores_management-link",
 
   // setting
   edit_profile: "edit-profile-link",
@@ -75,6 +76,7 @@ const dropdownMap = {
   //   Studensidebar
   Manage_student: "dropdown-Manage-users",
   reset_password: "dropdown-Manage-users",
+  // reset_password: "dropdown-academic-results",
   // StudentGrade: "dropdown-Manage-users",
   // manage_attendance: "dropdown-Manage-users",
 
