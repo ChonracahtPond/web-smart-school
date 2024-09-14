@@ -62,9 +62,12 @@
             <i class="fas fa-paper-plane mr-2"></i> ส่งคำถาม
         </button>
     </form>
+
     <div
         id="answer"
-        class="mt-8 p-5 bg-gray-50 border border-gray-300 rounded-md text-gray-900 text-lg"></div>
+        class="mt-8 p-5 bg-gray-50 border border-gray-300 rounded-md text-gray-900 text-lg">
+        <p>คำตอบ</p>
+    </div>
 </div>
 <script>
     document
@@ -98,7 +101,7 @@
 
                 const data = await response.json();
                 document.getElementById("answer").textContent =
-                    data.answer || "ไม่พบคำตอบ";
+                  "คำตอบ: " +  data.answer || "ไม่พบคำตอบ";
             } catch (error) {
                 document.getElementById("answer").textContent =
                     "ข้อผิดพลาด: " + error.message;
