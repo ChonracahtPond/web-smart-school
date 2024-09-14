@@ -37,6 +37,8 @@ const pageLinkMap = {
   //   Teachersidebar
   Teacher_Manage: "Teacher-Manage-link",
   reset_password: "reset-password-link",
+  Home_Room: "Home-Room-link",
+  Create_Room: "Home-Room-link",
   //   Studensidebar
   Manage_student: "Manage-student-link",
   reset_password: "reset_password-link",
