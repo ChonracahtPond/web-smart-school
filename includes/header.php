@@ -94,6 +94,11 @@ include '../includes/modal/modal.php';
                         ระบบจัดการข้อมูลนักศึกษา
                     </a>
                 </li>
+                <li class="flex items-center">
+                    <a href="teacher.php" class="flex items-center justify-center hover:underline hover:bg-gray-100 hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
+                        ระบบของครู
+                    </a>
+                </li>
             </ul>
         </div>
 

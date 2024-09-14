@@ -13,6 +13,20 @@
                 case 'dashboard':
                 include "../pages/dashboard/dashboard.php";
                 break;
+                case 'Home_Room':
+                    include "../pages/HomeRoom/Home_Room.php";
+                    break;
+                case 'Create_Room':
+                    include "../pages/HomeRoom/Create_Room.php";
+                    break;
+                case 'app.js':
+                    include "../pages/HomeRoom/app.js";
+                    break;
+
+
+
+
+
                 case 'Teacher_Manage':
                     include "../pages/teacher/Management/Teacher_Manage.php";
                     break;
@@ -36,21 +50,7 @@
 
 
 
-                    // case 'borrow_item':
-                    //     include "../pages/borrowing/borrow_item.php";
-                    //     break;
-                    // case 'return_item':
-                    //     include "../pages/borrowing/return_item.php";
-                    //     break;
-
-
-                    // case 'recent-activities':
-                    //     include "../pages/recent-activities.php";
-                    //     break;
-
-                    // default:
-                    //     include "../pages/dashboard.php";
-                    //     break;
+        
             }
             ?>
         </section>

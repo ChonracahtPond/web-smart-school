@@ -1,0 +1,99 @@
+/* รูปแบบเพิ่มเติม */
+.timer {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.draggable {
+    cursor: grab;
+    z-index: 20;
+    /* ให้แน่ใจว่าวิดีโอจากกล้องอยู่ด้านบน */
+    position: absolute;
+    /* จำเป็นสำหรับการจัดตำแหน่งที่สามารถลากได้ */
+    display: none;
+    /* ซ่อนโดยค่าเริ่มต้น */
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    /* ขอบสีอ่อนเพื่อให้มองเห็นได้ */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* พื้นหลังโปร่งใสเล็กน้อย */
+}
+
+.draggable:active {
+    cursor: grabbing;
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#chatBox {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#chatHeader {
+    border-bottom: 2px solid #e5e7eb;
+    background-color: #f9fafb;
+}
+
+#chatMessages {
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #f9fafb;
+}
+
+#chatInput {
+    flex: 1;
+}
+
+/* สถานะของกล่องแชทเมื่อยุบ */
+#chatBox.collapsed {
+    width: 3rem;
+    /* ปรับความกว้างตามที่ต้องการสำหรับไอคอน */
+    transform: translateX(calc(100% - 3rem));
+    /* เลื่อนออก */
+}
+
+#chatBox.collapsed #chatMessages,
+#chatBox.collapsed #chatInput {
+    display: none;
+}
+
+#chatBox.collapsed #chatHeader {
+    border-bottom: none;
+}
+
+/* สไตล์ปุ่มแถบเครื่องมือ */
+.toolbar-button {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.toolbar-button:hover {
+    transform: scale(1.05);
+}
+
+/* สีปุ่มที่กำหนดเอง */
+#muteButton {
+    background-color: #6b7280;
+}
+
+#unmuteButton {
+    background-color: #10b981;
+}
+
+#volumeDownButton {
+    background-color: #3b82f6;
+}
+
+#volumeUpButton {
+    background-color: #ef4444;
+}

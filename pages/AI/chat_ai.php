@@ -101,7 +101,7 @@
 
                 const data = await response.json();
                 document.getElementById("answer").textContent =
-                  "คำตอบ: " +  data.answer || "ไม่พบคำตอบ";
+                    "คำตอบ: " + data.answer || "ไม่พบคำตอบ";
             } catch (error) {
                 document.getElementById("answer").textContent =
                     "ข้อผิดพลาด: " + error.message;
