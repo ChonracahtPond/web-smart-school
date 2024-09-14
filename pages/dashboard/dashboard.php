@@ -97,6 +97,10 @@ $total_news = $total_news_result->fetch_assoc()['total'];
                 <a href="system.php?page=Manage_News" class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-600 transition duration-200 hover:scale-105">จัดการข่าวสาร</a>
 
             </div>
+
+
+
+
         </div>
 
         <!-- Quick Links -->
@@ -125,6 +129,7 @@ $total_news = $total_news_result->fetch_assoc()['total'];
             <?php endif; ?>
         </div>
     </div>
+    <?php include "AI/chat_ai.php"; ?>
 
     <!-- Latest News -->
     <div class="bg-white shadow-lg rounded-lg p-6 mt-6 mb-0">
