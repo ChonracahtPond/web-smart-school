@@ -16,8 +16,8 @@
                 case 'Home_Room':
                     include "../pages/HomeRoom/Home_Room.php";
                     break;
-                case 'Create_Room':
-                    include "../pages/HomeRoom/Create_Room.php";
+                case 'Room':
+                    include "../pages/HomeRoom/Room.php";
                     break;
                 case 'app.js':
                     include "../pages/HomeRoom/app.js";
