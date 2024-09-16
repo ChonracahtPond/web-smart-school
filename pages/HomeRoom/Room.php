@@ -1,3 +1,5 @@
+<!-- http://localhost/school/web-smart-school/pages/HomeRoom/viewer.php?roomKey=f1b4fc6c91495e39f1c49e6019d0bb06 -->
+
 <?php
 
 // ตรวจสอบว่ามีการล็อกอินหรือไม่
@@ -71,7 +73,7 @@ $roomName = htmlspecialchars($room['room_name']);
         </div>
         <div class="mt-4">
             <p class="mb-2">แชร์ลิ้งค์ห้องประชุม:</p>
-            <input id="roomLink" type="text" readonly class="px-4 py-2 border border-gray-300 rounded" value="viewer.php?roomKey=<?php echo urlencode($roomKey); ?>">
+            <input id="roomLink" type="text" readonly class="px-4 py-2 border border-gray-300 rounded" value="http://localhost/school/web-smart-school/pages/HomeRoom/viewer.php?roomKey=<?php echo urlencode($roomKey); ?>">
             <button id="copyLink" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded">คัดลอกลิ้งค์</button>
         </div>
     </div>
@@ -149,3 +151,23 @@ $roomName = htmlspecialchars($room['room_name']);
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
