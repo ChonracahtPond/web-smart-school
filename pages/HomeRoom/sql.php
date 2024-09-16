@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (isset($_GET['room_key']) && isset($_GET['action']) && $_GET['action'] === 'delete') {
     $roomKey = $conn->real_escape_string($_GET['room_key']);
     $user_id = $_SESSION['user_id'];
-    
+
     // สร้างคำสั่ง SQL สำหรับการลบห้องเรียน
     $sql = "DELETE FROM homeroom_meetings WHERE room_key = ? AND user_id = ?";
     $stmt = $conn->prepare($sql);
@@ -50,7 +50,7 @@ if (isset($_GET['room_key']) && isset($_GET['action']) && $_GET['action'] === 'd
 
     $stmt->bind_param('ss', $roomKey, $user_id);
     $success = $stmt->execute();
-    
+
     if ($success && $stmt->affected_rows > 0) {
         // ลบข้อมูลสำเร็จ
         echo "<script>window.location.href='?page=Home_Room&status=1';</script>";
@@ -62,7 +62,7 @@ if (isset($_GET['room_key']) && isset($_GET['action']) && $_GET['action'] === 'd
     // แสดงข้อมูลห้องเรียนใน modal แก้ไข
     $roomKey = $conn->real_escape_string($_GET['room_key']);
     $user_id = $_SESSION['user_id'];
-    
+
     $sql = "SELECT room_name, room_password FROM homeroom_meetings WHERE room_key = ? AND user_id = ?";
     $stmt = $conn->prepare($sql);
 
@@ -76,7 +76,7 @@ if (isset($_GET['room_key']) && isset($_GET['action']) && $_GET['action'] === 'd
     $stmt->execute();
     $result = $stmt->get_result();
     $room = $result->fetch_assoc();
-    
+
     if ($room) {
         // Render edit form or modal with pre-filled data
         // (Implement this part in your HTML/JavaScript)

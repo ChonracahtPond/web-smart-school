@@ -22,6 +22,9 @@
                 case 'app.js':
                     include "../pages/HomeRoom/app.js";
                     break;
+                case 'meeting_room':
+                    include "../pages/HomeRoom/meeting_room.php";
+                    break;
 
 
 
