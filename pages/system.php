@@ -16,13 +16,12 @@ include '../includes/header.php';
             // ใช้ switch-case ในการแสดงเนื้อหาต่างๆ
             switch ($page) {
 
-                    // case 'dashboard':
-                    //     include "../pages/dashboard/dashboard.php";
-                    //     break;
                 case 'dashboard':
                     include "../pages/dashboard/dashboard.php";
-                    // include "../pages/dashboard/calendar";
                     break;
+
+
+          
 
                 case 'add_event':
                     include "../pages/dashboard/calendar/add_event.php";

@@ -14,7 +14,6 @@ $borrowings_result = $conn->query($sql);
 <div class="container mx-auto p-6">
     <h1 class="text-3xl font-bold text-gray-800 mb-6">ระบบยืม-คืนครุภัณฑ์ และ ระบบเบิกจ่ายวัสดุสำนักงาน</h1>
 
-    <!-- Action Buttons -->
     <div class="flex gap-4 mb-6">
         <!-- Button to open Borrowing Modal -->
         <button id="openBorrowingModal" class="bg-blue-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300">ยืมอุปกรณ์</button>
@@ -22,12 +21,39 @@ $borrowings_result = $conn->query($sql);
         <!-- Button to open Returning Modal -->
         <!-- Uncomment the following line if you have a returning modal -->
         <!-- <button id="openReturningModal" class="bg-green-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition duration-300">คืนอุปกรณ์</button> -->
+
+        <!-- Generate Report Button -->
+        <button id="openReportModal" class="bg-purple-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition duration-300">ออกรายงาน</button>
     </div>
 
     <?php
     include "modals.php";
     include "Remaining_quantity.php";
     ?>
+</div>
+
+
+
+
+<!-- Report Modal -->
+<div id="reportModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
+        <h2 class="text-xl font-bold mb-4">ออกรายงาน</h2>
+        <form action="../mpdf/borrowing/borrowing_report.php" target="_blank" method="get">
+            <div class="mb-4">
+                <label for="startDate" class="block text-gray-700 font-bold mb-2">วันที่เริ่มต้น:</label>
+                <input type="date" id="startDate" name="startDate" class="border border-gray-300 rounded p-2 w-full" required>
+            </div>
+            <div class="mb-4">
+                <label for="endDate" class="block text-gray-700 font-bold mb-2">วันที่สิ้นสุด:</label>
+                <input type="date" id="endDate" name="endDate" class="border border-gray-300 rounded p-2 w-full" required>
+            </div>
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300">สร้างรายงาน</button>
+                <button type="button" id="closeReportModal" class="ml-4 bg-gray-300 text-gray-800 px-4 py-2 rounded shadow-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-300">ปิด</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <script>
@@ -43,21 +69,14 @@ $borrowings_result = $conn->query($sql);
         }
 
         // Event listeners for modal buttons
-        document.getElementById('openBorrowingModal').addEventListener('click', function() {
-            openModal('borrowingModal');
+        document.getElementById('openReportModal').addEventListener('click', function() {
+            openModal('reportModal');
         });
 
-        document.getElementById('openReturningModal').addEventListener('click', function() {
-            openModal('returningModal');
+        document.getElementById('closeReportModal').addEventListener('click', function() {
+            closeModal('reportModal');
         });
 
-        document.getElementById('closeBorrowingModal').addEventListener('click', function() {
-            closeModal('borrowingModal');
-        });
-
-        document.getElementById('closeReturningModal').addEventListener('click', function() {
-            closeModal('returningModal');
-        });
 
         // Function to filter items in the borrowing modal
         function filterItems() {

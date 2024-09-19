@@ -26,6 +26,8 @@ $result = $conn->query($sql);
 
 $annualBudgets = [];
 while ($row = $result->fetch_assoc()) {
+    // Add 543 to the purchase year
+    $row['purchase_year'] += 543;
     $annualBudgets[] = $row;
 }
 ?>
@@ -90,13 +92,28 @@ while ($row = $result->fetch_assoc()) {
         });
 
         document.getElementById('confirmGeneratePdfBtn').addEventListener('click', () => {
-            // Redirect to the PDF generation script with the selected year
-            window.location.href = `../mpdf/equipment/Budget_for_pdf.php?year=${selectedYear}`;
+            // สร้างลิงก์ใหม่และตั้งค่า URL ของ PDF
+            const url = `../mpdf/equipment/Budget_for_pdf.php?year=${selectedYear}`;
+
+            // สร้างเอลิเมนต์ anchor และกำหนดค่า
+            const link = document.createElement('a');
+            link.href = url;
+            link.target = '_blank'; // เปิดในแท็บใหม่
+            link.rel = 'noopener noreferrer'; // ความปลอดภัย
+
+            // จำเป็นต้องเพิ่มเอลิเมนต์ลงในเอกสารเพื่อให้สามารถคลิกได้
+            document.body.appendChild(link);
+
+            // คลิกลิงก์เพื่อเปิดในแท็บใหม่
+            link.click();
+
+            // ลบลิงก์ออกหลังจากเปิดแล้ว
+            document.body.removeChild(link);
         });
-        // ../mpdf/equipment/equipment_pdf.php
+
+
         document.getElementById('cancelGeneratePdfBtn').addEventListener('click', () => {
             document.getElementById('pdfModal').classList.add('hidden');
         });
     </script>
 </div>
-<!-- ../mpdf/equipment/equipment_pdf.php -->

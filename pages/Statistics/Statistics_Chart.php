@@ -2,9 +2,9 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<div class="bg-white shadow-lg rounded-lg p-6 flex flex-1 justify-between">
+<div class="bg-white shadow-lg rounded-lg p-6 flex flex-1 justify-between h-[40%]">
     <!-- ส่วนสำหรับกราฟแท่ง -->
-    <div class="mb-6 w-[60%]">
+    <div class="mb-6 w-[60%] ">
         <h2 class="text-2xl font-semibold mb-4 text-gray-800">กราฟแท่ง: จำนวนผู้สมัครตามสถานะ</h2>
         <canvas id="barChart"></canvas>
     </div>

@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['borrow'])) {
     $borrowed_items_data = isset($_POST['borrowed_items_data']) ? json_decode($_POST['borrowed_items_data'], true) : [];
 
     if (empty($borrowed_items_data)) {
-        echo "<script>alert('No items selected for borrowing.'); window.location.href='system.php?page=System_for_borrowing';</script>";
+        echo "<script>alert('No items selected for borrowing.'); window.location.href='system.php?page=System_for_borrowing&status=0';</script>";
         exit();
     }
 
@@ -42,10 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['borrow'])) {
 
         // Commit transaction
         $conn->commit();
-        echo "<script>alert('Items borrowed successfully'); window.location.href='system.php?page=System_for_borrowing';</script>";
+        echo "<script> window.location.href='?page=System_for_borrowing&status=1';</script>";
     } catch (Exception $e) {
         // Rollback transaction in case of error
         $conn->rollback();
-        echo "<script>alert('Error: " . $e->getMessage() . "'); window.location.href='system.php?page=System_for_borrowing';</script>";
+        echo "<script>alert('Error: " . $e->getMessage() . "'); window.location.href='?page=System_for_borrowing&status=0';</script>";
     }
 }
