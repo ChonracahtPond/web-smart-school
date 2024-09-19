@@ -11,18 +11,18 @@ if (!isset($_SESSION['user_id'])) {
 // ดึงค่า user_id จากเซสชัน
 $user_id = $_SESSION['user_id'];
 
-// ตรวจสอบว่าได้รับ roomKey จาก URL หรือไม่
-if (!isset($_GET['roomKey'])) {
+// ตรวจสอบว่าได้รับ room_key จาก URL หรือไม่
+if (!isset($_GET['room_key'])) {
     echo "<script>alert('ไม่พบรหัสห้อง'); window.location.href='?page=Home_Room';</script>";
     exit;
 }
 
-$roomKey = $_GET['roomKey'];
+$room_key = $_GET['room_key'];
 
 // ดึงข้อมูลห้องประชุม
 $sql = "SELECT room_name FROM homeroom_meetings WHERE room_key = ? AND user_id = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param('ss', $roomKey, $user_id);
+$stmt->bind_param('ss', $room_key, $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $room = $result->fetch_assoc();
@@ -74,7 +74,7 @@ $roomName = htmlspecialchars($room['room_name']);
 
         const peerConnections = {};
         const localStream = null;
-        const roomKey = "<?php echo $roomKey; ?>";
+        const room_key = "<?php echo $room_key; ?>";
 
         function startCall() {
             navigator.mediaDevices.getUserMedia({ video: true, audio: true })

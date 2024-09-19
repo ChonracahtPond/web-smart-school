@@ -14,18 +14,18 @@ $user_id = $_SESSION['user_id'];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $roomName = $conn->real_escape_string($_POST['roomName']);
     $roomPassword = $_POST['roomPassword'];
-    $roomKey = bin2hex(random_bytes(16)); // Generating a unique key for the room
+    $room_key = bin2hex(random_bytes(16)); // Generating a unique key for the room
 
     // Hash the password before storing it
     $hashedPassword = password_hash($roomPassword, PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO homeroom_meetings (room_name, room_password, room_key, user_id) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ssss', $roomName, $hashedPassword, $roomKey, $user_id);
+    $stmt->bind_param('ssss', $roomName, $hashedPassword, $room_key, $user_id);
 
     if ($stmt->execute()) {
-        // Redirect with roomKey included in the URL
-        echo "<script>window.location.href='?page=Room&status=1&roomKey=" . urlencode($roomKey) . "';</script>";
+        // Redirect with room_key included in the URL
+        echo "<script>window.location.href='?page=Room&status=1&room_key=" . urlencode($room_key) . "';</script>";
         exit;
     } else {
         // Error handling
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // ตรวจสอบการลบห้องเรียน
 if (isset($_GET['room_key']) && isset($_GET['action']) && $_GET['action'] === 'delete') {
-    $roomKey = $conn->real_escape_string($_GET['room_key']);
+    $room_key = $conn->real_escape_string($_GET['room_key']);
     $user_id = $_SESSION['user_id'];
 
     // สร้างคำสั่ง SQL สำหรับการลบห้องเรียน
@@ -48,7 +48,7 @@ if (isset($_GET['room_key']) && isset($_GET['action']) && $_GET['action'] === 'd
         exit;
     }
 
-    $stmt->bind_param('ss', $roomKey, $user_id);
+    $stmt->bind_param('ss', $room_key, $user_id);
     $success = $stmt->execute();
 
     if ($success && $stmt->affected_rows > 0) {
@@ -60,7 +60,7 @@ if (isset($_GET['room_key']) && isset($_GET['action']) && $_GET['action'] === 'd
     }
 } elseif (isset($_GET['room_key']) && isset($_GET['action']) && $_GET['action'] === 'edit') {
     // แสดงข้อมูลห้องเรียนใน modal แก้ไข
-    $roomKey = $conn->real_escape_string($_GET['room_key']);
+    $room_key = $conn->real_escape_string($_GET['room_key']);
     $user_id = $_SESSION['user_id'];
 
     $sql = "SELECT room_name, room_password FROM homeroom_meetings WHERE room_key = ? AND user_id = ?";
@@ -72,7 +72,7 @@ if (isset($_GET['room_key']) && isset($_GET['action']) && $_GET['action'] === 'd
         exit;
     }
 
-    $stmt->bind_param('ss', $roomKey, $user_id);
+    $stmt->bind_param('ss', $room_key, $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
     $room = $result->fetch_assoc();
@@ -89,7 +89,7 @@ if (isset($_GET['room_key']) && isset($_GET['action']) && $_GET['action'] === 'd
 
 // ตรวจสอบการอัปเดตห้องเรียน
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'update') {
-    $roomKey = $conn->real_escape_string($_POST['roomKey']);
+    $room_key = $conn->real_escape_string($_POST['room_key']);
     $roomName = $conn->real_escape_string($_POST['roomName']);
     $roomPassword = $_POST['roomPassword'];
 
@@ -98,11 +98,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $hashedPassword = password_hash($roomPassword, PASSWORD_DEFAULT);
         $sql = "UPDATE homeroom_meetings SET room_name = ?, room_password = ? WHERE room_key = ? AND user_id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ssss', $roomName, $hashedPassword, $roomKey, $user_id);
+        $stmt->bind_param('ssss', $roomName, $hashedPassword, $room_key, $user_id);
     } else {
         $sql = "UPDATE homeroom_meetings SET room_name = ? WHERE room_key = ? AND user_id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('sss', $roomName, $roomKey, $user_id);
+        $stmt->bind_param('sss', $roomName, $room_key, $user_id);
     }
 
     if ($stmt->execute()) {

@@ -171,4 +171,3 @@ $borrowings_result = $conn->query($sql_borrowings);
         }
     });
 </script>
-

@@ -12,11 +12,17 @@ include "fetch_student.php"; // Include to fetch student data
             <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">ยืนยันการสมัคร</button>
         </form>
 
+        <?php
+        // Check if status_register is 0, 1, or 2
+        if (in_array($student['status_register'], [0, 1, 2])): ?>
+            <!-- Cancel Registration Form -->
+            <form action="?page=cancel_registration&id=<?php echo htmlspecialchars($student['id']); ?>" method="POST" class="flex-1">
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($student['id']); ?>">
+                <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">ยกเลิกการสมัคร</button>
+            </form>
+        <?php endif; ?>
         <!-- Cancel Registration Form -->
-        <form action="?page=cancel_registration&id=<?php echo htmlspecialchars($student['id']); ?>" method="POST" class="flex-1">
-            <input type="hidden" name="id" value="<?php echo htmlspecialchars($student['id']); ?>">
-            <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">ยกเลิกการสมัคร</button>
-        </form>
+
     </div>
 
 

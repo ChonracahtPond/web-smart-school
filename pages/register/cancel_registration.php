@@ -21,7 +21,7 @@ if ($result->num_rows === 0) {
 }
 
 // Update the register table to set status_register to 3 (for cancelled)
-$updateSql = "UPDATE register SET status_register = 1 WHERE id = ?";
+$updateSql = "UPDATE register SET status_register = 3 WHERE id = ?";
 $updateStmt = $conn->prepare($updateSql);
 if (!$updateStmt) {
     die("Error preparing update statement: " . $conn->error);

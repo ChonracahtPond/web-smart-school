@@ -38,6 +38,9 @@ include '../includes/header.php';
                 case 'modals.php':
                     include "../pages/borrowing/modal/modals.php";
                     break;
+                case 'borrowing':
+                    include "../pages/borrowing";
+                    break;
 
                     // ระบบสมัครเรียนใหม่
                 case 'New_student_registration_system':

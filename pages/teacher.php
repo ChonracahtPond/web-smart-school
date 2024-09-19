@@ -11,8 +11,11 @@
             // ใช้ switch-case ในการแสดงเนื้อหาต่างๆ
             switch ($page) {
                 case 'dashboard':
-                include "../pages/dashboard/dashboard.php";
-                break;
+                    include "../pages/dashboard/dashboard.php";
+                    break;
+                case 'HomeRoom':
+                    include "../pages/HomeRoom";
+                    break;
                 case 'Home_Room':
                     include "../pages/HomeRoom/Home_Room.php";
                     break;
@@ -49,11 +52,6 @@
                 case 'update_password':
                     include "../pages/teacher/resetpassword/update_password.php";
                     break;
-
-
-
-
-        
             }
             ?>
         </section>

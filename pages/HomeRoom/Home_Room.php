@@ -1,7 +1,5 @@
 <?php include "sql.php"; ?>
 
-
-
 <!-- Main Content -->
 <main class="container mx-auto p-6">
     <!-- Page Header -->
@@ -102,15 +100,15 @@
     });
 </script>
 <script>
-    function editRoom(roomKey, roomName) {
-        document.getElementById('editRoomKey').value = roomKey;
+    function editRoom(room_key, roomName) {
+        document.getElementById('editroom_key').value = room_key;
         document.getElementById('editRoomName').value = roomName;
         document.getElementById('editRoomModal').classList.remove('hidden');
     }
 
-    function deleteRoom(roomKey) {
+    function deleteRoom(room_key) {
         if (confirm('คุณแน่ใจว่าต้องการลบห้องนี้?')) {
-            window.location.href = 'room.php?room_key=' + encodeURIComponent(roomKey) + '&action=delete';
+            window.location.href = 'room.php?room_key=' + encodeURIComponent(room_key) + '&action=delete';
         }
     }
 
@@ -123,9 +121,9 @@
     });
 </script>
 <script>
-    function confirmDelete(roomKey) {
+    function confirmDelete(room_key) {
         if (confirm("คุณแน่ใจว่าต้องการลบห้องเรียนนี้?")) {
-            window.location.href = `?page=Home_Room&room_key=${encodeURIComponent(roomKey)}&action=delete`;
+            window.location.href = `?page=Home_Room&room_key=${encodeURIComponent(room_key)}&action=delete`;
         }
     }
 </script>

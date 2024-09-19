@@ -26,7 +26,7 @@
         <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
             <h3 class="text-2xl font-semibold mb-4 text-gray-800">แก้ไขห้องออนไลน์</h3>
             <form id="editRoomForm" method="POST" action="">
-                <input type="hidden" id="editRoomKey" name="roomKey">
+                <input type="hidden" id="editroom_key" name="room_key">
                 <input type="hidden" name="action" value="update">
                 <div class="mb-4">
                     <label for="editRoomName" class="block text-gray-700 text-sm font-medium mb-2">ชื่อห้อง</label>

@@ -162,17 +162,19 @@
 <!-- Select PDF Modal -->
 <div id="selectPdfModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
     <div class="bg-white rounded-lg p-6 w-full max-w-lg">
-        <h2 class="text-xl font-semibold text-gray-900 mb-4">เลือกรายการเพื่อออกรายงาน</h2>
-        <input type="text" id="searchItem" placeholder="ค้นหา..." class="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        <div id="itemList" class="max-h-64 overflow-y-auto">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">เลือกรายการเพื่อออกรายงาน</h2>
+        <input type="text" id="searchItem" placeholder="ค้นหา..." class="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out" />
+        <div id="itemList" class="max-h-64 overflow-y-auto bg-gray-50 p-2 rounded-lg border border-gray-200">
             <!-- Items will be inserted here by JavaScript -->
         </div>
         <div class="mt-6 flex justify-end space-x-4">
-            <button id="closeSelectPdfModal" class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 transition duration-150 ease-in-out focus:outline-none">ยกเลิก</button>
-            <button id="confirmSelection" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition duration-150 ease-in-out focus:outline-none">ยืนยัน</button>
+            <button id="closeSelectPdfModal" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-500">ยกเลิก</button>
+            <button id="confirmSelection" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500">ยืนยัน</button>
         </div>
     </div>
 </div>
+
+
 
 
 

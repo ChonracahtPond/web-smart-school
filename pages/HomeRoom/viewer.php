@@ -7,20 +7,20 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// ตรวจสอบว่าได้รับ roomKey จาก URL หรือไม่
-if (!isset($_GET['roomKey'])) {
+// ตรวจสอบว่าได้รับ room_key จาก URL หรือไม่
+if (!isset($_GET['room_key'])) {
     echo "<script>alert('ไม่พบรหัสห้อง'); window.location.href='?page=Home_Room';</script>";
     exit;
 }
 
-$roomKey = trim($_GET['roomKey']);
+$room_key = trim($_GET['room_key']);
 
 include "../../includes/db_connect.php";
 
 // ดึงข้อมูลห้องประชุม
 $sql = "SELECT room_name FROM homeroom_meetings WHERE room_key = ? AND user_id = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param('ss', $roomKey, $_SESSION['user_id']);
+$stmt->bind_param('ss', $room_key, $_SESSION['user_id']);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -63,7 +63,7 @@ $conn->close();
         </div>
         <div class="mt-4">
             <p class="mb-2">แชร์ลิ้งค์ห้องประชุม:</p>
-            <input id="roomLink" type="text" readonly class="px-4 py-2 border border-gray-300 rounded" value="viewer.php?roomKey=<?php echo urlencode($roomKey); ?>">
+            <input id="roomLink" type="text" readonly class="px-4 py-2 border border-gray-300 rounded" value="viewer.php?room_key=<?php echo urlencode($room_key); ?>">
             <button id="copyLink" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded">คัดลอกลิ้งค์</button>
         </div>
     </div>
@@ -78,7 +78,7 @@ $conn->close();
             iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
         };
 
-        const roomKey = "<?php echo $roomKey; ?>";
+        const room_key = "<?php echo $room_key; ?>";
         let peerConnection = null;
 
         function connectToSignalingServer() {
@@ -93,7 +93,7 @@ $conn->close();
 
                 peerConnection.onicecandidate = event => {
                     if (event.candidate) {
-                        signalingSocket.send(JSON.stringify({ 'candidate': event.candidate, 'roomKey': roomKey }));
+                        signalingSocket.send(JSON.stringify({ 'candidate': event.candidate, 'room_key': room_key }));
                     }
                 };
 
@@ -113,7 +113,7 @@ $conn->close();
                             .then(() => peerConnection.createAnswer())
                             .then(answer => peerConnection.setLocalDescription(answer))
                             .then(() => {
-                                signalingSocket.send(JSON.stringify({ 'answer': peerConnection.localDescription, 'roomKey': roomKey }));
+                                signalingSocket.send(JSON.stringify({ 'answer': peerConnection.localDescription, 'room_key': room_key }));
                             });
                     } else if (data.answer) {
                         peerConnection.setRemoteDescription(new RTCSessionDescription(data.answer));
@@ -127,7 +127,7 @@ $conn->close();
                 };
 
                 // Join the room
-                signalingSocket.send(JSON.stringify({ 'join': roomKey }));
+                signalingSocket.send(JSON.stringify({ 'join': room_key }));
             };
 
             signalingSocket.onerror = (error) => {

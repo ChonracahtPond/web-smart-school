@@ -2,12 +2,7 @@
 // Get user_id from the query parameter
 $user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : 0;
 
-// Fetch borrowings details for the specified user
-// $sql_borrowings = "SELECT b.borrowing_id, i.item_name, b.quantity, COALESCE(b.return_quantity, 0) as return_quantity, b.borrowed_at
-//         FROM borrowings b
-//         JOIN items i ON b.item_id = i.item_id
-//         WHERE b.user_id = ? AND b.returned_at IS NULL";
-$sql_borrowings = "SELECT b.borrowing_id, i.item_name, b.quantity, COALESCE(b.return_quantity, 0) as return_quantity, b.borrowed_at, b.returned_at
+$sql_borrowings = "SELECT b.borrowing_id, i.item_name, b.quantity, COALESCE(b.return_quantity, 0) as return_quantity, b.borrowed_at, b.returned_at, i.item_id
         FROM borrowings b
         JOIN items i ON b.item_id = i.item_id
         WHERE b.user_id = ?";
@@ -42,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_borrowing_id']
     $return_date = date('Y-m-d H:i:s');
 
     // Fetch current borrowing details
-    $sql_check = "SELECT quantity, return_quantity FROM borrowings WHERE borrowing_id = ?";
+    $sql_check = "SELECT item_id, quantity, return_quantity FROM borrowings WHERE borrowing_id = ?";
     $stmt_check = $conn->prepare($sql_check);
     if ($stmt_check === false) {
         die("ERROR: ไม่สามารถเตรียมคำสั่ง SQL: " . $conn->error);
@@ -54,7 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_borrowing_id']
 
     $current_quantity = $row['quantity'];
     $current_return_quantity = $row['return_quantity'];
+    $item_id = $row['item_id'];
     $new_return_quantity = $current_return_quantity + $return_quantity;
+
+    if ($new_return_quantity > $current_quantity) {
+        // Prevent over-returning
+        die("ERROR: จำนวนที่คืนเกินจำนวนที่ยืม");
+    }
 
     if ($new_return_quantity >= $current_quantity) {
         // Mark as returned if all items are returned
@@ -75,18 +76,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_borrowing_id']
     }
     $stmt_return->execute();
 
-    // Redirect to the same page to refresh the details
-    // header("Location: ?page=BorrowingDetails.php?user_id=$user_id");
-    echo "<script>window.location.href='system.php?page=BorrowingDetails&user_id=$user_id&status=1';</script>";
+    // Update the quantity in the items table
+    $sql_update_item = "UPDATE items SET quantity = quantity + ? WHERE item_id = ?";
+    $stmt_update_item = $conn->prepare($sql_update_item);
+    if ($stmt_update_item === false) {
+        die("ERROR: ไม่สามารถเตรียมคำสั่ง SQL: " . $conn->error);
+    }
+    $stmt_update_item->bind_param("ii", $return_quantity, $item_id);
+    $stmt_update_item->execute();
 
+    // Redirect to the same page to refresh the details
+    echo "<script>window.location.href='system.php?page=BorrowingDetails&user_id=$user_id&status=1';</script>";
     exit();
 }
 ?>
 
 <div class="container mx-auto px-4 py-8">
-    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">
-        รายละเอียดการยืมของ <?php echo htmlspecialchars($user['first_name'] . ' ' . $user['last_name'], ENT_QUOTES, 'UTF-8'); ?>
-    </h2>
+    <div class="text-2xl font-bold mb-6 text-center text-gray-800">
+        รายละเอียดการยืมของ <span class="text-green-400"><?php echo htmlspecialchars($user['first_name'] . ' ' . $user['last_name'], ENT_QUOTES, 'UTF-8'); ?></span>
+    </div>
 
     <!-- Borrowing Details Table -->
     <table class="min-w-full bg-white border border-gray-200 rounded-md shadow-md">
@@ -110,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_borrowing_id']
                         <td class="py-2 px-4 border-b text-center">
                             <?php if ($row['quantity'] > $row['return_quantity']) { ?>
                                 <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                                    onclick="openModal(<?php echo htmlspecialchars($row['borrowing_id'], ENT_QUOTES, 'UTF-8'); ?>)">
+                                    onclick="openModal(<?php echo htmlspecialchars($row['borrowing_id'], ENT_QUOTES, 'UTF-8'); ?>, <?php echo htmlspecialchars($row['quantity'] - $row['return_quantity'], ENT_QUOTES, 'UTF-8'); ?>)">
                                     คืนอุปกรณ์
                                 </button>
                             <?php } else { ?>
@@ -140,8 +148,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_borrowing_id']
     <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
         <span id="closeModal" class="absolute top-3 right-3 text-gray-600 hover:text-gray-800 cursor-pointer text-xl">&times;</span>
         <h2 class="text-lg font-bold mb-4">คืนอุปกรณ์</h2>
-        <form id="returnForm" method="post">
+        <form id="returnForm" method="post" onsubmit="return validateReturnQuantity();">
             <input type="hidden" name="return_borrowing_id" id="returnBorrowingId">
+            <!-- Hidden field to store the maximum quantity that can be returned -->
+            <input type="hidden" id="maxQuantity" name="max_quantity">
             <div class="mb-4">
                 <label for="quantity" class="block text-gray-700">จำนวนที่คืน</label>
                 <input type="number" id="quantity" name="quantity"
@@ -158,9 +168,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_borrowing_id']
 </div>
 
 <script>
-    function openModal(borrowingId) {
+    function openModal(borrowingId, maxQuantity) {
         document.getElementById('returnBorrowingId').value = borrowingId;
+        document.getElementById('maxQuantity').value = maxQuantity;
         document.getElementById('returnModal').classList.remove('hidden');
+    }
+
+    function validateReturnQuantity() {
+        var maxQuantity = parseInt(document.getElementById('maxQuantity').value, 10);
+        var returnQuantity = parseInt(document.getElementById('quantity').value, 10);
+
+        if (returnQuantity > maxQuantity) {
+            alert('จำนวนที่คืนต้องน้อยกว่าหรือเท่ากับจำนวนที่ยืม');
+            return false; // Prevent form submission
+        }
+
+        return true; // Allow form submission
     }
 
     document.getElementById('closeModal').addEventListener('click', function() {
