@@ -1,13 +1,4 @@
 <?php
-
-// Get current year
-$currentYear = date('Y');
-
-// Set default dates to the beginning and end of the current year
-$start_date = '01/01/' . $currentYear;
-$end_date = '31/12/' . $currentYear;
-$year = $currentYear;
-
 // Check if form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // รับค่า start_date, end_date และ year จากฟอร์ม
