@@ -1,26 +1,26 @@
 <?php
 include "sql.php";
-// Get current year
-$currentYear = date('Y');
 
-// Set default dates to the beginning and end of the current year
-$start_date = '01/01/' . $currentYear;
-$end_date = '31/12/' . $currentYear;
-$year = $currentYear;
+// Set default dates to today's date
+$start_date = date('d/m/Y');
+$end_date = date('d/m/Y');
+$year = date('Y');
 
-// Check if form was submitted
+// If form is submitted, override the default dates with user input
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // รับค่า start_date, end_date และ year จากฟอร์ม
     $start_date = isset($_POST['start_date']) ? $_POST['start_date'] : $start_date;
     $end_date = isset($_POST['end_date']) ? $_POST['end_date'] : $end_date;
     $year = isset($_POST['year']) ? $_POST['year'] : $year;
 }
+
 ?>
 
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.4/dist/tailwind.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/th.js"></script> -->
+
 
 <div class="container mx-auto my-6 px-4 mb-5">
     <h1 class="text-3xl font-bold mb-6 text-gray-800">สถิติและรายงาน</h1>
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <a href="">
-        <button class="mt-5 p-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600 transition w-[150px] h-[45px]">ข้อมูลปัจจุบัน</button>
+        <!-- <button class="mt-5 p-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600 transition w-[150px] h-[45px]">ข้อมูลปัจจุบัน</button> -->
     </a>
 
     <!-- ฟอร์มสำหรับออกรายงาน -->
@@ -83,16 +83,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         document.getElementById('filterForm').submit();
     }
 
-    // Initialize Flatpickr
+    // Initialize Flatpickr with today's date as the default
     flatpickr("#start_date", {
-        dateFormat: "d/m/Y", // Include year
-        defaultDate: "<?php echo htmlspecialchars($start_date); ?>",
+        dateFormat: "d/m/Y",
+        defaultDate: "<?php echo isset($start_date) ? htmlspecialchars($start_date) : ''; ?>",
         onChange: autoSubmitForm
     });
 
     flatpickr("#end_date", {
-        dateFormat: "d/m/Y", // Include year
-        defaultDate: "<?php echo htmlspecialchars($end_date); ?>",
+        dateFormat: "d/m/Y",
+        defaultDate: "<?php echo isset($end_date) ? htmlspecialchars($end_date) : ''; ?>",
         onChange: autoSubmitForm
     });
 </script>
