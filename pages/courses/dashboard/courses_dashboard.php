@@ -31,6 +31,7 @@ $courses_result = $conn->query($courses_query);
 
 
 <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
     .card:hover {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -38,12 +39,12 @@ $courses_result = $conn->query($courses_query);
 </style>
 
 <div class="container mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการรายวิชา</h1>
+    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">รายวิชาทั้งหมด</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <!-- ปุ่มเปิด Modal -->
-        <button id="openModal" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4">+ เพิ่มรายวิชาใหม่</button>
-        <button id="exportReport" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-600 mb-4">ออกรายงาน PDF</button>
 
+
+
+        <a href="?page=Manage_courses"> <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4">จัดการรายวิชา</button> </a>
         <!-- ฟอร์มค้นหา -->
         <form method="GET" action="" class="mb-4">
             <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
@@ -52,7 +53,7 @@ $courses_result = $conn->query($courses_query);
                 </div>
                 <div class="flex-1 mb-4 md:mb-0">
                     <select id="course_name" name="course_name" class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" onchange="this.form.submit()">
-                        <option value="">เลือกคอร์สทั้งหมด</option>
+                        <option value="">เลือกรายวิชา</option>
                         <?php while ($course_row = $courses_result->fetch_assoc()) : ?>
                             <option value="<?php echo htmlspecialchars($course_row['course_name']); ?>" <?php if ($selected_course == $course_row['course_name']) echo 'selected'; ?>>
                                 <?php echo htmlspecialchars($course_row['course_name']); ?>
@@ -61,13 +62,10 @@ $courses_result = $conn->query($courses_query);
                     </select>
                 </div>
 
-
-
-
                 <!-- <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">ค้นหา</button> -->
             </div>
         </form>
-        <p class="text-red-400">**คลิกที่การดำเนินการเพื่อดูรายละเอียดรายวิชา**</p>
+        <!-- <p class="text-red-400">**คลิกที่การดำเนินการเพื่อดูรายละเอียดรายวิชา**</p> -->
 
         <!-- Card Layout -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -136,10 +134,5 @@ $courses_result = $conn->query($courses_query);
             const textContent = card.textContent.toLowerCase();
             card.style.display = textContent.includes(searchQuery) ? '' : 'none';
         });
-    });
-
-    document.getElementById('exportReport').addEventListener('click', function() {
-        const searchQuery = document.getElementById('search-input').value;
-        window.location.href = '../mpdf/courses/Manage_courses.php?search=' + encodeURIComponent(searchQuery);
     });
 </script>

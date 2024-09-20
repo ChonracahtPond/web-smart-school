@@ -19,9 +19,12 @@ include '../includes/header.php';
                 case 'dashboard':
                     include "../pages/dashboard/dashboard.php";
                     break;
+                case 'ai_analysis':
+                    include "../pages/AI/ai_analysis/ai_analysis.php";
+                    break;
 
 
-          
+
 
                 case 'add_event':
                     include "../pages/dashboard/calendar/add_event.php";

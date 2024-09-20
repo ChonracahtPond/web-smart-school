@@ -25,6 +25,7 @@ const pageLinkMap = {
   ShowBook: "ShowBook-link",
   Canceled_registration: "Canceled_registration-link",
   Statistics_and_reports: "Statistics_and_reports",
+  ai_analysis: "ai_analysis-link",
 
   //   educationsidebar
   Manage_courses: "Manage-courses-link",
@@ -69,6 +70,7 @@ const dropdownMap = {
   ManageBook: "dropdown-ManageBook",
   ShowBook: "dropdown-ManageBook",
   Statistics_and_reports: "dropdown-Manage-reports",
+  ai_analysis: "dropdown-Manage-reports",
   //   educationsidebar
   Manage_courses: "dropdown-Manage-courses",
   Manage_Activity: "dropdown-Manage-activity",

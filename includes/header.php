@@ -30,6 +30,11 @@ $screen_color = isset($_SESSION['screen_color']) ? $_SESSION['screen_color'] : '
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <link rel="stylesheet" href="https://horizon-tailwind-react-corporate-7s21b54hb-horizon-ui.vercel.app/static/css/main.d7f96858.css" />
 
+    <!-- </// table ///> -->
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/table.css">
 
     <style>
         .marquee-container {
@@ -75,26 +80,25 @@ include '../includes/modal/modal.php';
     <!-- <header class="bg-[#6e4db0] text-white p-4 flex items-center justify-between shadow-md h-[70px]"> -->
     <header class="text-white p-4 flex items-center justify-between shadow-md h-[70px]" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;">
         <!-- Logo and Menu Items -->
-        <div class="flex items-center">
+        <div class="flex items-center flex-wrap">
             <img src="../assets/images/LOGO@3x.png" class="w-12 h-12 ml-10" alt="Logo">
-            <ul class="flex space-x-8 ml-6 text-lg font-medium">
-                <li class="flex items-center">
+            <ul class="flex flex-wrap space-x-4 ml-6 text-lg font-medium">
+                <li>
                     <a href="system.php" id="system-head" class="flex items-center justify-center hover:underline hover:bg-gray-100 hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
                         ระบบจัดการข้อมูล สกร.
                     </a>
                 </li>
-                <li class="flex items-center">
+                <li>
                     <a href="education.php" class="flex items-center justify-center hover:underline hover:bg-gray-100 hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
                         ระบบจัดการรายวิชา
                     </a>
                 </li>
-                <!-- <li class="flex items-center"><a href="teacher.php" class="flex items-center justify-center hover:underline hover:text-gray-300 transition duration-200 py-2 px-4 rounded-lg">ระบบจัดการข้อมูลครู</a></li> -->
-                <li class="flex items-center">
+                <li>
                     <a href="student.php" class="flex items-center justify-center hover:underline hover:bg-gray-100 hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
                         ระบบจัดการข้อมูลนักศึกษา
                     </a>
                 </li>
-                <li class="flex items-center">
+                <li>
                     <a href="teacher.php" class="flex items-center justify-center hover:underline hover:bg-gray-100 hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
                         ระบบของครู
                     </a>
@@ -102,30 +106,19 @@ include '../includes/modal/modal.php';
             </ul>
         </div>
 
+
+        <?php
+        include "fontslide.php";
+        // include "sql/sql_register.php";
+        ?>
+
+
+
+
+
         <!-- Settings and Logout -->
         <div class="flex items-center mr-5 space-x-6">
-            <?php
-            include "fontslide.php";
-            include "sql/sql_register.php";
-            ?>
-
-            <!-- Settings Button -->
-            <!-- <a href="system.php?page=New_student_registration_system" class="relative flex items-center hover:text-gray-300 transition duration-200">
-    
-                <?php if ($new_registrations > 0): ?>
-                    <div class="absolute top-0 right-0 -mt-3 -mr-3 w-5 h-5 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
-                        <?php echo htmlspecialchars($new_registrations); ?>
-                    </div>
-                <?php endif; ?>
-            
-                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                </svg>
-                <span class="hover:underline ml-2">แจ้งเตือน</span>
-            </a> -->
-
             <?php include "notify.php"; ?>
-
 
             <!-- Settings Button -->
             <a href="setting.php" class="flex items-center hover:text-gray-300 transition duration-200">
@@ -145,6 +138,7 @@ include '../includes/modal/modal.php';
             </a>
         </div>
     </header>
+
 
 
 

@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param('iisssii', $student_id, $course_id, $semester, $academic_year, $status, $teacher_id, $id);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Enrollment updated successfully'); window.location.href='?page=Manage_enrollments';</script>";
+        echo "<script> window.location.href='?page=Manage_enrollments&status=1';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }

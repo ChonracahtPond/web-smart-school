@@ -72,11 +72,25 @@
                     include "../pages/Activities/Reports_and_statistics.php";
                     break;
 
+                    // -- หน้า การจัดการประเมินผล --//
                 case 'Evaluation_management':
                     include "../pages/Evaluation/Evaluation_management.php";
                     break;
+                case 'edit_Evaluation':
+                    include "../pages/Evaluation/edit_Evaluation.php";
+                    break;
+                case 'delete_Evaluation':
+                    include "../pages/Evaluation/delete_Evaluation.php";
+                    break;
+
+
+
                 case 'Graduation_system':
                     include "../pages/Graduation/Graduation_system.php";
+                    break;
+
+                case 'enrollment_details':
+                    include "../pages/courses/Manage_courses/enrollment_details.php";
                     break;
 
 

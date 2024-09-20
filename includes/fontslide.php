@@ -7,7 +7,7 @@
 
     .marquee {
         display: inline-block;
-        padding-left: 100%;
+        padding-left: 40%;
         /* เริ่มต้นจากนอกหน้าจอทางขวา */
         animation: marquee 20s linear infinite;
     }

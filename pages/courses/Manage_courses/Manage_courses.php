@@ -21,20 +21,83 @@ $result = $stmt->get_result();
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 <style>
-    .dataTables_wrapper .dataTables_filter input {
+    /* Overrides for Tailwind CSS */
+    .dataTables_wrapper select,
+    .dataTables_wrapper input {
+        color: #4a5568;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        line-height: 1.25;
+        border-width: 2px;
+        border-radius: .25rem;
         border-color: #edf2f7;
         background-color: #edf2f7;
+        width: 100px;
+    }
+
+
+
+    .dataTables_filter input {
+        color: #4a5568;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        line-height: 1.25;
+        border-width: 2px;
+        border-radius: .25rem;
+        border-color: #edf2f7;
+        background-color: #edf2f7;
+        width: 500px;
+    }
+
+
+
+
+    table.dataTable.hover tbody tr:hover,
+    table.dataTable.display tbody tr:hover {
+        background-color: #ebf4ff;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        font-weight: 700;
+        border-radius: .25rem;
+        border: 1px solid transparent;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        color: #fff !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        font-weight: 700;
+        border-radius: .25rem;
+        background: #667eea !important;
+        border: 1px solid transparent;
+        /* width: 500px; */
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        color: #fff !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        font-weight: 700;
+        border-radius: .25rem;
+        background: #667eea !important;
+        border: 1px solid transparent;
+        /* width: 500px; */
     }
 
     table.dataTable.no-footer {
         border-bottom: 1px solid #e2e8f0;
+        margin-top: 0.75em;
+        margin-bottom: 0.75em;
     }
 
-    .clickable-row {
-        cursor: pointer;
+    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+        background-color: #667eea !important;
     }
 </style>
-
 <div class="container mx-auto p-4">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการรายวิชา</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
@@ -50,7 +113,7 @@ $result = $stmt->get_result();
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 ml-2">ค้นหา</button>
             </div>
         </form>
-        <p class="text-red-400">**คลิกที่รายวิชาเพื่อดูรายละเอียดรายวิชา**</p>
+        <p class="text-red-400 mb-5">**คลิกที่รายวิชาเพื่อดูรายละเอียดรายวิชา**</p>
         <table id="courses-table" class="display stripe hover w-full" style="width:100%;">
             <thead>
                 <tr>
