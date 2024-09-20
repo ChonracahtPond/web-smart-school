@@ -56,11 +56,14 @@
                 </button>
                 <ul id="dropdown-Manage-setting" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="?page=Manage_Toolbar_setting" id="Manage_Toolbar_setting-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ตั้งค่าแถบสี</a>
+                        <a href="?page=Manage_Toolbar_setting" id="Manage_Toolbar_setting-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ตั้งค่าสีแถบเครื่องมือ</a>
                     </li>
                     <li>
                         <a href="?page=Manage_screen_setting" id="Manage_screen_setting-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ตั้งค่าสีแบล็คกาว</a>
                     </li>
+                    <!-- <li>
+                        <a href="?page=Manage_Tap_setting" id="Manage_Tap_setting-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ตั้งค่าแถบสี</a>
+                    </li> -->
                     <!-- <li>
                         <a href="?page=reset_password" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11">รีเซ็ตรหัสผ่าน</a>
                     </li>

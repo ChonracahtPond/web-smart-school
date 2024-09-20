@@ -20,26 +20,13 @@
                 case 'Manage_screen_setting':
                     include "../pages/setting/Manage_screen_setting/Manage_screen_setting.php";
                     break;
+                case 'Manage_Tap_setting':
+                    include "../pages/setting/Manage_screen_setting/Manage_Tap_setting.php";
+                    break;
 
                 case 'edit_Notification':
                     include "../pages/setting/Notification/edit_Notification.php";
                     break;
-
-                    // case 'borrow_item':
-                    //     include "../pages/borrowing/borrow_item.php";
-                    //     break;
-                    // case 'return_item':
-                    //     include "../pages/borrowing/return_item.php";
-                    //     break;
-
-
-                    // case 'recent-activities':
-                    //     include "../pages/recent-activities.php";
-                    //     break;
-
-                    // default:
-                    //     include "../pages/dashboard.php";
-                    //     break;
             }
             ?>
         </section>

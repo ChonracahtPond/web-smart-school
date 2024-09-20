@@ -83,6 +83,21 @@
                     include "../pages/Evaluation/delete_Evaluation.php";
                     break;
 
+                    // -- หน้า นักเรียนที่มาสิทธิสอบ --//
+                case 'eligible_students':
+                    include "../pages/eligible_students/eligible_students.php";
+                    break;
+
+
+
+                    // -- หน้า จัดการการสอบกลางภาค --//
+                case 'Manage_exam_Midterm':
+                    include "../pages/exams/Manage_exam_Midterm.php";
+                    break;
+
+
+
+
 
 
                 case 'Graduation_system':

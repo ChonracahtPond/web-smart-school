@@ -1,19 +1,18 @@
 <?php
-// session_start();
 
-// ถ้ามีการส่งค่า tool_color ผ่าน form ให้เก็บค่าไว้ใน session
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tool_color'])) {
+// ถ้ามีการส่งค่า tap_color ผ่าน form ให้เก็บค่าไว้ใน session
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tap_color'])) {
     if (isset($_POST['reset_color'])) {
-        $_SESSION['tool_color'] = '#6e4db0'; // Reset to default color
+        $_SESSION['tap_color'] = '#F44336'; // Reset to default color
     } else {
-        $_SESSION['tool_color'] = $_POST['tool_color'];
+        $_SESSION['tap_color'] = $_POST['tap_color'];
     }
     echo "<script>window.location.href = window.location.href;</script>"; // รีเฟรชหน้าหลังการบันทึก
     exit();
 }
 
 // กำหนดค่า default สีหน้าจอจาก session หรือกำหนดค่าเริ่มต้นเป็นสี #ffffff
-$tool_color = isset($_SESSION['tool_color']) ? $_SESSION['tool_color'] : '#ffffff';
+$tap_color = isset($_SESSION['tap_color']) ? $_SESSION['tap_color'] : '#ffffff';
 ?>
 
 <!DOCTYPE html>
@@ -27,22 +26,18 @@ $tool_color = isset($_SESSION['tool_color']) ? $_SESSION['tool_color'] : '#fffff
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="min-h-screen" style="background-color: 
-<?php
-// echo $tool_color; 
-?>
-;">
+<body class="min-h-screen" style="background-color: <?php echo htmlspecialchars($tap_color); ?>;">
     <div class="container mx-auto py-10 px-4">
-        <h1 class="text-4xl font-bold mb-8 text-gray-800 text-center">ตั้งค่าสีแถบเครื่องมือ</h1>
+        <h1 class="text-4xl font-bold mb-8 text-gray-800 text-center">ตั้งค่าแถบสี</h1>
 
         <form method="POST" action="" class="space-y-6 bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto">
             <!-- Color Picker -->
             <p class="text-red-500">** คลิกที่แถบสีเพื่อเปลี่ยนสี **</p>
 
             <div class="flex flex-col space-y-2">
-                <label for="tool_color" class="block text-lg font-medium text-gray-700">เลือกแถบสีหน้าจอ</label>
+                <label for="tap_color" class="block text-lg font-medium text-gray-700">เลือกแถบสีหน้าจอ</label>
 
-                <input type="color" name="tool_color" id="tool_color" class="p-2 border border-gray-300 rounded-md shadow-sm w-full h-48" value="<?php echo htmlspecialchars($tool_color); ?>">
+                <input type="color" name="tap_color" id="tap_color" class="p-2 border border-gray-300 rounded-md shadow-sm w-full h-48" value="<?php echo htmlspecialchars($tap_color); ?>">
             </div>
 
             <div class="text-center mt-6 space-x-4">
@@ -55,10 +50,8 @@ $tool_color = isset($_SESSION['tool_color']) ? $_SESSION['tool_color'] : '#fffff
                 <button type="submit" name="reset_color" class="px-6 py-2 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 transition">
                     รีเซ็ตสี
                 </button>
-
             </div>
         </form>
-
     </div>
 </body>
 

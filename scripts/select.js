@@ -36,6 +36,9 @@ const pageLinkMap = {
   Questions: "questions-link",
   Evaluation_management: "Evaluation-management-link",
   Graduation_system: "Graduation-system-link",
+  eligible_students: "eligible_students-link",
+  Manage_exam_Midterm: "Manage_exam_Midterm",
+  Manage_exam_Final: "Manage_exam_Final",
   //   Teachersidebar
   Teacher_Manage: "Teacher-Manage-link",
   reset_password: "reset-password-link",
@@ -54,6 +57,7 @@ const pageLinkMap = {
   edit_profile: "edit-profile-link",
   Manage_Toolbar_setting: "Manage_Toolbar_setting-link",
   Manage_screen_setting: "Manage_screen_setting-link",
+  Manage_Tap_setting: "Manage_Tap_setting-link",
 };
 
 const dropdownMap = {
@@ -76,6 +80,9 @@ const dropdownMap = {
   Manage_Activity: "dropdown-Manage-activity",
   Manage_Credits: "dropdown-Manage-activity",
   Reports_and_statistics: "dropdown-Manage-activity",
+  eligible_students: "dropdown-Manage-exam",
+  Manage_exam_Midterm: "dropdown-Manage-exam",
+  Manage_exam_Final: "dropdown-Manage-exam",
   //   Teachersidebar
   Teacher_Manage: "dropdown-Manage-Teacher",
   reset_password: "dropdown-Manage-Teacher",
@@ -89,6 +96,7 @@ const dropdownMap = {
   // setting
   Manage_Toolbar_setting: "dropdown-Manage-setting",
   Manage_screen_setting: "dropdown-Manage-setting",
+  Manage_Tap_setting: "dropdown-Manage-setting",
 };
 
 if (currentPage && pageLinkMap[currentPage]) {
