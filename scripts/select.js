@@ -38,6 +38,7 @@ const pageLinkMap = {
   Graduation_system: "Graduation-system-link",
   eligible_students: "eligible_students-link",
   Manage_exam_Midterm: "Manage_exam_Midterm",
+  add_exams: "Manage_exam_Midterm",
   Manage_exam_Final: "Manage_exam_Final",
   //   Teachersidebar
   Teacher_Manage: "Teacher-Manage-link",
@@ -82,6 +83,7 @@ const dropdownMap = {
   Reports_and_statistics: "dropdown-Manage-activity",
   eligible_students: "dropdown-Manage-exam",
   Manage_exam_Midterm: "dropdown-Manage-exam",
+  add_exams: "dropdown-Manage-exam",
   Manage_exam_Final: "dropdown-Manage-exam",
   //   Teachersidebar
   Teacher_Manage: "dropdown-Manage-Teacher",

@@ -106,6 +106,12 @@
                 case 'add_exams':
                     include "../pages/exams/add_exams.php";
                     break;
+                case 'delete_exam':
+                    include "../pages/exams/delete_exam.php";
+                    break;
+                case 'edit_exam':
+                    include "../pages/exams/edit_exam.php";
+                    break;
 
 
 

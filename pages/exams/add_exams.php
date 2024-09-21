@@ -1,63 +1,5 @@
 <?php
-// ดึงข้อมูลจากตาราง courses
-$sql = "SELECT course_id, course_name FROM courses WHERE status = 0";
-$result = $conn->query($sql);
-
-// ฟังก์ชันสำหรับดึงข้อมูล enrollments ถ้าเลือก course
-$enrollmentData = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['course'])) {
-    $course_id = $_POST['course'];
-
-    // ใช้ JOIN เพื่อดึงข้อมูล student_name จากตาราง students
-    $sql1 = "SELECT e.enrollment_id, e.student_id, s.student_name 
-              FROM enrollments e
-              JOIN students s ON e.student_id = s.student_id
-              WHERE e.course_id = ? AND e.status = 1";
-    $stmt = $conn->prepare($sql1);
-    $stmt->bind_param("i", $course_id);
-    $stmt->execute();
-    $resultEnrollments = $stmt->get_result();
-
-    // แสดงข้อมูล enrollment ในตัวแปร $enrollmentData
-    while ($row = $resultEnrollments->fetch_assoc()) {
-        $enrollmentData .= "<tr>";
-        $enrollmentData .= "<td class='py-2 px-4 border'>" . htmlspecialchars($course_id) . "</td>"; // Course ID
-        $enrollmentData .= "<td class='py-2 px-4 border'>" . htmlspecialchars($row['student_id']) . "</td>"; // Student ID
-        $enrollmentData .= "<td class='py-2 px-4 border'>" . htmlspecialchars($row['student_name']) . "</td>"; // Student Name
-        $enrollmentData .= "<td class='py-2 px-4 border'><input type='text' name='exam_score[]' class='border border-gray-300 rounded-lg p-1' placeholder='คะแนนจากการสอบ'></td>"; // Input field
-        $enrollmentData .= "</tr>";
-    }
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['totalMarks'])) {
-    // รับค่าจากฟอร์ม
-    $totalMarks = $_POST['totalMarks'] ?? '';
-    $passingCriteria = $_POST['passingCriteria'] ?? '';
-    $passingPercentage = $_POST['passingPercentage'] ?? '';
-    $exam_scores = $_POST['exam_score'] ?? [];
-
-    // Echo ข้อมูลที่ได้รับจากฟอร์ม
-    echo "<div class='mt-4'>";
-    echo "<h3 class='text-lg font-semibold'>ข้อมูลการสอบ:</h3>";
-    echo "<p>คะแนนเต็ม: " . htmlspecialchars($totalMarks) . "</p>";
-    echo "<p>เกณฑ์การผ่าน (คะแนน): " . htmlspecialchars($passingCriteria) . "</p>";
-    echo "<p>เกณฑ์การผ่าน (เปอร์เซ็น): " . htmlspecialchars($passingPercentage) . "%</p>";
-
-    // แสดงคะแนนของนักเรียน
-    // echo "<h4 class='mt-4'>คะแนนจากการสอบ:</h4>";
-    foreach ($exam_scores as $index => $score) {
-        echo "<p>คะแนนนักเรียน " . ($index + 1) . ": " . htmlspecialchars($score) . "</p>";
-    }
-    echo "</div>";
-
-
-    if ($passingCriteria >= 0) {
-        $total = $totalMarks -  $passingCriteria;
-    } else if ($passingPercentage >= 0) {
-    }
-
-    echo $total;
-}
+include "sql/sql.php";
 ?>
 
 <div class="bg-white rounded-lg p-6 w-full flex flex-col justify-between">
@@ -86,21 +28,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['totalMarks'])) {
             <input type="number" name="totalMarks" id="totalMarks" placeholder='คะแนน' class="border rounded w-full p-2" required>
         </div>
 
-        <p class="text-red-500">** เลือกกรอกอย่างใดอย่างนึ่ง **</p>
+        <p class="text-red-500">** เลือกกรอกอย่างใดอย่างหนึ่ง **</p>
         <div class="mb-4">
             <label for="passingCriteria" class="block">เกณฑ์การผ่าน (คะแนน)</label>
             <div class="flex">
-                <input type="number" name="passingCriteria" placeholder='คะแนน' class="border rounded w-full p-2">
+                <input type="number" name="passingCriteria" id="passingCriteria" placeholder='คะแนน' class="border rounded w-full p-2 focus:outline-none" oninput="togglePercentage()">
                 <span class="text-center mt-1 ml-2 text-2xl">คะแนน</span>
             </div>
         </div>
         <div class="mb-4">
             <label for="passingPercentage" class="block">เกณฑ์การผ่าน (เปอร์เซ็น) <span class="text-red-500">ไม่ต้องใส่สัญลักษณ์ %</span></label>
             <div class="flex">
-                <input type="text" name="passingPercentage" placeholder='เปอร์เซ็น' class="border rounded w-full p-2">
+                <input type="text" name="passingPercentage" id="passingPercentage" placeholder='เปอร์เซ็น' class="border rounded w-full p-2 focus:outline-none" oninput="toggleCriteria()">
                 <span class="text-center mt-1 ml-2 text-2xl">%</span>
             </div>
         </div>
+
+        <script>
+            function togglePercentage() {
+                const criteriaInput = document.getElementById('passingCriteria');
+                const percentageInput = document.getElementById('passingPercentage');
+
+                if (criteriaInput.value) {
+                    percentageInput.value = ''; // Clear the percentage field
+                    percentageInput.disabled = true; // Disable the percentage input
+                    percentageInput.classList.remove('bg-white', 'text-black');
+                    percentageInput.classList.add('bg-gray-200', 'text-gray-400'); // Tailwind classes for disabled
+                } else {
+                    percentageInput.disabled = false; // Enable the percentage input
+                    percentageInput.classList.remove('bg-gray-200', 'text-gray-400');
+                    percentageInput.classList.add('bg-white', 'text-black'); // Tailwind classes for enabled
+                }
+            }
+
+            function toggleCriteria() {
+                const criteriaInput = document.getElementById('passingCriteria');
+                const percentageInput = document.getElementById('passingPercentage');
+
+                if (percentageInput.value) {
+                    criteriaInput.value = ''; // Clear the criteria field
+                    criteriaInput.disabled = true; // Disable the criteria input
+                    criteriaInput.classList.remove('bg-white', 'text-black');
+                    criteriaInput.classList.add('bg-gray-200', 'text-gray-400'); // Tailwind classes for disabled
+                } else {
+                    criteriaInput.disabled = false; // Enable the criteria input
+                    criteriaInput.classList.remove('bg-gray-200', 'text-gray-400');
+                    criteriaInput.classList.add('bg-white', 'text-black'); // Tailwind classes for enabled
+                }
+            }
+        </script>
+
+
 
         <table class="min-w-full bg-white border border-gray-300 mb-4">
             <thead>

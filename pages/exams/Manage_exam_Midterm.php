@@ -5,7 +5,7 @@ $startDate = $_GET['start_date'] ?? null;
 $endDate = $_GET['end_date'] ?? null;
 
 // สร้าง SQL query
-$sql = "SELECT e.exam_id, e.enrollment_id, e.exam_type, e.exam_date, e.duration, e.total_marks, e.created_at, e.updated_at, e.student_id, e.score, s.student_name, en.course_id
+$sql = "SELECT e.exam_id, e.enrollment_id, e.exam_type, e.exam_date, e.duration, e.total_marks, e.created_at, e.updated_at, e.student_id, e.score, e.exams_status,e.criterion, s.student_name, en.course_id
         FROM exams e
         JOIN students s ON e.student_id = s.student_id
         JOIN enrollments en ON e.enrollment_id = en.enrollment_id";
@@ -42,7 +42,12 @@ $result = $stmt->get_result();
                     </svg>
                     เพิ่มข้อมูลการสอบ
                 </button> -->
-                <a href="?page=add_exams" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">เพิ่มข้อมูลการสอบ</a>
+                <a href="?page=add_exams" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">
+                    <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+
+                    เพิ่มข้อมูลการสอบ</a>
                 <button id="importExcelModalBtn" class="flex items-center bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-600">
                     <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -90,9 +95,10 @@ $result = $stmt->get_result();
                     <th>ชื่อผู้เรียน</th>
                     <th>ประเภทการสอบ</th>
                     <th>วันที่สอบ</th>
-                    <th>ระยะเวลา</th>
                     <th>คะแนนเต็ม</th>
+                    <th>เกณฑ์การผ่าน</th>
                     <th>คะแนน</th>
+                    <th>สถานะ</th>
                     <th>การดำเนินการ</th>
                 </tr>
             </thead>
@@ -108,10 +114,15 @@ $result = $stmt->get_result();
                             <td><?php echo $row['student_name']; ?></td>
                             <td><?php echo $row['exam_type']; ?></td>
                             <td><?php echo $row['exam_date']; ?></td>
-                            <td><?php echo $row['duration']; ?></td>
                             <td><?php echo $row['total_marks']; ?></td>
+                            <td><?php echo $row['criterion']; ?></td>
                             <td><?php echo $row['score']; ?></td>
+                            <td class="<?php echo $row['exams_status'] === 'ผ่าน' ? 'text-green-500' : 'text-red-500'; ?>">
+                                <?php echo $row['exams_status']; ?>
+                            </td>
+
                             <td class="flex justify-center space-x-2">
+                                <!-- <button id="openeditExamModal" class="bg-blue-500 text-white font-bold h-10 w-18 py-1 px-2 rounded hover:bg-blue-600 transition duration-200 flex items-center"> -->
                                 <a href="?page=edit_exam&id=<?php echo $row['exam_id']; ?>" class="bg-blue-500 text-white font-bold h-10 w-18 py-1 px-2 rounded hover:bg-blue-600 transition duration-200 flex items-center">
                                     <svg class="h-5 w-5 mr-1" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
@@ -120,6 +131,8 @@ $result = $stmt->get_result();
                                     </svg>
                                     แก้ไข
                                 </a>
+
+                                <!-- <a href="#" onclick="openModal(<?php echo $exam['exam_id']; ?>)" class="bg-blue-500 text-white font-bold h-10 w-18 py-1 px-2 rounded hover:bg-blue-600 transition duration-200 flex items-center">Edit</a> -->
                                 <a href="?page=delete_exam&id=<?php echo $row['exam_id']; ?>" class="bg-red-500 text-white font-bold py-1 px-2 rounded hover:bg-red-600 transition duration-200 flex items-center h-10 w-18" onclick="return confirm('คุณแน่ใจหรือไม่ว่าจะลบการลงทะเบียนนี้?')">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <line x1="4" y1="7" x2="20" y2="7" />
@@ -146,9 +159,10 @@ $result = $stmt->get_result();
                     <th>ชื่อผู้เรียน</th>
                     <th>ประเภทการสอบ</th>
                     <th>วันที่สอบ</th>
-                    <th>ระยะเวลา</th>
                     <th>คะแนนเต็ม</th>
+                    <th>เกณฑ์การผ่าน</th>
                     <th>คะแนน</th>
+                    <th>สถานะ</th>
                     <th>การดำเนินการ</th>
                 </tr>
             </tfoot>
@@ -160,6 +174,7 @@ $result = $stmt->get_result();
 <?php include "modal/add_exams_modal.php"; ?>
 <?php include "modal/import_Manage_exam_Midterm_modal.php"; ?>
 <?php include "modal/export_exams_modal.php"; ?>
+<?php include "modal/export_pdf_modal.php"; ?>
 <?php include "modal/export_pdf_modal.php"; ?>
 
 
