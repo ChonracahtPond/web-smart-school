@@ -103,6 +103,9 @@
                 case 'Manage_exam_Midterm':
                     include "../pages/exams/Manage_exam_Midterm.php";
                     break;
+                case 'add_exams':
+                    include "../pages/exams/add_exams.php";
+                    break;
 
 
 

@@ -10,6 +10,8 @@ $sql = "SELECT e.exam_id, e.enrollment_id, e.exam_type, e.exam_date, e.duration,
         JOIN students s ON e.student_id = s.student_id
         JOIN enrollments en ON e.enrollment_id = en.enrollment_id";
 
+
+
 if ($startDate && $endDate) {
     $sql .= " WHERE e.created_at BETWEEN ? AND ?";
 }
@@ -34,12 +36,13 @@ $result = $stmt->get_result();
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
         <div class="flex justify-between items-center mb-4">
             <div class="flex space-x-4">
-                <button id="openModal" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">
+                <!-- <button id="openModal" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">
                     <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
                     เพิ่มข้อมูลการสอบ
-                </button>
+                </button> -->
+                <a href="?page=add_exams" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">เพิ่มข้อมูลการสอบ</a>
                 <button id="importExcelModalBtn" class="flex items-center bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-600">
                     <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -82,8 +85,8 @@ $result = $stmt->get_result();
         <table id="examTable" class="stripe hover text-center" style="width:100%;">
             <thead class="text-white" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;">
                 <tr>
-                    <th>รหัสการสอบ</th>
-                    <th>รหัสการลงทะเบียน</th>
+                    <th>No</th> <!-- เปลี่ยนจาก "รหัสการสอบ" เป็น "No" -->
+                    <th>รหัสวิชา</th>
                     <th>ชื่อผู้เรียน</th>
                     <th>ประเภทการสอบ</th>
                     <th>วันที่สอบ</th>
@@ -95,9 +98,12 @@ $result = $stmt->get_result();
             </thead>
             <tbody>
                 <?php if ($result->num_rows > 0): ?>
+                    <?php $no = 1; // เริ่มนับจาก 1 
+                    ?>
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <tr>
-                            <td><?php echo $row['exam_id']; ?></td>
+                            <td><?php echo $no++; // แสดงหมายเลข 
+                                ?></td> <!-- แสดงหมายเลข -->
                             <td><?php echo $row['enrollment_id']; ?></td>
                             <td><?php echo $row['student_name']; ?></td>
                             <td><?php echo $row['exam_type']; ?></td>
@@ -135,8 +141,8 @@ $result = $stmt->get_result();
             </tbody>
             <tfoot class="text-white" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;">
                 <tr>
-                    <th>รหัสการสอบ</th>
-                    <th>รหัสการลงทะเบียน</th>
+                    <th>No</th> <!-- เปลี่ยนจาก "รหัสการสอบ" เป็น "No" -->
+                    <th>รหัสวิชา</th>
                     <th>ชื่อผู้เรียน</th>
                     <th>ประเภทการสอบ</th>
                     <th>วันที่สอบ</th>
@@ -147,6 +153,7 @@ $result = $stmt->get_result();
                 </tr>
             </tfoot>
         </table>
+
     </div>
 </div>
 
