@@ -24,6 +24,16 @@ include "sql/sql.php";
             </select>
         </div>
         <div class="mb-4">
+            <label for="duration" class="block">วันที่สอบ</label>
+            <input type="date" name="duration" id="duration" placeholder='คะแนน' class="border rounded w-full p-2" required>
+        </div>
+
+
+        <!-- <div class="mb-4">
+            <label for="duration" class="block text-gray-700 font-medium">ระยะเวลา (นาที)</label>
+            <input type="number" name="duration" id="duration" value="<?php echo htmlspecialchars($exam['duration']); ?>" class="border border-gray-300 rounded w-full p-3 focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div> -->
+        <div class="mb-4">
             <label for="totalMarks" class="block">คะแนนเต็ม</label>
             <input type="number" name="totalMarks" id="totalMarks" placeholder='คะแนน' class="border rounded w-full p-2" required>
         </div>
@@ -95,7 +105,7 @@ include "sql/sql.php";
         </table>
 
         <div class="flex justify-end space-x-2 mt-4">
-            <button type="button" id="closeModal" class="bg-gray-300 hover:bg-gray-400 text-gray-700 font-medium py-2 px-4 rounded-lg" onclick="closeModal()">ยกเลิก</button>
+            <a href="?page=Manage_exam_Midterm" class="bg-gray-300 hover:bg-gray-400 text-gray-700 font-medium py-2 px-4 rounded-lg">ยกเลิก</a>
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">ยืนยัน</button>
         </div>
     </form>

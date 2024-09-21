@@ -1,13 +1,10 @@
 <?php
+
 if (isset($_GET['id'])) {
     $exam_id = $_GET['id'];
 
-    // ดึงข้อมูลการสอบจากตาราง exams รวมกับ enrollments และ students เพื่อดึง student_name
-    $sql = "SELECT exams.*, enrollments.enrollment_id, enrollments.student_id, students.student_name 
-            FROM exams 
-            INNER JOIN enrollments ON exams.enrollment_id = enrollments.enrollment_id 
-            INNER JOIN students ON enrollments.student_id = students.student_id 
-            WHERE exam_id = ?";
+    // ดึงข้อมูลการสอบจากฐานข้อมูล
+    $sql = "SELECT * FROM exams WHERE exam_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $exam_id);
     $stmt->execute();
@@ -47,9 +44,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $status1 = "ผ่าน"; // หากคะแนนมากกว่าหรือเท่ากับเกณฑ์ที่คำนวณได้ แสดงว่าผ่าน
         }
     } else {
+
+        // $cleanedCriterion = $criterion1; // ใช้ค่าเกณฑ์เดิมหากไม่มี "%"
+        // ตรวจสอบว่าคะแนนผ่านหรือไม่
         if ($score1 >= $criterion1) {
             $status1 = "ผ่าน"; // หากคะแนนมากกว่าหรือเท่ากับเกณฑ์ที่คำนวณได้ แสดงว่าผ่าน
         }
+
+        // $total1 = 0; // ไม่คำนวณเกณฑ์ในกรณีนี้
     }
 
     // เก็บค่า exams_status เป็นผลลัพธ์
@@ -58,10 +60,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // เตรียมข้อมูลสำหรับการอัปเดต
     $exam_type = $_POST['exam_type'];
     $exam_date = $_POST['exam_date'];
+    // $duration = $_POST['duration'];
     $exam_id = $_POST['exam_id']; // Get exam_id from POST
 
     // เตรียม statement สำหรับการอัปเดต
-    $updateSQL = "UPDATE exams SET exam_type = ?, exam_date = ?, total_marks = ?, score = ?, exams_status = ? WHERE exam_id = ?";
+    $updateSQL = "UPDATE exams SET exam_type = ?, exam_date = ?,  total_marks = ?, score = ?, exams_status = ? WHERE exam_id = ?";
     $stmt = $conn->prepare($updateSQL);
 
     // ผูกพารามิเตอร์ให้ตรงกับลำดับใน SQL statement
@@ -69,11 +72,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // อัปเดตข้อมูล
     if ($stmt->execute()) {
+        // Redirect to the exam list page with success status
         echo "<script>window.location.href='?page=Manage_exam_Midterm&status=1';</script>";
     } else {
         echo "Error: " . $stmt->error;
     }
 }
+
 ?>
 
 <!-- หน้าแก้ไขการสอบ -->
@@ -83,19 +88,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="hidden" name="exam_id" value="<?php echo htmlspecialchars($exam['exam_id']); ?>">
 
         <div class="mb-4">
-            <label for="student_name" class="block text-gray-700 font-medium">ชื่อ-นามสกุล</label>
-            <input type="text" name="student_name" id="student_name" value="<?php echo htmlspecialchars($exam['student_name']); ?>" class="border border-gray-300 rounded w-full p-3 bg-gray-300" readonly>
+            <label for="exam_type" class="block text-gray-700 font-medium">ชื่อขนามสกุล</label>
+            <input type="text" name="exam_type" id="exam_type" value="<?php echo htmlspecialchars($exam['enrollment_id']); ?>" class="border border-gray-300 rounded w-full p-3 focus:outline-none focus:ring-2 focus:ring-green-500" required>
         </div>
-
         <div class="mb-4">
             <label for="exam_type" class="block text-gray-700 font-medium">ประเภทการสอบ</label>
-            <input type="text" name="exam_type" id="exam_type" value="<?php echo htmlspecialchars($exam['exam_type']); ?>" class="border border-gray-300 rounded w-full p-3 bg-gray-300" readonly>
+            <input type="text" name="exam_type" id="exam_type" value="<?php echo htmlspecialchars($exam['exam_type']); ?>" class="border border-gray-300 rounded w-full p-3 focus:outline-none focus:ring-2 focus:ring-green-500" required>
         </div>
 
         <div class="mb-4">
             <label for="exam_date" class="block text-gray-700 font-medium">วันที่สอบ</label>
             <input type="date" name="exam_date" id="exam_date" value="<?php echo htmlspecialchars($exam['exam_date']); ?>" class="border border-gray-300 rounded w-full p-3 focus:outline-none focus:ring-2 focus:ring-green-500" required>
         </div>
+
+        <!-- <div class="mb-4">
+            <label for="duration" class="block text-gray-700 font-medium">ระยะเวลา (นาที)</label>
+            <input type="number" name="duration" id="duration" value="<?php echo htmlspecialchars($exam['duration']); ?>" class="border border-gray-300 rounded w-full p-3 focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div> -->
 
         <div class="mb-4">
             <label for="total_marks" class="block text-gray-700 font-medium">คะแนนเต็ม</label>
@@ -117,4 +126,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="?page=Manage_exam_Midterm" class="mt-2 bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded hover:bg-gray-400 transition duration-200">ยกเลิก</a>
         </div>
     </form>
-</div> 
+</div>

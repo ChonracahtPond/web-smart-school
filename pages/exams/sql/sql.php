@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exam_score'])) {
     } else {
         $exam_type = 'กลางภาค'; // สามารถเปลี่ยนตามความต้องการ
         $exam_date = date('Y-m-d'); // วันที่สอบ
-        $duration = 60; // สามารถเปลี่ยนตามความต้องการ
+        $duration =  $_POST['duration'] ?? '';// สามารถเปลี่ยนตามความต้องการ duration
 
 
         // Prepare statement สำหรับการบันทึกข้อมูลลงในฐานข้อมูล
