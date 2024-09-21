@@ -87,6 +87,15 @@
                 case 'eligible_students':
                     include "../pages/eligible_students/eligible_students.php";
                     break;
+                case 'insert_eligible_students':
+                    include "../pages/eligible_students/insert_eligible_students.php";
+                    break;
+                case 'edit_eligible_students':
+                    include "../pages/eligible_students/edit_eligible_students.php";
+                    break;
+                case 'delete_eligible_students':
+                    include "../pages/eligible_students/delete_eligible_students.php";
+                    break;
 
 
 

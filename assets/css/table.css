@@ -26,6 +26,7 @@
   border-color: #edf2f7;
   background-color: #edf2f7;
   width: 500px;
+  margin-bottom: 10px;
 }
 
 table.dataTable.hover tbody tr:hover,

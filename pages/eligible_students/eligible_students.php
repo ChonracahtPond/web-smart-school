@@ -1,137 +1,110 @@
 <?php
-
 // ดึงข้อมูลนักเรียนที่มีสิทธิสอบ
-$sql = "SELECT eligible_students_id, student_id, enrollment_id, es.exam_id, es.created_at AS date_time, s.student_name, el.course_id 
-        FROM eligible_students 
-        JOIN students s ON es.student_id = s.student_id
-        JOIN enrollments el ON es.enrollment_id = el.enrollment_id";
-// ดึงข้อมูลนักเรียนที่มีสิทธิสอบ
-$sql1 = "SELECT es.eligible_students_id, es.student_id, es.enrollment_id, es.exam_id, es.created_at AS date_time, s.student_name, el.course_id 
+$sql = "SELECT es.eligible_students_id, es.student_id, es.enrollment_id, es.exam_id, es.created_at AS date_time, s.student_name 
         FROM eligible_students es
         JOIN students s ON es.student_id = s.student_id
-        JOIN enrollments el ON es.enrollment_id = el.enrollment_id
-        JOIN courses c ON el.course_id = c.course_id";
+        JOIN enrollments el ON es.enrollment_id = el.enrollment_id";
 
-$studentsResult = $conn->query($sql); // ดึงข้อมูลนักเรียน
-
-// ตรวจสอบว่ามีการส่งคำขอ POST
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // รับค่าจากฟอร์ม
-    $student_id = $_POST['studentId'];
-    $enrollment_id = $_POST['enrollmentId'];
-    $exam_id = $_POST['examId'];
-    $date_time = $_POST['dateTime'];
-
-    // เตรียมคำสั่ง SQL
-    $sql2 = "INSERT INTO eligible_students (student_id, enrollment_id, exam_id, created_at) VALUES (?, ?, ?, ?)";
-
-    $stmt = $conn->prepare($sql);
-    if (!$stmt) {
-        die("เกิดข้อผิดพลาดในการเตรียมคำสั่ง: " . $conn->error);
-    }
-
-    // Binding parameters
-    $stmt->bind_param("ssss", $student_id, $enrollment_id, $exam_id, $date_time);
-
-    // Execute the query
-    if ($stmt->execute()) {
-        echo "เพิ่มนักเรียนที่มีสิทธิสอบเรียบร้อยแล้ว";
-    } else {
-        echo "เกิดข้อผิดพลาดในการเพิ่มข้อมูล: " . $stmt->error;
-    }
-
-    $stmt->close();
+$stmt = $conn->prepare($sql);
+if (!$stmt) {
+    die("เกิดข้อผิดพลาดในการเตรียมคำสั่ง: " . $conn->error);
 }
+$stmt->execute();
+$result = $stmt->get_result();
 
-// ดึงข้อมูลการลงทะเบียน
-$enrollmentsResult = $conn->query("SELECT * FROM enrollments"); // ปรับ query ตามฐานข้อมูลที่มี
+// ตรวจสอบผลลัพธ์
+if ($result->num_rows === 0) {
+    echo "<p class='text-center text-red-500'>ไม่พบข้อมูลนักเรียนที่มีสิทธิสอบ</p>";
+}
 ?>
 
-<div class="mx-auto px-2">
-    <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
+<div class="mx-auto px-4">
+    <h1 class="flex items-center font-sans font-bold text-indigo-500 px-2 py-8 text-xl md:text-2xl">
         <i class="fas fa-user-graduate mr-2"></i>นักเรียนที่มีสิทธิสอบ
     </h1>
 
-    <!-- ปุ่มเพิ่มข้อมูล -->
-    <div class="mb-4">
-        <button id="addEligibleStudentBtn" class="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition duration-200 flex">
-            <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" />
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-            </svg>
-            เพิ่มนักเรียนที่มีสิทธิ์สอบ
-        </button>
+    <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded-lg shadow bg-white">
+        <?php include "modal/add_eligible_students.php"; ?>
+
+        <table id="eligibleStudentsTable" class="stripe hover text-center" style="width:100%;">
+            <thead class="text-white" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;">
+                <tr>
+                    <th>No</th>
+                    <th>รหัสนักเรียน</th>
+                    <th>ชื่อผู้เรียน</th>
+                    <th>รหัสการลงทะเบียน</th>
+                    <th>รหัสการสอบ</th>
+                    <th>วันที่และเวลา</th>
+                    <th>จัดการ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if ($result->num_rows > 0): ?>
+                    <?php $no = 1; ?>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td><?php echo $no++; ?></td>
+                            <td><?php echo $row['student_id']; ?></td>
+                            <td><?php echo $row['student_name']; ?></td>
+                            <td><?php echo $row['enrollment_id']; ?></td>
+                            <td><?php echo $row['exam_id']; ?></td>
+                            <td><?php echo $row['date_time']; ?></td>
+                            <td class="flex justify-center space-x-2">
+
+                                <a href="?page=edit_eligible_students&id=<?php echo $row['eligible_students_id']; ?>" class="bg-blue-500 text-white font-bold h-10 w-18 py-1 px-2 rounded hover:bg-blue-600 transition duration-200 flex items-center">
+                                    <svg class="h-5 w-5 mr-1" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                        <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                                        <line x1="16" y1="5" x2="19" y2="8" />
+                                    </svg>
+                                    แก้ไข
+                                </a>
+                                <a href="?page=delete_eligible_students&id=<?php echo htmlspecialchars($row['eligible_students_id']); ?>" class="bg-red-500 text-white font-bold py-1 px-2 rounded hover:bg-red-600 transition duration-200 flex items-center h-10 w-18" onclick="return confirm('คุณแน่ใจหรือไม่ว่าจะลบการลงทะเบียนนี้?')">
+                                    <svg class="h-5 w-5 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                        <line x1="4" y1="7" x2="20" y2="7" />
+                                        <line x1="10" y1="11" x2="10" y2="17" />
+                                        <line x1="14" y1="11" x2="14" y2="17" />
+                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                    </svg>
+                                    ลบ
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="7" class="text-center">ไม่พบข้อมูล</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+            <tfoot class="text-white" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;">
+                <tr>
+                    <th>No</th>
+                    <th>รหัสนักเรียน</th>
+                    <th>รหัสการลงทะเบียน</th>
+                    <th>รหัสการสอบ</th>
+                    <th>วันที่และเวลา</th>
+                    <th>ชื่อผู้เรียน</th>
+                    <th>จัดการ</th>
+                </tr>
+            </tfoot>
+        </table>
     </div>
-
-    <!-- Modal -->
-    <div id="addEligibleStudentModal" class="fixed z-50 inset-0 bg-black bg-opacity-50 hidden flex justify-center items-center">
-        <div class="bg-white rounded-lg p-4 w-96">
-            <h2 class="text-xl mb-4">เพิ่มนักเรียนที่มีสิทธิสอบ</h2>
-            <form id="addEligibleStudentForm">
-                <div class="mb-4">
-                    <label for="studentId" class="block">รหัสนักเรียน</label>
-                    <select id="studentId" name="studentId" class="border rounded w-full p-2" required>
-                        <option value="">เลือกนักเรียน</option>
-                        <?php while ($student = $studentsResult->fetch_assoc()): ?>
-                            <option value="<?php echo $student['student_id']; ?>"><?php echo $student['student_name']; ?></option>
-                        <?php endwhile; ?>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label for="enrollmentId" class="block">รหัสการลงทะเบียน</label>
-                    <select id="enrollmentId" name="enrollmentId" class="border rounded w-full p-2" required>
-                        <option value="">เลือกการลงทะเบียน</option>
-                        <?php while ($enrollment = $enrollmentsResult->fetch_assoc()): ?>
-                            <option value="<?php echo $enrollment['enrollment_id']; ?>"><?php echo $enrollment['course_name']; ?></option>
-                        <?php endwhile; ?>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label for="examId" class="block">รหัสการสอบ</label>
-                    <input type="text" id="examId" name="examId" class="border rounded w-full p-2" required>
-                </div>
-                <div class="mb-4">
-                    <label for="dateTime" class="block">วันที่และเวลา</label>
-                    <input type="datetime-local" id="dateTime" name="dateTime" class="border rounded w-full p-2" required>
-                </div>
-                <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition duration-200">บันทึก</button>
-                <button type="button" id="closeModal" class="bg-red-500 text-white font-bold py-2 px-4 rounded ml-2 hover:bg-red-600 transition duration-200">ยกเลิก</button>
-            </form>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // ฟังก์ชันเปิด modal เพิ่มข้อมูล
-            $('#addEligibleStudentBtn').click(function() {
-                $('#addEligibleStudentModal').removeClass('hidden'); // แสดง modal
-            });
-
-            // ฟังก์ชันปิด modal
-            $('#closeModal').click(function() {
-                $('#addEligibleStudentModal').addClass('hidden'); // ซ่อน modal
-            });
-
-            // ฟังก์ชันบันทึกข้อมูลเมื่อส่งฟอร์ม
-            $('#addEligibleStudentForm').submit(function(event) {
-                event.preventDefault(); // ป้องกันการรีเฟรชหน้า
-
-                // ส่งข้อมูลไปยังเซิร์ฟเวอร์
-                $.ajax({
-                    url: 'add_eligible_student.php', // สคริปต์สำหรับเพิ่มข้อมูล
-                    type: 'POST',
-                    data: $(this).serialize(), // ส่งข้อมูลในฟอร์ม
-                    success: function(response) {
-                        alert(response); // แจ้งผลลัพธ์
-                        location.reload(); // โหลดหน้าใหม่
-                    },
-                    error: function() {
-                        alert('เกิดข้อผิดพลาดในการเพิ่มข้อมูล');
-                    }
-                });
-            });
-        });
-    </script>
 </div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<!-- DataTables -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#eligibleStudentsTable').DataTable({
+            responsive: true
+        });
+    });
+</script>
