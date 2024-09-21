@@ -37,7 +37,7 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $itemsPerPage;
 
 // สร้างคำสั่ง SQL สำหรับดึงข้อมูลตามวันที่
-$sql = "SELECT e.exam_id, e.enrollment_id, e.exam_type, e.exam_date, e.duration, e.total_marks, e.student_id, e.score, s.student_name, en.course_id
+$sql = "SELECT e.exam_id, e.enrollment_id, e.exam_type, e.exam_date, e.duration, e.total_marks, e.student_id, e.score, s.student_name, en.course_id , e.exams_status , e.criterion
         FROM exams e
         JOIN students s ON e.student_id = s.student_id
         JOIN enrollments en ON e.enrollment_id = en.enrollment_id
@@ -92,9 +92,10 @@ $html = '
             <th>ชื่อผู้เรียน</th>
             <th>ประเภทการสอบ</th>
             <th>วันที่สอบ</th>
-            <th>ระยะเวลา</th>
             <th>คะแนนเต็ม</th>
-            <th>คะแนน</th>
+            <th>เกณฑ์การผ่าน</th>
+            <th>คะแนนการสอบ</th>
+            <th>สถานะ</th>
         </tr>
     </thead>
     <tbody>';
@@ -106,9 +107,10 @@ while ($row = $result->fetch_assoc()) {
     $html .= '<td>' . htmlspecialchars($row['student_name']) . '</td>';
     $html .= '<td>' . htmlspecialchars($row['exam_type']) . '</td>';
     $html .= '<td>' . htmlspecialchars($row['exam_date']) . '</td>';
-    $html .= '<td>' . htmlspecialchars($row['duration']) . '</td>';
     $html .= '<td>' . htmlspecialchars($row['total_marks']) . '</td>';
+    $html .= '<td>' . htmlspecialchars($row['criterion']) . '</td>';
     $html .= '<td>' . htmlspecialchars($row['score']) . '</td>';
+    $html .= '<td>' . htmlspecialchars($row['exams_status']) . '</td>';
     $html .= '</tr>';
 }
 

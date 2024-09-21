@@ -31,7 +31,7 @@ $result = $stmt->get_result();
 
 <div class="mx-auto px-2">
     <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
-        จัดการการสอบกลางภาคปลายภาค
+        จัดการการสอบกลางภาค
     </h1>
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
         <div class="flex justify-between items-center mb-4">

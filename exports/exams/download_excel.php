@@ -9,20 +9,21 @@ $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
 // ตั้งชื่อหัวตาราง
-$sheet->setCellValue('A1', 'รหัสการสอบ');
-$sheet->setCellValue('B1', 'รหัสการลงทะเบียน');
-$sheet->setCellValue('C1', 'ชื่อผู้เรียน');
-$sheet->setCellValue('D1', 'ประเภทการสอบ');
-$sheet->setCellValue('E1', 'วันที่สอบ');
-$sheet->setCellValue('F1', 'ระยะเวลา');
-$sheet->setCellValue('G1', 'คะแนนเต็ม');
-$sheet->setCellValue('H1', 'คะแนน');
+$sheet->setCellValue('A1', 'รหัสรายวิชา');
+$sheet->setCellValue('B1', 'ประเภทการสอบ');
+// $sheet->setCellValue('B1', 'ชื่อผู้เรียน');
+$sheet->setCellValue('C1', 'รหัสนักเรียน');
+$sheet->setCellValue('D1', 'วันที่สอบ');
+$sheet->setCellValue('E1', 'คะแนนเต็ม');
+$sheet->setCellValue('F1', 'เกณฑ์การผ่าน');
+$sheet->setCellValue('G1', 'คะแนน');
+// $sheet->setCellValue('H1', 'คะแนน');
 
 // ป้อนข้อมูลตัวอย่าง หรือปล่อยว่าง
 $rowNumber = 2; // เริ่มที่แถวที่ 2
 // ตัวอย่างข้อมูล
 $exampleData = [
-    ['1', '001', 'นักเรียน 1', 'กลางภาค', '2023-09-15', '2 ชั่วโมง', '100', '85'],
+    ['001', 'กลางภาค', '1',  '2023-09-15', '100', '20 หรือ 20%', '85'],
 ];
 
 foreach ($exampleData as $data) {
@@ -33,7 +34,6 @@ foreach ($exampleData as $data) {
     $sheet->setCellValue('E' . $rowNumber, $data[4]);
     $sheet->setCellValue('F' . $rowNumber, $data[5]);
     $sheet->setCellValue('G' . $rowNumber, $data[6]);
-    $sheet->setCellValue('H' . $rowNumber, $data[7]);
     $rowNumber++;
 }
 
