@@ -238,10 +238,6 @@ while ($row = $result->fetch_assoc()) {
 
 
 
-
-
-
-
 // ----------- ช่องรวม -----------
 // เริ่มต้นคำนวณ
 $mandatory_credits = $mandatory_credits_pathom + $mandatory_credits_pathom1 + $mandatory_credits_pathom2 + $mandatory_credits_pathom3 + $mandatory_credits_pathom4;
@@ -257,12 +253,3 @@ $elective_credits2 = $elective_credits_morpai + $elective_credits_morpai1 + $ele
 include "class_style.php";
 
 
-
-$mandatory_class_style = ($mandatory_credits >= 36) ? 'text-green-500' : 'text-red-500';
-$elective_class_style = ($elective_credits >= 12) ? 'text-green-500' : 'text-red-500';
-
-$mandatory_class_style1 = ($mandatory_credits1 >= 40) ? 'text-green-500' : 'text-red-500';
-$elective_class_style1 = ($elective_credits1 >= 16) ? 'text-green-500' : 'text-red-500';
-
-$mandatory_class_style2 = ($mandatory_credits2 >= 44) ? 'text-green-500' : 'text-red-500';
-$elective_class_style2 = ($elective_credits2 >= 32) ? 'text-green-500' : 'text-red-500';

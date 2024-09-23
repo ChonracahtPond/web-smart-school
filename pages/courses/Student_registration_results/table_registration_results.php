@@ -37,51 +37,80 @@
                 <td class="border border-gray-300 px-4 py-2">1</td>
                 <td class="border border-gray-300 px-4 py-2">ทักษะการเรียนรู้</td>
                 <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_pathom_style; ?>"><?php echo $mandatory_credits_pathom ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_pathom ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morton ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morton ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morpai ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morpai ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_pathom_style; ?>"><?php echo $elective_credits_pathom ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_morton_style; ?>"><?php echo $mandatory_credits_morton ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_morton_style; ?>"><?php echo $elective_credits_morton ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_morpai_style; ?>"><?php echo $mandatory_credits_morpai ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_morpai_style; ?>"><?php echo $elective_credits_morpai ?></td>
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_pathom ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morton ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morton ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morpai ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morpai ?></td> -->
             </tr>
             <tr>
                 <td class="border border-gray-300 px-4 py-2">2</td>
                 <td class="border border-gray-300 px-4 py-2">ความรู้พื้นฐาน</td>
                 <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_pathom_style1; ?>"><?php echo $mandatory_credits_pathom1 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_pathom1 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morton1 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morton1 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morpai1 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morpai1 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_pathom_style1; ?>"><?php echo $elective_credits_pathom1 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_morton_style1; ?>"><?php echo $mandatory_credits_morton1 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_morton_style1; ?>"><?php echo $elective_credits_morton1 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_morpai_style1; ?>"><?php echo $mandatory_credits_morpai1 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_morpai_style1; ?>"><?php echo $elective_credits_morpai1 ?></td>
+
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_pathom1 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morton1 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morton1 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morpai1 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morpai1 ?></td> -->
             </tr>
             <tr>
                 <td class="border border-gray-300 px-4 py-2">3</td>
                 <td class="border border-gray-300 px-4 py-2">การประกอบอาชีพ</td>
                 <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_pathom_style2; ?>"><?php echo $mandatory_credits_pathom2 ?></td>
-                <td class="border border-gray-300 px-4 py-2  text-green-500"> <?php echo $elective_credits_pathom2 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morton2 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morton2 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morpai2 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morpai2 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_pathom_style2; ?>"><?php echo $elective_credits_pathom2 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_morton_style2; ?>"><?php echo $mandatory_credits_morton2 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_morton_style2; ?>"><?php echo $elective_credits_morton2 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_morpai_style2; ?>"><?php echo $mandatory_credits_morpai2 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_morpai_style2; ?>"><?php echo $elective_credits_morpai2 ?></td>
+
+                <!-- <td class="border border-gray-300 px-4 py-2  text-green-500"> <?php echo $elective_credits_pathom2 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morton2 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morton2 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morpai2 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morpai2 ?></td> -->
             </tr>
             <tr>
                 <td class="border border-gray-300 px-4 py-2">4</td>
                 <td class="border border-gray-300 px-4 py-2">ทักษะการดำเนินชีวิต</td>
                 <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_pathom_style3; ?>"><?php echo $mandatory_credits_pathom3 ?></td>
-                <td class="border border-gray-300 px-4 py-2  text-green-500"> <?php echo $elective_credits_pathom3 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morton3 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morton3 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morpai3 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morpai3 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_pathom_style3; ?>"><?php echo $elective_credits_pathom3 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_morton_style3; ?>"><?php echo $mandatory_credits_morton3 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_morton_style3; ?>"><?php echo $elective_credits_morton3 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_morpai_style3; ?>"><?php echo $mandatory_credits_morpai3 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_morpai_style3; ?>"><?php echo $elective_credits_morpai3 ?></td>
+
+                <!-- <td class="border border-gray-300 px-4 py-2  text-green-500"> <?php echo $elective_credits_pathom3 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morton3 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morton3 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morpai3 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morpai3 ?></td> -->
             </tr>
             <tr>
                 <td class="border border-gray-300 px-4 py-2">5</td>
                 <td class="border border-gray-300 px-4 py-2">การพัฒนาสังคม</td>
                 <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_pathom_style4; ?>"><?php echo $mandatory_credits_pathom4 ?></td>
-                <td class="border border-gray-300 px-4 py-2  text-green-500"> <?php echo $elective_credits_pathom4 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morton4 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morton4 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morpai4 ?></td>
-                <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morpai4 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_pathom_style4; ?>"><?php echo $elective_credits_pathom4 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_morton_style4; ?>"><?php echo $mandatory_credits_morton4 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_morton_style4; ?>"><?php echo $elective_credits_morton4 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $mandatory_credits_morpai_style4; ?>"><?php echo $mandatory_credits_morpai4 ?></td>
+                <td class="border border-gray-300 px-4 py-2 <?php echo $elective_credits_morpai_style4; ?>"><?php echo $elective_credits_morpai4 ?></td>
+
+                <!-- <td class="border border-gray-300 px-4 py-2  text-green-500"> <?php echo $elective_credits_pathom4 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morton4 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morton4 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $mandatory_credits_morpai4 ?></td> -->
+                <!-- <td class="border border-gray-300 px-4 py-2 text-green-500"><?php echo $elective_credits_morpai4 ?></td> -->
             </tr>
 
             <tr>

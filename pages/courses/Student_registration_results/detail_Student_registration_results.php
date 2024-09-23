@@ -2,10 +2,6 @@
 include "sql/sql.php";
 ?>
 
-
-
-
-
 <div class="mx-auto px-2 mt-5 ">
     <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 text-xl md:text-2xl">
         รายละเอียดการลงทะเบียนเรียน (รหัสนักศึกษา: <?php echo htmlspecialchars($student_id); ?>)
