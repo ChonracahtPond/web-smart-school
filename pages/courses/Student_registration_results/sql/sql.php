@@ -254,27 +254,9 @@ $mandatory_credits2 = $mandatory_credits_morpai + $mandatory_credits_morpai1 + $
 $elective_credits2 = $elective_credits_morpai + $elective_credits_morpai1 + $elective_credits_morpai2 + $elective_credits_morpai3 + $elective_credits_morpai4;
 
 
-// ตรวจสอบระดับการศึกษาและตั้งค่าสี
-$mandatory_credits_pathom_style = '';
-$mandatory_credits_pathom_style1 = '';
-$mandatory_credits_pathom_style2 = '';
-$mandatory_credits_pathom_style3 = '';
-$mandatory_credits_pathom_style4 = '';
-// $elective_credits_pathom_style = '';
+include "class_style.php";
 
-$mandatory_class_style = '';
-$elective_class_style = '';
-$mandatory_class_style1 = '';
-$elective_class_style1 = '';
-$mandatory_class_style2 = '';
-$elective_class2_style2 = '';
 
-$mandatory_credits_pathom_style = ($mandatory_credits_pathom >= 5) ? 'text-green-500' : 'text-red-500';
-$mandatory_credits_pathom_style1 = ($mandatory_credits_pathom1 >= 12) ? 'text-green-500' : 'text-red-500';
-$mandatory_credits_pathom_style2 = ($mandatory_credits_pathom2 >= 8) ? 'text-green-500' : 'text-red-500';
-$mandatory_credits_pathom_style3 = ($mandatory_credits_pathom3 >= 5) ? 'text-green-500' : 'text-red-500';
-$mandatory_credits_pathom_style4 = ($mandatory_credits_pathom4 >= 6) ? 'text-green-500' : 'text-red-500';
-// $elective_credits_pathom_style = ($elective_credits_pathom >= 12) ? 'text-green-500' : 'text-red-500';
 
 $mandatory_class_style = ($mandatory_credits >= 36) ? 'text-green-500' : 'text-red-500';
 $elective_class_style = ($elective_credits >= 12) ? 'text-green-500' : 'text-red-500';
