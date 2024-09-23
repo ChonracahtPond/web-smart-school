@@ -138,6 +138,14 @@
 
 
 
+                           // -- หน้า ผลการลงทะเบียน --//
+                    case 'Student_registration_results':
+                    include "../pages/courses/Student_registration_results/Student_registration_results.php";
+                    break;
+                    case 'detail_Student_registration_results':
+                    include "../pages/courses/Student_registration_results/detail_Student_registration_results.php";
+                    break;
+
 
 
 
@@ -172,6 +180,8 @@
                     include "../pages/courses/Manage_courses/delete_course.php";
                     break;
 
+
+
                 case 'Manage_enrollments':
                     include "../pages/courses/register/Manage_enrollments.php";
                     break;
@@ -184,6 +194,15 @@
                 case 'delete_enrollment':
                     include "../pages/courses/register/delete_enrollment.php";
                     break;
+
+
+
+
+
+
+
+
+
 
 
                 case 'Manage_News':

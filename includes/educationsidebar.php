@@ -63,6 +63,17 @@
                 <!----------------------------------- end จัดการรายวิชาและเนื้อหา ----------------------------------->
                 <!----------------------------------- จัดการรายวิชาและเนื้อหา ----------------------------------->
                 <li>
+                    <a href="?page=Student_registration_results" id="Manage-enrollments-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 14 14">
+                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
+                        </svg>
+                        <span class="ml-3 flex-1 whitespace-nowrap">ผลการลงทะเบียนเรียน</span>
+                    </a>
+                </li>
+                <!----------------------------------- end จัดการรายวิชาและเนื้อหา ----------------------------------->
+                <!----------------------------------- จัดการรายวิชาและเนื้อหา ----------------------------------->
+                <li>
                     <button type="button" id="manage-activity-button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg hover:bg-white hover:text-gray-800 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-exam" data-collapse-toggle="dropdown-Manage-exam">
                         <svg class="h-6 w-6 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" />
