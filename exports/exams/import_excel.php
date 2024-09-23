@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['excel_file'])) {
     $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
 
     // Prepare SQL statement for exams table
-    $stmt = $conn->prepare("INSERT INTO exams (enrollment_id, exam_type, exam_date, total_marks, student_id, score , criterion , exams_status) VALUES (?, ?, ?, ?, ?, ?,?, ?)");
+    $stmt = $conn->prepare("INSERT INTO exams (enrollment_id, exam_type, student_id , exam_date, total_marks,criterion  , score, exams_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
     $countInserted = 0; // Initialize a counter for inserted rows
 
@@ -25,15 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['excel_file'])) {
         }
 
         // Get values
-        // $enrollment_id = $row['A'];
-        // $exam_type = $row['B'];
-        // $exam_date = $row['C'];
-        // $duration = $row['D'];
-        // $total_marks = $row['E'];
-        // $student_id = $row['F'];
-        // $score = $row['G'];
-        // $criterion = $row['H'];
-
         $enrollment_id = $row['A'];
         $exam_type = $row['B'];
         $student_id = $row['C'];
@@ -42,23 +33,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['excel_file'])) {
         $criterion = $row['F'];
         $score = $row['G'];
 
-
         // Check if enrollment_id is not empty
         if (empty($enrollment_id)) {
             echo "Enrollment ID cannot be empty in row: " . implode(", ", $row) . "<br>";
             continue; // Skip this row
         }
 
-        // ======================== คำนวน ========================
+        // ตรวจสอบว่ามี enrollment_id ในตาราง enrollments หรือไม่
+        $checkStmt = $conn->prepare("SELECT COUNT(*) FROM enrollments WHERE enrollment_id = ?");
+        $checkStmt->bind_param('i', $enrollment_id);
+        $checkStmt->execute();
+        $checkStmt->bind_result($count);
+        $checkStmt->fetch();
+        $checkStmt->close();
 
+        if ($count == 0) {
+            echo "Enrollment ID $enrollment_id does not exist in enrollments table. Skipping row: " . implode(", ", $row) . "<br>";
+            continue; // Skip this row if enrollment_id does not exist
+        }
+
+        // ======================== คำนวน ========================
         $status = "ไม่ผ่าน"; // ตั้งค่าเริ่มต้นเป็น "ไม่ผ่าน"
 
         if (strpos($criterion, '%') !== false) { // ตรวจสอบว่ามี "%" หรือไม่
-            // ลบเครื่องหมาย '%' ออก
             $cleanedCriterion = str_replace('%', '', $criterion);
             $total = $total_marks * ($cleanedCriterion / 100);
 
-            // ตรวจสอบว่าคะแนนผ่านหรือไม่
             if ($score >= $total) {
                 $status = "ผ่าน"; // หากคะแนนมากกว่าหรือเท่ากับเกณฑ์ที่คำนวณได้ แสดงว่าผ่าน
             }
@@ -67,25 +67,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['excel_file'])) {
                 $status = "ผ่าน"; // หากคะแนนมากกว่าหรือเท่ากับเกณฑ์ที่คำนวณได้ แสดงว่าผ่าน
             }
         }
-        // เก็บค่า exams_status เป็นผลลัพธ์
         $exams_status = $status;
         // ======================== คำนวน ========================
 
-
         // Bind parameters (assuming correct data types)
         $stmt->bind_param(
-            'isisisis', // Correct number of types
-            $enrollment_id, // enrollment_id
-            $exam_type, // exam_type
-            $student_id, // student_id
-            $exam_date, // exam_date
-            // $duration, // duration
-            $total_marks, // total_marks
-            $criterion, // score
-            $score, // score
-            $exams_status
-
+            'ssssdsss', // Correct number of types
+            $enrollment_id,  // enrollment_id (string or int -> use 's' for varchar or 'i' for integer)
+            $exam_type,      // exam_type (string)
+            $student_id,     // student_id (string)
+            $exam_date,      // exam_date (string)
+            $total_marks,    // total_marks (decimal/double or float -> use 'd')
+            $criterion,      // criterion (decimal/double or string -> if numeric, use 'd')
+            $score,          // score (decimal/double or float -> use 'd')
+            $exams_status    // exams_status (string)
         );
+
 
         // Execute the statement
         if ($stmt->execute()) {

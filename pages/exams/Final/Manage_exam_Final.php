@@ -5,12 +5,14 @@ $startDate = $_GET['start_date'] ?? null;
 $endDate = $_GET['end_date'] ?? null;
 
 // สร้าง SQL query
-$sql = "SELECT e.exam_id, e.enrollment_id, e.exam_type, e.exam_date, e.duration, e.total_marks, e.created_at, e.updated_at, e.student_id, e.score, e.exams_status,e.criterion, s.student_name, en.course_id
+$sql = "SELECT e.exam_id, e.enrollment_id, e.exam_type, e.exam_date, e.total_marks, e.created_at, e.updated_at, 
+                e.student_id, e.score, e.exams_status,e.criterion, s.student_name, en.course_id , c.course_name ,e.term , e.year
         FROM exams e
         JOIN students s ON e.student_id = s.student_id
-        JOIN enrollments en ON e.enrollment_id = en.enrollment_id";
-
-
+        JOIN enrollments en ON e.enrollment_id = en.enrollment_id
+        JOIN courses c ON en.course_id = c.course_id
+        WHERE e.exam_type = 'ปลายภาค'
+        ";
 
 if ($startDate && $endDate) {
     $sql .= " WHERE e.created_at BETWEEN ? AND ?";
@@ -24,14 +26,12 @@ if ($startDate && $endDate) {
 $stmt->execute();
 $result = $stmt->get_result();
 
-// ทำการส่งออกข้อมูลเป็น Excel ที่นี่
-
 
 ?>
 
 <div class="mx-auto px-2">
     <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
-        จัดการการสอบกลางภาค
+        จัดการการสอบปลายภาค
     </h1>
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
         <div class="flex justify-between items-center mb-4">
@@ -42,7 +42,7 @@ $result = $stmt->get_result();
                     </svg>
                     เพิ่มข้อมูลการสอบ
                 </button> -->
-                <a href="?page=add_exams" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">
+                <a href="?page=add_exams_Final" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">
                     <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
@@ -91,10 +91,12 @@ $result = $stmt->get_result();
             <thead class="text-white" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;">
                 <tr>
                     <th>No</th> <!-- เปลี่ยนจาก "รหัสการสอบ" เป็น "No" -->
-                    <th>รหัสวิชา</th>
                     <th>ชื่อผู้เรียน</th>
-                    <th>ประเภทการสอบ</th>
+                    <th>รหัสรายวิชา</th>
+                    <th>ชื่อวิชา</th>
                     <th>วันที่สอบ</th>
+                    <th>เทอม</th>
+                    <th>ปีการศึกษา</th>
                     <th>คะแนนเต็ม</th>
                     <th>เกณฑ์การผ่าน</th>
                     <th>คะแนน</th>
@@ -110,10 +112,12 @@ $result = $stmt->get_result();
                         <tr>
                             <td><?php echo $no++; // แสดงหมายเลข 
                                 ?></td> <!-- แสดงหมายเลข -->
-                            <td><?php echo $row['enrollment_id']; ?></td>
                             <td><?php echo $row['student_name']; ?></td>
-                            <td><?php echo $row['exam_type']; ?></td>
+                            <td><?php echo $row['course_id']; ?></td>
+                            <td><?php echo $row['course_name']; ?></td>
                             <td><?php echo $row['exam_date']; ?></td>
+                            <td><?php echo $row['term']; ?></td>
+                            <td><?php echo $row['year']; ?></td>
                             <td><?php echo $row['total_marks']; ?></td>
                             <td><?php echo $row['criterion']; ?></td>
                             <td><?php echo $row['score']; ?></td>
@@ -123,7 +127,7 @@ $result = $stmt->get_result();
 
                             <td class="flex justify-center space-x-2">
                                 <!-- <button id="openeditExamModal" class="bg-blue-500 text-white font-bold h-10 w-18 py-1 px-2 rounded hover:bg-blue-600 transition duration-200 flex items-center"> -->
-                                <a href="?page=edit_exam&id=<?php echo $row['exam_id']; ?>" class="bg-blue-500 text-white font-bold h-10 w-18 py-1 px-2 rounded hover:bg-blue-600 transition duration-200 flex items-center">
+                                <a href="?page=edit_exam_Final&id=<?php echo $row['exam_id']; ?>" class="bg-blue-500 text-white font-bold h-10 w-18 py-1 px-2 rounded hover:bg-blue-600 transition duration-200 flex items-center">
                                     <svg class="h-5 w-5 mr-1" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
                                         <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
@@ -133,7 +137,7 @@ $result = $stmt->get_result();
                                 </a>
 
                                 <!-- <a href="#" onclick="openModal(<?php echo $exam['exam_id']; ?>)" class="bg-blue-500 text-white font-bold h-10 w-18 py-1 px-2 rounded hover:bg-blue-600 transition duration-200 flex items-center">Edit</a> -->
-                                <a href="?page=delete_exam&id=<?php echo $row['exam_id']; ?>" class="bg-red-500 text-white font-bold py-1 px-2 rounded hover:bg-red-600 transition duration-200 flex items-center h-10 w-18" onclick="return confirm('คุณแน่ใจหรือไม่ว่าจะลบการลงทะเบียนนี้?')">
+                                <a href="?page=delete_exam_Final&id=<?php echo $row['exam_id']; ?>" class="bg-red-500 text-white font-bold py-1 px-2 rounded hover:bg-red-600 transition duration-200 flex items-center h-10 w-18" onclick="return confirm('คุณแน่ใจหรือไม่ว่าจะลบการลงทะเบียนนี้?')">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <line x1="4" y1="7" x2="20" y2="7" />
                                         <line x1="10" y1="11" x2="10" y2="17" />
@@ -155,10 +159,12 @@ $result = $stmt->get_result();
             <tfoot class="text-white" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;">
                 <tr>
                     <th>No</th> <!-- เปลี่ยนจาก "รหัสการสอบ" เป็น "No" -->
-                    <th>รหัสวิชา</th>
                     <th>ชื่อผู้เรียน</th>
-                    <th>ประเภทการสอบ</th>
+                    <th>รหัสรายวิชา</th>
+                    <th>ชื่อวิชา</th>
                     <th>วันที่สอบ</th>
+                    <th>เทอม</th>
+                    <th>ปีการศึกษา</th>
                     <th>คะแนนเต็ม</th>
                     <th>เกณฑ์การผ่าน</th>
                     <th>คะแนน</th>

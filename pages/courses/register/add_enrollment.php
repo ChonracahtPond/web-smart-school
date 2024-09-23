@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enroll'])) {
             $default_grade = 0; // Setting default grade
 
             // Prepare SQL statement with teacher_id included
-            $stmt = $conn->prepare("INSERT INTO enrollments (student_id, course_id, semester, academic_year, grade, status, teacher_id) VALUES (?, ?, ?, ?, ?, 'active', ?)");
+            $stmt = $conn->prepare("INSERT INTO enrollments (student_id, course_id, semester, academic_year, grade, status, teacher_id) VALUES (?, ?, ?, ?, ?, '1', ?)");
 
             // Bind the parameters: student_id, course_id, semester, academic_year, grade, teacher_id
             $stmt->bind_param("ssssii", $student_id, $course_id, $semester, $academic_year, $default_grade, $teacher_id);
@@ -50,12 +50,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enroll'])) {
         // Commit the transaction
         $conn->commit();
         // echo "Enrollment successful!";
-        echo "<script>alert('courses delete successfully'); window.location.href='?page=Manage_enrollments';</script>";
+        echo "<script> window.location.href='?page=Manage_enrollments&status=1';</script>";
     } catch (Exception $e) {
         // Rollback the transaction in case of an error
         $conn->rollback();
         echo "Error during enrollment: " . $e->getMessage();
-        echo "<script>alert('error'); window.location.href='?page=Manage_enrollments';</script>";
+        // echo "<script>alert('error'); window.location.href='?page=Manage_enrollments';</script>";
+        echo "<script> window.location.href='?page=Manage_enrollments&status=0';</script>";
+
     }
 
     // Close statement

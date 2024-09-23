@@ -9,20 +9,32 @@ $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
 // ตั้งชื่อหัวตาราง
-$sheet->setCellValue('A1', 'รหัสรายวิชา');
-$sheet->setCellValue('B1', 'ประเภทการสอบ');
-// $sheet->setCellValue('B1', 'ชื่อผู้เรียน');
-$sheet->setCellValue('C1', 'รหัสนักเรียน');
-$sheet->setCellValue('D1', 'วันที่สอบ');
-$sheet->setCellValue('E1', 'คะแนนเต็ม');
-$sheet->setCellValue('F1', 'เกณฑ์การผ่าน');
-$sheet->setCellValue('G1', 'คะแนน');
+$sheet->setCellValue('A1', 'enrollment_id');
+$sheet->setCellValue('B1', 'exam_type');
+$sheet->setCellValue('C1', 'student_id');
+$sheet->setCellValue('D1', 'exam_date');
+$sheet->setCellValue('E1', 'total_marks');
+$sheet->setCellValue('F1', 'criterion');
+$sheet->setCellValue('G1', 'score');
+$sheet->setCellValue('J1', 'ห้ามเปลี่ยนแปลงข้อมูลในแถวที่ 1 ');
+$sheet->setCellValue('J2', 'ในแถวที่ 2 - 3  คือ ตัวอย่าง สามารถลบหรือเปลี่ยนแปลงข้อมูลได้');
+
 // $sheet->setCellValue('H1', 'คะแนน');
+// $sheet->setCellValue('A1', 'รหัสรายวิชา');
+// $sheet->setCellValue('B1', 'ประเภทการสอบ');
+// // $sheet->setCellValue('B1', 'ชื่อผู้เรียน');
+// $sheet->setCellValue('C1', 'รหัสนักเรียน');
+// $sheet->setCellValue('D1', 'วันที่สอบ');
+// $sheet->setCellValue('E1', 'คะแนนเต็ม');
+// $sheet->setCellValue('F1', 'เกณฑ์การผ่าน');
+// $sheet->setCellValue('G1', 'คะแนน');
+// // $sheet->setCellValue('H1', 'คะแนน');
 
 // ป้อนข้อมูลตัวอย่าง หรือปล่อยว่าง
 $rowNumber = 2; // เริ่มที่แถวที่ 2
 // ตัวอย่างข้อมูล
 $exampleData = [
+    ['รหัสรายวิชา', 'ประเภทการสอบ', 'ชื่อผู้เรียน',  'วันที่สอบ', 'คะแนนเต็ม', 'เกณฑ์การผ่าน', 'คะแนน'],
     ['001', 'กลางภาค', '1',  '2023-09-15', '100', '20 หรือ 20%', '85'],
 ];
 

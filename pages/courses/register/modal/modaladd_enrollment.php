@@ -57,7 +57,7 @@ $students_result->free();
             courseItem.innerHTML = `
                 <div class="flex-1">
                     <button type="button" onclick="addCourseToSelection('${course.course_id}', '${course.course_name}')" class="text-blue-600 hover:underline">
-                        ${course.course_name}
+                       ${course.course_id}  ${course.course_name}
                     </button>
                 </div>
                 <button type="button" onclick="addCourseToSelection('${course.course_id}', '${course.course_name}')" class="bg-green-600 text-white px-3 py-1 rounded-lg hover:bg-green-700 transition-all">

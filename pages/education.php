@@ -101,27 +101,36 @@
 
                     // -- หน้า จัดการการสอบกลางภาค --//
                 case 'Manage_exam_Midterm':
-                    include "../pages/exams/Manage_exam_Midterm.php";
+                    include "../pages/exams/Midterm/Manage_exam_Midterm.php";
                     break;
-                case 'add_exams':
-                    include "../pages/exams/add_exams.php";
+                case 'add_exams_Midterm':
+                    include "../pages/exams/Midterm/add_exams_Midterm.php";
                     break;
-                case 'delete_exam':
-                    include "../pages/exams/delete_exam.php";
+                case 'delete_exam_Midterm':
+                    include "../pages/exams/Midterm/delete_exam_Midterm.php";
                     break;
-                case 'edit_exam':
-                    include "../pages/exams/edit_exam.php";
+                case 'edit_exam_Midterm':
+                    include "../pages/exams/Midterm/edit_exam_Midterm.php";
                     break;
 
 
-
-
-
-
+                    // -- หน้า จัดการการสอบปลายภาค --//
+                case 'Manage_exam_Final':
+                    include "../pages/exams/Final/Manage_exam_Final.php";
+                    break;
+                case 'add_exams_Final':
+                    include "../pages/exams/Final/add_exams_Final.php";
+                    break;
+                case 'delete_exam_Final':
+                    include "../pages/exams/Final/delete_exam_Final.php";
+                    break;
+                case 'edit_exam_Final':
+                    include "../pages/exams/Final/edit_exam_Final.php";
+                    break;
+                    // -- หน้า จัดการจบการศึกษา --//
                 case 'Graduation_system':
                     include "../pages/Graduation/Graduation_system.php";
                     break;
-
                 case 'enrollment_details':
                     include "../pages/courses/Manage_courses/enrollment_details.php";
                     break;

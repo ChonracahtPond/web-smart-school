@@ -43,7 +43,7 @@ if ($result->num_rows === 0) {
                     <th class="py-2 px-4 border-b">อีเมลของนักเรียน</th>
                     <th class="py-2 px-4 border-b">ภาคเรียน</th>
                     <th class="py-2 px-4 border-b">ปีการศึกษา</th>
-                    <!-- <th class="py-2 px-4 border-b">เกรด</th> -->
+                    <th class="py-2 px-4 border-b">เกรด</th>
                     <th class="py-2 px-4 border-b">สถานะ</th>
                     <th class="py-2 px-4 border-b">ชื่อครู</th>
                 </tr>
@@ -57,7 +57,7 @@ if ($result->num_rows === 0) {
                         <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($enrollment['email']); ?></td>
                         <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($enrollment['semester']); ?></td>
                         <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($enrollment['academic_year']); ?></td>
-                        <!-- <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($enrollment['grade']); ?></td> -->
+                        <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($enrollment['grade']); ?></td>
                         <td class="py-2 px-4 border-b">
                             <?php
                             $status = htmlspecialchars($enrollment['status']);

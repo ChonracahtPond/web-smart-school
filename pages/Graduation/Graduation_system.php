@@ -1,153 +1,122 @@
 <?php
-// Assume you have a database connection already established in $conn
+// ดึงข้อมูลจากตาราง enrollments โดยเลือกเฉพาะสถานะที่เป็น '0' และรวมข้อมูลจากตาราง students และ courses
+$sql = "
+SELECT e.*, s.student_name AS student_name, c.course_name AS course_name 
+FROM enrollments e
+JOIN students s ON e.student_id = s.student_id
+JOIN courses c ON e.course_id = c.course_id
+WHERE e.status = '1'
+ORDER BY e.status ASC";
+$result = mysqli_query($conn, $sql);
 
-// Handle graduation approval
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['approve_graduation'])) {
-    $student_id = $_POST['student_id'];
-    $sql = "UPDATE students SET status = 'Approved' WHERE student_id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('i', $student_id);
-    if ($stmt->execute()) {
-        echo "<script>alert('Graduation approved successfully'); window.location.href='Graduation_system.php';</script>";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
+// ตรวจสอบว่ามีผลลัพธ์หรือไม่
+if (!$result) {
+    echo "เกิดข้อผิดพลาดในการดึงข้อมูล: " . mysqli_error($conn);
+    exit;
 }
 
-// Handle student status change
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_status'])) {
-    $student_id = $_POST['student_id'];
-    $new_status = $_POST['new_status'];
-    $sql = "UPDATE students SET grade_level = ? WHERE student_id = ?";
-    $stmt->bind_param('si', $new_status, $student_id);
-    if ($stmt->execute()) {
-        echo "<script>alert('Student status updated successfully'); window.location.href='Graduation_system.php';</script>";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-}
+// สร้างอาร์เรย์เพื่อเก็บข้อมูลที่รวมกัน
+$groupedData = [];
 
-// Handle ConGraduation file upload
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['congraduation_file'])) {
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["congraduation_file"]["fullname"]);
-    $uploadOk = 1;
-    $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+// ตรวจสอบว่ามีข้อมูลหรือไม่
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $studentId = $row['student_id'];
 
-    // Check if file is a valid image or video
-    if ($fileType != "gif" && $fileType != "mp4" && $fileType != "avi" && $fileType != "mov") {
-        echo "Sorry, only GIF, MP4, AVI & MOV files are allowed.";
-        $uploadOk = 0;
-    }
-
-    if ($uploadOk == 1) {
-        if (move_uploaded_file($_FILES["congraduation_file"]["tmp_name"], $target_file)) {
-            echo "<script>alert('File uploaded successfully'); window.location.href='Graduation_system.php';</script>";
+        // ถ้า student_id ยังไม่อยู่ในอาร์เรย์ ให้เพิ่มเข้าไป
+        if (!isset($groupedData[$studentId])) {
+            $groupedData[$studentId] = [
+                'enrollment_id' => $row['enrollment_id'],
+                'student_id' => $row['student_id'],
+                'student_name' => $row['student_name'], // เพิ่มชื่อของนักเรียน
+                'course_names' => [$row['course_name']], // เพิ่มชื่อหลักสูตร
+                'semesters' => [$row['semester']],
+                'academic_years' => [$row['academic_year']],
+                'grades' => [$row['grade']],
+                'statuses' => [$row['status']],
+                'teacher_ids' => [$row['teacher_id']],
+                'classes' => [$row['class']],
+                'credits' => [$row['credits']]
+            ];
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            // ถ้า student_id มีอยู่แล้ว ให้เพิ่มข้อมูลเข้าไป
+            $groupedData[$studentId]['course_names'][] = $row['course_name']; // เพิ่มชื่อหลักสูตร
+            $groupedData[$studentId]['semesters'][] = $row['semester'];
+            $groupedData[$studentId]['academic_years'][] = $row['academic_year'];
+            $groupedData[$studentId]['grades'][] = $row['grade'];
+            $groupedData[$studentId]['statuses'][] = $row['status'];
+            $groupedData[$studentId]['teacher_ids'][] = $row['teacher_id'];
+            $groupedData[$studentId]['classes'][] = $row['class'];
+            $groupedData[$studentId]['credits'][] = $row['credits'];
         }
     }
+} else {
+    echo "<tr><td colspan='11' class='py-2 px-4 border-b text-center'>ไม่มีข้อมูล</td></tr>";
 }
 
-// Retrieve students and their enrollments for displaying
-$sql = "SELECT students.student_id, students.fullname, students.grade_level, students.status, 
-               GROUP_CONCAT(enrollments.course_id ORDER BY enrollments.course_id ASC SEPARATOR ', ') AS courses,
-               GROUP_CONCAT(enrollments.semester ORDER BY enrollments.course_id ASC SEPARATOR ', ') AS semesters,
-               GROUP_CONCAT(enrollments.academic_year ORDER BY enrollments.course_id ASC SEPARATOR ', ') AS academic_years,
-               GROUP_CONCAT(enrollments.grade ORDER BY enrollments.course_id ASC SEPARATOR ', ') AS grades,
-               GROUP_CONCAT(enrollments.status ORDER BY enrollments.course_id ASC SEPARATOR ', ') AS enrollment_statuses
-        FROM students 
-        LEFT JOIN enrollments ON students.student_id = enrollments.student_id
-        GROUP BY students.student_id, students.fullname, students.grade_level, students.status";
-$result = $conn->query($sql);
 
-if ($result === false) {
-    die("Error executing query: " . $conn->error);
-}
+// เริ่มสร้างหน้า HTML
 ?>
+<!DOCTYPE html>
+<html lang="th">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>ระบบจบการศึกษา</title>
+</head>
 
-<div class="container mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">ระบบการสำเร็จการศึกษา</h1>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-5">
+        <h1 class="text-2xl font-bold mb-4">ระบบจบการศึกษา</h1>
+        <table class="min-w-full bg-white border border-gray-300">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b">Student ID</th>
+                    <th class="py-2 px-4 border-b">Student Name</th>
+                    <th class="py-2 px-4 border-b">Course Names</th> <!-- เพิ่มคอลัมน์ชื่อหลักสูตร -->
+                    <th class="py-2 px-4 border-b">Semesters</th>
+                    <th class="py-2 px-4 border-b">Academic Years</th>
+                    <th class="py-2 px-4 border-b">Grades</th>
+                    <th class="py-2 px-4 border-b">Teacher IDs</th>
+                    <th class="py-2 px-4 border-b">Classes</th>
+                    <th class="py-2 px-4 border-b">Credits</th>
+                    <th class="py-2 px-4 border-b">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // แสดงข้อมูลที่รวมกัน
+                foreach ($groupedData as $data) {
+                    echo "<tr>";
+                    echo "<td class='py-2 px-4 border-b'>{$data['student_id']}</td>";
+                    echo "<td class='py-2 px-4 border-b'>{$data['student_name']}</td>"; // แสดงชื่อของนักเรียน
+                    echo "<td class='py-2 px-4 border-b'>" . implode(", ", $data['course_names']) . "</td>"; // แสดงชื่อหลักสูตร
+                    echo "<td class='py-2 px-4 border-b'>" . implode(", ", $data['semesters']) . "</td>";
+                    echo "<td class='py-2 px-4 border-b'>" . implode(", ", $data['academic_years']) . "</td>";
+                    echo "<td class='py-2 px-4 border-b'>" . implode(", ", $data['grades']) . "</td>";
+                    echo "<td class='py-2 px-4 border-b'>" . implode(", ", $data['teacher_ids']) . "</td>";
+                    echo "<td class='py-2 px-4 border-b'>" . implode(", ", $data['classes']) . "</td>";
+                    echo "<td class='py-2 px-4 border-b'>" . implode(", ", $data['credits']) . "</td>";
+                    echo "<td class='py-2 px-4 border-b'>";
+                    echo "<form action='approve_graduation.php' method='POST'>";
+                    echo "<input type='hidden' name='student_id' value='{$data['student_id']}'>";
+                    echo "<button type='submit' class='px-2 py-1 bg-green-500 text-white font-semibold rounded hover:bg-green-600 transition duration-200'>อนุมัติ</button>";
+                    echo "</form>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
 
-    <!-- Graduation Approval Section -->
-    <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8">อนุมัติการสำเร็จการศึกษา</h2>
-    <form method="post">
-        <div class="mb-4">
-            <label for="student_id" class="block text-gray-700 dark:text-gray-400">รหัสประจำตัวนักศึกษา</label>
-            <input type="text" name="student_id" id="student_id" required class="form-input mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
-        </div>
-        <button type="submit" name="approve_graduation" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-600">อนุมัติการสำเร็จการศึกษา</button>
-    </form>
+    </div>
+</body>
 
-    <!-- Display Students and Their Enrollment Details -->
-    <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8">รายชื่อนักศึกษาและการลงทะเบียน</h2>
-    <table class="min-w-full divide-y divide-gray-200">
-        <thead>
-            <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">รหัสนักศึกษา</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อ-นามสกุล</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ระดับชั้น</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">สถานะ</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">รหัสวิชา</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ภาคการศึกษา</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ปีการศึกษา</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">เกรด</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">สถานะการลงทะเบียน</th>
-            </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
-            <?php while($row = $result->fetch_assoc()): 
-                // Convert the comma-separated strings into arrays
-                $courses = explode(', ', $row['courses']);
-                $semesters = explode(', ', $row['semesters']);
-                $academic_years = explode(', ', $row['academic_years']);
-                $grades = explode(', ', $row['grades']);
-                $enrollment_statuses = explode(', ', $row['enrollment_statuses']);
-            ?>
-            <tr>
-                <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['student_id']); ?></td>
-                <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['fullname']); ?></td>
-                <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['grade_level']); ?></td>
-                <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($row['status']); ?></td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <ul class="list-disc list-inside">
-                        <?php foreach($courses as $course): ?>
-                        <li><?php echo htmlspecialchars($course); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <ul class="list-disc list-inside">
-                        <?php foreach($semesters as $semester): ?>
-                        <li><?php echo htmlspecialchars($semester); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <ul class="list-disc list-inside">
-                        <?php foreach($academic_years as $academic_year): ?>
-                        <li><?php echo htmlspecialchars($academic_year); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <ul class="list-disc list-inside">
-                        <?php foreach($grades as $grade): ?>
-                        <li><?php echo htmlspecialchars($grade); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <ul class="list-disc list-inside">
-                        <?php foreach($enrollment_statuses as $enrollment_status): ?>
-                        <li><?php echo htmlspecialchars($enrollment_status); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </td>
-            </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
-</div>
+</html>
 
+<?php
+// ปิดการเชื่อมต่อ
+mysqli_close($conn);
+?>

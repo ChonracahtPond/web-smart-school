@@ -39,20 +39,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exam_score'])) {
     $enrollment_ids = $_POST['enrollment_id'] ?? [];
     $exam_scores = $_POST['exam_score'] ?? [];
     $totalMarks = $_POST['totalMarks'] ?? ''; // ตรวจสอบการส่ง totalMarks
+    $exam_date = $_POST['exam_date'] ?? ''; // ตรวจสอบการส่ง totalMarks
+    $term = $_POST['term'] ?? ''; // ตรวจสอบการส่ง totalMarks
+    $year = $_POST['year'] ?? ''; // ตรวจสอบการส่ง totalMarks
 
     // ตรวจสอบว่า enrollment_id มีค่าหรือไม่
     if (empty($enrollment_ids)) {
-        echo "<p class='text-red-500'>Error: No enrollment IDs provided.</p>";
+        // echo "<p class='text-red-500'>Error: No enrollment IDs provided.</p>";
     } else if (empty($totalMarks)) {
-        echo "<p class='text-red-500'>Error: Total marks cannot be null.</p>"; // เพิ่มการตรวจสอบ totalMarks
+        // echo "<p class='text-red-500'>Error: Total marks cannot be null.</p>"; // เพิ่มการตรวจสอบ totalMarks
     } else {
-        $exam_type = 'กลางภาค'; // สามารถเปลี่ยนตามความต้องการ
-        $exam_date = date('Y-m-d'); // วันที่สอบ
-        $duration =  $_POST['duration'] ?? '';// สามารถเปลี่ยนตามความต้องการ duration
+        $exam_type = 'ปลายภาค'; // สามารถเปลี่ยนตามความต้องการ
+
+        $duration =  $_POST['duration'] ?? ''; // สามารถเปลี่ยนตามความต้องการ duration
 
 
         // Prepare statement สำหรับการบันทึกข้อมูลลงในฐานข้อมูล
-        $insertSQL = "INSERT INTO exams (enrollment_id, exam_type, exam_date, duration, total_marks, student_id, score, exams_status , criterion) VALUES (?, ?, ?, ?, ?, ?, ?, ? , ?)";
+        $insertSQL = "INSERT INTO exams (enrollment_id, exam_type, exam_date, duration, total_marks, student_id, score, exams_status , criterion , term , year) VALUES (?, ?, ?, ?, ?, ?, ?, ? , ?, ? , ?)";
         $stmt = $conn->prepare($insertSQL);
 
         // ตรวจสอบว่าการเตรียม statement สำเร็จหรือไม่
@@ -104,15 +107,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exam_score'])) {
 
 
                 // Binding parameters
-                $stmt->bind_param("ississsss", $enrollment_id, $exam_type, $exam_date, $duration, $totalMarks, $student_id, $score, $exams_status, $criterion);
+                $stmt->bind_param("ississsssii", $enrollment_id, $exam_type, $exam_date, $duration, $totalMarks, $student_id, $score, $exams_status, $criterion, $term, $year);
 
                 // Execute statement
                 // Execute statement
                 if ($stmt->execute()) {
-                    echo "<script>window.location.href='?page=Manage_exam_Midterm&status=1';</script>";
+                    echo "<script>window.location.href='?page=Manage_exam_Final&status=1';</script>";
                 } else {
                     echo "Error: " . $stmt->error;
-                    echo "<script>window.location.href='?page=Manage_exam_Midterm&status=0';</script>";
+                    echo "<script>window.location.href='?page=Manage_exam_Final&status=0';</script>";
                 }
             }
         }
