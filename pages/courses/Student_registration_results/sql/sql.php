@@ -23,9 +23,9 @@ if (!$result) {
     echo "เกิดข้อผิดพลาดในการดึงข้อมูล: " . $conn->error;
     exit;
 }
-// ดึงข้อมูลจากผลลัพธ์
-$data = $result->fetch_assoc();
-$student_name = $data['student_name']; // กำหนดตัวแปร $student_name
+// // ดึงข้อมูลจากผลลัพธ์
+// $data = $result->fetch_assoc();
+// $student_name = $data['student_name']; // กำหนดตัวแปร $student_name
 
 
 // ----------- ประมวลผล -----------
