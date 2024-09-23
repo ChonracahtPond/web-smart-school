@@ -138,12 +138,20 @@
 
 
 
-                           // -- หน้า ผลการลงทะเบียน --//
-                    case 'Student_registration_results':
+                    // -- หน้า ผลการลงทะเบียน --//
+                case 'Student_registration_results':
                     include "../pages/courses/Student_registration_results/Student_registration_results.php";
                     break;
-                    case 'detail_Student_registration_results':
+                case 'detail_Student_registration_results':
                     include "../pages/courses/Student_registration_results/detail_Student_registration_results.php";
+                    break;
+
+                    // -- หน้า ระบบจัดการผลการเรียน --//
+                case 'Manage_academic_results':
+                    include "../pages/courses/Manage_academic_results/Manage_academic_results.php";
+                    break;
+                case 'detail_Manage_academic_results':
+                    include "../pages/courses/Manage_academic_results/detail_Manage_academic_results.php";
                     break;
 
 

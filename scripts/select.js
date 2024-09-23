@@ -40,6 +40,10 @@ const pageLinkMap = {
   Manage_exam_Midterm: "Manage_exam_Midterm",
   add_exams: "Manage_exam_Midterm",
   Manage_exam_Final: "Manage_exam_Final",
+  Student_registration_results: "Student_registration_results-link",
+  detail_Student_registration_results: "Student_registration_results-link",
+  Manage_academic_results: "Manage_academic_results-link",
+  detail_Manage_academic_results: "Manage_academic_results-link",
   //   Teachersidebar
   Teacher_Manage: "Teacher-Manage-link",
   reset_password: "reset-password-link",
