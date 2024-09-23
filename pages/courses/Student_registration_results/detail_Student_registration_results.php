@@ -10,8 +10,9 @@ include "sql/sql.php";
     <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 text-xl md:text-2xl">
         รายละเอียดการลงทะเบียนเรียน (รหัสนักศึกษา: <?php echo htmlspecialchars($student_id); ?>)
     </h1>
-
-
+    <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 text-xl md:text-2xl">
+        ชื่อ: <?php echo htmlspecialchars($student_name);   $result->data_seek(0);?>
+    </h1>
 
 
     <div class="w-[80%] mx-auto mt-10 mb-10">
@@ -19,17 +20,7 @@ include "sql/sql.php";
 
     </div>
 
-    <?php
-    // แสดงชื่อของนักเรียน
-    if ($row = $result->fetch_assoc()) {
-        echo "<h1 class='flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-4 text-xl md:text-2xl'>
-                ชื่อ: " . htmlspecialchars($row['student_name']) . "
-              </h1>";
-    }
 
-    // Reset pointer ของผลลัพธ์เพื่อแสดงข้อมูลในตาราง
-    $result->data_seek(0);
-    ?>
 
     <div class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
         <table class="stripe hover" style="width:100%; padding-top: 1em; padding-bottom: 1em;">

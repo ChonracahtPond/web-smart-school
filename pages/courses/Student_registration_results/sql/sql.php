@@ -17,11 +17,15 @@ $stmt->bind_param("i", $student_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
+
 // ตรวจสอบว่ามีผลลัพธ์หรือไม่
 if (!$result) {
     echo "เกิดข้อผิดพลาดในการดึงข้อมูล: " . $conn->error;
     exit;
 }
+// ดึงข้อมูลจากผลลัพธ์
+$data = $result->fetch_assoc();
+$student_name = $data['student_name']; // กำหนดตัวแปร $student_name
 
 
 // ----------- ประมวลผล -----------
@@ -220,44 +224,21 @@ while ($row = $result->fetch_assoc()) {
             }
             break;
 
-
-
-
-            // case "ความรู้พื้นฐาน":
-            //     // คำนวณหน่วยกิตสำหรับระดับมัธยมศึกษาตอนต้น
-            //     if ($course_type == "mandatory") {
-            //         $mandatory_credits1_content += $credits;
-            //     } else if ($course_type == "elective") {
-            //         $elective_credits1_content += $credits;
-            //     }
-            //     break;
-
-            // case "การประกอบอาชีพ":
-            //     // คำนวณหน่วยกิตสำหรับระดับมัธยมศึกษาตอนปลาย
-            //     if ($course_type == "mandatory") {
-            //         $mandatory_credits2_content += $credits;
-            //     } else if ($course_type == "elective") {
-            //         $elective_credits2_content += $credits;
-            //     }
-            //     break;
-            // case "ทักษะการดำเนินชีวิต":
-            //     // คำนวณหน่วยกิตสำหรับระดับมัธยมศึกษาตอนปลาย
-            //     if ($course_type == "mandatory") {
-            //         $mandatory_credits3_content += $credits;
-            //     } else if ($course_type == "elective") {
-            //         $elective_credits3_content += $credits;
-            //     }
-            //     break;
-
-
-
-
         default:
             // ถ้าไม่ตรงกับกรณีใดๆ
             // echo "ระดับการศึกษาไม่ถูกต้อง";
             break;
     }
 };
+
+
+
+
+
+
+
+
+
 
 
 
@@ -274,12 +255,26 @@ $elective_credits2 = $elective_credits_morpai + $elective_credits_morpai1 + $ele
 
 
 // ตรวจสอบระดับการศึกษาและตั้งค่าสี
+$mandatory_credits_pathom_style = '';
+$mandatory_credits_pathom_style1 = '';
+$mandatory_credits_pathom_style2 = '';
+$mandatory_credits_pathom_style3 = '';
+$mandatory_credits_pathom_style4 = '';
+// $elective_credits_pathom_style = '';
+
 $mandatory_class_style = '';
 $elective_class_style = '';
 $mandatory_class_style1 = '';
 $elective_class_style1 = '';
 $mandatory_class_style2 = '';
 $elective_class2_style2 = '';
+
+$mandatory_credits_pathom_style = ($mandatory_credits_pathom >= 5) ? 'text-green-500' : 'text-red-500';
+$mandatory_credits_pathom_style1 = ($mandatory_credits_pathom1 >= 12) ? 'text-green-500' : 'text-red-500';
+$mandatory_credits_pathom_style2 = ($mandatory_credits_pathom2 >= 8) ? 'text-green-500' : 'text-red-500';
+$mandatory_credits_pathom_style3 = ($mandatory_credits_pathom3 >= 5) ? 'text-green-500' : 'text-red-500';
+$mandatory_credits_pathom_style4 = ($mandatory_credits_pathom4 >= 6) ? 'text-green-500' : 'text-red-500';
+// $elective_credits_pathom_style = ($elective_credits_pathom >= 12) ? 'text-green-500' : 'text-red-500';
 
 $mandatory_class_style = ($mandatory_credits >= 36) ? 'text-green-500' : 'text-red-500';
 $elective_class_style = ($elective_credits >= 12) ? 'text-green-500' : 'text-red-500';

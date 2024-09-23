@@ -35,3 +35,4 @@ $mandatory_credits_morpai3 = 0;
 $elective_credits_morpai3 = 0;
 $mandatory_credits_morpai4 = 0;
 $elective_credits_morpai4 = 0;
+
