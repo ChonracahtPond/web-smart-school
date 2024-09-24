@@ -29,6 +29,7 @@ const pageLinkMap = {
 
   //   educationsidebar
   Manage_courses: "Manage-courses-link",
+  Manage_grade: "Manage_grade-link",
   Manage_enrollments: "Manage-enrollments-link",
   Manage_Activity: "Manage-Activity-link",
   Manage_Credits: "Manage-Credits-link",
@@ -82,6 +83,7 @@ const dropdownMap = {
   ai_analysis: "dropdown-Manage-reports",
   //   educationsidebar
   Manage_courses: "dropdown-Manage-courses",
+  Manage_grade: "dropdown-Manage-courses",
   Manage_Activity: "dropdown-Manage-activity",
   Manage_Credits: "dropdown-Manage-activity",
   Reports_and_statistics: "dropdown-Manage-activity",

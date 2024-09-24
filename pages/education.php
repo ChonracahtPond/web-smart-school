@@ -14,11 +14,10 @@
                     include "../pages/courses/dashboard/courses_dashboard.php";
                     break;
 
-
-                        // จัดการเกรด
-                    case 'Manage_grade':
-                        include "../pages/courses/";
-                        break;
+                    // -- หน้า ระบบการให้เกรด --//
+                case 'Manage_grade':
+                    include "../pages/courses/Manage_grade/Manage_grade.php";
+                    break;
 
 
                     //     // จัดการหน่วยกิจ

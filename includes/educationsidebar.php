@@ -45,7 +45,7 @@
                             <a href="?page=Manage_courses" id="Manage-courses-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ระบบจัดการรายวิชา</a>
                         </li>
                         <li>
-                            <a href="?page=Manage_grade" id="Manage-courses-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ระบบการให้เกรด</a>
+                            <a href="?page=Manage_grade" id="Manage_grade-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ระบบการให้เกรด</a>
                         </li>
                         <!-- <li>
                             <a href="?page=" id="Manage-enrollments-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">การจัดการการลงทะเบียนเรียน</a>
