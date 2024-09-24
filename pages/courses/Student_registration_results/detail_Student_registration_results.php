@@ -16,16 +16,16 @@ if (!isset($student_id) || !isset($student_name)) {
     </h1>
 
     <?php
-    // แสดงชื่อของนักเรียน
-    if ($row = $result->fetch_assoc()) {
-        echo "<h1 class='flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-4 text-xl md:text-2xl'>
-                ชื่อ: " . htmlspecialchars($row['student_name']) . "
-              </h1>";
-    } else {
-        echo "<h1 class='flex items-center font-sans font-bold break-normal text-red-500 px-2 py-4 text-xl md:text-2xl'>
-                ไม่พบข้อมูลนักเรียน
-              </h1>";
-    }
+    // // แสดงชื่อของนักเรียน
+    // if ($row = $result->fetch_assoc()) {
+    //     echo "<h1 class='flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-4 text-xl md:text-2xl'>
+    //             ชื่อ: " . htmlspecialchars($row['student_name']) . "
+    //           </h1>";
+    // } else {
+    //     echo "<h1 class='flex items-center font-sans font-bold break-normal text-red-500 px-2 py-4 text-xl md:text-2xl'>
+    //             ไม่พบข้อมูลนักเรียน
+    //           </h1>";
+    // }
 
     // Reset pointer ของผลลัพธ์เพื่อแสดงข้อมูลในตาราง
     $result->data_seek(0);

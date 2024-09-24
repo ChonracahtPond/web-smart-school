@@ -2,7 +2,7 @@
 // Assume you have a database connection already established in $conn
 
 // Fetch courses for the page
-$sql_courses = "SELECT course_id, course_name FROM courses WHERE status = '0'";
+$sql_courses = "SELECT course_id, course_name FROM courses WHERE status = '1'";
 $courses_result = $conn->query($sql_courses);
 
 // Check if there was an error with the query
@@ -11,7 +11,7 @@ if (!$courses_result) {
 }
 
 // Fetch students for the dropdown
-$sql_students = "SELECT student_id, CONCAT_WS(' ', fullname) AS student_name FROM students";
+$sql_students = "SELECT student_id, CONCAT_WS(' ', fullname) AS student_name FROM students WHERE status = '0'";
 $students_result = $conn->query($sql_students);
 
 // Check if there was an error with the query
@@ -36,10 +36,12 @@ while ($row = $students_result->fetch_assoc()) {
 
 // Free result set
 $students_result->free();
+
+include "sql/Add_enrollment.php";
 ?>
 
 <div class="mx-auto ">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white text-center">ลงทะเบียนวิชา</h1>
+    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white text-center">ลงทะเบียนเรียน</h1>
     <div class="bg-white h-[60%] dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4 flex flex-col md:flex-row">
         <!-- Left Section: Course List -->
         <div class="md:w-1/3 p-4 border-r border-gray-300 flex flex-col">
@@ -64,7 +66,7 @@ $students_result->free();
         <!-- Center Section: Selected Courses List -->
         <div class="md:w-1/3 p-4 border-r border-gray-300 flex flex-col">
             <h2 class="text-2xl font-semibold mb-4 text-gray-800">วิชาที่เลือก</h2>
-            <div id="selectedCoursesList" class="flex-1 overflow-y-auto max-h-72 bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <div id="selectedCoursesList" class="flex-1 overflow-y-auto bg-gray-50 p-4 rounded-lg border border-gray-200 max-h-[60vh]">
                 <p class="text-gray-600">ยังไม่มีวิชาที่เลือก</p>
             </div>
         </div>
@@ -72,7 +74,7 @@ $students_result->free();
         <!-- Right Section: Enrollment Info and Form -->
         <div class="md:w-1/3 p-4 flex flex-col">
             <h2 class="text-2xl font-semibold mb-4 text-gray-800">ข้อมูลการลงทะเบียน</h2>
-            <form id="enrollmentForm" action="?page=Add_enrollment" method="POST" class="flex flex-col flex-1">
+            <form id="enrollmentForm" action="" method="POST" class="flex flex-col flex-1">
                 <div id="selectedCoursesInputs" class="mb-4">
                     <!-- Dynamically added inputs will go here -->
                 </div>

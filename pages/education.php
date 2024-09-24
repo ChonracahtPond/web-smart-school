@@ -145,6 +145,9 @@
                 case 'Graduation_system':
                     include "../pages/Graduation/Graduation_system.php";
                     break;
+                case 'add_Graduation_system':
+                    include "../pages/Graduation/add_Graduation_system.php";
+                    break;
                 case 'enrollment_details':
                     include "../pages/courses/Manage_courses/enrollment_details.php";
                     break;
