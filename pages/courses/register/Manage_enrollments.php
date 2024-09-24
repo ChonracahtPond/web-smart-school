@@ -41,12 +41,18 @@ $result = $stmt->get_result();
 
     <div id='recipients' class="p-8 mt-6 mb-10 lg:mt-0 rounded shadow bg-white">
         <div class="flex mb-5 col-4 justify-start">
-            <button id="openModalButton" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mr-4">
+            <button onclick="window.location.href='?page=Add_enrollment'" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mr-4">
                 <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>
                 เพิ่มการลงทะเบียนใหม่
             </button>
+            <!-- <button id="openModalButton" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mr-4">
+                <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                เพิ่มการลงทะเบียนใหม่
+            </button> -->
 
             <button id="importExcelButton" class="flex items-center bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-600 mr-4">
                 <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

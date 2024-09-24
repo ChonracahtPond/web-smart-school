@@ -79,7 +79,6 @@ $students_result->free();
 </script>
 
 <!-- Enrollment Modal -->
-<!-- Enrollment Modal -->
 <div id="enrollmentModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center hidden">
     <div class="bg-white p-8 rounded-lg shadow-lg w-full md:w-3/4 lg:w-2/3 flex flex-col md:flex-row">
         <!-- Left Section: Course List -->

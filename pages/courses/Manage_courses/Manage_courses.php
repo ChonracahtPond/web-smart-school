@@ -20,6 +20,10 @@ $result = $stmt->get_result();
 <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
 <style>
     /* Overrides for Tailwind CSS */
     .dataTables_wrapper select,
@@ -98,7 +102,7 @@ $result = $stmt->get_result();
         background-color: #667eea !important;
     }
 </style>
-<div class="container mx-auto p-4">
+<div class=" mx-auto p-4">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการรายวิชา</h1>
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
         <!-- ปุ่มเปิด Modal -->
@@ -124,8 +128,6 @@ $result = $stmt->get_result();
                     <th>ประเภท</th>
                     <th>รหัสรายวิชา</th>
                     <th>หน่วยกิจ</th>
-                    <th>ภาคเรียน</th>
-                    <th>ปีการศึกษา</th>
                     <th>สถานะ</th>
                     <th>การดำเนินการ</th>
                 </tr>
@@ -133,7 +135,8 @@ $result = $stmt->get_result();
             <tbody>
                 <?php if ($result->num_rows > 0) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
-                        <tr class="clickable-row" data-href="?page=course_details&course_id=<?php echo htmlspecialchars($row['course_id']); ?>">
+                        <!-- <tr class="clickable-row" data-href="?page=course_details&course_id=<?php echo htmlspecialchars($row['course_id']); ?>"> -->
+                        <tr>
                             <td><?php echo htmlspecialchars($row['course_id']); ?></td>
                             <td><?php echo htmlspecialchars($row['course_name']); ?></td>
                             <td><?php echo htmlspecialchars($row['course_description']); ?></td>
@@ -141,18 +144,46 @@ $result = $stmt->get_result();
                             <td><?php echo ($row['course_type'] === 'mandatory') ? 'บังคับ' : 'วิชาเลือก'; ?></td>
                             <td><?php echo htmlspecialchars($row['course_code']); ?></td>
                             <td><?php echo htmlspecialchars($row['credits']); ?></td>
-                            <td><?php echo htmlspecialchars($row['semester']); ?></td>
-                            <td><?php echo htmlspecialchars($row['academic_year']); ?></td>
+                            <!-- <td><?php echo htmlspecialchars($row['semester']); ?></td>
+                            <td><?php echo htmlspecialchars($row['academic_year']); ?></td> -->
                             <td>
                                 <?php
                                 $status = htmlspecialchars($row['status']);
-                                echo ($status == 1) ? '<span class="text-green-500">กำลังทำงาน</span>' : '<span class="text-red-500">ไม่ได้ใช้งาน</span>';
+                                echo ($status == 1) ? '<span class="text-green-500">กำลังใช้งาน</span>' : '<span class="text-red-500">ยังไม่เปิดใช้งาน</span>';
                                 ?>
                             </td>
-                            <td>
-                                <a href="?page=edit_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-blue-500 hover:text-blue-700">แก้ไข</a> |
-                                <a href="?page=delete_course&id=<?php echo htmlspecialchars($row['course_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('Are you sure you want to delete this course?')">ลบ</a>
+                            <td class="flex items-center space-x-4">
+                                <!-- ปุ่มสถานะ -->
+                                <button onclick="window.location.href='?page=course_details_approve&course_id=<?php echo htmlspecialchars($row['course_id']); ?>'" class="flex items-center space-x-2 px-3 py-1 text-white font-semibold rounded-lg 
+                                 <?php echo ($status == 1) ? '' : 'bg-blue-500 hover:bg-blue-600'; ?>">
+                                    <?php
+                                    $status = htmlspecialchars($row['status']);
+                                    if ($status == 1) {
+                                        // echo '<i class="fas fa-times-circle"></i> <span>เปิดใช้งาน</span>';
+
+                                    } else {
+                                        echo '<i class="fas fa-check-circle"></i> <span>เปิดใช้งาน</span>';
+                                        echo '<a href=""></a>';
+                                    }
+                                    ?>
+                                </button>
+
+                                <!-- ปุ่มแก้ไข -->
+                                <button onclick="window.location.href='?page=edit_course&id=<?php echo htmlspecialchars($row['course_id']); ?>'"
+                                    class="flex items-center space-x-2 bg-yellow-500 text-white hover:text-gray-400 px-3 py-1 rounded-lg hover:bg-yellow-100 transition duration-200">
+                                    <i class="fas fa-edit"></i>
+                                    <span>แก้ไข</span>
+                                </button>
+
+                                <!-- ปุ่มลบ -->
+                                <button onclick="if(confirm('Are you sure you want to delete this course?')) { window.location.href='?page=delete_course&id=<?php echo htmlspecialchars($row['course_id']); ?>'; }"
+                                    class="flex items-center space-x-2 bg-red-500 text-white hover:text-white-700 px-3 py-1 rounded-lg hover:bg-red-100 transition duration-200">
+                                    <i class="fas fa-trash-alt"></i>
+                                    <span>ลบ</span>
+                                </button>
                             </td>
+
+
                         </tr>
                     <?php endwhile; ?>
                 <?php else : ?>
@@ -161,6 +192,19 @@ $result = $stmt->get_result();
                     </tr>
                 <?php endif; ?>
             </tbody>
+            <tfoot>
+                <tr>
+                    <th>รหัสรายวิชา</th>
+                    <th>ชื่อรายวิชา</th>
+                    <th>คำอธิบาย</th>
+                    <th>ชื่อครู</th>
+                    <th>ประเภท</th>
+                    <th>รหัสรายวิชา</th>
+                    <th>หน่วยกิจ</th>
+                    <th>สถานะ</th>
+                    <th>การดำเนินการ</th>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>

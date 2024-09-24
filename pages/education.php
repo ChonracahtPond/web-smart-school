@@ -14,10 +14,27 @@
                     include "../pages/courses/dashboard/courses_dashboard.php";
                     break;
 
-                    // -- หน้า ระบบการให้เกรด --//
-                case 'Manage_grade':
-                    include "../pages/courses/Manage_grade/Manage_grade.php";
+
+                    // -- หน้า ระบบจัดการรายวิชา --//
+                case 'Manage_courses':
+                    include "../pages/courses/Manage_courses/Manage_courses.php";
                     break;
+                case 'course_details_approve':
+                    include "../pages/courses/Manage_courses/course_details_approve.php";
+                    break;
+                case 'course_details':
+                    include "../pages/courses/Manage_courses/course_details.php";
+                    break;
+                case 'add_course':
+                    include "../pages/courses/Manage_courses/add_course.php";
+                    break;
+                case 'edit_course':
+                    include "../pages/courses/Manage_courses/edit_course.php";
+                    break;
+                case 'delete_course':
+                    include "../pages/courses/Manage_courses/delete_course.php";
+                    break;
+
 
 
                     //     // จัดการหน่วยกิจ
@@ -169,21 +186,6 @@
 
 
 
-                case 'Manage_courses':
-                    include "../pages/courses/Manage_courses/Manage_courses.php";
-                    break;
-                case 'course_details':
-                    include "../pages/courses/Manage_courses/course_details.php";
-                    break;
-                case 'add_course':
-                    include "../pages/courses/Manage_courses/add_course.php";
-                    break;
-                case 'edit_course':
-                    include "../pages/courses/Manage_courses/edit_course.php";
-                    break;
-                case 'delete_course':
-                    include "../pages/courses/Manage_courses/delete_course.php";
-                    break;
 
 
 
