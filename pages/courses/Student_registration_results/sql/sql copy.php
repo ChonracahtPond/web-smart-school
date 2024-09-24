@@ -9,8 +9,7 @@ e.teacher_id, e.class, e.credits, s.student_name, c.course_type, c.credits , c.c
 FROM enrollments e
 JOIN students s ON e.student_id = s.student_id
 JOIN courses c ON e.course_id = c.course_id
-WHERE e.student_id = ?
-";
+WHERE e.student_id = ?";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $student_id);
@@ -27,36 +26,42 @@ if (!$result) {
 $data = $result->fetch_assoc();
 $student_name = $data['student_name']; // กำหนดตัวแปร $student_name
 
+
 // ----------- ประมวลผล -----------
 // เริ่มต้นคำนวณ
 include "unit.php";
 
-// ตรวจสอบและคำนวณหน่วยกิต
 while ($row = $result->fetch_assoc()) {
     $course_type = $row['course_type'];
     $credits = $row['credits'];
     $course_content = $row['course_content'];
-    $course_description = $row['course_description'];
+    $course_description = $row['course_description']; // สมมติว่ามีคอลัมน์ 'course_description' ที่บอกระดับการศึกษา
+
 
     // ตรวจสอบระดับการศึกษา
     switch ($course_content) {
         case "1":
             switch ($course_description) {
                 case "ระดับประถมศึกษา":
+                    // คำนวณหน่วยกิตสำหรับระดับประถมศึกษา
                     if ($course_type == "mandatory") {
                         $mandatory_credits_pathom += $credits;
                     } else if ($course_type == "elective") {
                         $elective_credits_pathom += $credits;
                     }
                     break;
+
                 case "ระดับมัธยมศึกษาตอนต้น":
+                    // คำนวณหน่วยกิตสำหรับระดับมัธยมศึกษาตอนต้น
                     if ($course_type == "mandatory") {
                         $mandatory_credits_morton += $credits;
                     } else if ($course_type == "elective") {
                         $elective_credits_morton += $credits;
                     }
                     break;
+
                 case "ระดับมัธยมศึกษาตอนปลาย":
+                    // คำนวณหน่วยกิตสำหรับระดับมัธยมศึกษาตอนปลาย
                     if ($course_type == "mandatory") {
                         $mandatory_credits_morpai += $credits;
                     } else if ($course_type == "elective") {
@@ -65,7 +70,6 @@ while ($row = $result->fetch_assoc()) {
                     break;
             }
             break;
-
 
         case "2":
             switch ($course_description) {
@@ -192,7 +196,7 @@ while ($row = $result->fetch_assoc()) {
 
         default:
             // ถ้าไม่ตรงกับกรณีใดๆ
-            echo "ระดับการศึกษาไม่ถูกต้อง";
+            // echo "ระดับการศึกษาไม่ถูกต้อง";
             break;
     }
 };

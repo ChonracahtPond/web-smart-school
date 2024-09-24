@@ -26,7 +26,6 @@ $elective_credits_morton_style3 = '';
 $elective_credits_morton_style4 = '';
 
 
-
 $mandatory_credits_morpai_style = '';
 $mandatory_credits_morpai_style1 = '';
 $mandatory_credits_morpai_style2 = '';

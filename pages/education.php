@@ -15,13 +15,11 @@
                     break;
 
 
-                    //     // จัดการเกรด
-                    // case 'StudentGrade':
-                    //     include "../pages/Users/Grade/StudentGrade.php";
-                    //     break;
-                    // case 'GradeList':
-                    //     include "../pages/Users/Grade/GradeList.php";
-                    //     break;
+                        // จัดการเกรด
+                    case 'Manage_grade':
+                        include "../pages/courses/";
+                        break;
+
 
                     //     // จัดการหน่วยกิจ
                     // case 'Studentcredit':
