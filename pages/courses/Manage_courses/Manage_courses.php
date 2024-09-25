@@ -17,94 +17,10 @@ $stmt->execute();
 $result = $stmt->get_result();
 ?>
 
-<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+<div class="">
+    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 ">
+        <h1 class="text-3xl font-semibold text-gray-900 dark:text-white mb-5">ระบบจัดการรายวิชา</h1>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-
-<style>
-    /* Overrides for Tailwind CSS */
-    .dataTables_wrapper select,
-    .dataTables_wrapper input {
-        color: #4a5568;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: .5rem;
-        padding-bottom: .5rem;
-        line-height: 1.25;
-        border-width: 2px;
-        border-radius: .25rem;
-        border-color: #edf2f7;
-        background-color: #edf2f7;
-        width: 100px;
-    }
-
-
-
-    .dataTables_filter input {
-        color: #4a5568;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: .5rem;
-        padding-bottom: .5rem;
-        line-height: 1.25;
-        border-width: 2px;
-        border-radius: .25rem;
-        border-color: #edf2f7;
-        background-color: #edf2f7;
-        width: 500px;
-    }
-
-
-
-
-    table.dataTable.hover tbody tr:hover,
-    table.dataTable.display tbody tr:hover {
-        background-color: #ebf4ff;
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button {
-        font-weight: 700;
-        border-radius: .25rem;
-        border: 1px solid transparent;
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-        color: #fff !important;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-        font-weight: 700;
-        border-radius: .25rem;
-        background: #667eea !important;
-        border: 1px solid transparent;
-        /* width: 500px; */
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-        color: #fff !important;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-        font-weight: 700;
-        border-radius: .25rem;
-        background: #667eea !important;
-        border: 1px solid transparent;
-        /* width: 500px; */
-    }
-
-    table.dataTable.no-footer {
-        border-bottom: 1px solid #e2e8f0;
-        margin-top: 0.75em;
-        margin-bottom: 0.75em;
-    }
-
-    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-        background-color: #667eea !important;
-    }
-</style>
-<div class=" mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">จัดการรายวิชา</h1>
-    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
         <!-- ปุ่มเปิด Modal -->
         <button id="openModal" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4">+ เพิ่มรายวิชาใหม่</button>
 
@@ -162,7 +78,10 @@ $result = $stmt->get_result();
                                         // echo '<i class="fas fa-times-circle"></i> <span>เปิดใช้งาน</span>';
 
                                     } else {
-                                        echo '<i class="fas fa-check-circle"></i> <span>เปิดใช้งาน</span>';
+                                        echo '<svg class="h-5 w-5 "  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                </svg>
+                                            <span>เปิดใช้งาน</span>';
                                         echo '<a href=""></a>';
                                     }
                                     ?>
@@ -171,14 +90,26 @@ $result = $stmt->get_result();
                                 <!-- ปุ่มแก้ไข -->
                                 <button onclick="window.location.href='?page=edit_course&id=<?php echo htmlspecialchars($row['course_id']); ?>'"
                                     class="flex items-center space-x-2 bg-yellow-500 text-white hover:text-gray-400 px-3 py-1 rounded-lg hover:bg-yellow-100 transition duration-200">
-                                    <i class="fas fa-edit"></i>
+                                    <svg class="h-5 w-5 " viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                        <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                                        <line x1="16" y1="5" x2="19" y2="8" />
+                                    </svg>
                                     <span>แก้ไข</span>
                                 </button>
 
                                 <!-- ปุ่มลบ -->
                                 <button onclick="if(confirm('Are you sure you want to delete this course?')) { window.location.href='?page=delete_course&id=<?php echo htmlspecialchars($row['course_id']); ?>'; }"
                                     class="flex items-center space-x-2 bg-red-500 text-white hover:text-white-700 px-3 py-1 rounded-lg hover:bg-red-100 transition duration-200">
-                                    <i class="fas fa-trash-alt"></i>
+                                    <svg class="h-5 w-5 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                        <line x1="4" y1="7" x2="20" y2="7" />
+                                        <line x1="10" y1="11" x2="10" y2="17" />
+                                        <line x1="14" y1="11" x2="14" y2="17" />
+                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                    </svg>
                                     <span>ลบ</span>
                                 </button>
                             </td>

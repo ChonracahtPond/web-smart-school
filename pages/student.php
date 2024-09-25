@@ -102,16 +102,7 @@
                     break;
 
 
-                case 'scores_management':
-                    include "../pages/n-net/management/scores_management.php";
-                    break;
-                case 'add_score':
-                    include "../pages/n-net/management/add_score.php";
-                    break;
-                case 'update_score':
-                    include "../pages/n-net/management/update_score.php";
-                    break;
-
+            
 
 
 

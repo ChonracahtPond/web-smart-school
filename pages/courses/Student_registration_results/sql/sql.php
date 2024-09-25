@@ -18,6 +18,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 
+
 // ตรวจสอบว่ามีผลลัพธ์หรือไม่
 if (!$result) {
     echo "เกิดข้อผิดพลาดในการดึงข้อมูล: " . $conn->error;

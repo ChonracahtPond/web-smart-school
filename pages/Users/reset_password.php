@@ -16,13 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // คำสั่ง SQL สำหรับดึงข้อมูลผู้ใช้จากตาราง students
-$students_sql = "SELECT student_id, fullname FROM students";
+$students_sql = "SELECT student_id, fullname FROM students WHERE status = '0'";
 $students_result = $conn->query($students_sql);
 ?>
 
 <div class="container mx-auto p-4">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">รีเซ็ตรหัสผ่าน</h1>
-
     <form id="search-form" class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
         <div class="mb-4">
             <label class="block text-gray-700 dark:text-gray-300">ค้นหา:</label>

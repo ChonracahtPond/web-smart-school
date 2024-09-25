@@ -38,13 +38,24 @@ $courses_result = $conn->query($courses_query);
     }
 </style>
 
-<div class="container mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">รายวิชาทั้งหมด</h1>
+<div class="">
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
 
+        <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">รายวิชาทั้งหมด</h1>
 
 
-        <a href="?page=Manage_courses"> <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4">จัดการรายวิชา</button> </a>
+        <a href="?page=Manage_courses">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 mt-4 flex items-center space-x-2 transition duration-200 ease-in-out">
+                <svg class="h-5 w-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <line x1="15" y1="16" x2="19" y2="12" />
+                    <line x1="15" y1="8" x2="19" y2="12" />
+                </svg>
+                <span class="font-medium">ไปที่หน้าจัดการรายวิชา</span>
+            </button>
+        </a>
+
         <!-- ฟอร์มค้นหา -->
         <form method="GET" action="" class="mb-4">
             <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
@@ -68,7 +79,7 @@ $courses_result = $conn->query($courses_query);
         <!-- <p class="text-red-400">**คลิกที่การดำเนินการเพื่อดูรายละเอียดรายวิชา**</p> -->
 
         <!-- Card Layout -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <?php if ($result->num_rows > 0) : ?>
                 <?php while ($row = $result->fetch_assoc()) : ?>
                     <div class="card bg-white dark:bg-gray-800 shadow-md rounded-lg p-4 flex flex-col justify-between">

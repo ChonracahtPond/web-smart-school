@@ -58,16 +58,19 @@
                             <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                             <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
                         </svg>
-                        <span class="ml-3 flex-1 whitespace-nowrap">การจัดการการลงทะเบียนเรียน</span>
+                        <span class="ml-3 flex-1 whitespace-nowrap">ลงทะเบียนเรียน</span>
                     </a>
                 </li>
                 <!----------------------------------- end จัดการรายวิชาและเนื้อหา ----------------------------------->
                 <!----------------------------------- จัดการรายวิชาและเนื้อหา ----------------------------------->
                 <li>
                     <a href="?page=Student_registration_results" id="Student_registration_results-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 14 14">
-                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
+                        <svg class="h-6 w-6 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <rect x="4" y="3" width="8" height="14" rx="4" />
+                            <rect x="12" y="7" width="8" height="10" rx="3" />
+                            <line x1="8" y1="21" x2="8" y2="13" />
+                            <line x1="16" y1="21" x2="16" y2="14" />
                         </svg>
                         <span class="ml-3 flex-1 whitespace-nowrap">ผลการลงทะเบียนเรียน</span>
                     </a>
@@ -76,14 +79,29 @@
                 <!----------------------------------- จัดการรายวิชาและเนื้อหา ----------------------------------->
                 <li>
                     <a href="?page=Manage_academic_results" id="Manage_academic_results-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 14 14">
-                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                            <polyline points="17 21 17 13 7 13 7 21" />
+                            <polyline points="7 3 7 8 15 8" />
                         </svg>
                         <span class="ml-3 flex-1 whitespace-nowrap">ระบบจัดการผลการเรียน</span>
                     </a>
                 </li>
                 <!----------------------------------- end จัดการรายวิชาและเนื้อหา ----------------------------------->
+                <!----------------------------------- user ----------------------------------->
+                <li>
+                    <a href="?page=scores_management" id="scores_management-link" class="flex items-center p-2 text-base font-normal text-white rounded-lg dark:text-white hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700">
+                        <svg class="h-6 w-6 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <line x1="9" y1="14" x2="15" y2="8" />
+                            <circle cx="9.5" cy="8.5" r=".5" fill="currentColor" />
+                            <circle cx="14.5" cy="13.5" r=".5" fill="currentColor" />
+                            <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2" />
+                        </svg>
+                        <span class="flex-1 ml-3 whitespace-nowrap">จัดการคะแนน N-NET</span>
+                    </a>
+                </li>
+                <!----------------------------------- end user ----------------------------------->
                 <!----------------------------------- จัดการรายวิชาและเนื้อหา ----------------------------------->
                 <li>
                     <button type="button" id="manage-activity-button" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg hover:bg-white hover:text-gray-800 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Manage-exam" data-collapse-toggle="dropdown-Manage-exam">

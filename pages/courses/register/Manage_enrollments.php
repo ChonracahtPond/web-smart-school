@@ -5,12 +5,13 @@ $startDate = isset($_GET['start_date']) ? $_GET['start_date'] : null;
 $endDate = isset($_GET['end_date']) ? $_GET['end_date'] : null;
 
 // คำสั่ง SQL สำหรับดึงข้อมูลจากตาราง enrollments พร้อมการค้นหาและกรองตามวันที่
-$sql = "SELECT e.enrollment_id, e.semester, e.academic_year, e.grade, e.status, s.status, e.teacher_id, c.course_name, c.course_id, s.student_name, t.teacher_name
+$sql = "SELECT e.enrollment_id, e.semester, e.academic_year, e.grade, e.status AS enrollment_status, s.status AS student_status, e.teacher_id, c.course_name, c.course_id, s.student_name, t.teacher_name
         FROM enrollments e
         LEFT JOIN courses c ON e.course_id = c.course_id
         LEFT JOIN students s ON e.student_id = s.student_id
         LEFT JOIN teachers t ON e.teacher_id = t.teacher_id
         WHERE (c.course_name LIKE ? OR s.student_name LIKE ? OR t.teacher_name LIKE ?)  AND s.status = '0'";
+
 
 if ($startDate && $endDate) {
     $sql .= " AND e.created_at BETWEEN ? AND ?";
@@ -34,12 +35,12 @@ $result = $stmt->get_result();
 ?>
 
 
-<div class="mx-auto px-2">
-    <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
-        จัดการการลงทะเบียน
-    </h1>
+<div class="">
 
     <div id='recipients' class="p-8 mt-6 mb-10 lg:mt-0 rounded shadow bg-white">
+        <h1 class="text-3xl font-semibold text-gray-900 dark:text-white mb-5">เพิ่มการลงทะเบียนใหม่</h1>
+
+        <!-- <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">จัดการการลงทะเบียน</h1> -->
         <div class="flex mb-5 col-4 justify-start">
             <button onclick="window.location.href='?page=Add_enrollment'" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mr-4">
                 <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -82,9 +83,11 @@ $result = $stmt->get_result();
                 ออกรายงานเป็น PDF
             </button>
         </div>
+        <div class="bg-gray-200 w-full h-0.5 my-5"></div>
 
 
-        <p class="text-red-500 mb-5">**คลิกที่รายวิชาเพื่อดูรายละเอียดรายวิชา**</p>
+        <!-- <p class="text-red-500 mb-5">**คลิกที่รายวิชาเพื่อดูรายละเอียดรายวิชา**</p> -->
+
         <table id="enrollments-table" class="stripe hover " style="width:100%; padding-top: 1em; padding-bottom: 1em;">
             <thead>
                 <tr>
@@ -103,19 +106,43 @@ $result = $stmt->get_result();
                     <?php $no = 1; // ตัวนับเริ่มต้น 
                     ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
-                        <tr class="clickable-row" data-href="?page=enrollment_details&course_id=<?php echo htmlspecialchars($row['course_id']); ?>">
+                        <tr>
+                            <!-- <tr class="clickable-row" data-href="?page=enrollment_details&course_id=<?php echo htmlspecialchars($row['course_id']); ?>"> -->
                             <!-- <tr class="clickable-row" data-href="?page=enrollment_details&enrollment_id=<?php echo htmlspecialchars($row['enrollment_id']); ?>"> -->
                             <td><?php echo $no++; // แสดงลำดับและเพิ่มค่าขึ้น 
                                 ?></td>
-                            <td><?php echo htmlspecialchars($row['course_name']); ?></td>
+                            <td><?php echo htmlspecialchars($row['course_id']); ?> <?php echo htmlspecialchars($row['course_name']); ?></td>
                             <td><?php echo htmlspecialchars($row['student_name']); ?></td>
                             <td><?php echo htmlspecialchars($row['teacher_name']); ?></td>
                             <td><?php echo htmlspecialchars($row['semester']); ?></td>
                             <td><?php echo htmlspecialchars($row['academic_year']); ?></td>
-                            <td><?php echo ($row['status'] == 1) ? '<span class="text-green-500">กำลังศึกษา</span>' : '<span class="text-red-500">ยกเลิก</span>'; ?></td>
-                            <td>
-                                <a href="?page=edit_enrollment&id=<?php echo htmlspecialchars($row['enrollment_id']); ?>" class="text-blue-500 hover:text-blue-700">แก้ไข</a> |
-                                <a href="?page=delete_enrollment&id=<?php echo htmlspecialchars($row['enrollment_id']); ?>" class="text-red-500 hover:text-red-700" onclick="return confirm('คุณแน่ใจหรือไม่ว่าจะลบการลงทะเบียนนี้?')">ลบ</a>
+                            <td><?php echo ($row['enrollment_status'] == "1") ? '<span class="text-green-500">กำลังศึกษา</span>' : '<span class="text-red-500">ยกเลิก</span>'; ?></td>
+                            <td class="flex items-center space-x-4">
+
+                                <button onclick="window.location.href='?page=edit_enrollment&id=<?php echo htmlspecialchars($row['enrollment_id']); ?>'"
+                                    class="flex items-center space-x-2 bg-yellow-500 text-white hover:text-gray-400 px-3 py-1 rounded-lg hover:bg-yellow-100 transition duration-200">
+                                    <svg class="h-5 w-5 " viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                        <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                                        <line x1="16" y1="5" x2="19" y2="8" />
+                                    </svg>
+                                    <span>แก้ไข</span>
+                                </button>
+
+                                <!-- ปุ่มลบ -->
+                                <button onclick="if(confirm('Are you sure you want to delete this course?')) { window.location.href='?page=delete_enrollment&id=<?php echo htmlspecialchars($row['enrollment_id']); ?>'; }"
+                                    class="flex items-center space-x-2 bg-red-500 text-white hover:text-white-700 px-3 py-1 rounded-lg hover:bg-red-100 transition duration-200">
+                                    <svg class="h-5 w-5 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                        <line x1="4" y1="7" x2="20" y2="7" />
+                                        <line x1="10" y1="11" x2="10" y2="17" />
+                                        <line x1="14" y1="11" x2="14" y2="17" />
+                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                    </svg>
+                                    <span>ลบ</span>
+                                </button>
                             </td>
                         </tr>
                     <?php endwhile; ?>

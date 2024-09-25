@@ -83,6 +83,19 @@ $result = $conn->query($sql);
                     </tr>
                 <?php endif; ?>
             </tbody>
+            <tfoot>
+                <tr>
+                    <th class="px-6 py-3">รหัสนักเรียน</th>
+                    <th class="px-6 py-3">ชื่อเต็ม</th>
+                    <th class="px-6 py-3">ระดับชั้น</th>
+                    <th class="px-6 py-3">ห้องเรียน</th>
+                    <th class="px-6 py-3">ชื่อเล่น</th>
+                    <th class="px-6 py-3">อีเมล</th>
+                    <th class="px-6 py-3">หมายเลขโทรศัพท์</th>
+                    <th class="px-6 py-3">เพศ</th>
+                    <th class="px-6 py-3">การดำเนินการ</th>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>

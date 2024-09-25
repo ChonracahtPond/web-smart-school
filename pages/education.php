@@ -1,8 +1,8 @@
 <?php include '../includes/header.php'; ?>
 
-<div class="container w-full ml-10">
+<div class=" w-full ml-2">
     <!-- Main Content -->
-    <main class="flex-1 p-4">
+    <main class="flex-1 p-5">
         <section class="content ">
             <?php
             // รับค่าพารามิเตอร์ URL
@@ -152,9 +152,6 @@
                     include "../pages/courses/Manage_courses/enrollment_details.php";
                     break;
 
-
-
-
                     // -- หน้า ผลการลงทะเบียน --//
                 case 'Student_registration_results':
                     include "../pages/courses/Student_registration_results/Student_registration_results.php";
@@ -163,7 +160,7 @@
                     include "../pages/courses/Student_registration_results/detail_Student_registration_results.php";
                     break;
 
-                    // -- หน้า ระบบจัดการผลการเรียน --//
+
                 case 'Manage_academic_results':
                     include "../pages/courses/Manage_academic_results/Manage_academic_results.php";
                     break;
@@ -173,6 +170,16 @@
 
 
 
+                    // -- หน้า ระบบจัดการผลการเรียน --//
+                case 'scores_management':
+                    include "../pages/n-net/management/scores_management.php";
+                    break;
+                case 'add_score':
+                    include "../pages/n-net/management/add_score.php";
+                    break;
+                case 'update_score':
+                    include "../pages/n-net/management/update_score.php";
+                    break;
 
 
 

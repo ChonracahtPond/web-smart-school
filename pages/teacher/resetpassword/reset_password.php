@@ -1,6 +1,6 @@
 <?php
 // คำสั่ง SQL เพื่อดึงข้อมูลบุคลากร
-$sql = "SELECT teacher_id, Fname, Lname, Rank, position, address, email, username, password, images, phone, gender, teacher_name FROM teachers";
+$sql = "SELECT teacher_id, Fname, Lname, Rank, position, address, email, username, password, images, phone, gender, teacher_name  FROM teachers ";
 $result = $conn->query($sql);
 ?>
 
