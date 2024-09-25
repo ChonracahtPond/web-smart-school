@@ -6,11 +6,11 @@ $student_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 // ดึงข้อมูลจากตาราง enrollments, students และ courses
 $sql = "
 SELECT e.enrollment_id, e.student_id, c.course_id, c.course_name, e.semester, e.academic_year, e.grade, e.status, 
-e.teacher_id, e.class, e.credits, s.student_name, c.course_type, c.credits , c.course_description , c.course_content
+e.teacher_id, e.class, e.credits, s.student_name,s.status, c.course_type, c.credits , c.course_description , c.course_content
 FROM enrollments e
 JOIN students s ON e.student_id = s.student_id
 JOIN courses c ON e.course_id = c.course_id
-WHERE e.student_id = ?";
+WHERE e.student_id = ? ";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $student_id);

@@ -5,12 +5,12 @@ $startDate = isset($_GET['start_date']) ? $_GET['start_date'] : null;
 $endDate = isset($_GET['end_date']) ? $_GET['end_date'] : null;
 
 // คำสั่ง SQL สำหรับดึงข้อมูลจากตาราง enrollments พร้อมการค้นหาและกรองตามวันที่
-$sql = "SELECT e.enrollment_id, e.semester, e.academic_year, e.grade, e.status, e.teacher_id, c.course_name, c.course_id, s.student_name, t.teacher_name
+$sql = "SELECT e.enrollment_id, e.semester, e.academic_year, e.grade, e.status, s.status, e.teacher_id, c.course_name, c.course_id, s.student_name, t.teacher_name
         FROM enrollments e
         LEFT JOIN courses c ON e.course_id = c.course_id
         LEFT JOIN students s ON e.student_id = s.student_id
         LEFT JOIN teachers t ON e.teacher_id = t.teacher_id
-        WHERE (c.course_name LIKE ? OR s.student_name LIKE ? OR t.teacher_name LIKE ?)";
+        WHERE (c.course_name LIKE ? OR s.student_name LIKE ? OR t.teacher_name LIKE ?)  AND s.status = '0'";
 
 if ($startDate && $endDate) {
     $sql .= " AND e.created_at BETWEEN ? AND ?";

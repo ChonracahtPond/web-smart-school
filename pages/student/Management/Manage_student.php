@@ -1,93 +1,13 @@
 <?php
 // SQL query to fetch student data
-$sql = "SELECT student_id, grade_level, section, username, fullname, nicknames, email, phone_number, date_of_birth, gender FROM students";
+$sql = "SELECT student_id, grade_level, section, username, fullname, nicknames, email, phone_number, date_of_birth, gender FROM students  WHERE status = '0'";
+
 $result = $conn->query($sql);
 ?>
 
-<link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<style>
-    /* Styling for DataTables pagination */
-    .dataTables_wrapper .dataTables_paginate {
-        margin-top: 1rem;
-        text-align: right;
-    }
-
-    .dataTables_wrapper .dataTables_filter {
-        margin-bottom: 1rem;
-        text-align: right;
-    }
-
-    .dataTables_wrapper .dataTables_length select {
-        padding: 0.5rem;
-        border-radius: 0.25rem;
-        border: 1px solid #4a5568;
-        font-size: 0.875rem;
-        color: #4a5568;
-        width: 70px;
-    }
-
-    .dataTables_wrapper .dataTables_filter input {
-        padding: 0.5rem;
-        border-radius: 0.25rem;
-        border: 1px solid #4a5568;
-        font-size: 0.875rem;
-        color: #4a5568;
-        width: 500px;
-    }
-
-    /* Table styles */
-    table.dataTable thead th {
-        background-color: #f7fafc;
-        color: #4a5568;
-        text-align: center;
-        border-bottom: 2px solid #e2e8f0;
-    }
-
-    table.dataTable tbody tr {
-        transition: background-color 0.2s;
-    }
-
-    table.dataTable tbody tr:hover {
-        background-color: #f0f4f8;
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button {
-        font-weight: 700;
-        border-radius: 0.25rem;
-        border: 1px solid transparent;
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current,
-    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-        color: #fff;
-        background: #DDD !important;
-        border: 1px solid transparent;
-    }
-
-    .dataTables_wrapper .dataTables_info {
-        font-size: 0.875rem;
-        color: #4a5568;
-    }
-
-    .text-green-500 i {
-        color: #48bb78;
-    }
-
-    .text-blue-500 i {
-        color: #4299e1;
-    }
-
-    .text-red-500 i {
-        color: #f56565;
-    }
-</style>
-
-<div class="container mx-auto px-4 py-6">
-    <h1 class="text-3xl font-semibold text-gray-900 mb-6">ข้อมูลนักเรียน</h1>
+<div class=" mx-auto">
+    <h1 class="text-3xl font-semibold text-gray-900 mb-6">นำเข้าข้อมูลนักศึกษา</h1>
     <!-- <a href="?page=add_student" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+ เพิ่มข้อมูลนักเรียน</a> -->
     <!-- Import Button -->
     <div class="mb-4 flex space-x-4">
@@ -140,16 +60,23 @@ $result = $conn->query($sql);
                             <td class="px-6 py-4"><?php echo htmlspecialchars($row['phone_number']); ?></td>
                             <td class="px-6 py-4"><?php echo htmlspecialchars($row['gender']); ?></td>
                             <td class="px-6 py-4 flex space-x-4 justify-center">
-                                <a href="../mpdf/student_report/view_register.php?student_id=<?php echo urlencode($row['student_id']); ?>" class="text-green-500 hover:text-green-600 text-xl " title="ดูรายละเอียด">
-                                    <i class="fas fa-eye"></i>
+                                <a href="../mpdf/student_report/view_register.php?student_id=<?php echo urlencode($row['student_id']); ?>" class="inline-flex items-center text-green-500 hover:text-green-600 text-xl" title="ดูรายละเอียด">
+                                    <button class="flex items-center bg-transparent border-0 focus:outline-none">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
                                 </a>
-                                <a href="?page=edit_user&id=<?php echo urlencode($row['student_id']); ?>" class="text-blue-500 hover:text-blue-600 text-xl mx-10" title="แก้ไข">
-                                    <i class="fas fa-edit"></i>
+                                <a href="?page=edit_user&id=<?php echo urlencode($row['student_id']); ?>" class="inline-flex items-center text-blue-500 hover:text-blue-600 text-xl mx-10" title="แก้ไข">
+                                    <button class="flex items-center bg-transparent border-0 focus:outline-none">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
                                 </a>
-                                <a href="?page=delete_user&id=<?php echo urlencode($row['student_id']); ?>" class="text-red-500 hover:text-red-600 text-xl " title="ลบ" onclick="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบข้อมูลนี้?')">
-                                    <i class="fas fa-trash"></i>
+                                <a href="?page=delete_user&id=<?php echo urlencode($row['student_id']); ?>" class="inline-flex items-center text-red-500 hover:text-red-600 text-xl" title="ลบ" onclick="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบข้อมูลนี้?')">
+                                    <button class="flex items-center bg-transparent border-0 focus:outline-none">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
                                 </a>
                             </td>
+
 
                         </tr>
                     <?php endwhile; ?>

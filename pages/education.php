@@ -3,7 +3,7 @@
 <div class="container w-full ml-10">
     <!-- Main Content -->
     <main class="flex-1 p-4">
-        <section class="content">
+        <section class="content ">
             <?php
             // รับค่าพารามิเตอร์ URL
             $page = isset($_GET['page']) ? $_GET['page'] : 'courses_dashboard';

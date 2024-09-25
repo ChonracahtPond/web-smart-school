@@ -10,7 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enroll'])) {
 
     // Check if the required data is available
     if (empty($student_id) || empty($semester) || empty($academic_year) || empty($selected_courses_data)) {
-        die("Required data is missing.");
+        // die("Required data is missing.");
+        echo "<script> window.location.href='?page=Add_enrollment&status=0';</script>";
+
     }
 
     // Begin transaction

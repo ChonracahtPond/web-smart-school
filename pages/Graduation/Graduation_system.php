@@ -76,8 +76,8 @@ $students_result->free();
                         <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($student['fullname']); ?></td>
                         <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($student['academic_years']); ?></td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <button class="bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600 transition-all" onclick="editStudent('<?php echo $student_id; ?>')">แก้ไข</button>
-                            <button class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-all" onclick="deleteStudent('<?php echo $student_id; ?>')">ลบ</button>
+                            <!-- <button class="bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600 transition-all" onclick="editStudent('<?php echo $student_id; ?>')">แก้ไข</button> -->
+                            <button class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-all" onclick="deleteStudent('<?php echo $student_id; ?>')">ยกเลิก</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>

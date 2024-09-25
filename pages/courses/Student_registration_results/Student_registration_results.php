@@ -1,12 +1,14 @@
 <?php
 // ดึงข้อมูลจากตาราง enrollments, students และ courses
 $sql = "
-SELECT e.enrollment_id, e.student_id, s.student_name, s.grade_level, e.course_id, c.course_name, 
+SELECT e.enrollment_id, e.student_id, s.student_name,s.status , s.grade_level, e.course_id, c.course_name, 
        e.semester, e.academic_year, e.grade, e.status, e.teacher_id, e.class, e.credits 
 FROM enrollments e
 JOIN students s ON e.student_id = s.student_id
 JOIN courses c ON e.course_id = c.course_id
-ORDER BY e.student_id, e.grade ASC"; // เรียงลำดับตาม student_id และเกรด
+WHERE s.status = '0'
+ORDER BY e.student_id, e.grade ASC
+"; // เรียงลำดับตาม student_id และเกรด
 
 $result = mysqli_query($conn, $sql);
 

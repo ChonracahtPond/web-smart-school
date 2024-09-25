@@ -29,7 +29,7 @@
                 </button>
                 <ul id="dropdown-Manage-users" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="?page=Manage_student" id="Manage-student-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800  dark:text-white dark:hover:bg-gray-700 pl-11">จัดการข้อมูลนักเรียน</a>
+                        <a href="?page=Manage_student" id="Manage-student-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800  dark:text-white dark:hover:bg-gray-700 pl-11">นำเข้าข้อมูลนักศึกษา</a>
                     </li>
                     <li>
                         <a href="?page=reset_password" id="reset_password-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">รีเซ็ตรหัสผ่าน</a>

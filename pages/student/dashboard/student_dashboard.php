@@ -28,8 +28,8 @@ $grades_result = $conn->query($grades_query);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css">
 
-<div class="container mx-auto px-6 py-8">
-    <h1 class="text-4xl font-bold text-blue-800 mb-8">ข้อมูลนักเรียน</h1>
+<div class=" mx-auto px-6 py-8">
+    <!-- <h1 class="text-4xl font-bold text-blue-800 mb-8">ข้อมูลนักเรียน</h1> -->
 
     <!-- Grade Level Filter Dropdown -->
     <form method="GET" class="mb-8 flex flex-col md:flex-row md:items-center md:space-x-4">
@@ -55,7 +55,7 @@ $grades_result = $conn->query($grades_query);
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         <?php if ($result->num_rows > 0) : ?>
             <?php while ($row = $result->fetch_assoc()) : ?>
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 p-6 justify-center  md:flex-row transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 p-4 justify-center  md:flex-row transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
                     <div class="flex">
                         <div class="flex-shrink-0 w-full md:w-48">
                             <?php
@@ -67,16 +67,16 @@ $grades_result = $conn->query($grades_query);
                                 <img class="h-48 w-full object-cover transition-opacity duration-300 hover:opacity-80" src="https://via.placeholder.com/200x150" alt="No Image Available">
                             <?php endif; ?>
                         </div>
-                        <div class="p-6 flex flex-col justify-between w-full md:w-64">
+                        <div class="p-4 flex flex-col justify-between w-full md:w-64">
                             <div>
                                 <h2 class="text-xl font-semibold text-gray-800 mb-2"><?php echo htmlspecialchars($row['fullname']); ?></h2>
                                 <p class="text-gray-600">รหัสนักเรียน: <?php echo htmlspecialchars($row['student_id']); ?></p>
                                 <p class="text-gray-600">ระดับชั้น: <?php echo htmlspecialchars($row['grade_level']); ?></p>
                                 <p class="text-gray-600">ห้องเรียน: <?php echo htmlspecialchars($row['section']); ?></p>
                                 <p class="text-gray-600">ชื่อเล่น: <?php echo htmlspecialchars($row['nicknames']); ?></p>
-                                <p class="text-gray-600">อีเมล: <?php echo htmlspecialchars($row['email']); ?></p>
-                                <p class="text-gray-600">หมายเลขโทรศัพท์: <?php echo htmlspecialchars($row['phone_number']); ?></p>
                                 <p class="text-gray-600">เพศ: <?php echo htmlspecialchars($row['gender']); ?></p>
+                                <p class="text-gray-600">อีเมล: <?php echo htmlspecialchars($row['email']); ?></p>
+                                <p class="text-gray-600">โทรศัพท์: <?php echo htmlspecialchars($row['phone_number']); ?></p>
                             </div>
                         </div>
 

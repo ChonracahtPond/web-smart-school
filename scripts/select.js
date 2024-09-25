@@ -31,6 +31,7 @@ const pageLinkMap = {
   Manage_courses: "Manage-courses-link",
   Manage_grade: "Manage_grade-link",
   Manage_enrollments: "Manage-enrollments-link",
+  Add_enrollment: "Manage-enrollments-link",
   Manage_Activity: "Manage-Activity-link",
   Manage_Credits: "Manage-Credits-link",
   Reports_and_statistics: "reports-statistics-link",

@@ -25,7 +25,7 @@ $sheet->setCellValue('I1', 'credits');
 
 // ดึงข้อมูลจากฐานข้อมูล
 $sql = "SELECT student_id, course_id, semester, academic_year, grade, status, teacher_id, class, credits 
-        FROM enrollments WHERE created_at BETWEEN ? AND ?";
+        FROM enrollments WHERE created_at BETWEEN ? AND ? AND status = '0'";
 
 $stmt = $conn->prepare($sql);
 if ($stmt === false) {
