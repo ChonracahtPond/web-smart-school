@@ -59,21 +59,18 @@ $result = $conn->query($sql);
                             <td class="px-6 py-4"><?php echo htmlspecialchars($row['email']); ?></td>
                             <td class="px-6 py-4"><?php echo htmlspecialchars($row['phone_number']); ?></td>
                             <td class="px-6 py-4"><?php echo htmlspecialchars($row['gender']); ?></td>
-                            <td class="px-6 py-4 flex space-x-4 justify-center">
-                                <a href="../mpdf/student_report/view_register.php?student_id=<?php echo urlencode($row['student_id']); ?>" class="inline-flex items-center text-green-500 hover:text-green-600 text-xl" title="ดูรายละเอียด">
-                                    <button class="flex items-center bg-transparent border-0 focus:outline-none">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
+                            <td class="px-6 py-4 flex space-x-2 justify-center">
+                                <a href="../mpdf/student_report/view_register.php?student_id=<?php echo urlencode($row['student_id']); ?>" class="bg-green-500 text-white px-3 py-1 rounded-lg shadow-lg hover:bg-green-600" title="ดูรายละเอียด">
+                                    <i class="fas fa-eye"></i>
+                                    ดูรายละเอียด
                                 </a>
-                                <a href="?page=edit_user&id=<?php echo urlencode($row['student_id']); ?>" class="inline-flex items-center text-blue-500 hover:text-blue-600 text-xl mx-10" title="แก้ไข">
-                                    <button class="flex items-center bg-transparent border-0 focus:outline-none">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
+                                <a href="?page=edit_user&id=<?php echo urlencode($row['student_id']); ?>" class="bg-blue-500 text-white px-3 py-1 rounded-lg shadow-lg hover:bg-blue-600" title="แก้ไข">
+                                    <i class="fas fa-edit"></i>
+                                    แก้ไข
                                 </a>
-                                <a href="?page=delete_user&id=<?php echo urlencode($row['student_id']); ?>" class="inline-flex items-center text-red-500 hover:text-red-600 text-xl" title="ลบ" onclick="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบข้อมูลนี้?')">
-                                    <button class="flex items-center bg-transparent border-0 focus:outline-none">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                <a href="?page=delete_user&id=<?php echo urlencode($row['student_id']); ?>" class="bg-red-500 text-white px-3 py-1 rounded-lg shadow-lg hover:bg-red-600" title="ลบ" onclick="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบข้อมูลนี้?')">
+                                    <i class="fas fa-trash"></i>
+                                    ลบ
                                 </a>
                             </td>
 
