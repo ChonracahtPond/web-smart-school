@@ -18,13 +18,18 @@ if ($result->num_rows === 0) {
 }
 ?>
 
-<div class="mx-auto px-4">
-    <h1 class="flex items-center font-sans font-bold text-indigo-500 px-2 py-8 text-xl md:text-2xl">
-        <i class="fas fa-user-graduate mr-2"></i>นักเรียนที่มีสิทธิสอบ
-    </h1>
+<div class="">
 
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded-lg shadow bg-white">
+        <!-- <h1 class="flex items-center font-sans font-bold text-indigo-500 px-2 py-8 text-xl md:text-2xl">
+            <i class="fas fa-user-graduate mr-2"></i>นักเรียนที่มีสิทธิสอบ
+        </h1> -->
+
+        <h1 class="text-3xl font-semibold text-indigo-500 dark:text-white mb-4">นักเรียนที่มีสิทธิสอบ</h1>
         <?php include "modal/add_eligible_students.php"; ?>
+
+        <div class="bg-gray-200 w-full h-0.5 my-5"></div>
+
 
         <table id="eligibleStudentsTable" class="stripe hover text-center" style="width:100%;">
             <thead class="text-white" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;">

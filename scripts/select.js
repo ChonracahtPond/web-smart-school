@@ -41,6 +41,7 @@ const pageLinkMap = {
   add_Graduation_system: "Graduation-system-link",
   eligible_students: "eligible_students-link",
   eligible_students_nnet: "eligible_students_nnet-link",
+  add_eligible_students_nnet: "eligible_students_nnet-link",
   Manage_exam_Midterm: "Manage_exam_Midterm",
   add_exams: "Manage_exam_Midterm",
   Manage_exam_Final: "Manage_exam_Final",
@@ -61,6 +62,7 @@ const pageLinkMap = {
   StudentGrade: "StudentGrade-link",
   manage_access_rights: "manage_access_rights-link",
   scores_management: "scores_management-link",
+  add_scores_management: "scores_management-link",
 
   // setting
   edit_profile: "edit-profile-link",

@@ -29,11 +29,15 @@ $result = $stmt->get_result();
 
 ?>
 
-<div class="mx-auto px-2">
-    <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
-        จัดการการสอบปลายภาค
-    </h1>
+<div>
+
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+        <!-- <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
+        จัดการการสอบปลายภาค
+    </h1> -->
+
+        <h1 class="text-3xl font-semibold text-indigo-500 dark:text-white mb-4">จัดการการสอบปลายภาค</h1>
+
         <div class="flex justify-between items-center mb-4">
             <div class="flex space-x-4">
                 <!-- <button id="openModal" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">
@@ -86,6 +90,7 @@ $result = $stmt->get_result();
             </div>
         </div>
 
+        <div class="bg-gray-200 w-full h-0.5 my-5"></div>
 
         <table id="examTable" class="stripe hover text-center" style="width:100%;">
             <thead class="text-white" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;">

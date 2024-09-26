@@ -11,7 +11,7 @@ $sql = "SELECT e.exam_id, e.enrollment_id, e.exam_type, e.exam_date, e.total_mar
         JOIN students s ON e.student_id = s.student_id
         JOIN enrollments en ON e.enrollment_id = en.enrollment_id
         JOIN courses c ON en.course_id = c.course_id
-        WHERE e.exam_type = 'กลางภาค'
+        WHERE e.exam_type = 'กลางภาค' 
         ";
 
 if ($startDate && $endDate) {
@@ -29,11 +29,18 @@ $result = $stmt->get_result();
 
 ?>
 
-<div class="mx-auto px-2">
-    <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
-        จัดการการสอบกลางภาค
-    </h1>
+<div class="">
+
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+        <!-- <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
+            จัดการการสอบกลางภาค
+        </h1> -->
+
+        <h1 class="text-3xl font-semibold text-indigo-500 dark:text-white mb-4">จัดการการสอบกลางภาค</h1>
+
+
+
+
         <div class="flex justify-between items-center mb-4">
             <div class="flex space-x-4">
                 <!-- <button id="openModal" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">
@@ -85,6 +92,7 @@ $result = $stmt->get_result();
                 <a href="../exports/exams/download_excel.php" class="text-red-500" download>ดาวน์โหลดฟอร์ม Excel</a>
             </div>
         </div>
+        <div class="bg-gray-200 w-full h-0.5 my-5"></div>
 
 
         <table id="examTable" class="stripe hover text-center" style="width:100%;">

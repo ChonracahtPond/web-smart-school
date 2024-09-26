@@ -53,8 +53,7 @@ function fetchStudents($conn, $grade_level = null)
 $students = fetchStudents($conn, $selected_grade_level); // แก้ไขเพื่อให้ตัวแปร $students มีค่าเริ่มต้น
 
 // ฟังก์ชันเพื่อตรวจสอบว่านักเรียนมีอยู่ใน eligible_students หรือไม่
-function isStudentAlreadyEligible($conn, $student_id)
-{
+function isStudentAlreadyEligible($conn, $student_id) {
     $sql_check = "SELECT COUNT(*) as count FROM eligible_students WHERE student_id = '" . $conn->real_escape_string($student_id) . "' AND eligible_type = 'nnet'";
     $result = $conn->query($sql_check);
     if ($result === false) {
@@ -68,55 +67,37 @@ function isStudentAlreadyEligible($conn, $student_id)
 // การเพิ่มข้อมูลใน eligible_students
 if (isset($_POST['confirm'])) {
     // ตรวจสอบว่ามีนักเรียนที่เลือกหรือไม่
-    $selected_students = isset($_POST['selected_students']) ? $_POST['selected_students'] : [];
+    if (isset($_POST['selected_students']) && !empty($_POST['selected_students'])) {
+        // ดึงข้อมูล enrollmentId และ dateTime
+        $enrollment_id = $_POST['enrollmentId'];
+        $date_time = $_POST['dateTime'];
 
-    // ดึงข้อมูล enrollmentId และ dateTime
-    $enrollment_id = $_POST['enrollmentId'];
-    $date_time = $_POST['dateTime'];
+        // เตรียมการสำหรับการเพิ่มข้อมูลในฐานข้อมูล
+        $selected_students = $_POST['selected_students'];
+        foreach ($selected_students as $student_id) {
+            // ตรวจสอบว่ามีนักเรียนใน eligible_students หรือไม่
+            if (!isStudentAlreadyEligible($conn, $student_id)) {
+                // สร้าง query สำหรับการเพิ่มข้อมูล
+                $sql_insert = "INSERT INTO eligible_students (student_id, enrollment_id, exam_id, created_at, date_time, eligible_type, status) 
+                               VALUES ('" . $conn->real_escape_string($student_id) . "', 
+                                       '" . $conn->real_escape_string($enrollment_id) . "', 
+                                       'exam_id_value', 
+                                       NOW(), 
+                                       '" . $conn->real_escape_string($date_time) . "', 
+                                       'nnet', 
+                                       '1')"; // กำหนดค่า status เป็น 1
 
-    // เก็บ student_id ที่มีอยู่ใน eligible_students
-    $eligible_students_ids = [];
-    $sql_check_eligible = "SELECT student_id FROM eligible_students WHERE eligible_type = 'nnet'";
-    $eligible_result = $conn->query($sql_check_eligible);
-
-    if ($eligible_result && $eligible_result->num_rows > 0) {
-        while ($row = $eligible_result->fetch_assoc()) {
-            $eligible_students_ids[] = $row['student_id'];
-        }
-    }
-
-    // เพิ่มข้อมูลใน eligible_students
-    foreach ($selected_students as $student_id) {
-        if (!isStudentAlreadyEligible($conn, $student_id)) {
-            $sql_insert = "INSERT INTO eligible_students (student_id, enrollment_id, exam_id, created_at, date_time, eligible_type, status) 
-                           VALUES ('" . $conn->real_escape_string($student_id) . "', 
-                                   '" . $conn->real_escape_string($enrollment_id) . "', 
-                                   'exam_id_value', 
-                                   NOW(), 
-                                   '" . $conn->real_escape_string($date_time) . "', 
-                                   'nnet', 
-                                   '1')";
-            if ($conn->query($sql_insert) === false) {
-                die('Error: ' . $conn->error);
+                // ดำเนินการ query
+                if ($conn->query($sql_insert) === false) {
+                    die('Error: ' . $conn->error); // ตรวจสอบการทำงานของ query
+                }
             }
         }
+        echo "<script>window.location.href='?page=eligible_students_nnet&status=1';</script>";
+    } else {
+        echo "กรุณาเลือกนักเรียนก่อนทำการยืนยัน.";
     }
-
-    // ลบข้อมูลนักเรียนที่ไม่เลือก
-    foreach ($eligible_students_ids as $eligible_student_id) {
-        if (!in_array($eligible_student_id, $selected_students)) {
-            $sql_delete = "DELETE FROM eligible_students WHERE student_id = '" . $conn->real_escape_string($eligible_student_id) . "' AND eligible_type = 'nnet'";
-            if ($conn->query($sql_delete) === false) {
-                die('Error: ' . $conn->error);
-            }
-        }
-    }
-
-    echo "<script>window.location.href='?page=eligible_students_nnet&status=1';</script>";
-} else {
-    echo "กรุณาเลือกนักเรียนก่อนทำการยืนยัน.";
 }
-
 ?>
 
 <div class="p-8 mt-6 lg:mt-0 rounded-lg shadow bg-white">
@@ -149,8 +130,7 @@ if (isset($_POST['confirm'])) {
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                <?php if (!empty($students)): // ใช้ !empty แทน count 
-                ?>
+                <?php if (!empty($students)): // ใช้ !empty แทน count ?>
                     <?php foreach ($students as $student): ?>
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 whitespace-nowrap">

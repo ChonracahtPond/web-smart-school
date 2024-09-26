@@ -48,7 +48,7 @@ $result = $stmt->get_result();
                         <td><?php echo htmlspecialchars($row['student_name']); ?></td>
                         <td><?php echo htmlspecialchars($row['date_time']); ?></td>
                         <td class="flex justify-center space-x-2">
-                            <a href="?page=edit_eligible_students_nnet&id=<?php echo htmlspecialchars($row['eligible_students_id']); ?>" class="bg-blue-500 text-white font-bold h-10 w-18 py-1 px-2 rounded hover:bg-blue-600 transition duration-200 flex items-center">
+                            <!-- <a href="?page=edit_eligible_students_nnet&id=<?php echo htmlspecialchars($row['eligible_students_id']); ?>" class="bg-blue-500 text-white font-bold h-10 w-18 py-1 px-2 rounded hover:bg-blue-600 transition duration-200 flex items-center">
                                 <svg class="h-5 w-5 mr-1" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" />
                                     <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
@@ -56,7 +56,7 @@ $result = $stmt->get_result();
                                     <line x1="16" y1="5" x2="19" y2="8" />
                                 </svg>
                                 แก้ไข
-                            </a>
+                            </a> -->
                             <a href="?page=delete_eligible_students_nnet&id=<?php echo htmlspecialchars($row['eligible_students_id']); ?>" class="bg-red-500 text-white font-bold py-1 px-2 rounded hover:bg-red-600 transition duration-200 flex items-center h-10 w-18" onclick="return confirm('คุณแน่ใจหรือไม่ว่าจะลบการลงทะเบียนนี้?')">
                                 <svg class="h-5 w-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" />

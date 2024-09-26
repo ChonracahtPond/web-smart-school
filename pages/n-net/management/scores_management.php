@@ -30,29 +30,36 @@ $year_result = $conn->query($year_sql);
     }
 </style>
 
-<div class="container mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white mb-4">จัดการคะแนน N-NET</h1>
+<div class="">
 
-    <!-- ปุ่มเพิ่มคะแนนใหม่ -->
-    <button id="openAddScoreModal" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+ เพิ่มคะแนนใหม่</button>
 
-    <!-- ฟอร์มค้นหา -->
-    <form method="GET" action="" class="relative flex bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
-        <input type="text" name="search" id="search-input" placeholder="ค้นหานักเรียน..." class="px-4 py-2 border rounded-lg w-full mb-4 mr-5" value="<?php echo htmlspecialchars($search); ?>" />
-
-        <!-- ฟิลเตอร์ปี พ.ศ. -->
-        <select name="exam_year" class="px-4 py-2 border rounded-lg w-full mb-4">
-            <option value="">-- เลือกปี พ.ศ. --</option>
-            <?php while ($year_row = $year_result->fetch_assoc()) : ?>
-                <option value="<?php echo htmlspecialchars($year_row['exam_year']); ?>" <?php if ($filter_exam_year == $year_row['exam_year']) echo 'selected'; ?>>
-                    <?php echo htmlspecialchars($year_row['exam_year']); ?>
-                </option>
-            <?php endwhile; ?>
-        </select>
-    </form>
 
     <!-- ตารางแสดงข้อมูลคะแนน -->
     <div class="overflow-x-auto bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
+
+        <h1 class="text-3xl font-semibold text-gray-900 dark:text-white mb-4">จัดการคะแนน N-NET</h1>
+
+        <!-- ปุ่มเพิ่มคะแนนใหม่ -->
+        <a href="?page=add_scores_management" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+ เพิ่มคะแนนใหม่</a>
+
+
+        <div class="bg-gray-200 w-full h-0.5 my-5"></div>
+
+        <!-- ฟอร์มค้นหา -->
+        <form method="GET" action="" class="relative flex  p-4 mt-4">
+            <input type="text" name="search" id="search-input" placeholder="ค้นหานักเรียน..." class="px-4 py-2 border rounded-lg w-full mb-4 mr-5" value="<?php echo htmlspecialchars($search); ?>" />
+
+            <!-- ฟิลเตอร์ปี พ.ศ. -->
+            <select name="exam_year" class="px-4 py-2 border rounded-lg w-full mb-4">
+                <option value="">-- เลือกปี พ.ศ. --</option>
+                <?php while ($year_row = $year_result->fetch_assoc()) : ?>
+                    <option value="<?php echo htmlspecialchars($year_row['exam_year']); ?>" <?php if ($filter_exam_year == $year_row['exam_year']) echo 'selected'; ?>>
+                        <?php echo htmlspecialchars($year_row['exam_year']); ?>
+                    </option>
+                <?php endwhile; ?>
+            </select>
+        </form>
+
         <table class="w-full border-collapse">
             <thead>
                 <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
@@ -78,13 +85,13 @@ $year_result = $conn->query($year_sql);
                                 <?php echo (intval($row['score']) >= 50) ? '<span class="text-green-500 font-semibold">ผ่าน</span>' : '<span class="text-red-500 font-semibold">ไม่ผ่าน</span>'; ?>
                             </td>
                             <td class="px-4 py-2 border-b flex space-x-4">
-                            <button
-    class="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-yellow-600 transition-colors duration-300 ease-in-out"
-    data-edit-id="<?php echo htmlspecialchars($row['nnet_scores_id']); ?>"
-    onclick="openEditModal(this)">
-    <i class="fas fa-edit text-xl"></i>
-    <span class="hidden md:inline">แก้ไข</span>
-</button>
+                                <button
+                                    class="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-yellow-600 transition-colors duration-300 ease-in-out"
+                                    data-edit-id="<?php echo htmlspecialchars($row['nnet_scores_id']); ?>"
+                                    onclick="openEditModal(this)">
+                                    <i class="fas fa-edit text-xl"></i>
+                                    <span class="hidden md:inline">แก้ไข</span>
+                                </button>
                                 <a href="?page=delete_score&id=<?php echo htmlspecialchars($row['nnet_scores_id']); ?>"
                                     class="text-red-500 hover:text-red-700 flex items-center space-x-2 transition-colors duration-300 ease-in-out transform hover:scale-110"
                                     onclick="return confirm('คุณแน่ใจที่จะลบคะแนนนี้ใช่หรือไม่?')">
@@ -106,40 +113,6 @@ $year_result = $conn->query($year_sql);
         </table>
     </div>
 </div>
-
-
-<!-- โมดอลสำหรับแก้ไขคะแนน -->
-<div id="editScoreModal" class="modal fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50 hidden">
-    <div class="modal-content bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-        <div class="modal-header flex justify-between items-center border-b pb-2">
-            <h5 class="text-xl font-semibold">แก้ไขคะแนน</h5>
-            <button id="closeEditScoreModal" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-        </div>
-        <div class="modal-body mt-4">
-            <form id="editScoreForm" method="POST" action="?page=update_score">
-                <input type="hidden" id="edit_nnet_scores_id" name="nnet_scores_id">
-                <div class="mb-4">
-                    <label for="edit_student_id" class="block text-sm font-medium text-gray-700">รหัสนักเรียน</label>
-                    <input type="text" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="edit_student_id" name="student_id" required>
-                </div>
-                <div class="mb-4">
-                    <label for="edit_exam_id" class="block text-sm font-medium text-gray-700">รหัสการสอบ</label>
-                    <input type="text" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="edit_exam_id" name="exam_id" required>
-                </div>
-                <div class="mb-4">
-                    <label for="edit_score" class="block text-sm font-medium text-gray-700">คะแนน</label>
-                    <input type="number" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="edit_score" name="score" required>
-                </div>
-                <div class="mb-4">
-                    <label for="edit_exam_date" class="block text-sm font-medium text-gray-700">วันที่สอบ</label>
-                    <input type="date" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="edit_exam_date" name="exam_date" required>
-                </div>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">บันทึกการเปลี่ยนแปลง</button>
-            </form>
-        </div>
-    </div>
-</div>
-
 
 <?php include "modal_add_score.php"; ?>
 <?php include "modal_edit_score.php"; ?>

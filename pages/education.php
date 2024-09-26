@@ -121,15 +121,16 @@
                 case 'insert_eligible_students_nnet':
                     include "../pages/eligible_students_nnet/insert_eligible_students_nnet.php";
                     break;
-                // case 'insert_eligible_students':
-                //     include "../pages/eligible_students/insert_eligible_students.php";
-                //     break;
-                // case 'edit_eligible_students':
-                //     include "../pages/eligible_students/edit_eligible_students.php";
-                //     break;
-                // case 'delete_eligible_students':
-                //     include "../pages/eligible_students/delete_eligible_students.php";
-                //     break;
+                case 'delete_eligible_students_nnet':
+                    include "../pages/eligible_students_nnet/delete_eligible_students_nnet.php";
+                    break;
+                    // case 'insert_eligible_students':
+                    //     include "../pages/eligible_students/insert_eligible_students.php";
+                    //     break;
+                    // case 'edit_eligible_students':
+                    //     include "../pages/eligible_students/edit_eligible_students.php";
+                    //     break;
+
 
 
 
@@ -197,12 +198,19 @@
                 case 'scores_management':
                     include "../pages/n-net/management/scores_management.php";
                     break;
-                case 'add_score':
-                    include "../pages/n-net/management/add_score.php";
+                case 'add_scores_management':
+                    include "../pages/n-net/management/add_scores_management.php";
                     break;
-                case 'update_score':
-                    include "../pages/n-net/management/update_score.php";
-                    break;
+
+
+
+
+                // case 'add_score':
+                //     include "../pages/n-net/management/add_score.php";
+                //     break;
+                // case 'update_score':
+                //     include "../pages/n-net/management/update_score.php";
+                //     break;
 
 
 
