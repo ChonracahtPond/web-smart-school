@@ -111,6 +111,26 @@
                     include "../pages/eligible_students/delete_eligible_students.php";
                     break;
 
+                    // -- หน้า นักเรียนที่มาสิทธิสอบ nnet --//
+                case 'eligible_students_nnet':
+                    include "../pages/eligible_students_nnet/eligible_students_nnet.php";
+                    break;
+                case 'add_eligible_students_nnet':
+                    include "../pages/eligible_students_nnet/add_eligible_students_nnet.php";
+                    break;
+                case 'insert_eligible_students_nnet':
+                    include "../pages/eligible_students_nnet/insert_eligible_students_nnet.php";
+                    break;
+                // case 'insert_eligible_students':
+                //     include "../pages/eligible_students/insert_eligible_students.php";
+                //     break;
+                // case 'edit_eligible_students':
+                //     include "../pages/eligible_students/edit_eligible_students.php";
+                //     break;
+                // case 'delete_eligible_students':
+                //     include "../pages/eligible_students/delete_eligible_students.php";
+                //     break;
+
 
 
                     // -- หน้า จัดการการสอบกลางภาค --//
@@ -158,6 +178,9 @@
                     break;
                 case 'detail_Student_registration_results':
                     include "../pages/courses/Student_registration_results/detail_Student_registration_results.php";
+                    break;
+                case 'update_enrollment':
+                    include "../pages/courses/Student_registration_results/sql/update_enrollment.php";
                     break;
 
 

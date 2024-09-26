@@ -135,11 +135,20 @@ include "sql/sql.php"; // รวมไฟล์ SQL
                                 <td class="px-4 py-2"><?php echo htmlspecialchars($row['teacher_id']); ?></td>
                                 <td class="px-4 py-2"><?php echo htmlspecialchars($row['credits']); ?></td>
                                 <td class="px-4 py-2"><?php echo htmlspecialchars($row['course_type']); ?></td>
-                                <td class="px-4 py-2 ">
-                                    <button class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-1 px-3 rounded edit-btn flex" data-enrollment-id="<?php echo htmlspecialchars($row['enrollment_id']); ?>">
-                                        <svg class="h-5 w-5 " viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <td class="px-4 py-2">
+                                    <button class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-1 px-3 rounded edit-btn flex"
+                                        data-student-id="<?php echo htmlspecialchars($row['student_id']); ?>"
+                                        data-enrollment-id="<?php echo htmlspecialchars($row['enrollment_id']); ?>"
+                                        data-course-id="<?php echo htmlspecialchars($row['course_id']); ?>"
+                                        data-course-name="<?php echo htmlspecialchars($row['course_name']); ?>"
+                                        data-semester="<?php echo htmlspecialchars($row['semester']); ?>"
+                                        data-academic-year="<?php echo htmlspecialchars($row['academic_year']); ?>"
+                                        data-grade="<?php echo htmlspecialchars($row['grade']); ?>"
+                                        data-status="<?php echo htmlspecialchars($row['status']); ?>"
+                                        data-credits="<?php echo htmlspecialchars($row['credits']); ?>">
+                                        <svg class="h-5 w-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" />
-                                            <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                                            <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
                                             <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
                                             <line x1="16" y1="5" x2="19" y2="8" />
                                         </svg>
@@ -185,7 +194,6 @@ include "sql/sql.php"; // รวมไฟล์ SQL
 
 <?php include "modal/modal.php"; ?>
 
-
 <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- DataTables -->
@@ -199,26 +207,24 @@ include "sql/sql.php"; // รวมไฟล์ SQL
 
         // เปิด modal และแสดงข้อมูลเมื่อคลิกปุ่มแก้ไข
         $('.edit-btn').on('click', function() {
-            $('#enrollment_id').val($(this).data('enrollment-id'));
-            $('#course_id').val($(this).data('course-id'));
-            $('#course_name').val($(this).data('course-name'));
-            $('#semester').val($(this).data('semester'));
-            $('#academic_year').val($(this).data('academic-year'));
-            $('#grade').val($(this).data('grade'));
-            $('#status').val($(this).data('status'));
-            $('#credits').val($(this).data('credits'));
-            $('#editModal').removeClass('hidden');
+            const data = $(this).data(); // ใช้ data() เพื่อดึงข้อมูลทั้งหมด
+
+            $('#student_id').val(data.studentId);
+            $('#enrollment_id').val(data.enrollmentId);
+            $('#course_id').val(data.courseId);
+            $('#course_name').val(data.courseName);
+            $('#semester').val(data.semester);
+            $('#academic_year').val(data.academicYear);
+            $('#grade').val(data.grade);
+            $('#status').val(data.status);
+            $('#credits').val(data.credits);
+
+            $('#editModal').removeClass('hidden'); // แสดง modal
         });
 
         // ปิด modal เมื่อคลิกปุ่มยกเลิก
         $('#closeModal').on('click', function() {
-            $('#editModal').addClass('hidden');
+            $('#editModal').addClass('hidden'); // ซ่อน modal
         });
     });
 </script>
-
-<?php
-// ปิดการเชื่อมต่อ
-$stmt->close();
-$conn->close();
-?>

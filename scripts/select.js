@@ -40,6 +40,7 @@ const pageLinkMap = {
   Graduation_system: "Graduation-system-link",
   add_Graduation_system: "Graduation-system-link",
   eligible_students: "eligible_students-link",
+  eligible_students_nnet: "eligible_students_nnet-link",
   Manage_exam_Midterm: "Manage_exam_Midterm",
   add_exams: "Manage_exam_Midterm",
   Manage_exam_Final: "Manage_exam_Final",
