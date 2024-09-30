@@ -26,13 +26,12 @@ if ($startDate && $endDate) {
 $stmt->execute();
 $result = $stmt->get_result();
 
-
 ?>
 
 <div>
 
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-        <!-- <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
+        <!-- <h1 class="flex items-center font-sans font-bold break-n      ormal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
         จัดการการสอบปลายภาค
     </h1> -->
 

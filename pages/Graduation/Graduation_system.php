@@ -10,7 +10,6 @@ $sql_students = "SELECT s.student_id, s.fullname,
                  JOIN courses c ON e.course_id = c.course_id
                  WHERE e.status = '2' 
                  GROUP BY s.student_id, s.fullname, e.academic_year";
-
 $students_result = $conn->query($sql_students);
 
 // Check if there was an error with the query

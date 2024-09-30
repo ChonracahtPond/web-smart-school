@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Assume you have a database connection already established in $conn
 
 // Fetch grade_levels from the students table
@@ -27,7 +27,7 @@ function fetchStudents($conn, $grade_level = null)
     if ($result === false) {
         die('Query failed: ' . $conn->error); // Check if the query failed
     }
-    
+
     return $result;
 }
 
