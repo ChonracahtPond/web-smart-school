@@ -138,7 +138,7 @@
                             <a href="?page=Graduation_system" id="Graduation-system-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">คาดว่าจะจบการศึกษา</a>
                         </li>
                         <li>
-                            <a href="?page=" id="" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ประวัติการจบการศึกษา</a>
+                            <a href="?page=Graduation_history" id="Graduation_history-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ประวัติการจบการศึกษา</a>
                         </li>
 
                         <!-- <li>

@@ -39,6 +39,7 @@ const pageLinkMap = {
   Evaluation_management: "Evaluation-management-link",
   Graduation_system: "Graduation-system-link",
   add_Graduation_system: "Graduation-system-link",
+  Graduation_history: "Graduation_history-link",
   eligible_students: "eligible_students-link",
   eligible_students_nnet: "eligible_students_nnet-link",
   add_eligible_students_nnet: "eligible_students_nnet-link",
@@ -97,6 +98,7 @@ const dropdownMap = {
   add_exams: "dropdown-Manage-exam",
   Manage_exam_Final: "dropdown-Manage-exam",
   Graduation_system: "dropdown-Manage-Graduation",
+  Graduation_history: "dropdown-Manage-Graduation",
   add_Graduation_system: "dropdown-Manage-Graduation",
   //   Teachersidebar
   Teacher_Manage: "dropdown-Manage-Teacher",

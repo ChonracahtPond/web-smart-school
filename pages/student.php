@@ -195,7 +195,7 @@
                     break;
 
                 case 'student_details':
-                    include "../pages/student/student_details.php";
+                    include "../pages/student/student_details/student_details.php";
                     break;
 
                 case 'students_eligible_for_exam':

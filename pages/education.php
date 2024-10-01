@@ -166,6 +166,9 @@
                 case 'Graduation_system':
                     include "../pages/Graduation/Graduation_system.php";
                     break;
+                case 'Graduation_approval':
+                    include "../pages/Graduation/sql/Graduation_approval.php";
+                    break;
                 case 'add_Graduation_system':
                     include "../pages/Graduation/add_Graduation_system.php";
                     break;
@@ -201,6 +204,17 @@
                 case 'add_scores_management':
                     include "../pages/n-net/management/add_scores_management.php";
                     break;
+
+
+
+                    // -- หน้า ระบบประวัติจบการศึกษา --//
+                case 'Graduation_history':
+                    include "../pages/Graduation_history/Graduation_history.php";
+                    break;
+             
+
+
+
 
 
 

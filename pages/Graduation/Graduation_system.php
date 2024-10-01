@@ -8,7 +8,10 @@ $sql_students = "SELECT s.student_id, s.fullname,
                  FROM enrollments e
                  JOIN students s ON e.student_id = s.student_id
                  JOIN courses c ON e.course_id = c.course_id
-                 WHERE e.status = '2' 
+                 WHERE
+                --   e.status = '2' 
+                --  AND 
+                 s.status = '2' 
                  GROUP BY s.student_id, s.fullname, e.academic_year";
 $students_result = $conn->query($sql_students);
 
@@ -20,7 +23,6 @@ if (!$students_result) {
 // Convert students data to an array
 $students_data = [];
 while ($row = $students_result->fetch_assoc()) {
-    // Combine courses and academic years by student_id
     $student_id = $row['student_id'];
     if (!isset($students_data[$student_id])) {
         $students_data[$student_id] = [
@@ -45,63 +47,57 @@ $students_data = array_map(function ($student) {
 
 // Free result set
 $students_result->free();
+
+
 ?>
 
-<div class="mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white text-center">จัดการรายชื่อนักศึกษาที่คาดว่าจะจบการศึกษา</h1>
-    <div class="bg-white shadow-lg rounded-lg p-4 mt-4">
+<div class="">
+    <div id='recipients' class="p-5 mt-6 lg:mt-0 rounded shadow bg-white">
+        <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
+            จัดการรายชื่อนักศึกษาที่คาดว่าจะจบการศึกษา
+        </h1>
         <div class=" my-5">
-            <!-- <button id="addStudent" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all">รายชื่อนักศึกษาที่คาดว่าจะจบ</button> -->
-
             <a href="?page=add_Graduation_system" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all my-10">รายชื่อนักศึกษาที่คาดว่าจะจบ</a>
         </div>
-        <table class="min-w-full divide-y divide-gray-300">
-            <thead>
+        <div class="bg-gray-200 w-full h-0.5 mt-5 mb-5"></div>
+
+        <table id="students_table" class="stripe hover " style="width:100%; padding-top: 1em; padding-bottom: 1em;">
+            <thead class="text-center">
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ลำดับ</th> <!-- เพิ่มคอลัมน์หมายเลขลำดับ -->
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">รหัสนักศึกษา</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อ-สกุล</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ปีการศึกษา</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">การจัดการ</th>
+                    <th>ลำดับ</th>
+                    <th>รหัสนักศึกษา</th>
+                    <th>ชื่อ-สกุล</th>
+                    <th>ปีการศึกษา</th>
+                    <th>การจัดการ</th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                <?php $no = 1; // ตัวแปรสำหรับหมายเลขลำดับ 
-                ?>
+            <tbody class="text-center">
+                <?php $no = 1; ?>
                 <?php foreach ($students_data as $student_id => $student): ?>
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap"><?php echo $no++; ?></td> <!-- แสดงหมายเลขลำดับ -->
-                        <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($student_id); ?></td>
-                        <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($student['fullname']); ?></td>
-                        <td class="px-6 py-4 whitespace-nowrap"><?php echo htmlspecialchars($student['academic_years']); ?></td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <!-- <button class="bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600 transition-all" onclick="editStudent('<?php echo $student_id; ?>')">แก้ไข</button> -->
-                            <button class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-all" onclick="deleteStudent('<?php echo $student_id; ?>')">ยกเลิก</button>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo htmlspecialchars($student_id); ?></td>
+                        <td><?php echo htmlspecialchars($student['fullname']); ?></td>
+                        <td><?php echo htmlspecialchars($student['academic_years']); ?></td>
+                        <td>
+                            <a href="?page=Graduation_approval&id=<?php echo $student_id; ?>" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-all my-10">อนุมัติจบการศึกษา</a>
+                            <button class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-all">ยกเลิก</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-
     </div>
 </div>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
 <script>
-    document.getElementById('addStudent').addEventListener('click', function() {
-        // Implement the logic to open a modal or redirect to a page for adding a new student
-        alert('Implement add student functionality here!');
+    $(document).ready(function() {
+        $('#students_table').DataTable({
+            responsive: true
+        }).columns.adjust().responsive.recalc();
     });
-
-    function editStudent(studentId) {
-        // Implement the logic to open a modal or redirect to a page for editing the student details
-        alert('Implement edit student functionality for student ID: ' + studentId);
-    }
-
-    function deleteStudent(studentId) {
-        // Implement the logic to confirm and delete the student
-        if (confirm('คุณแน่ใจว่าต้องการลบข้อมูลนักเรียนนี้?')) {
-            // Perform delete operation, e.g., send an AJAX request to the server
-            alert('Implement delete functionality for student ID: ' + studentId);
-        }
-    }
 </script>
