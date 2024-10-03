@@ -91,86 +91,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 
-<style>
-    .dataTables_wrapper select {
-        color: #4a5568;
-        padding: 0.5rem 1rem;
-        line-height: 1.25;
-        border-width: 2px;
-        border-radius: 0.25rem;
-        border-color: #edf2f7;
-        background-color: #edf2f7;
-        width: 100px;
-    }
-
-    .dataTables_wrapper .dataTables_filter input {
-        color: #4a5568;
-        padding: 0.5rem 1rem;
-        line-height: 1.25;
-        border-width: 2px;
-        border-radius: 0.25rem;
-        border-color: #edf2f7;
-        background-color: #edf2f7;
-        width: 500px;
-    }
-
-    table.dataTable.hover tbody tr:hover,
-    table.dataTable.display tbody tr:hover {
-        background-color: #ebf4ff;
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button {
-        font-weight: 700;
-        border-radius: 0.25rem;
-        border: 1px solid transparent;
-    }
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current,
-    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-        color: #fff !important;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-        font-weight: 700;
-        background-color: #667eea !important;
-        border: 1px solid transparent;
-
-    }
-
-    table.dataTable.no-footer {
-        border-bottom: 1px solid #e2e8f0;
-        margin-top: 0.75em;
-        margin-bottom: 0.75em;
-
-    }
-
-    table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-    table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-        background-color: #667eea !important;
-    }
-</style>
-
-<!-- เพิ่มลิงค์ไปยัง Font Awesome CDN ในส่วน <head> ของ HTML -->
-
-<head>
-    <!-- ... -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-
-    <!-- ... -->
-</head>
-
 <div class="container mx-auto p-4">
 
 
     <div id="recipients" class="p-8 mt-6 lg:mt-0 rounded-lg shadow bg-white">
         <h1 class="text-3xl font-semibold text-gray-900 dark:text-white mb-5">จัดการหน่วยกิต</h1>
-        <button id="open-modal-button" class="bg-blue-500 mb-10 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-600 transition duration-150 ease-in-out flex items-center">
+        <button id="open-modal-button" class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-600 transition duration-150 ease-in-out flex items-center">
             <i class="fas fa-plus mr-2"></i> เพิ่มผู้เข้าร่วมกิจกรรม
         </button>
+        <div class="bg-gray-200 w-full h-0.5 my-5"></div>
 
         <!-- <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2">ค้นหาผู้เข้าร่วม</h2> -->
-        <input type="text" id="search-input" class="mt-1 mb-10 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400" placeholder="ค้นหาตามชื่อกิจกรรม, ชื่อนักศึกษา หรือวันที่ลงทะเบียน">
+        <!-- <input type="text" id="search-input" class="mt-1 mb-10 p-3 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400" placeholder="ค้นหาตามชื่อกิจกรรม, ชื่อนักศึกษา หรือวันที่ลงทะเบียน"> -->
 
         <table id="example" class="display stripe hover" style="width:100%;">
             <thead>
@@ -237,6 +169,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </tr>
                 <?php endwhile; ?>
             </tbody>
+            <tfoot>
+            <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
+                    <th>No.</th> <!-- เพิ่มคอลัมน์ลำดับเลข -->
+                    <th>กิจกรรม</th>
+                    <th>นักศึกษา</th>
+                    <th>เครดิตกิจกรรม</th>
+                    <th>เครดิตผู้เข้าร่วม</th>
+                    <th>วันที่ลงทะเบียน</th>
+                    <th>สถานะ</th>
+                    <th>จัดการ</th>
+                </tr>
+            </tfoot>
         </table>
 
     </div>

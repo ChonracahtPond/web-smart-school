@@ -106,8 +106,12 @@
                         <a href="?page=Manage_Activity" id="Manage-Activity-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">กิจกรรม กพช.</a>
                     </li>
                     <li>
+                        <a href="?page=Check_Manage_Credits" id="Check_Manage_Credits-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">เช็คกิจกรรม กพช.</a>
+                    </li>
+                    <li>
                         <a href="?page=Manage_Credits" id="Manage-Credits-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">จัดการข้อมูลหน่วยกิจ</a>
                     </li>
+
                     <li>
                         <a href="?page=Reports_and_statistics" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white hover:text-gray-800 dark:hover:bg-gray-700 pl-11">รายงานและสถิติ</a>
                     </li>

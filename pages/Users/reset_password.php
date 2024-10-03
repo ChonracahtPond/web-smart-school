@@ -9,9 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "UPDATE students SET password='$new_password' WHERE student_id='$student_id'";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Password reset successfully'); window.location.href='?page=reset_password';</script>";
+        echo "<script>window.location.href='?page=reset_password&status=1';</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "<script>window.location.href='?page=reset_password&status=0';</script>";
+
     }
 }
 
@@ -100,7 +102,7 @@ $grade_result = $conn->query($grade_sql);
             <input type="hidden" name="student_id" id="modal-student-id">
             <div class="mb-4">
                 <label class="block text-gray-700 dark:text-gray-300">ชื่อ-นามสกุล นักศึกษา:</label>
-                <input type="text" id="modal-student-name" class="mt-1 p-2 w-full border border-gray-300 rounded" readonly>
+                <input type="text" id="modal-student-name" class="mt-1 p-2 w-full border bg-gray-300 border-gray-300 rounded" readonly>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 dark:text-gray-300">รหัสผ่าน ใหม่!:</label>

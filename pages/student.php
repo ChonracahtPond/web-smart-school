@@ -65,6 +65,15 @@
                     include "../mpdf/attendance_pdf.php";
                     break;
 
+
+
+
+
+
+
+
+
+
                 case 'manage_access_rights':
                     include "../pages/Users/manage_access_rights.php";
                     break;
@@ -102,7 +111,10 @@
                     break;
 
 
-            
+                 // เช็คกิจกรรม
+                 case 'Check_Manage_Credits':
+                 include "../pages/Check_Manage_Credits/Check_Manage_Credits.php";
+                 break;
 
 
 
