@@ -42,13 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['import_file'])) {
         // Check if status is empty and assign a default value if it is
         $status = !empty($row['L']) ? $row['L'] : '0'; // Replace 'active' with your default status
 
+        // Hash the password before inserting into the database
+        $hashedPassword = password_hash($row['D'], PASSWORD_DEFAULT);
+
         // Bind parameters
         $stmt->bind_param(
             'ssssssssssssssssssssssssssssssssssss',
             $row['A'], // grade_level
             $row['B'], // section
             $row['C'], // username
-            $row['D'], // password
+            $hashedPassword, // password (use the hashed password)
             $row['E'], // fullname
             $row['F'], // nicknames
             $row['G'], // email
@@ -80,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['import_file'])) {
             $row['AG'], // buddhist_district
             $row['AH'], // buddhist_province
             $row['AI'],  // address
-            $row['AJ']  // address
+            $row['AJ']  // student_id
         );
 
         // Execute the statement
