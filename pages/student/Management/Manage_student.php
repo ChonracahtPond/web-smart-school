@@ -1,38 +1,51 @@
 <?php
 // SQL query to fetch student data
-$sql = "SELECT student_id, grade_level, section, username, fullname, nicknames, email, phone_number, date_of_birth, gender FROM students  WHERE status = '0'";
+$sql = "SELECT student_id, grade_level, section, username, fullname, nicknames, email, phone_number, date_of_birth, gender 
+        FROM students 
+        WHERE status IN (0, 2)";
+
 
 $result = $conn->query($sql);
 ?>
+<div class="">
+    <div class="bg-white shadow-lg rounded-lg p-4 w-full">
+
+        <h1 class="text-3xl font-semibold text-gray-900 mb-6">นำเข้าข้อมูลนักศึกษา</h1>
+        <!-- <a href="?page=add_student" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+ เพิ่มข้อมูลนักเรียน</a> -->
+        <!-- Import Button -->
+        <div class="mb-4 flex space-x-4">
+            <a href="?page=add_student" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">+ เพิ่มข้อมูลนักเรียน</a>
+            <a href="../mpdf/student_report/student_information_report.php" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-600">ออกรายงาน PDF</a>
+            <a href="../exports/student_report/student_information_excel.php" class="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-yellow-600">ออกรายงาน Excel</a>
+            <!-- Button to trigger modal -->
+            <button id="importButton" class="bg-purple-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-purple-600">นำเข้าข้อมูลจาก Excel</button>
+
+            <!-- Modal -->
+            <div id="importModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+                    <h2 class="text-xl font-semibold mb-4">นำเข้าข้อมูลจาก Excel</h2>
+                    <!-- Import Form -->
+                    <form action="../exports/student_report/import_student_excel.php" method="post" enctype="multipart/form-data" class="flex flex-col space-y-4">
+                        <input type="file" name="import_file" accept=".xlsx" class="px-4 py-2 border border-gray-300 rounded-lg">
+                        <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-purple-600">นำเข้าข้อมูลจาก Excel</button>
+                        <button type="button" id="closeModal" class="bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-red-600">ปิด</button>
+                    </form>
+                </div>
+            </div>
 
 
-<div class=" mx-auto">
-    <h1 class="text-3xl font-semibold text-gray-900 mb-6">นำเข้าข้อมูลนักศึกษา</h1>
-    <!-- <a href="?page=add_student" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mb-4 inline-block">+ เพิ่มข้อมูลนักเรียน</a> -->
-    <!-- Import Button -->
-    <div class="mb-4 flex space-x-4">
-        <a href="?page=add_student" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">+ เพิ่มข้อมูลนักเรียน</a>
-        <a href="../mpdf/student_report/student_information_report.php" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-600">ออกรายงาน PDF</a>
-        <a href="../exports/student_report/student_information_excel.php" class="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-yellow-600">ออกรายงาน Excel</a>
-        <!-- Button to trigger modal -->
-        <button id="importButton" class="bg-purple-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-purple-600">นำเข้าข้อมูลจาก Excel</button>
-    </div>
 
-    <!-- Modal -->
-    <div id="importModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-            <h2 class="text-xl font-semibold mb-4">นำเข้าข้อมูลจาก Excel</h2>
-            <!-- Import Form -->
-            <form action="../exports/student_report/import_student_excel.php" method="post" enctype="multipart/form-data" class="flex flex-col space-y-4">
-                <input type="file" name="import_file" accept=".xlsx" class="px-4 py-2 border border-gray-300 rounded-lg">
-                <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-purple-600">นำเข้าข้อมูลจาก Excel</button>
-                <button type="button" id="closeModal" class="bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-red-600">ปิด</button>
-            </form>
+            <a href="../exports/student_report/export_student_excel.php" class="text-red-500">** ดาวน์โหลดตัวอย่าง **</a>
 
         </div>
-    </div>
 
-    <div class="bg-white shadow-lg rounded-lg p-4 overflow-x-auto">
+
+
+
+        <div class="bg-gray-200 w-full h-0.5 my-5"></div>
+
+
+
         <table id="studentTable" class="display w-full" style="width:100%">
             <thead>
                 <tr>

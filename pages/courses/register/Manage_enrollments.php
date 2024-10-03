@@ -82,7 +82,14 @@ $result = $stmt->get_result();
                 </svg>
                 ออกรายงานเป็น PDF
             </button>
+
+
+
+            <a href="../exports/enrollments/export_excel.php" class="text-red-500">** ดาวน์โหลดตัวอย่าง **</a>
         </div>
+
+
+
         <div class="bg-gray-200 w-full h-0.5 my-5"></div>
 
 

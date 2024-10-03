@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // คำสั่ง SQL สำหรับดึงข้อมูลผู้ใช้จากตาราง students
-$students_sql = "SELECT student_id, fullname FROM students WHERE status = '0'";
+$students_sql = "SELECT student_id, fullname FROM students WHERE status IN (0, 2)";
 $students_result = $conn->query($students_sql);
 ?>
 

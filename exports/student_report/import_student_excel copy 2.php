@@ -20,9 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['import_file'])) {
         father_occupation, mother_name, mother_nationality, mother_occupation, 
         previous_education_level, graduation_year, graduation_school, district, province, 
         buddhist_qualification, buddhist_qualification_year, buddhist_qualification_school, 
-        buddhist_district, buddhist_province, address , student_id 
+        buddhist_district, buddhist_province, address
     ) VALUES (
-        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ? 
+        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? 
     )");
 
     // Check if the statement was prepared successfully
@@ -40,11 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['import_file'])) {
         }
 
         // Check if status is empty and assign a default value if it is
-        $status = !empty($row['L']) ? $row['L'] : '0'; // Replace 'active' with your default status
+        $status = !empty($row['L']) ? $row['L'] : 'active'; // Replace 'active' with your default status
 
         // Bind parameters
         $stmt->bind_param(
-            'ssssssssssssssssssssssssssssssssssss',
+            'sssssssssssssssssssssssssssssssssss',
             $row['A'], // grade_level
             $row['B'], // section
             $row['C'], // username
@@ -79,8 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['import_file'])) {
             $row['AF'], // buddhist_qualification_school
             $row['AG'], // buddhist_district
             $row['AH'], // buddhist_province
-            $row['AI'],  // address
-            $row['AJ']  // address
+            $row['AI']  // address
         );
 
         // Execute the statement
@@ -97,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['import_file'])) {
 
     // Display the number of rows inserted
     // echo "<script>alert('นำเข้าบันทึกเรียบร้อยแล้ว! $countInserted แถว');</script>";
-    echo "<script>window.location.href='../../pages/student.php?page=Manage_student&status=1';</script>";
+    // echo "<script>window.location.href='../../pages/education.php?page=Manage_students&status=1';</script>";
 } else {
-    echo "<script>alert('ไม่พบไฟล์ที่อัปโหลดหรือเกิดข้อผิดพลาดในการอัปโหลด');</script>";
+    // echo "<script>alert('ไม่พบไฟล์ที่อัปโหลดหรือเกิดข้อผิดพลาดในการอัปโหลด');</script>";
 }
