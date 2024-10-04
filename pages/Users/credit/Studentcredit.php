@@ -1,13 +1,13 @@
 <?php
 // คำสั่ง SQL สำหรับดึงข้อมูลจากตาราง students
-$sql = "SELECT student_id, grade_level, section, username, fullname, nicknames, email, phone_number, date_of_birth, gender FROM students";
+$sql = "SELECT student_id, grade_level, section, username, fullname, nicknames, email, phone_number, date_of_birth, gender FROM students WHERE status IN (0 , 2)";
 $result = $conn->query($sql);
 ?>
 
-<div class="container mx-auto p-6">
+<div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white mb-6">หน่วยกิต นักเรียน-นักศึกษา</h1>
 
-    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+    <div class="">
         <!-- ช่องค้นหา -->
         <div class="mb-6">
             <label for="search-input" class="block text-gray-700 dark:text-gray-300 text-lg font-medium mb-2">ค้นหา:</label>

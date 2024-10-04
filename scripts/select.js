@@ -71,6 +71,7 @@ const pageLinkMap = {
   Manage_Toolbar_setting: "Manage_Toolbar_setting-link",
   Manage_screen_setting: "Manage_screen_setting-link",
   Manage_Tap_setting: "Manage_Tap_setting-link",
+  Manage_table_setting: "Manage_table_setting-link",
 };
 
 const dropdownMap = {
@@ -116,6 +117,7 @@ const dropdownMap = {
   Manage_Toolbar_setting: "dropdown-Manage-setting",
   Manage_screen_setting: "dropdown-Manage-setting",
   Manage_Tap_setting: "dropdown-Manage-setting",
+  Manage_table_setting: "dropdown-Manage-setting",
 };
 
 if (currentPage && pageLinkMap[currentPage]) {

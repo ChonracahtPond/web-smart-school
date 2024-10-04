@@ -61,6 +61,9 @@
                     <li>
                         <a href="?page=Manage_screen_setting" id="Manage_screen_setting-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ตั้งค่าสีแบล็คกาว</a>
                     </li>
+                    <li>
+                        <a href="?page=Manage_table_setting" id="Manage_table_setting-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ตั้งค่าสีตาราง</a>
+                    </li>
                     <!-- <li>
                         <a href="?page=Manage_Tap_setting" id="Manage_Tap_setting-link" class="flex items-center w-full p-2 text-base font-normal text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ตั้งค่าแถบสี</a>
                     </li> -->

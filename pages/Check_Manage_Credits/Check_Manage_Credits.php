@@ -1,7 +1,7 @@
 <?php
 // Prepare statements for better security
 $participants_sql = "SELECT ap.participant_id, ap.activity_id, ap.student_id, ap.registration_date, ap.status, ap.Credits AS participant_credits, 
-                      s.fullname, a.activity_name, a.activity_Credits AS activity_credits
+                      s.fullname, a.activity_name, a.activity_Credits AS activity_credits ,ap.images AS images
                       FROM activity_participants ap 
                       JOIN students s ON ap.student_id = s.student_id
                       JOIN activities a ON ap.activity_id = a.activity_id 
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div id="recipients" class="p-8 mt-6 lg:mt-0 rounded-lg shadow bg-white">
         <h1 class="text-3xl font-semibold text-gray-900 dark:text-white mb-5 flex items-center space-x-2">
             <i class="fas fa-tasks text-green-500"></i>
-            <span>จัดการหน่วยกิต</span>
+            <span>เช็คกิจกรรม กพช.</span>
         </h1>
         <div class="bg-gray-200 w-full h-0.5 my-5"></div>
         <table id="example" class="display stripe hover" style="width:100%;">
@@ -59,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <th>เครดิตกิจกรรม</th>
                     <th>เครดิตผู้เข้าร่วม</th>
                     <th>วันที่ลงทะเบียน</th>
+                    <th>รูปภาพ</th>
                     <th>สถานะ</th>
                     <th>จัดการ</th>
                 </tr>
@@ -74,6 +75,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <td class="text-center"><?php echo htmlspecialchars($row['activity_credits']); ?></td>
                         <td class="text-center"><?php echo htmlspecialchars($row['participant_credits']); ?></td>
                         <td><?php echo htmlspecialchars($row['registration_date']); ?></td>
+                        <td class="w-36 h-36">
+                            <?php
+                            $imagePath = htmlspecialchars($row['images']);
+                            if (!empty($imagePath)) {
+                                // ถ้า path ของภาพไม่ว่าง ให้แสดงภาพที่คลิกได้เพื่อเปิดหน้าต่างใหม่
+                                echo '<a href="' . $imagePath . '" target="_blank">
+                             <img src="' . $imagePath . '" alt="Image" class="w-full h-full object-cover">
+                                </a>';
+                            } else {
+                                // ถ้าไม่มีภาพให้แสดงข้อความที่ต้องการ
+                                echo 'No image available';
+                            }
+                            ?>
+                        </td>
+
+
                         <td>
                             <?php
                             $status = htmlspecialchars($row['status']);
@@ -106,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <span><?php echo $status; ?></span>
                             </span>
                         </td>
-                        <td class="flex space-x-2 justify-center">
+                        <td class="flex space-x-2 justify-center mt-10">
                             <button onclick="approveParticipant(<?php echo htmlspecialchars($row['participant_id']); ?>)" class="h-9 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-600 transition duration-150 ease-in-out flex items-center justify-center space-x-2">
                                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
@@ -114,7 +131,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </svg>
                                 <span>อนุมัติ</span>
                             </button>
-
                             <button onclick="disapproveParticipant(<?php echo htmlspecialchars($row['participant_id']); ?>)" class="h-9 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-red-600 transition duration-150 ease-in-out flex items-center justify-center space-x-2">
                                 <svg class="h-5 w-5 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="3 6 5 6 21 6" />
@@ -124,9 +140,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </svg>
                                 <span>ไม่อนุมัติ</span>
                             </button>
-
-
-
                         </td>
                     </tr>
                 <?php endwhile; ?>
@@ -139,6 +152,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <th>เครดิตกิจกรรม</th>
                     <th>เครดิตผู้เข้าร่วม</th>
                     <th>วันที่ลงทะเบียน</th>
+                    <th>รูปภาพ</th>
+
                     <th>สถานะ</th>
                     <th>จัดการ</th>
                 </tr>

@@ -23,6 +23,9 @@
                 case 'Manage_Tap_setting':
                     include "../pages/setting/Manage_screen_setting/Manage_Tap_setting.php";
                     break;
+                case 'Manage_table_setting':
+                    include "../pages/setting/Manage_screen_setting/Manage_table_setting.php";
+                    break;
 
                 case 'edit_Notification':
                     include "../pages/setting/Notification/edit_Notification.php";

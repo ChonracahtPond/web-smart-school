@@ -1,6 +1,6 @@
 <?php include '../includes/header.php'; ?>
 
-<div class="container w-full ml-10 ">
+<div class="w-full ml-2">
     <!-- Main Content -->
     <main class="flex-1 p-4">
         <section class="content">
@@ -210,21 +210,7 @@
                     include "../pages/student/student_details/student_details.php";
                     break;
 
-                case 'students_eligible_for_exam':
-                    include "../pages/student/students_eligible/students_eligible_for_exam.php";
-                    break;
-                case 'add_students_eligible_for_exam':
-                    include "../pages/student/students_eligible/add_students_eligible_for_exam.php";
-                    break;
-                case 'edit_students_eligible_for_exam':
-                    include "../pages/student/students_eligible/edit_students_eligible_for_exam.php";
-                    break;
-                case 'update_students_eligible_for_exam':
-                    include "../pages/student/students_eligible/update_students_eligible_for_exam.php";
-                    break;
-                case 'delete_students_eligible_for_exam':
-                    include "../pages/student/students_eligible/delete_students_eligible_for_exam.php";
-                    break;
+         
 
 
 

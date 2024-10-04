@@ -18,6 +18,7 @@ require 'modal/modallogin.php';
 // Set the background color from session or use a default color
 $tool_color = isset($_SESSION['tool_color']) ? $_SESSION['tool_color'] : '#6e4db0'; // Default header color
 $screen_color = isset($_SESSION['screen_color']) ? $_SESSION['screen_color'] : '#ffffff'; // Default header color
+$table_color = isset($_SESSION['table_color']) ? $_SESSION['table_color'] : '#ffffff'; // Default header color
 ?>
 
 <!DOCTYPE html>

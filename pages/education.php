@@ -101,6 +101,10 @@
                 case 'eligible_students':
                     include "../pages/eligible_students/eligible_students.php";
                     break;
+                case 'add_eligible_students':
+                    include "../pages/eligible_students/add_eligible_students.php";
+                    break;
+
                 case 'insert_eligible_students':
                     include "../pages/eligible_students/insert_eligible_students.php";
                     break;
