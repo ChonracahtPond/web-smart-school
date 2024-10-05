@@ -20,7 +20,7 @@ $total_news = $total_news_result->fetch_assoc()['total'];
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<div class="container mx-auto p-6">
+<div class=" mx-auto p-4">
     <!-- Page Title based on 'page' parameter -->
     <div class="mb-8">
         <?php

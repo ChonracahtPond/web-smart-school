@@ -25,6 +25,7 @@
                 case 'course_details':
                     include "../pages/courses/Manage_courses/course_details.php";
                     break;
+
                 case 'add_course':
                     include "../pages/courses/Manage_courses/add_course.php";
                     break;
@@ -33,6 +34,15 @@
                     break;
                 case 'delete_course':
                     include "../pages/courses/Manage_courses/delete_course.php";
+                    break;
+
+                    // -- หน้า เช็ค ขาด ลา มาสาย --//
+                case 'Check_class_name':
+                    include "../pages/courses/Manage_courses/attendance/Check_class_name.php";
+                    break;
+                    // -- หน้า เช็ค ขาด ลา มาสาย --//
+                case 'Submit_work':
+                    include "../pages/courses/Manage_courses/Submit_work/Submit_work.php";
                     break;
 
 
@@ -215,7 +225,6 @@
                 case 'Graduation_history':
                     include "../pages/Graduation_history/Graduation_history.php";
                     break;
-             
 
 
 
@@ -223,12 +232,13 @@
 
 
 
-                // case 'add_score':
-                //     include "../pages/n-net/management/add_score.php";
-                //     break;
-                // case 'update_score':
-                //     include "../pages/n-net/management/update_score.php";
-                //     break;
+
+                    // case 'add_score':
+                    //     include "../pages/n-net/management/add_score.php";
+                    //     break;
+                    // case 'update_score':
+                    //     include "../pages/n-net/management/update_score.php";
+                    //     break;
 
 
 

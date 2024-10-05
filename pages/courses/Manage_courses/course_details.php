@@ -25,9 +25,9 @@ if ($result->num_rows === 0) {
 $course = $result->fetch_assoc();
 ?>
 
-<div class="container mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">รายละเอียดรายวิชา</h1>
+<div class="">
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
+        <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">รายละเอียดรายวิชา</h1>
         <table class="min-w-full bg-white border border-gray-200">
             <thead>
                 <tr>
@@ -83,9 +83,13 @@ $course = $result->fetch_assoc();
                 </tr>
             </tbody>
         </table>
-        <!-- <div class="mt-4">
-            <a href="manage_courses.php" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">กลับไปที่รายการหลักสูตร</a>
-        </div> -->
-        <?php include "enrollment_details.php"; ?>
+
+        <div class="mt-4 flex">
+            <!-- <a href="?page=Check_class_name&course_id=<?php echo $course_id ?>" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600 mr-4">ระบบเช็คชื่อ</a> -->
+            <a href="?page=Submit_work&course_id=<?php echo $course_id ?>" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">เช็คการส่งงาน</a>
+        </div>
     </div>
+    <?php include "enrollment_details.php"; ?>
+    <?php include "attendance/Check_class_name.php"; ?>
+
 </div>

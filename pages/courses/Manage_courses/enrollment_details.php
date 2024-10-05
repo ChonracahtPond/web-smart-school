@@ -31,14 +31,13 @@ if ($result->num_rows === 0) {
 }
 ?>
 
-<div class="container mx-auto p-4">
-    <h1 class="text-3xl font-semibold text-gray-900 dark:text-white">รายละเอียดการลงทะเบียนเรียน</h1>
+<div class="">
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 mt-4">
+        <h1 class="text-3xl font-semibold text-gray-900 dark:text-white my-3">รายละเอียดการลงทะเบียนเรียน</h1>
         <table class="min-w-full bg-white border border-gray-200">
             <thead>
-                <tr>
-                    <th class="py-2 px-4 border-b">รหัสการลงทะเบียน</th>
-                    <th class="py-2 px-4 border-b">รหัสนักเรียน</th>
+                <tr class="text-center">
+                    <th class="py-2 px-4 border-b ">รหัสนักเรียน</th>
                     <th class="py-2 px-4 border-b">ชื่อของนักเรียน</th>
                     <th class="py-2 px-4 border-b">อีเมลของนักเรียน</th>
                     <th class="py-2 px-4 border-b">ภาคเรียน</th>
@@ -50,8 +49,8 @@ if ($result->num_rows === 0) {
             </thead>
             <tbody>
                 <?php while ($enrollment = $result->fetch_assoc()) : ?>
-                    <tr>
-                        <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($enrollment['enrollment_id']); ?></td>
+                    <tr class="text-center">
+
                         <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($enrollment['student_id']); ?></td>
                         <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($enrollment['student_name']); ?></td>
                         <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($enrollment['email']); ?></td>
@@ -69,8 +68,8 @@ if ($result->num_rows === 0) {
                 <?php endwhile; ?>
             </tbody>
         </table>
-        <div class="mt-4">
+        <!-- <div class="mt-4">
             <a href="?page=Manage_courses" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">กลับไปที่รายการการลงทะเบียน</a>
-        </div>
+        </div> -->
     </div>
 </div>

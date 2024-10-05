@@ -5,7 +5,7 @@ include '../includes/header.php';
 
 ?>
 
-<div class="container w-full ml-10">
+<div class=" w-full ml-2">
     <!-- Main Content -->
     <main class="flex-1 p-4">
         <section class="content">

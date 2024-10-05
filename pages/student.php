@@ -56,21 +56,6 @@
                     include "../pages/Users/credit/creditList.php";
                     break;
 
-                    // ขาดลามาสาย
-                case 'manage_attendance':
-                    include "../pages/Users/attendance/manage_attendance.php";
-                    break;
-                    // ขาดลามาสาย pdf
-                case 'attendance_pdf':
-                    include "../mpdf/attendance_pdf.php";
-                    break;
-
-
-
-
-
-
-
 
 
 
@@ -111,10 +96,10 @@
                     break;
 
 
-                 // เช็คกิจกรรม
-                 case 'Check_Manage_Credits':
-                 include "../pages/Check_Manage_Credits/Check_Manage_Credits.php";
-                 break;
+                    // เช็คกิจกรรม
+                case 'Check_Manage_Credits':
+                    include "../pages/Check_Manage_Credits/Check_Manage_Credits.php";
+                    break;
 
 
 
@@ -210,7 +195,7 @@
                     include "../pages/student/student_details/student_details.php";
                     break;
 
-         
+
 
 
 
@@ -259,11 +244,6 @@
                     break;
                 case 'add_answer':
                     include "test/add_answer.php";
-                    break;
-
-
-                case 'ManageBook':
-                    include "../pages/Book/ManageBook.php";
                     break;
             }
             ?>

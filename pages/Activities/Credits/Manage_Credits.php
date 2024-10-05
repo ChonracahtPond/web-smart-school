@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 
-<div class="container mx-auto p-4">
+<div class="">
 
 
     <div id="recipients" class="p-8 mt-6 lg:mt-0 rounded-lg shadow bg-white">

@@ -14,11 +14,11 @@ $conn->close();
 ?>
 
 
-<div class="container mx-auto p-6">
+<div class="">
+    <div class="overflow-x-auto bg-white border border-gray-300 rounded-lg shadow-lg p-4">
     <h1 class="text-4xl font-extrabold mb-8 text-gray-900">ผู้ลงทะเบียนสมัครเรียน</h1>
 
-    <div class="overflow-x-auto">
-        <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
+        <table class="min-w-full ">
             <thead>
                 <tr class="border-b bg-gray-100 border-gray-200">
                     <th class="py-4 px-6 text-left text-sm font-semibold text-gray-800">No</th>

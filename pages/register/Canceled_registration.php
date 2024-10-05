@@ -14,11 +14,13 @@ $conn->close();
 ?>
 
 
-<div class="container mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6 text-red-800">ผู้ลงทะเบียนสมัครเรียนที่ถูกยกเลิก</h1>
+<div class=" ">
 
-    <div class="overflow-x-auto">
-        <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
+    <div class="overflow-x-auto bg-white border border-gray-300 rounded-lg shadow-lg p-4">
+
+        <h1 class="text-3xl font-bold mb-6 text-red-800">ผู้ลงทะเบียนสมัครเรียนที่ถูกยกเลิก</h1>
+
+        <table class="min-w-full ">
             <thead>
                 <tr class="border-b bg-red-50 border-gray-200">
                     <th class="py-4 px-6 text-left text-sm font-semibold text-red-700">No</th>

@@ -10,7 +10,7 @@ $current_year = date('Y') + 543;
 $sql = "SELECT c.course_id, c.course_name, c.course_description, c.teacher_id, c.course_type, c.course_code, c.credits, c.semester, c.academic_year, c.status, t.teacher_name
         FROM courses c
         LEFT JOIN teachers t ON c.teacher_id = t.teacher_id
-        WHERE (c.course_name LIKE ? OR c.course_description LIKE ? OR t.teacher_name LIKE ?)
+        WHERE (c.course_name LIKE ? OR c.course_description LIKE ? OR t.teacher_name LIKE ?) AND c.status = '1'
         AND (c.course_name = ? OR ? = '')
         AND c.academic_year = ?
         ORDER BY c.course_id DESC";
