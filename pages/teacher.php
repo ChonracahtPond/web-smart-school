@@ -52,6 +52,16 @@
                 case 'update_password':
                     include "../pages/teacher/resetpassword/update_password.php";
                     break;
+
+
+
+                case 'Lesson_plan':
+                    include "../pages/Lesson/Lesson_plan/Lesson_plan.php";
+                    break;
+
+
+
+
             }
             ?>
         </section>

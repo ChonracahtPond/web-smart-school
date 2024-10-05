@@ -77,8 +77,6 @@ include '../includes/modal/modal.php';
 ?>
 
 <body class="">
-    <!-- <script src="../scripts/highlight-nav.js"></script> -->
-    <!-- <header class="bg-[#6e4db0] text-white p-4 flex items-center justify-between shadow-md h-[70px]"> -->
     <header class="text-white p-4 flex items-center justify-between shadow-md h-[70px]" style="background-color: <?php echo htmlspecialchars($tool_color); ?>;">
         <!-- Logo and Menu Items -->
         <div class="flex items-center flex-wrap">
@@ -101,7 +99,7 @@ include '../includes/modal/modal.php';
                 </li>
                 <li>
                     <a href="teacher.php" class="flex items-center justify-center hover:underline hover:bg-gray-100 hover:text-gray-800 transition duration-200 py-2 px-4 rounded-lg">
-                        ระบบของครู
+                        ระบบช่วยครู
                     </a>
                 </li>
             </ul>

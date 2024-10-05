@@ -56,6 +56,7 @@ const pageLinkMap = {
   reset_password: "reset-password-link",
   Home_Room: "Home-Room-link",
   Room: "Home-Room-link",
+  Lesson_plan: "Lesson_plan_link",
   //   Studensidebar
   Manage_student: "Manage-student-link",
   reset_password: "reset_password-link",
@@ -106,6 +107,7 @@ const dropdownMap = {
   //   Teachersidebar
   Teacher_Manage: "dropdown-Manage-Teacher",
   reset_password: "dropdown-Manage-Teacher",
+  Lesson_plan: "dropdown-Lesson-plan",
   //   Studensidebar
   Manage_student: "dropdown-Manage-users",
   reset_password: "dropdown-Manage-users",
