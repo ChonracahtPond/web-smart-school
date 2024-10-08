@@ -22,7 +22,7 @@ $sql = "
         e.teacher_id,
         s.student_name,
         c.course_name,
-        c.course_type,  -- เพิ่มการดึงประเภทของวิชา
+        c.course_type,
         t.teacher_name,
         e.class,
         e.credits 
@@ -72,14 +72,16 @@ function get_class_name($class)
 
 function render_table($grades, $class_filter, $title)
 {
+    // แยกข้อมูลเป็นวิชาบังคับและวิชาเลือก
+    $mandatory_courses = array_filter($grades, fn($grade) => $grade['course_type'] === 'mandatory' && $grade['class'] == $class_filter);
+    $elective_courses = array_filter($grades, fn($grade) => $grade['course_type'] === 'elective' && $grade['class'] == $class_filter);
 ?>
     <section class="my-6">
-        <h2 class="text-xl font-semibold mb-4 text-gray-800"><?php echo htmlspecialchars($title); ?></h2>
+        <h2 class="text-xl font-semibold mb-4 text-gray-800"><?php echo htmlspecialchars($title); ?> - วิชาบังคับ</h2>
         <table class="w-full bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden">
             <thead class="bg-gray-100 text-gray-700">
                 <tr class="text-left">
                     <th class="py-3 px-4 border-b">วิชา</th>
-                    <th class="py-3 px-4 border-b">ประเภทวิชา</th> <!-- เพิ่มหัวข้อประเภทวิชา -->
                     <th class="py-3 px-4 border-b">เทอม</th>
                     <th class="py-3 px-4 border-b">ปี</th>
                     <th class="py-3 px-4 border-b">เกรดเฉลี่ย</th>
@@ -90,37 +92,64 @@ function render_table($grades, $class_filter, $title)
                 </tr>
             </thead>
             <tbody>
-                <?php
-                $found = false;
-                foreach ($grades as $grade) {
-                    if ($grade['class'] == $class_filter) {
-                        $found = true;
-
-                        // Determine the color based on the grade
-                        $grade_color = $grade['grade'] < 1.5 ? 'text-red-500' : 'text-green-500';
-                ?>
+                <?php if (empty($mandatory_courses)): ?>
+                    <tr>
+                        <td colspan="9" class="py-2 px-4 border-b text-center text-gray-500">ไม่พบข้อมูลวิชาบังคับ</td>
+                    </tr>
+                <?php else: ?>
+                    <?php foreach ($mandatory_courses as $grade): ?>
                         <tr class="hover:bg-gray-50 transition-colors">
                             <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['course_name']); ?></td>
-                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['course_type']); ?></td> <!-- แสดงประเภทของวิชา -->
                             <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['semester']); ?></td>
                             <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['academic_year']); ?></td>
-                            <td class="py-2 px-4 border-b <?php echo $grade_color; ?>"><?php echo htmlspecialchars($grade['grade']); ?></td>
+                            <td class="py-2 px-4 border-b <?php echo $grade['grade'] < 1.5 ? 'text-red-500' : 'text-green-500'; ?>"><?php echo htmlspecialchars($grade['grade']); ?></td>
                             <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['credits']); ?></td>
                             <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['teacher_name']); ?></td>
                             <td class="py-2 px-4 border-b"><?php echo get_class_name($grade['class']); ?></td>
                             <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['status']); ?></td>
                         </tr>
-                    <?php
-                    }
-                }
-                if (!$found) {
-                    ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="my-6">
+        <h2 class="text-xl font-semibold mb-4 text-gray-800"><?php echo htmlspecialchars($title); ?> - วิชาเลือก</h2>
+        <table class="w-full bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-gray-100 text-gray-700">
+                <tr class="text-left">
+                    <th class="py-3 px-4 border-b">วิชา</th>
+                    <th class="py-3 px-4 border-b">ประเภทวิชา</th>
+                    <th class="py-3 px-4 border-b">เทอม</th>
+                    <th class="py-3 px-4 border-b">ปี</th>
+                    <th class="py-3 px-4 border-b">เกรดเฉลี่ย</th>
+                    <th class="py-3 px-4 border-b">หน่วยกิจ</th>
+                    <th class="py-3 px-4 border-b">ครูประจำวิชา</th>
+                    <th class="py-3 px-4 border-b">ชั้น</th>
+                    <th class="py-3 px-4 border-b">สถานะ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (empty($elective_courses)): ?>
                     <tr>
-                        <td colspan="10" class="py-2 px-4 border-b text-center text-gray-500">ไม่พบข้อมูล</td>
+                        <td colspan="9" class="py-2 px-4 border-b text-center text-gray-500">ไม่พบข้อมูลวิชาเลือก</td>
                     </tr>
-                <?php
-                }
-                ?>
+                <?php else: ?>
+                    <?php foreach ($elective_courses as $grade): ?>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['course_name']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['course_type']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['semester']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['academic_year']); ?></td>
+                            <td class="py-2 px-4 border-b <?php echo $grade['grade'] < 1.5 ? 'text-red-500' : 'text-green-500'; ?>"><?php echo htmlspecialchars($grade['grade']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['credits']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['teacher_name']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo get_class_name($grade['class']); ?></td>
+                            <td class="py-2 px-4 border-b"><?php echo htmlspecialchars($grade['status']); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </section>
