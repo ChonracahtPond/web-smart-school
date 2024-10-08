@@ -5,9 +5,9 @@
         <div>
             <label class="block text-sm font-medium text-gray-700" for="grade_level">เลือก Grade Level:</label>
             <select id="grade_level" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 h-12 bg-gray-100">
-                <option>-- เลือก --</option>
-                <option value="ประถม">ประถม</option>
-                <option value="มัธยม">มัธยม</option>
+                <option class="ml-5">-- เลือก --</option>
+                <option class="ml-5" value="ประถม">ประถม</option>
+                <option class="ml-5" value="มัธยม">มัธยม</option>
             </select>
         </div>
 
