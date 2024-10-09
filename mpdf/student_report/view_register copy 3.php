@@ -60,6 +60,9 @@ $data = [
     'กล่อง 13' => 'ข้อมูล 13'
 ];
 
+
+
+
 // Create HTML content for the PDF
 $html = '
 <!DOCTYPE html>
@@ -100,7 +103,7 @@ $html = '
         .table-wrapper {
             flex: 3; /* Allow the table to take up more space than <h1> */
         }
------------------------------------
+
 
 
     </style>
@@ -115,25 +118,15 @@ $html = '
         ศูนย์ส่งเสริมการเรียนรู้อำเภอเมืองอุดรธานี
     </h1>
   
+    
+
 
       <div class="ex1 container">
             <h1 style="padding-top: 5pt; padding-left: 5pt; text-indent: 0pt; line-height: 19pt; text-align: left;">
                 ระดับ<span class="s1">.................................</span>รหัสสถานศึกษา
             </h1>
-     
-    
-
+         
         </div>
-
-
-        <p style="padding-left: 7pt; text-indent: 0pt;">
-        <span><table border="0" cellspacing="0" cellpadding="0">
-            <tr><td><img width="5" height="5" src="data:image/png;base64,..."/></td></tr>
-        </table></span>
-    </p>
-
-
-
       <div class="ex1 container">
             <h1 style="padding-top: 5pt; padding-left: 5pt; text-indent: 0pt; line-height: 19pt; text-align: left;">
              
@@ -143,10 +136,17 @@ $html = '
 
 
 
+
+
+
     <h1 style="padding-left: 114pt; text-indent: 0pt; line-height: 19pt; text-align: left;">
         รหัสประจำตัวนักศึกษา
-       
     </h1>
+
+
+
+    
+
 
     <div class="textbox">
         <p>รูปถ่าย</p>

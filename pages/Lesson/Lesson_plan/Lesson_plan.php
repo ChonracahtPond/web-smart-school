@@ -52,11 +52,21 @@
         </thead>
         <tbody class="bg-gray-50">
             <tr class="hover:bg-gray-100">
-                <td class="p-4 border-b"><p id="chapter_display"></p></td>
-                <td class="p-4 border-b"><p id="indicators"></p></td>
-                <td class="p-4 border-b"><p id="expected_learning_outcomes"></p></td>
-                <td class="p-4 border-b"><p id="content"></p></td>
-                <td class="p-4 border-b"><p id="study_time"></p></td>
+                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <p id="chapter_display"></p>
+                </td>
+                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <p id="indicators"></p>
+                </td>
+                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <p id="expected_learning_outcomes"></p>
+                </td>
+                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <p id="content"></p>
+                </td>
+                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                    <p id="study_time"></p>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -91,5 +101,5 @@
 
 
 
-<?php include "sql/script.php";?>
-<?php include "sql/Lesson_export_pdf.php";?>
+<?php include "sql/script.php"; ?>
+<?php include "sql/Lesson_export_pdf.php"; ?>

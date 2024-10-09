@@ -95,12 +95,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <div class="">
-
-
     <div id="recipients" class="p-8 mt-6 lg:mt-0 rounded-lg shadow bg-white">
         <h1 class="text-3xl font-semibold text-gray-900 dark:text-white mb-5">จัดการหน่วยกิต</h1>
         <button id="open-modal-button" class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-600 transition duration-150 ease-in-out flex items-center">
-            <i class="fas fa-plus mr-2"></i> เพิ่มผู้เข้าร่วมกิจกรรม
+            <svg class="h-5 w-5 mr-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+
+            เพิ่มผู้เข้าร่วมกิจกรรม
         </button>
         <div class="bg-gray-200 w-full h-0.5 my-5"></div>
 
