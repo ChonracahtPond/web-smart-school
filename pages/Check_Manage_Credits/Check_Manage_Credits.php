@@ -1,11 +1,11 @@
 <?php
 // Prepare statements for better security
-$participants_sql = "SELECT ap.participant_id, ap.activity_id, ap.student_id, ap.registration_date, ap.status, ap.Credits AS participant_credits, 
+$participants_sql = "SELECT ap.participant_id, ap.activity_id, ap.student_id, ap.registration_date, ap.status, s.status , ap.Credits AS participant_credits, 
                       s.fullname, a.activity_name, a.activity_Credits AS activity_credits ,ap.images AS images
                       FROM activity_participants ap 
                       JOIN students s ON ap.student_id = s.student_id
                       JOIN activities a ON ap.activity_id = a.activity_id 
-                      WHERE ap.status = 'พิจารณา'";
+                      WHERE ap.status = 'พิจารณา' AND s.status IN (0 , 2)";
 
 if ($stmt = $conn->prepare($participants_sql)) {
     $stmt->execute();

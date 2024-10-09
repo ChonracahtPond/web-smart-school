@@ -1,10 +1,13 @@
 <?php
 
 // คำสั่ง SQL สำหรับดึงข้อมูลจากตาราง activity_participants พร้อมกับ Credits ของกิจกรรม
-$participants_sql = "SELECT ap.participant_id, ap.activity_id, ap.student_id, ap.registration_date, ap.status, ap.Credits as participant_credits, s.fullname, a.activity_name, a.activity_Credits as activity_credits
+$participants_sql = "SELECT ap.participant_id, ap.activity_id, ap.student_id, ap.registration_date ,s.status , ap.status, ap.Credits as participant_credits, s.fullname, a.activity_name, a.activity_Credits as activity_credits
                       FROM activity_participants ap 
                       JOIN students s ON ap.student_id = s.student_id
-                      JOIN activities a ON ap.activity_id = a.activity_id";
+                      JOIN activities a ON ap.activity_id = a.activity_id
+                      WHERE s.status IN (0 , 2)
+                      ";
+
 $participants_result = $conn->query($participants_sql);
 if (!$participants_result) {
     die("Query failed: " . $conn->error);
@@ -18,7 +21,7 @@ if (!$activities_result) {
 }
 
 // คำสั่ง SQL สำหรับดึงข้อมูลนักเรียน
-$students_sql = "SELECT student_id, fullname FROM students";
+$students_sql = "SELECT student_id, fullname FROM students WHERE status IN (0 , 2)";
 $students_result = $conn->query($students_sql);
 if (!$students_result) {
     die("Query failed: " . $conn->error);
@@ -155,13 +158,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </td>
                         <td class="flex space-x-2">
                             <button onclick="openEditModal(<?php echo htmlspecialchars($row['participant_id']); ?>, <?php echo htmlspecialchars($row['participant_credits']); ?>, '<?php echo htmlspecialchars($row['status']); ?>')" class="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-yellow-600 transition duration-150 ease-in-out flex items-center justify-center h-10">
-                                <i class="fas fa-edit text-lg mr-2"></i>
+                                <svg class="h-5 w-5 mr-1" <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                </svg>
                                 <span>แก้ไข</span>
                             </button>
                             <form action="" method="POST" class="inline">
                                 <input type="hidden" name="participant_id" value="<?php echo htmlspecialchars($row['participant_id']); ?>">
                                 <button type="submit" name="delete" class="bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-red-600 transition duration-150 ease-in-out flex items-center justify-center h-10">
-                                    <i class="fas fa-trash text-lg mr-2"></i>
+                                    <svg class="h-5 w-5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="3 6 5 6 21 6" />
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                        <line x1="10" y1="11" x2="10" y2="17" />
+                                        <line x1="14" y1="11" x2="14" y2="17" />
+                                    </svg>
                                     <span>ลบ</span>
                                 </button>
                             </form>
@@ -170,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php endwhile; ?>
             </tbody>
             <tfoot>
-            <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
+                <tr class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
                     <th>No.</th> <!-- เพิ่มคอลัมน์ลำดับเลข -->
                     <th>กิจกรรม</th>
                     <th>นักศึกษา</th>
