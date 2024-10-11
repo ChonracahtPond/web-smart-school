@@ -1,6 +1,6 @@
 <?php include '../includes/header.php'; ?>
 
-<div class="container w-full ml-10">
+<div class=" w-full ml-2">
     <!-- Main Content -->
     <main class="flex-1 p-4">
         <section class="content">
@@ -62,6 +62,29 @@
 
 
 
+
+
+                    // -------------------------
+
+                    // add_questions
+
+                case 'add_exercise':
+                    include "../pages/exercise/add_exercise.php";
+                    break;
+                case 'show_exam':
+                    include "../pages/exercise/show_exam.php";
+                    break;
+                case 'get_question_details':
+                    include "../pages/exercise/sql/get_question_details.php";
+                    break;
+                case 'update_answer':
+                    include "../pages/exercise/sql/update_answer.php";
+                    break;
+
+
+                case 'exercise':
+                    include "../pages/exercise/";
+                    break;
             }
             ?>
         </section>
