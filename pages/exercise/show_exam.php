@@ -24,7 +24,7 @@
 <?php include "sql/modal_exam.php"; ?>
 
 
-<div class="flex ml-2 space-x-4">
+<div class="flex space-x-4">
     <div class="bg-white shadow-md rounded-lg h-screen p-4 w-[350px] ">
         <!-- <h1 class="text-2xl font-bold mb-4">รายละเอียดการสอบ</h1> -->
 
