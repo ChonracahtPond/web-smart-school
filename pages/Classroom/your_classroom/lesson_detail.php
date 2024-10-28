@@ -67,7 +67,7 @@ $exercises_result = $exercises_stmt->get_result();
                     <?php while ($meeting = $meetings_result->fetch_assoc()) { ?>
                         <tr class="border-b hover:bg-gray-100">
                             <td class="py-3 px-4">
-                                <a href="<?php echo htmlspecialchars($meeting['meeting_link']); ?>" class="text-blue-500 hover:underline" target="_blank">
+                                <a href="https://www.youtube.com/watch?v=<?php echo htmlspecialchars($meeting['meeting_link']); ?>" class="text-blue-500 hover:underline" target="_blank">
                                     <?php echo htmlspecialchars($meeting['meeting_link']); ?>
                                 </a>
                             </td>
@@ -80,10 +80,11 @@ $exercises_result = $exercises_stmt->get_result();
             </table>
         <?php } else { ?>
             <p class="text-gray-700">ไม่มีการเรียนออนไลน์ที่เกี่ยวข้อง</p>
+            <div class="text-center mt-4">
+                <button id="openModal" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">เพิ่มข้อมูลการเรียนออนไลน์</button>
+            </div>
         <?php } ?>
-        <div class="text-center mt-4">
-            <button id="openModal" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">เพิ่มข้อมูลการเรียนออนไลน์</button>
-        </div>
+
 
     </div>
 
