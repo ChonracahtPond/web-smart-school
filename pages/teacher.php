@@ -48,6 +48,13 @@
                     include "../pages/Classroom/your_classroom/sql/delete_lesson.php";
                     break;
 
+                case 'add_onlinemeeting':
+                    include "../pages/Classroom/your_classroom/sql/add_onlinemeeting.php";
+                    break;
+                case 'add_assignments':
+                    include "../pages/Classroom/your_classroom/sql/add_assignments.php";
+                    break;
+
 
 
 

@@ -1,7 +1,7 @@
 <?php
 // รับ lesson_id จาก URL
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header('Location: index.php'); // ถ้าไม่มี lesson_id ให้เปลี่ยนเส้นทางไปยังหน้าอื่น
+    // header('Location: index.php'); // ถ้าไม่มี lesson_id ให้เปลี่ยนเส้นทางไปยังหน้าอื่น
     exit();
 }
 
@@ -51,86 +51,14 @@ $exercises_result = $exercises_stmt->get_result();
     <!-- <p class="text-lg text-gray-800 mb-4"><?php echo nl2br(htmlspecialchars($lesson['lesson_content'])); ?></p>
     <p class="text-md text-gray-700 mb-4">สถานะ: <span class="font-semibold"><?php echo htmlspecialchars($lesson['status']); ?></span></p> -->
 
-    <div class="mt-8">
-        <h2 class="text-2xl font-semibold text-purple-900 mb-4">การเรียนออนไลน์</h2>
-        <?php if ($meetings_result->num_rows > 0) { ?>
-            <table class="min-w-full bg-white shadow-lg rounded-lg border border-gray-200">
-                <thead>
-                    <tr class="bg-purple-600 text-white">
-                        <th class="py-3 px-4 text-left">ลิงก์การประชุม</th>
-                        <th class="py-3 px-4 text-left">วันที่</th>
-                        <th class="py-3 px-4 text-left">เวลา</th>
-                        <th class="py-3 px-4 text-left">สถานะ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($meeting = $meetings_result->fetch_assoc()) { ?>
-                        <tr class="border-b hover:bg-gray-100">
-                            <td class="py-3 px-4">
-                                <a href="https://www.youtube.com/watch?v=<?php echo htmlspecialchars($meeting['meeting_link']); ?>" class="text-blue-500 hover:underline" target="_blank">
-                                    <?php echo htmlspecialchars($meeting['meeting_link']); ?>
-                                </a>
-                            </td>
-                            <td class="py-3 px-4"><?php echo htmlspecialchars($meeting['meeting_date']); ?></td>
-                            <td class="py-3 px-4"><?php echo htmlspecialchars($meeting['meeting_time']); ?></td>
-                            <td class="py-3 px-4"><?php echo htmlspecialchars($meeting['status']); ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        <?php } else { ?>
-            <p class="text-gray-700">ไม่มีการเรียนออนไลน์ที่เกี่ยวข้อง</p>
-            <div class="text-center mt-4">
-                <button id="openModal" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">เพิ่มข้อมูลการเรียนออนไลน์</button>
-            </div>
-        <?php } ?>
-
-
-    </div>
-
-
-    <!-- โมดัลเพิ่มการฝึกหัด -->
-    <div id="meetingModal" class="fixed inset-0 hidden bg-gray-800 bg-opacity-75 flex items-center justify-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
-
-            <?php include "sql/add_onlinemeeting.php"; ?>
-        </div>
-    </div>
+    <?php include "onlinemeeting.php"; ?>
+    <?php include "assignments.php"; ?>
 
 
 
 
 
-    <div class="mt-8">
-        <h2 class="text-2xl font-semibold text-purple-900 mb-4">การบ้าน</h2>
-        <?php if ($assignments_result->num_rows > 0) { ?>
-            <table class="min-w-full bg-white shadow-lg rounded-lg border border-gray-200">
-                <thead>
-                    <tr class="bg-purple-600 text-white">
-                        <th class="py-3 px-4 text-left">Assignment Title</th>
-                        <th class="py-3 px-4 text-left">Description</th>
-                        <th class="py-3 px-4 text-left">Due Date</th>
-                        <th class="py-3 px-4 text-left">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($assignment = $assignments_result->fetch_assoc()) { ?>
-                        <tr class="border-b hover:bg-gray-100">
-                            <td class="py-3 px-4"><?php echo htmlspecialchars($assignment['assignment_title']); ?></td>
-                            <td class="py-3 px-4"><?php echo htmlspecialchars($assignment['assignment_description']); ?></td>
-                            <td class="py-3 px-4"><?php echo htmlspecialchars($assignment['due_date']); ?></td>
-                            <td class="py-3 px-4"><?php echo htmlspecialchars($assignment['status']); ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        <?php } else { ?>
-            <p class="text-gray-700">ไม่มีการบ้านที่เกี่ยวข้อง</p>
-            <div class="text-center mt-4">
-                <a href="add_assignment.php?lesson_id=<?php echo htmlspecialchars($lesson_id); ?>" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">เพิ่มการบ้าน</a>
-            </div>
-        <?php } ?>
-    </div>
+
 
     <!-- ตารางการฝึกหัด -->
     <div class="mt-8">
@@ -190,7 +118,6 @@ $exercises_result = $exercises_stmt->get_result();
 
             <?php
             include "./exercise/add_exercise.php";
-            // include "../testExercise/add_exercise.php";
             ?>
         </div>
     </div>
@@ -199,16 +126,8 @@ $exercises_result = $exercises_stmt->get_result();
         <!-- <a href="index.php" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition duration-300">กลับไปยังหน้าหลัก</a> -->
     </div>
 </div>
-<script>
-    // Script to handle modal open and close
-    document.getElementById("openModal").onclick = function() {
-        document.getElementById("meetingModal").classList.remove("hidden");
-    }
 
-    document.getElementById("closeModal").onclick = function() {
-        document.getElementById("meetingModal").classList.add("hidden");
-    }
-</script>
+
 
 <script>
     function openModal() {

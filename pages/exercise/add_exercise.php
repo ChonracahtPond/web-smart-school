@@ -1,10 +1,9 @@
 <?php
 // กำหนด lesson_id จาก URL
-$lesson_id = isset($_GET['id']) ? $_GET['id'] : null;
 
 // ตรวจสอบว่าแบบฟอร์มถูกส่งมา
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $lesson_id = $_POST['lesson_id'];
+    $lesson_id = isset($_GET['id']) ? $_GET['id'] : null;
     $title = $_POST['title'];
     $description = $_POST['description'];
     $quantity = $_POST['quantity'];
@@ -23,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Execute the statement
         if ($stmt->execute()) {
             $exercise_id = $stmt->insert_id;
-            echo "<div class='bg-green-200 text-green-800 p-4 rounded'>เพิ่มแบบฝึกหัดสำเร็จ!</div>";
+            // echo "<div class='bg-green-200 text-green-800 p-4 rounded'>เพิ่มแบบฝึกหัดสำเร็จ!</div>";
             echo "<script>window.location.href='?page=show_exam&exercise_id=$exercise_id&status=1';</script>";
             exit();
         } else {
