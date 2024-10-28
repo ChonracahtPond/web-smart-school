@@ -37,7 +37,7 @@ $conn->close();
 ?>
 
 
-<div class="container mx-auto p-6">
+<div class=" mx-auto p-6">
     <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">จัดการ ครุภัณฑ์-วัสดุอุปกรณ์</h1>
 
 

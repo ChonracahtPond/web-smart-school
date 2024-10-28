@@ -5,8 +5,19 @@ session_start();
 if (!isset($_SESSION['user_id'])) {
     // Redirect to login page if not logged in
     header('Location: login.php');
-    exit(); // Ensure no further code is executed
+    exit();
 }
+
+// Check if teacher_id is already set in the session, or assign it here if necessary
+if (!isset($_SESSION['teacher_id'])) {
+    // Fetch or assign teacher_id based on user_id, e.g., from a database
+    // Example: assuming $teacher_id is fetched from a database query
+    $_SESSION['teacher_id'] = $teacher_id; // Replace with actual teacher_id retrieval logic
+}
+
+// Display user_id and teacher_id
+$user_id = $_SESSION['user_id'];
+$teacher_id = $_SESSION['teacher_id'];
 
 // Set status to 'success' if the user is logged in
 $status = 'success';

@@ -32,7 +32,7 @@ while ($row = $result->fetch_assoc()) {
 }
 ?>
 
-<div class="container mx-auto p-6">
+<div class=" mx-auto p-6">
     <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">งบประมาณครุภัณฑ์ และ วัสดุสำนักงาน</h1>
     <!-- Table of annual budgets -->
     <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg mt-6">

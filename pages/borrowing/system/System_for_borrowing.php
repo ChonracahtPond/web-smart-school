@@ -11,7 +11,7 @@ $sql = "SELECT b.borrowing_id, i.item_name, b.quantity
 $borrowings_result = $conn->query($sql);
 ?>
 
-<div class="container mx-auto p-6">
+<div class=" mx-auto p-6">
     <h1 class="text-3xl font-bold text-gray-800 mb-6">ระบบยืม-คืนครุภัณฑ์ และ ระบบเบิกจ่ายวัสดุสำนักงาน</h1>
 
     <div class="flex gap-4 mb-6">

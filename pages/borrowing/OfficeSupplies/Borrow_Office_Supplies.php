@@ -14,7 +14,7 @@ $items_result = $conn->query($items_sql);
 
 
 
-<div class="container mx-auto p-6">
+<div class=" mx-auto p-6">
     <h1 class="text-3xl font-semibold text-gray-900 dark:text-white mb-4">ระบบเบิกวัสดุ-อุปกรณ์ ไม่ต้องคืน</h1>
 
     <!-- Add Borrowing Button -->

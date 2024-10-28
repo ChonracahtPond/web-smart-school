@@ -34,12 +34,6 @@
                 case 'your_classroom':
                     include "../pages/Classroom/your_classroom/your_classroom.php";
                     break;
-                case 'detali_classroom':
-                    include "../pages/Classroom/your_classroom/detali_classroom.php";
-                    break;
-                case 'lesson_detail':
-                    include "../pages/Classroom/your_classroom/lesson_detail.php";
-                    break;
 
 
 
