@@ -1,7 +1,6 @@
 <?php
-// เริ่ม session และเชื่อมต่อกับฐานข้อมูล
-session_start();
-include('../db_connection.php'); // เชื่อมต่อฐานข้อมูล
+// กำหนด lesson_id จาก URL
+$lesson_id = isset($_GET['id']) ? $_GET['id'] : null;
 
 // ตรวจสอบว่าแบบฟอร์มถูกส่งมา
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -23,15 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Execute the statement
         if ($stmt->execute()) {
-            $exercise_id = $stmt->insert_id; // รับค่า exercise_id ที่ถูกเพิ่มเข้ามา
-            echo "<div class='bg-green-200 text-green-800 p-4 rounded'>Exercise added successfully!</div>";
-            // เปลี่ยนเส้นทางไปยัง add_questions.php พร้อมส่งค่า exercise_id
-            // header("Location: add_questions.php?exercise_id=" . $exercise_id);
+            $exercise_id = $stmt->insert_id;
+            echo "<div class='bg-green-200 text-green-800 p-4 rounded'>เพิ่มแบบฝึกหัดสำเร็จ!</div>";
             echo "<script>window.location.href='?page=show_exam&exercise_id=$exercise_id&status=1';</script>";
-
-            exit(); // หยุดการทำงานของสคริปต์
+            exit();
         } else {
-            echo "<div class='bg-red-200 text-red-800 p-4 rounded'>Error: " . $stmt->error . "</div>";
+            echo "<div class='bg-red-200 text-red-800 p-4 rounded'>เกิดข้อผิดพลาด: " . $stmt->error . "</div>";
         }
         $stmt->close();
     }
@@ -44,35 +40,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Exercise</title>
+    <title>เพิ่มแบบฝึกหัด</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-gray-100 p-6">
-    <div class="max-w-md mx-auto bg-white p-6 rounded shadow-md">
-        <h1 class="text-2xl font-bold mb-4">Add an Exercise</h1>
+    <button onclick="closeModal()" class="float-right text-gray-500 hover:text-gray-700">×</button>
+    <div class="max-w-md mx-auto bg-white p-6">
+        <h1 class="text-2xl font-bold mb-4">เพิ่มแบบฝึกหัด</h1>
         <form method="POST" action="">
-            <div class="mb-4">
-                <label for="lesson_id" class="block text-gray-700">Lesson ID:</label>
-                <input type="number" id="lesson_id" name="lesson_id" required class="border border-gray-300 p-2 w-full rounded">
-            </div>
+            <input type="hidden" id="lesson_id" name="lesson_id" value="<?php echo htmlspecialchars($lesson_id); ?>">
 
             <div class="mb-4">
-                <label for="title" class="block text-gray-700">Title:</label>
+                <label for="title" class="block text-gray-700">ชื่อเรื่อง:</label>
                 <input type="text" id="title" name="title" required class="border border-gray-300 p-2 w-full rounded">
             </div>
 
             <div class="mb-4">
-                <label for="description" class="block text-gray-700">Description:</label>
+                <label for="description" class="block text-gray-700">คำอธิบาย:</label>
                 <textarea id="description" name="description" required class="border border-gray-300 p-2 w-full rounded"></textarea>
             </div>
 
             <div class="mb-4">
-                <label for="quantity" class="block text-gray-700">Quantity:</label>
+                <label for="quantity" class="block text-gray-700">จำนวน:</label>
                 <input type="number" id="quantity" name="quantity" required class="border border-gray-300 p-2 w-full rounded">
             </div>
 
-            <input type="submit" value="Add Exercise" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+            <input type="submit" value="เพิ่มแบบฝึกหัด" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
         </form>
     </div>
 </body>

@@ -83,7 +83,7 @@
                 }
                 echo "</ul>";
             } else {
-                echo "<p class='text-gray-500 mt-2'>ยังไม่มีคำถามสำหรับ exercise_id นี้.</p>";
+                echo "<p class='text-gray-500 mt-2'>ยังไม่มีคำถามสำหรับแบบทดสอบนี้.</p>";
             }
 
             // ปิดการเชื่อมต่อ

@@ -57,6 +57,11 @@ const pageLinkMap = {
   Home_Room: "Home-Room-link",
   Room: "Home-Room-link",
   Lesson_plan: "Lesson_plan_link",
+  your_classroom: "your_classroom_link",
+  detali_classroom: "your_classroom_link",
+  lesson_detail: "your_classroom_link",
+  show_exam: "your_classroom_link",
+
   //   Studensidebar
   Manage_student: "Manage-student-link",
   reset_password: "reset_password-link",
@@ -108,6 +113,11 @@ const dropdownMap = {
   Teacher_Manage: "dropdown-Manage-Teacher",
   reset_password: "dropdown-Manage-Teacher",
   Lesson_plan: "dropdown-Lesson-plan",
+  your_classroom: "dropdown-class-room",
+  detali_classroom: "dropdown-class-room",
+  lesson_detail: "dropdown-class-room",
+  show_exam: "dropdown-class-room",
+
   //   Studensidebar
   Manage_student: "dropdown-Manage-users",
   reset_password: "dropdown-Manage-users",

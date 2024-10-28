@@ -41,6 +41,13 @@
                     include "../pages/Classroom/your_classroom/lesson_detail.php";
                     break;
 
+                case 'add_lesson':
+                    include "../pages/Classroom/your_classroom/sql/add_lesson.php";
+                    break;
+                case 'delete_lesson':
+                    include "../pages/Classroom/your_classroom/sql/delete_lesson.php";
+                    break;
+
 
 
 
