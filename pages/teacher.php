@@ -54,6 +54,9 @@
                 case 'add_assignments':
                     include "../pages/Classroom/your_classroom/sql/add_assignments.php";
                     break;
+                case 'add_documents':
+                    include "../pages/Classroom/your_classroom/sql/add_documents.php";
+                    break;
 
 
 

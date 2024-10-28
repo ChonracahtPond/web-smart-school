@@ -41,6 +41,13 @@ $exercises_stmt = $conn->prepare($exercises_sql);
 $exercises_stmt->bind_param("i", $lesson_id);
 $exercises_stmt->execute();
 $exercises_result = $exercises_stmt->get_result();
+
+// ดึงข้อมูลจากตาราง documents
+$documents_sql = "SELECT document_id, document_name, document_type, file_size, file_url, created_at, updated_at FROM documents WHERE lesson_id = ?";
+$documents_stmt = $conn->prepare($documents_sql);
+$documents_stmt->bind_param("i", $lesson_id);
+$documents_stmt->execute();
+$documents_result = $documents_stmt->get_result();
 ?>
 
 
@@ -50,9 +57,10 @@ $exercises_result = $exercises_stmt->get_result();
     <p class="text-lg text-center text-gray-700 mb-6">วันที่: <?php echo htmlspecialchars($lesson['lesson_date']); ?></p>
     <!-- <p class="text-lg text-gray-800 mb-4"><?php echo nl2br(htmlspecialchars($lesson['lesson_content'])); ?></p>
     <p class="text-md text-gray-700 mb-4">สถานะ: <span class="font-semibold"><?php echo htmlspecialchars($lesson['status']); ?></span></p> -->
-
+    <?php include "documents.php"; ?>
     <?php include "onlinemeeting.php"; ?>
     <?php include "assignments.php"; ?>
+
 
 
 
