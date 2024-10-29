@@ -54,7 +54,7 @@
                 case 'delete_meeting':
                     include "../pages/Classroom/your_classroom/sql/delete_meeting.php";
                     break;
-                    
+
                 case 'add_assignments':
                     include "../pages/Classroom/your_classroom/sql/add_assignments.php";
                     break;
@@ -67,6 +67,12 @@
                     break;
                 case 'delete_document':
                     include "../pages/Classroom/your_classroom/sql/delete_document.php";
+                    break;
+
+
+
+                case 'save_question':
+                    include "../pages/exercise/questions/save_question.php";
                     break;
 
 
