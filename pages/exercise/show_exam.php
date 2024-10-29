@@ -2,6 +2,10 @@
 <script src="../pages/exercise/script/modal.js"></script>
 <script src="../pages/exercise/script/update_answer.js"></script>
 <script src="../pages/exercise/script/update_exam.js"></script>
+<!-- <script src="script/show_exam.js"></script>
+<script src="script/modal.js"></script>
+<script src="script/update_answer.js"></script>
+<script src="script/update_exam.js"></script> -->
 
 
 <script>
