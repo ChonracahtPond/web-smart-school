@@ -36,6 +36,21 @@
     <!-- <form method="post" action=""> -->
     <input type="hidden" name="exercise_id" value="<?php echo $exercise_id; ?>">
 
+    <!-- <div class="mb-4">
+            <label for="question_text" class="block text-gray-700 font-semibold">ข้อความคำถาม:</label>
+            <textarea id="question_text" name="question_text" required class="border border-gray-300 p-2 w-full rounded-lg focus:ring focus:ring-blue-300 transition duration-200"></textarea>
+        </div> -->
+    <!-- <div class="flex">
+            <div class="mb-4 w-[70%] mr-5">
+                <label for="media_url" class="block text-gray-700 font-semibold">URL สื่อ (ไม่บังคับ):</label>
+                <input type="text" id="media_url" name="media_url" class="border border-gray-300 p-2 w-full rounded-lg focus:ring focus:ring-blue-300 transition duration-200">
+            </div>
+
+            <div class="mb-4 w-[30%]">
+                <label for="score" class="block text-gray-700 font-semibold">คะแนน:</label>
+                <input type="number" id="score" name="score" required class="border border-gray-300 p-2 w-full rounded-lg focus:ring focus:ring-blue-300 transition duration-200">
+            </div>
+        </div> -->
     <div class="mb-4">
         <label for="question_type" class="block text-gray-700 font-semibold">ประเภทคำถาม:</label>
         <select id="question_type" name="question_type" class="border border-gray-300 p-2 w-full rounded-lg focus:ring focus:ring-blue-300 transition duration-200" onchange="showAnswerForm()">
@@ -53,4 +68,16 @@
         <?php include "questions/text_form.php"; ?>
         <?php include "questions/True_False.php"; ?>
     </div>
+
+
+
+    <!-- <div class="flex justify-center">
+            <input type="submit" value="เพิ่มคำถาม" class="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition duration-200 mt-5">
+        </div> -->
+    <!-- </form> -->
+
+    <!-- รวมฟอร์มคำตอบ -->
+
+
+
 </div>
