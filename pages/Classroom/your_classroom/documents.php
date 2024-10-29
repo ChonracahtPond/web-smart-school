@@ -9,6 +9,7 @@
                     <th class="py-3 px-4 text-left">ขนาดไฟล์ (KB)</th>
                     <th class="py-3 px-4 text-left">ลิงก์เอกสาร</th>
                     <th class="py-3 px-4 text-left">วันที่สร้าง</th>
+                    <th class="py-3 px-4 text-left">การดำเนินการ</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,6 +22,13 @@
                             <a href="<?php echo htmlspecialchars($document['file_url']); ?>" target="_blank" class="text-blue-500 hover:underline">ดูเอกสาร</a>
                         </td>
                         <td class="py-3 px-4"><?php echo htmlspecialchars($document['created_at']); ?></td>
+                        <td class="py-3 px-4">
+                            <form action="?page=delete_document" method="POST" style="display: inline;">
+                                <input type="hidden" name="document_id" value="<?php echo htmlspecialchars($document['document_id']); ?>">
+                                <input type="hidden" name="lesson_id" value="<?php echo htmlspecialchars($lesson_id); ?>">
+                                <button type="submit" class="text-red-600 hover:underline">ลบ</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>

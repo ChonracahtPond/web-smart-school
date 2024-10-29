@@ -8,6 +8,7 @@
                     <th class="py-3 px-4 text-left">Description</th>
                     <th class="py-3 px-4 text-left">Due Date</th>
                     <th class="py-3 px-4 text-left">Status</th>
+                    <th class="py-3 px-4 text-left">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,6 +18,13 @@
                         <td class="py-3 px-4"><?php echo htmlspecialchars($assignment['assignment_description']); ?></td>
                         <td class="py-3 px-4"><?php echo htmlspecialchars($assignment['due_date']); ?></td>
                         <td class="py-3 px-4"><?php echo htmlspecialchars($assignment['status']); ?></td>
+                        <td class="py-3 px-4">
+                            <form action="?page=delete_assignment" method="POST" onsubmit="return confirm('ต้องการลบการบ้านนี้หรือไม่?');">
+                                <input type="hidden" name="assignment_id" value="<?php echo htmlspecialchars($assignment['assignment_id']); ?>">
+                                <input type="hidden" name="lesson_id" value="<?php echo htmlspecialchars($lesson_id); ?>">
+                                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">ลบ</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -27,9 +35,8 @@
             <button onclick="openModalassignments()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">เพิ่มการบ้าน</button>
         </div>
     <?php } ?>
-
-
 </div>
+
 
 <!-- โมดัลเพิ่มการฝึกหัด -->
 <div id="assignmentModal" class="fixed inset-0 hidden bg-gray-800 bg-opacity-75 flex items-center justify-center">

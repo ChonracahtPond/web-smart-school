@@ -51,11 +51,22 @@
                 case 'add_onlinemeeting':
                     include "../pages/Classroom/your_classroom/sql/add_onlinemeeting.php";
                     break;
+                case 'delete_meeting':
+                    include "../pages/Classroom/your_classroom/sql/delete_meeting.php";
+                    break;
+                    
                 case 'add_assignments':
                     include "../pages/Classroom/your_classroom/sql/add_assignments.php";
                     break;
+                case 'delete_assignment':
+                    include "../pages/Classroom/your_classroom/sql/delete_assignment.php";
+                    break;
+
                 case 'add_documents':
                     include "../pages/Classroom/your_classroom/sql/add_documents.php";
+                    break;
+                case 'delete_document':
+                    include "../pages/Classroom/your_classroom/sql/delete_document.php";
                     break;
 
 
