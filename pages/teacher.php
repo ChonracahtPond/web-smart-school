@@ -74,6 +74,9 @@
                 case 'save_question':
                     include "../pages/exercise/questions/save_question.php";
                     break;
+                case 'save_multiple_choice':
+                    include "../pages/exercise/questions/save_multiple_choice.php";
+                    break;
 
 
 
