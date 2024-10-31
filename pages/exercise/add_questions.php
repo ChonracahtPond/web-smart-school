@@ -25,32 +25,17 @@
     }
 </script>
 
-<div class=" p-6 ">
+<div class="p-6">
     <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">เพิ่มคำถาม</h1>
+
     <?php if (!empty($message)): ?>
         <div class="bg-green-200 text-green-800 p-4 rounded mb-4">
             <?php echo $message; ?>
         </div>
     <?php endif; ?>
 
-    <!-- <form method="post" action=""> -->
     <input type="hidden" name="exercise_id" value="<?php echo $exercise_id; ?>">
 
-    <!-- <div class="mb-4">
-            <label for="question_text" class="block text-gray-700 font-semibold">ข้อความคำถาม:</label>
-            <textarea id="question_text" name="question_text" required class="border border-gray-300 p-2 w-full rounded-lg focus:ring focus:ring-blue-300 transition duration-200"></textarea>
-        </div> -->
-    <!-- <div class="flex">
-            <div class="mb-4 w-[70%] mr-5">
-                <label for="media_url" class="block text-gray-700 font-semibold">URL สื่อ (ไม่บังคับ):</label>
-                <input type="text" id="media_url" name="media_url" class="border border-gray-300 p-2 w-full rounded-lg focus:ring focus:ring-blue-300 transition duration-200">
-            </div>
-
-            <div class="mb-4 w-[30%]">
-                <label for="score" class="block text-gray-700 font-semibold">คะแนน:</label>
-                <input type="number" id="score" name="score" required class="border border-gray-300 p-2 w-full rounded-lg focus:ring focus:ring-blue-300 transition duration-200">
-            </div>
-        </div> -->
     <div class="mb-4">
         <label for="question_type" class="block text-gray-700 font-semibold">ประเภทคำถาม:</label>
         <select id="question_type" name="question_type" class="border border-gray-300 p-2 w-full rounded-lg focus:ring focus:ring-blue-300 transition duration-200" onchange="showAnswerForm()">
@@ -62,22 +47,22 @@
         </select>
     </div>
 
-    <div class="bg-gray-200 border border-gray-300 shadow-md rounded-lg  p-2">
-        <?php include "questions/multiple_choice.php"; ?>
-        <?php include "questions/single_choice.php"; ?>
-        <?php include "questions/text_form.php"; ?>
-        <?php include "questions/True_False.php"; ?>
+    <div class="bg-gray-200 border border-gray-300 shadow-md rounded-lg p-2">
+        <div id="single_choice_form" class="answer-form" style="display: none;">
+            <?php include "questions/single_choice.php"; ?>
+        </div>
+        <div id="multiple_choice_form" class="answer-form" style="display: none;">
+            <?php include "questions/multiple_choice.php"; ?>
+        </div>
+        <div id="true_false_form" class="answer-form" style="display: none;">
+            <?php include "questions/True_False.php"; ?>
+        </div>
+        <div id="text_form" class="answer-form" style="display: none;">
+            <?php include "questions/text_form.php"; ?>
+        </div>
     </div>
 
-
-
-    <!-- <div class="flex justify-center">
-            <input type="submit" value="เพิ่มคำถาม" class="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition duration-200 mt-5">
-        </div> -->
-    <!-- </form> -->
-
-    <!-- รวมฟอร์มคำตอบ -->
-
-
-
+    <!-- <div class="flex justify-center mt-5">
+        <input type="submit" value="เพิ่มคำถาม" class="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition duration-200">
+    </div> -->
 </div>
