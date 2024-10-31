@@ -77,6 +77,12 @@
                 case 'save_multiple_choice':
                     include "../pages/exercise/questions/save_multiple_choice.php";
                     break;
+                case 'save_True_False':
+                    include "../pages/exercise/questions/save_True_False.php";
+                    break;
+                case 'save_text_form':
+                    include "../pages/exercise/questions/save_text_form.php";
+                    break;
 
 
 

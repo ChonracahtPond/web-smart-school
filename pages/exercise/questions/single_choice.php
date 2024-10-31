@@ -39,7 +39,7 @@ $message = isset($message) ? $message : '';
         <ul id="answer_list" class="list-disc pl-5"></ul>
     </div>
 
-    <button type="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 mt-4">บันทึกข้อมูล</button>
+    <button type="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 mt-4 ">บันทึกข้อมูล</button>
 
     <?php if ($message): ?>
         <div class="bg-green-200 text-green-700 p-4 rounded mt-4"><?php echo $message; ?></div>
