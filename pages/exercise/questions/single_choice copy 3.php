@@ -47,8 +47,6 @@ $message = isset($message) ? $message : '';
 </form>
 
 <script>
-    let isCorrectSelected = false;
-
     function addSingleChoice() {
         const answerText = document.getElementById('answer_text').value.trim();
         const isCorrectChecked = document.getElementById('is_correct').checked;
@@ -59,17 +57,14 @@ $message = isset($message) ? $message : '';
         }
 
         // ตรวจสอบว่ามีการเลือกคำตอบที่ถูกต้องอยู่แล้วหรือไม่
-        if (isCorrectSelected && isCorrectChecked) {
-            alert('สามารถเลือกคำตอบที่ถูกต้องได้เพียงข้อเดียว');
-            return;
+        if (isCorrectChecked) {
+            document.querySelectorAll('input[name="is_correct[]"]').forEach(input => {
+                input.value = '0';
+                input.parentElement.querySelector('.correct-label').textContent = 'ไม่ใช่';
+            });
         }
 
-        // ถ้าเลือกคำตอบที่ถูกต้องตั้งค่า flag isCorrectSelected เป็น true
         const isCorrect = isCorrectChecked ? '1' : '0';
-        if (isCorrectChecked) {
-            isCorrectSelected = true;
-            document.getElementById('is_correct').style.display = 'none'; // ซ่อน checkbox
-        }
 
         // สร้างคำตอบใหม่ และตั้งค่า is_correct ตามการเลือก
         const answerList = document.getElementById('answer_list');
@@ -86,11 +81,6 @@ $message = isset($message) ? $message : '';
         deleteButton.className = 'bg-red-500 text-white p-1 rounded ml-2 hover:bg-red-600';
         deleteButton.onclick = function() {
             answerList.removeChild(listItem);
-            // ถ้าลบคำตอบที่ถูกต้อง ให้แสดง checkbox สำหรับ is_correct อีกครั้ง
-            if (isCorrect === '1') {
-                isCorrectSelected = false;
-                document.getElementById('is_correct').style.display = 'inline-block';
-            }
         };
 
         listItem.appendChild(deleteButton);

@@ -1,46 +1,53 @@
 <?php
 
-// รับข้อมูลจากฟอร์ม
-$exercise_id = $_POST['exercise_id'];
-$question_text = $_POST['question_text'];
-$media_url = $_POST['media_url'];
-$score = $_POST['score'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // รับข้อมูลจากฟอร์ม
+    $exercise_id = $_POST['exercise_id'];
+    $question_text = $_POST['question_text'];
+    $media_url = isset($_POST['media_url']) ? $_POST['media_url'] : null;
+    $score = $_POST['score'];
+    $created_at = date('Y-m-d H:i:s');
+    $updated_at = date('Y-m-d H:i:s');
+    $question_type = 'single_choice'; // กำหนดประเภทคำถามเป็น single_choice
 
-// กำหนดเวลาสร้างและอัปเดต
-$current_time = date('Y-m-d H:i:s');
-
-// บันทึกข้อมูลลงในตาราง questions
-$sql_question = "INSERT INTO questions (exercise_id, question_text, created_at, updated_at, question_type, media_url, score) 
-VALUES (?, ?, ?, ?, 'single_choice', ?, ?)";
-
-$stmt_question = $conn->prepare($sql_question);
-$stmt_question->bind_param("issssi", $exercise_id, $question_text, $current_time, $current_time, $media_url, $score);
-
-if ($stmt_question->execute()) {
-    // รับ question_id ที่ถูกสร้าง
-    $question_id = $stmt_question->insert_id;
-
-    // บันทึกคำตอบที่ถูกส่งมาจากฟอร์ม
-    if (!empty($_POST['answer_text'])) {
-        foreach ($_POST['answer_text'] as $index => $answer_text) {
-            $is_correct = isset($_POST['is_correct'][$index]) ? 1 : 0; // เช็คว่าคำตอบนั้นถูกต้องหรือไม่
-            $sql_answer = "INSERT INTO answers (question_id, answer_text, is_correct, created_at, updated_at, answer_type, score) 
-            VALUES (?, ?, ?, ?, ?, 'single_choice', ?)";
-
-            $stmt_answer = $conn->prepare($sql_answer);
-            $stmt_answer->bind_param("isissi", $question_id, $answer_text, $is_correct, $current_time, $current_time, $score);
-            $stmt_answer->execute();
-        }
+    // ตรวจสอบว่ามีเพียงคำตอบเดียวที่มี is_correct เป็น 1
+    $is_correct_values = array_count_values($_POST['is_correct']);
+    if (isset($is_correct_values['1']) && $is_correct_values['1'] > 1) {
+        die('ข้อผิดพลาด: ต้องมีคำตอบที่ถูกต้องเพียงข้อเดียว');
     }
 
-    // echo "บันทึกข้อมูลเรียบร้อยแล้ว!";
-    echo "<script>window.location.href='?page=show_exam&exercise_id=$exercise_id&status=1';</script>";
-} else {
-    // echo "เกิดข้อผิดพลาด: " . $stmt_question->error;
-    echo "<script>window.location.href='?page=show_exam&exercise_id=$exercise_id&status=0';</script>";
-}
+    // บันทึกข้อมูลลงในตาราง questions
+    $stmt = $conn->prepare("INSERT INTO questions (exercise_id, question_text, created_at, updated_at, question_type, media_url, score) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("isssssi", $exercise_id, $question_text, $created_at, $updated_at, $question_type, $media_url, $score);
 
-// ปิดการเชื่อมต่อ
-$stmt_question->close();
-$stmt_answer->close();
-$conn->close();
+    if ($stmt->execute()) {
+        // รับ ID ของคำถามที่เพิ่มล่าสุด
+        $question_id = $conn->insert_id;
+
+        // บันทึกคำตอบลงในตาราง answers
+        $answers = $_POST['answer_text'];
+        $is_corrects = $_POST['is_correct'];
+
+        foreach ($answers as $index => $answer_text) {
+            $is_correct = $is_corrects[$index];
+            $answer_type = 'single_choice'; // ตั้งค่าประเภทคำตอบเป็น single_choice
+            $answer_score = $is_correct == '1' ? $score : 0; // ให้คะแนนเฉพาะคำตอบที่ถูกต้อง
+
+            $stmt = $conn->prepare("INSERT INTO answers (question_id, answer_text, is_correct, created_at, updated_at, answer_type, score) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("isisssi", $question_id, $answer_text, $is_correct, $created_at, $updated_at, $answer_type, $answer_score);
+            $stmt->execute();
+        }
+
+        // ปิดการเชื่อมต่อ
+        $stmt->close();
+        $conn->close();
+
+        // ส่งกลับไปยังหน้าแรกพร้อมข้อความ
+        // header('Location: index.php?message=คำถามและคำตอบถูกบันทึกเรียบร้อยแล้ว');
+        echo "<script>window.location.href='?page=show_exam&exercise_id=$exercise_id&status=1';</script>";
+
+        exit;
+    } else {
+        die('ข้อผิดพลาดในการบันทึกข้อมูลคำถาม: ' . $stmt->error);
+    }
+}
