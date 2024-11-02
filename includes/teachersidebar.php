@@ -45,9 +45,9 @@
                     <li>
                         <a href="?page=your_classroom" id="your_classroom_link" class="flex items-center w-full p-2 text-base font-normal text-white rounded-lg hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">ห้องเรียนของคุณ</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="?page=" class="flex items-center w-full p-2 text-base font-normal text-white rounded-lg hover:bg-gray-100 hover:text-gray-800 dark:text-white dark:hover:bg-gray-700 pl-11">รีเซ็ตรหัสผ่าน</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
 

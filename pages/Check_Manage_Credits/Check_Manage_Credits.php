@@ -38,8 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // echo "Error: " . $conn->error;
     }
 
-    $conn->close();
+    // $conn->close();
 }
+
 ?>
 
 
@@ -49,7 +50,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <i class="fas fa-tasks text-green-500"></i>
             <span>เช็คกิจกรรม กพช.</span>
         </h1>
+        <!-- Add Participant Button -->
+        <!-- ปุ่มสำหรับเปิด Modal -->
+        <button onclick="toggleAddForm()" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-150 ease-in-out">
+            เพิ่มผู้เข้าร่วมกิจกรรม
+        </button>
         <div class="bg-gray-200 w-full h-0.5 my-5"></div>
+
+
         <table id="example" class="display stripe hover" style="width:100%;">
             <thead>
                 <tr class="bg-gray-100">
@@ -215,3 +223,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         });
     }
 </script>
+
+
+
+
+
+
+<?php include "sql/modal.php"; ?>

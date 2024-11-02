@@ -67,6 +67,29 @@ include '../includes/header.php';
                     include "../mpdf/equipment/equipment_pdf.php";
                     break;
 
+
+
+                case 'Teacher_Manage':
+                    include "../pages/teacher/Management/Teacher_Manage.php";
+                    break;
+                case 'update_teacher':
+                    include "../pages/teacher/Management/update_teacher.php";
+                    break;
+                case 'delete_teacher':
+                    include "../pages/teacher/Management/delete_teacher.php";
+                    break;
+                case 'process_teacher':
+                    include "../pages/teacher/Management/process_teacher.php";
+                    break;
+
+
+
+
+
+
+
+
+
                 case 'Budget_for_borrowing':
                     include "../pages/borrowing/Budget/Budget_for_borrowing.php";
                     break;

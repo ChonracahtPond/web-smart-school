@@ -100,6 +100,9 @@
                 case 'Check_Manage_Credits':
                     include "../pages/Check_Manage_Credits/Check_Manage_Credits.php";
                     break;
+                case 'save_credits copy':
+                    include "../pages/Check_Manage_Credits/sql/save_credits.php";
+                    break;
 
 
 

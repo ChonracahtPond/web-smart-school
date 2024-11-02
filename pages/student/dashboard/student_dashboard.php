@@ -107,7 +107,7 @@ $grades_result = $conn->query($grades_query);
                             </svg>
                             <span>รายวิชา</span>
                         </a>
-                        <a href="?page=page=GradeList&&id=<?php echo urlencode($row['student_id']); ?>" class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 flex items-center space-x-2 transition-transform transform hover:scale-105 duration-300">
+                        <a href="?page=GradeList&student_id=<?php echo urlencode($row['student_id']); ?>" class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 flex items-center space-x-2 transition-transform transform hover:scale-105 duration-300">
                             <svg class="h-5 w-5 " width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" />
                                 <line x1="4" y1="20" x2="7" y2="20" />
